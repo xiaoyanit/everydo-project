@@ -1,0 +1,36 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:five="http://namespaces.zope.org/five"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  >
+
+ <i18n:registerTranslations directory="locales"/>
+  <include file="permissions.zcml" />
+  <include package=".browser" />
+  <include file="profiles.zcml" />
+  <include file="adapters.zcml" />
+
+  <include package=".membership" />
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <cmf:registerDirectory
+      name="skins"
+      directory="skins"
+      recursive="True"
+      />
+
+  <adapter
+   factory="Products.CMFCore.exportimport.content.StructureFolderWalkingAdapter"
+   provides="Products.GenericSetup.interfaces.IFilesystemImporter"
+   for=".interfaces.ITeamContent"
+   />
+
+  <adapter
+   factory="Products.CMFCore.exportimport.content.StructureFolderWalkingAdapter"
+   provides="Products.GenericSetup.interfaces.IFilesystemImporter"
+   for=".interfaces.IPersonContent"
+   />
+
+</configure>

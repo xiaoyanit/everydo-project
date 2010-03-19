@@ -1,0 +1,132 @@
+About
+==============
+Team is a local group. It relies on borg now.
+
+Test case
+===========
+Test if setup is OK:
+
+    >>> from Products.membrane.interfaces import ICategoryMapper
+    >>> from Products.membrane.config import ACTIVE_STATUS_CATEGORY
+    >>> from Products.membrane.utils import generateCategorySetIdForType
+    >>> from Products.borg.config import LOCALROLES_PLUGIN_NAME, PLACEFUL_WORKFLOW_POLICY
+    >>> 'Team' in self.portal.portal_types.objectIds()
+    True
+    >>> 'TeamFolder' in self.portal.portal_types.objectIds()
+    True
+    >>> categoryMap = ICategoryMapper(self.portal.membrane_tool)
+    >>> categorySet = generateCategorySetIdForType('Team')
+    >>> categoryMap.listCategoryValues(categorySet, ACTIVE_STATUS_CATEGORY)
+    ['active']
+    >>> categorySet = generateCategorySetIdForType('TeamFolder')
+    >>> categoryMap.listCategoryValues(categorySet, ACTIVE_STATUS_CATEGORY)
+    ['active']
+    >>> 'Team' in self.portal.portal_factory.getFactoryTypes().keys()
+    True
+    >>> 'TeamFolder' in self.portal.portal_factory.getFactoryTypes().keys()
+    True
+    >>> self.portal.portal_workflow.getChainForPortalType('Team')
+    ('zopen_group_workflow',)
+    >>> self.portal.portal_workflow.getChainForPortalType('TeamFolder')
+    ('zopen_group_workflow',)
+
+Create a Department and 2 users at first:
+
+    >>> self.setRoles(('Manager',))
+    >>> id = self.portal.invokeFactory('OrganizationUnit', 'dept')
+    >>> id = self.portal.dept.invokeFactory('Person', 'emp1')
+    >>> id = self.portal.dept.invokeFactory('Person', 'emp2')
+
+Now create a teamfolder and a team:
+
+    >>> id = self.portal.invokeFactory('TeamFolder', 'teams')
+    >>> teams = self.portal.teams
+
+    >>> id = teams.invokeFactory('Team', 'team')
+    >>> team = teams.team
+
+Team is group:
+
+    >>> self.portal.portal_groups.getGroupById('team')
+    <GroupData at .../team... used for ...>
+
+    >>> from Products.membrane.interfaces import IGroup
+    >>> g = IGroup(team)
+    >>> team.setTitle('test team')
+    >>> g.Title()
+    'test team'
+
+TeamFolder is group:
+
+    >>> self.portal.portal_groups.getGroupById('teams')
+    <GroupData at .../teams... used for ...>
+
+    >>> from Products.membrane.interfaces import IGroup
+    >>> teamsgroup = IGroup(teams)
+    >>> teams.setTitle('test teams')
+    >>> teamsgroup.Title()
+    'test teams'
+
+Set roles.
+
+    >>> team.setRoles(('Reviewer',))
+    >>> tuple(team.getRoles())
+    ('Reviewer',)
+
+Group will have the roles too:
+
+    >>> g.getRoles()
+    ('Reviewer',)
+
+Groups id is starts with content id
+
+    >>> g.getGroupId()
+    'team'
+
+    >>> id =self.portal.teams.invokeFactory('Team', 'teama')
+    >>> IGroup(self.portal.teams.teama).getGroupId()
+    'teama'
+
+    >>> id =self.portal.invokeFactory('Folder', 'p') # project
+    >>> id = self.portal.p.invokeFactory('TeamFolder', 'teams')
+    >>> id = self.portal.p.teams.invokeFactory('Team', 'teama')
+    >>> IGroup(self.portal.p.teams.teama).getGroupId()
+    'teama-p'
+    >>> IGroup(self.portal.p.teams).getGroupId()
+    'teams-p'
+
+Now set team members:
+
+    >>> user = self.portal.portal_membership.getMemberById('emp1')
+    >>> 'Reviewer' in user.getRolesInContext(self.portal)
+    False
+
+    >>> team.setMembers( (self.portal.dept.emp1.UID(), self.portal.dept.emp2.UID()) )
+    >>> [m.getId() for m in team.getMembers()]
+    ['emp1', 'emp2']
+
+    >>> members = list(g.getGroupMembers())
+    >>> members.sort()
+    >>> members
+    ['emp1', 'emp2']
+
+    >>> m = list(teamsgroup.getGroupMembers())
+    >>> m.sort()
+    >>> m
+    ['emp1', 'emp2']
+
+Group member will have the roles too:
+
+    >>> user = self.portal.portal_membership.getMemberById('emp1')
+    >>> 'Reviewer' in user.getRolesInContext(self.portal)
+    True
+
+Inactive team will not have the roles:
+
+    >>> self.portal.portal_workflow.doActionFor(team, 'deactivate')
+    >>> g.getRoles() 
+    ()
+    >>> user = self.portal.portal_membership.getMemberById('emp1')
+    >>> 'Reviewer' in user.getRolesInContext(self.portal)
+    False
+

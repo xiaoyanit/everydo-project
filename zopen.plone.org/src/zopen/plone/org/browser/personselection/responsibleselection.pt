@@ -1,0 +1,11 @@
+<tal:companies tal:define="selected_person python:view.selected">
+ 
+      <option tal:attributes="value view/company/id;
+              selected python:view.selected == view.company['id']"
+              tal:content="view/company/title">company</option>
+
+      <option tal:attributes="value view/person/id;
+              selected python:view.selected == view.person['id']"
+              tal:content="view/person/title">person</option>
+
+</tal:companies>

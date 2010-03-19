@@ -1,0 +1,46 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-08 01:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.org\n"
+
+# Default "Organization Unit"
+msgid "organization_unit"
+msgstr ""
+
+# Default "Organization unit can contain persons"
+msgid "organization_unit_description"
+msgstr ""
+
+# Default "Person"
+msgid "person"
+msgstr ""
+
+# Default "Person in a Organization unit"
+msgid "person_description"
+msgstr ""
+
+# Default "illegal member id"
+msgid "illegal_member_id"
+msgstr ""
+
+# Default "error"
+msgid "error"
+msgstr ""
+
+# Default "A user with id '%s'already exists in the portal"
+msgid "exisits_in_portal"
+msgstr ""

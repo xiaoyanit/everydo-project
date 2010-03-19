@@ -1,0 +1,5 @@
+#category-select:change {
+  action-server: selectionCreateCategory;
+  selectionCreateCategory-title: "NNN";
+}
+

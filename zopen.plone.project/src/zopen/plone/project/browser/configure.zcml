@@ -1,0 +1,130 @@
+<configure xmlns="http://namespaces.zope.org/browser"
+           i18n_domain="zopen.plone.org">
+
+  <page
+      name="projectview"
+      for="*"
+      class=".project.ProjectView"
+      permission="zope2.View"
+      allowed_attributes="getActiveProjects
+          getActiveProjectPaths
+          getOnholdProjects
+          hasArchivedProject
+          getArchivedProjects"
+      />
+
+  <page name="goto_messages"
+        for="*"
+        class=".project.ProjectView"
+        permission="zope2.View"
+        attribute="gotoMessages" />
+
+  <page name="goto_todos"
+        for="*"
+        class=".project.ProjectView"
+        permission="zope2.View"
+        attribute="gotoTodos" />
+
+  <page name="goto_milestones"
+        for="*"
+        class=".project.ProjectView"
+        permission="zope2.View"
+        attribute="gotoMilestones" />
+
+  <page
+      name="project_list"
+      for="*"
+      template="project_list.pt"
+      permission="zope2.View"
+      />
+
+  <page
+      name="archived_project_list"
+      for="*"
+      template="archived_project_list.pt"
+      permission="zope2.View"
+      />
+
+  <page name="create_project_form"
+     for="*"
+     class=".project.CreateProjectForm"
+     permission="zopen.project.AddProject"
+    />
+
+
+  <page for="..interfaces.IProjectContent"
+     name="delete_project"
+     class=".project.DeleteProject"
+     permission="zopen.project.ManageProject"
+     />
+
+  <page for="..interfaces.IProjectContent"
+     name="prefs_project_settings"
+     class=".project.ProjectSettings"
+     permission="zopen.project.ManageProject"
+     />
+
+  <pages for="*"
+     class=".project.ProjectKssSettings"
+     permission="zope2.View">
+     <page  
+         name="addTag"
+         attribute="addTag"
+     />
+     <page  
+         name="settingTags"
+         attribute="settingTags"
+     />
+     <page  
+         name="delTag"
+         attribute="delTag"
+     />
+     <page 
+         name="tagForProjects"
+         attribute="tagForProjects"
+     />
+  </pages>
+  
+  <resource
+      name="project.kss"
+      file="resources/project.kss" />
+
+  <resource
+      name="project.gif"
+      file="resources/project.gif" />
+
+  <resource
+      name="project-demo.png"
+      file="resources/project-demo.png" />
+
+
+  <resource
+      name="project.css"
+      file="resources/project.css" />
+
+  <page
+      for="*"
+      name="prefs_project_team"
+      class="zopen.plone.org.browser.team.TeamView"
+      template="prefs_project_team.pt"
+      permission="zopen.org.AddPerson"
+      />
+
+  <page
+      for="..interfaces.IProjectContent"
+      name="dashboard"
+      template="dashboard.pt"
+      class=".dashboard.DashboardView"
+      permission="zope2.View"
+      />
+
+  <page
+      for="*"
+      name="project_view"
+      class=".dashboard.DashboardView"
+      permission="zope2.View"
+      allowed_attributes="getTimelinedResults"
+      />
+  <include package=".subscription" />
+
+</configure>

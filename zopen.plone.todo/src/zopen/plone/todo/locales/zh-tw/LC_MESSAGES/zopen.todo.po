@@ -1,0 +1,479 @@
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.todo 1.0\n"
+"POT-Creation-Date: 2007-05-11 02:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh-tw\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.todo\n"
+"X-Is-Fallback-For: zh-hk zh-mo zh-sg\n"
+
+#. Default: "Add an item"
+#: browser/macros_todo.pt
+msgid "add_an_item"
+msgstr "添加一個任務"
+
+#. Default: "Add this item"
+#: browser/macros_todo.pt
+msgid "add_item"
+msgstr "添加此任務"
+
+#. Default: "After you create this list, you can add as many items to it as you want."
+#: browser/macros_todo.pt
+msgid "after_create_list"
+msgstr "創建這個任務清單後，可添加任意多個任務到這個清單中。"
+
+#. Default: "all the todo lists"
+#: browser/todo.pt
+msgid "all_todo"
+msgstr "全部任務清單"
+
+#. Default: "Anyone"
+#: browser/macros_todo.pt
+#: browser/todo.pt
+#: browser/todo_report.pt
+msgid "anyone"
+msgstr "任何人"
+
+#. Default: "'s todo items across all projects"
+#: browser/todo_report.pt
+msgid "anyone_todo_items"
+msgstr "的任務（所有項目）"
+
+#. Default: "Show to-dos assigned to:"
+#: browser/todo.pt
+#: browser/todolist.pt
+msgid "assigned_todo"
+msgstr "僅顯示某負責人的任務："
+
+#. Default: "Cancel"
+#: browser/macros_todo.pt
+msgid "cancel"
+msgstr "取消"
+
+#. Default: "Choose another person with the pulldown to the right."
+#: browser/todo_report.pt
+msgid "choose_another"
+msgstr "在下拉框中選擇其它的人員。"
+
+#. Default: "Choose a template"
+#: browser/macros_todo.pt
+msgid "choose_template"
+msgstr "選擇一個模板"
+
+#. Default: "Completed to-do lists"
+#: browser/todolist.pt
+msgid "completed_todo_list"
+msgstr "完成的任務清單"
+
+#. Default: "Create this list"
+#: browser/macros_todo.pt
+msgid "create_todo"
+msgstr "創建這個任務清單"
+
+#. Default: "New to-do list"
+#: browser/todolist.pt
+msgid "create_todo_list"
+msgstr "新建一個任務清單"
+
+#. Default: "Current to-do lists"
+#: browser/todolist.pt
+msgid "current_todo_list"
+msgstr "當前的任務清單"
+
+#. Default: "I'm done adding items"
+#: browser/macros_todo.pt
+msgid "done_adding_items"
+msgstr "添加完畢"
+
+#. Default: "First enter a title"
+#: browser/macros_todo.pt
+msgid "enter_title"
+msgstr "首先填寫一個標題"
+
+#. Default: "Enter a to-do item"
+#: browser/macros_todo.pt
+msgid "enter_todo_item"
+msgstr "填寫一個任務"
+
+#. Default: "Filter by responsible party"
+#: browser/todo.pt
+#: browser/todolist.pt
+msgid "filter_responsible"
+msgstr "以負責人的字段過濾"
+
+#. Default: "Optional: List description:"
+#: browser/macros_todo.pt
+msgid "list_description"
+msgstr "可選：任務清單的描述"
+
+#. Default: "Make this list"
+#: browser/macros_todo.pt
+msgid "make_list"
+msgstr "使這個任務清單"
+
+#. Default: "There are no to-dos assigned to ${responsible_name}."
+#: browser/todo_report.pt
+msgid "no_todos"
+msgstr "沒有分配給${responsible_name}的任務。"
+
+#. Default: "Notify by email?"
+#: browser/macros_todo.pt
+msgid "notify_by_email"
+msgstr "發送通知郵件？"
+
+#. Default: "or"
+#: browser/macros_todo.pt
+msgid "or"
+msgstr "或"
+
+#. Default: "private"
+#: browser/macros_todo.pt
+msgid "private"
+msgstr "保密"
+
+#. Default: "Private"
+#: browser/macros_todo.pt
+msgid "Private"
+msgstr "保密"
+
+#. Default: "Optional: Does this list relate to a milestone?"
+#: browser/macros_todo.pt
+msgid "relate_milestone"
+msgstr "可選：是否讓這個任務清單和某個里程碑關聯?"
+
+#. Default: "Reorder lists"
+#: browser/todolist.pt
+msgid "reorder_todo_list"
+msgstr "重排位置"
+
+#. Default: "Save this item"
+#: browser/macros_todo.pt
+msgid "save_item"
+msgstr "保存這個任務"
+
+#. Default: "Save this list"
+#: browser/macros_todo.pt
+msgid "save_list"
+msgstr "保存這個任務清單"
+
+#. Default: "Show items assigned to: ${someone}"
+#: browser/todo_report.pt
+msgid "show_assigned_to"
+msgstr "顯示分配給 ${someone} 的任務"
+
+#. Default: "here is a todo list"
+#: browser/todo.pt
+msgid "todo_here"
+msgstr "這是一個任務清單"
+
+#. Default: "To-do lists"
+#: browser/todolist.pt
+msgid "todo_list"
+msgstr "任務列表"
+
+#. Default: "Undo create new to-do lists"
+#: browser/todolist.pt
+msgid "undo_create_todo_list"
+msgstr "撤消創建新的任務清單"
+
+#. Default: "Undo reorder lists"
+#: browser/todolist.pt
+msgid "undo_reorder_todo_list"
+msgstr "撤銷重排位置"
+
+#. Default: "View all ${len_item} completed items"
+#: browser/macros_todo.pt
+msgid "view_all_items"
+msgstr "查看所有 ${len_item} 個完成的任務"
+
+#. Default: "Who's responsible?"
+#: browser/macros_todo.pt
+msgid "whos_reponsible"
+msgstr "誰來負責？"
+
+msgid "all_responsibles"
+msgstr "所有人"
+
+msgid "endTime was error, please changed."
+msgstr "截止時間有誤，請更正。"
+
+#. Default: "[${project_title}] To-do item assigned to you"
+#: browser/kssview.py
+msgid "mail_subject"
+msgstr "[${project_title}] 有任務分配給你"
+
+#. Default: ".\nTo complete this to-do no later than ${end}"
+#: browser/kssview.py
+msgid "deadline_info"
+msgstr ".\n要求最遲於${end}完成"
+
+#. Default: "---------------------------------------------------------------\nCompany: ${company_name}\nProject: ${project_name}\n---------------------------------------------------------------\n\nYou have just been assigned the following to-do item\nby ${user_name} <${user_email}>${deadline_info}:\n\n${todoitem_title}\n\n${$todoitem_description}\n\n--\nTo view this to-do list, visit:\n${todolist_url}"
+#: browser/kssview.py
+msgid "mail_body"
+msgstr "---------------------------------------------------------------\n組織：${company_name}\n項目：${project_name}\n---------------------------------------------------------------\n\n${user_name} <${user_email}> 剛剛分配了一個任務給你${deadline_info}：\n\n${todoitem_title}\n\n${todoitem_description}\n\n--\n請不要回覆此郵件。\n您可在查看整個任務清單: \n${todolist_url}"
+
+#. Default: "Deadline is invalid, please correct."
+#: browser/kssview.py
+msgid "va_deadline_error"
+msgstr "截止时间有误，请更正。"
+
+#. Default: "Date is invalid, please correct."
+#: browser/kssview.py
+msgid "va_date_error"
+msgstr "日期有誤，請更正。"
+
+#. Default: "Need hour!"
+#: browser/kssview.py
+msgid "va_need_hour"
+msgstr "需要填寫工作日誌耗時！"
+
+#. Default: "Hour is invalid, please currect."
+#: browser/kssview.py
+msgid "va_hour_error"
+msgstr "請正確填寫工作日誌耗時！"
+
+#. Default: "Select the view mode: "
+#: browser/todolist.pt
+msgid "select_view_mode"
+msgstr "切換查看方式："
+
+#. Default: "To-do list"
+#: browser/todolist.pt
+msgid "to_do_list"
+msgstr "任務列表"
+
+#. Default: "To-do complete-time"
+#: browser/todolist.pt
+msgid "todo_complete_time"
+msgstr "任務截止時間表"
+
+#. Default: "Export"
+#: browser/todolist.pt
+msgid "export"
+msgstr "導出"
+
+#. Default: "to-do list to csv"
+#: browser/todolist.pt
+msgid "to_csv"
+msgstr "任務清單為CSV文件"
+
+#. Default: "According by project"
+#: browser/todoreport.pt
+msgid "according_project"
+msgstr "按項目分組"
+
+#. Default: "According by complete-time"
+#: browser/todoreport.pt
+msgid "according_complete_time"
+msgstr "按截止時間分組"
+
+#. Default: "View this item time log"
+#: browser/macros_todo.pt
+msgid "view_item_log"
+msgstr "查看詳細工作日誌"
+
+#. Default: "(eg. 2.5, or 2:30)"
+#: browser/macros_todo.pt
+msgid "eg_hour"
+msgstr "(如. 2.5, 或 2:30)"
+
+#: browser/macros_todo.pt
+msgid "allow_report_timelog"
+msgstr "允許報告工作日誌"
+
+#. Default: "Category"
+#: browser/macros_todo.pt
+msgid "todo_category"
+msgstr "分類"
+
+#. Default: "When's it due?"
+#: browser/macros_todo.pt
+msgid "when_is_due"
+msgstr "截止時間"
+
+#. Default: "Undefined"
+#: browser/macros_todo.pt
+msgid "due_undefined"
+msgstr "未定"
+
+#. Default: "Today"
+#: browser/macros_todo.pt
+msgid "due_today"
+msgstr "今天"
+
+#. Default: "Tomorrow"
+#: browser/macros_todo.pt
+msgid "due_tomorrow"
+msgstr "明天"
+
+#. Default: "This week"
+#: browser/macros_todo.pt
+msgid "due_thisweek"
+msgstr "本週"
+
+#. Default: "Next week"
+#: browser/macros_todo.pt
+msgid "due_nextweek"
+msgstr "下週"
+
+#. Default: "Designate an exact date..."
+#: browser/macros_todo.pt
+msgid "due_exact"
+msgstr "指定一個確切日期..."
+
+#. Default: "Create a milestone at the same time"
+#: browser/macros_todo.pt
+msgid "create_milestone_sometime"
+msgstr "同時創建一個里程碑"
+
+#. Default: "Delete"
+#: browser/macros_todo.pt
+msgid "delete"
+msgstr "删除"
+
+#. Default: "Edit"
+#: browser/macros_todo.pt
+msgid "edit"
+msgstr "編輯"
+
+#. Default: "Order"
+#: browser/macros_todo.pt
+msgid "order"
+msgstr "排序"
+
+#. Default: "TODO LIST,TODO,RESPONSIBLE,CREATE-TIME,DEADLINE,COMPLETE-TIME,STATE"
+msgid "out_title"
+msgstr "任務清單,任務,負責人,創建人,創建時間,截止時間,完成時間,狀態"
+
+#. Default: "Completed"
+msgid "todo_completed"
+msgstr "完成"
+
+#. Default: "Late"
+msgid "todo_late"
+msgstr "遲辦"
+
+#. Default: "Active"
+msgid "todo_active"
+msgstr "待辦"
+
+#. Default: "Back"
+msgid "back"
+msgstr "返回"
+
+#. Default: "To-Do list by complete-time"
+msgid "list_complete_time"
+msgstr "任務截止時間表"
+
+#. Default: "To-do template"
+#: browser/todo_template.pt
+msgid "todo_template"
+msgstr "任務模板"
+
+#. Default: "New to-do template list"
+#: browser/todo_template.pt
+msgid "create_todo_list_template"
+msgstr "新建一個任務模板清單"
+
+#. Default: "About to-do template"
+#: browser/todo_template.pt
+msgid "about_todo_template"
+msgstr "關於任務模板"
+
+#. Default: "<p>If you find yourself creating the same to-do lists over and over, create a to-do list template instead.  You can use that template in any project you wish.</p> <p> <strong>How do I use the templates?</strong> <br/> When you create a new to-do list in a project, you'll see a red link in the upper-right that says "Use a t o-do list template." Click the link to choose a template for your list.  </p>"
+#: browser/todo_template.pt
+msgid "todo_template_help"
+msgstr "<p>使用任務模板，以免重複創建相同的任務。您可以在其它任何一個項目中使用任務模板。</p> <p><strong>怎麼使用任務模板</strong> <br /> 當您在項目中創建一個新的任務清單，在填寫標題附近您會看到“選擇一個模板”的鏈接，單擊選擇一個模板創建任務清單。"
+
+#. Default: "Current to-do template lists"
+#: browser/todo_template.pt
+msgid "current_todo_list_template"
+msgstr "當前的任務模板清單"
+
+#: browser/todo_template.pt
+msgid "todo_list_template"
+msgstr "任務清單模板"
+
+#. Default: ""
+#: browser/todo_template.pt
+msgid "create_first_todo_template"
+msgstr "創建第一個任務清單模板"
+
+#. Default: ""
+#: browser/todo_template.pt
+msgid "create_todo_template_for"
+msgstr "可將常用的任務清單定位為模板，以便在項目工作空間中重複使用，規範工作流程。"
+
+msgid "choose_a_template"
+msgstr "選擇一個任務清單模板"
+
+msgid "create_new_todolist"
+msgstr "創建新任務清單"
+
+#. Default: "Todo in todolist"
+msgid "todo_in_list"
+msgstr "任務位於"
+
+msgid "create_by_time"
+msgstr "${con} 創建於 ${date}"
+
+#. Default: "ToDo:"
+msgid "todo_item_des"
+msgstr "任務描述："
+
+#. Default: "Responsible:"
+msgid "responsible"
+msgstr "負責人："
+
+#. Default: "Due time:"
+msgid "deadline"
+msgstr "截止時間："
+
+#. Default: "Whether completed:"
+msgid "whether_completed"
+msgstr "完成情况："
+
+#. Default: ":"
+msgid "timetracker"
+msgstr "工作日誌："
+
+#. Default: ":"
+msgid "tracker_hours"
+msgstr "累計耗時${hours}小時"
+
+#. Default: "Report time tracker"
+msgid "report_time"
+msgstr "添加新工作日誌"
+
+msgid "attachments"
+msgstr "附件："
+
+msgid "upload_files"
+msgstr "上傳與任務關聯的附件"
+
+msgid "Complete"
+msgstr "完成"
+
+msgid "Not completed"
+msgstr "未完成"
+
+msgid "Reset"
+msgstr "重置"
+
+msgid "more"
+msgstr "更多..."
+
+msgid "my_milestones"
+msgstr "${person}负责的里程碑"
+
+msgid "show_my_milestones"
+msgstr "查看${person}负责的里程碑"

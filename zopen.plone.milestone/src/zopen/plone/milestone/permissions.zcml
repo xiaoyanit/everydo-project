@@ -1,0 +1,19 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="Five">
+
+  <permission
+      id="zopen.milestone.AddMilestone"
+      title="zopen.milestone: Add milestone"
+      />
+
+  <permission
+      id="zopen.milestone.AddMilestoneFolder"
+      title="zopen.milestone: Add milestone folder"
+      />
+
+  <permission
+      id="zopen.milestone.ReportState"
+      title="zopen.milestone: Report state"
+      />
+
+</configure>

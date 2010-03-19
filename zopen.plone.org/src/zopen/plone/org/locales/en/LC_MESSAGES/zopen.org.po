@@ -1,0 +1,521 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-06-22 07:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.org\n"
+
+#. Default: "Add"
+#: browser/team.pt
+msgid "add"
+msgstr ""
+
+#. Default: "Add a company to this group"
+#: browser/team.pt
+msgid "add_a_company"
+msgstr ""
+
+#. Default: "Add company"
+#: browser/team.pt
+msgid "add_company"
+msgstr ""
+
+#. Default: "Add the first person"
+#: browser/team.pt
+msgid "add_first_person"
+msgstr ""
+
+#. Default: "Add a new company"
+#: browser/organizationunit.pt
+msgid "add_new_company"
+msgstr ""
+
+#. Default: "Add a new person:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "add_new_person"
+msgstr ""
+
+#. Default: "Add person"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "add_person"
+msgstr ""
+
+#. Default: "Add person to"
+#: browser/team.pt
+msgid "add_person_to"
+msgstr ""
+
+#. Default: "Add the first person"
+#: browser/organizationunit.pt
+msgid "add_the_first"
+msgstr ""
+
+#. Default: "After you add a company you'll choose the people from that company you want to add to the group."
+#: browser/team.pt
+msgid "after_add_company"
+msgstr ""
+
+#. Default: "After you add a company you'll be able to add people to that company."
+#: browser/organizationunit.pt
+msgid "after_add_people"
+msgstr ""
+
+#. Default: "All of"
+#: browser/personselection/multiselection.pt
+msgid "all_of"
+msgstr ""
+
+#. Default: "Cancel"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "cancel"
+msgstr ""
+
+#. Default: "Choose an existing company"
+#: browser/team.pt
+msgid "choose_existing_company"
+msgstr ""
+
+msgid "choose_existing_person"
+msgstr ""
+
+#. Default: "Which company do you want to add to the group?"
+#: browser/team.pt
+msgid "company_add_group"
+msgstr ""
+
+#. Default: "this company from this group"
+#: browser/team.pt
+msgid "company_group"
+msgstr ""
+
+#. Default: "Every company and person in your system"
+#: browser/organizationunit.pt
+msgid "company_person_system"
+msgstr ""
+
+#. Default: "Create and add company"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "create_add_company"
+msgstr ""
+
+#. Default: "Create and add person"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "create_add_person"
+msgstr ""
+
+#. Default: "Edit"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "edit"
+msgstr ""
+
+#. Default: "Email:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "email"
+msgstr ""
+
+#. Default: "Enter a new company name"
+#: browser/team.pt
+msgid "enter_company_name"
+msgstr ""
+
+#. Default: "Enter a new company name"
+#: browser/organizationunit.pt
+msgid "enter_new_company_name"
+msgstr ""
+
+# Default "error"
+msgid "error"
+msgstr ""
+
+# Default "A user with id '%s'already exists in the portal"
+msgid "exisits_in_portal"
+msgstr ""
+
+#. Default: "from this company to the group"
+#: browser/team.pt
+msgid "from_company_group"
+msgstr ""
+
+#. Default: "from this group"
+#: browser/team.pt
+msgid "from_group"
+msgstr ""
+
+#. Default: "Full Name:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "full_name"
+msgstr ""
+
+# Default "illegal member id"
+msgid "illegal_member_id"
+msgstr ""
+
+#. Default: "or"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "or"
+msgstr ""
+
+# Default "Organization Unit"
+msgid "organization_unit"
+msgstr ""
+
+# Default "Organization unit can contain persons"
+msgid "organization_unit_description"
+msgstr ""
+
+#. Default: "Password:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "password"
+msgstr ""
+
+# Default "Person"
+msgid "person"
+msgstr ""
+
+# Default "Person in a Organization unit"
+msgid "person_description"
+msgstr ""
+
+#. Default: "Remove"
+#: browser/team.pt
+msgid "remove"
+msgstr ""
+
+#. Default: "(then you can add people to that company)"
+#: browser/organizationunit.pt
+msgid "then_add_people_that"
+msgstr ""
+
+#. Default: "(then you can add people in the company)"
+#: browser/team.pt
+msgid "then_add_people_the"
+msgstr ""
+
+#. Default: "this company"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "this_company"
+msgstr ""
+
+#. Default: "to"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "to"
+msgstr ""
+
+#. Default: "to this company"
+#: browser/organizationunit.pt
+msgid "to_this_company"
+msgstr ""
+
+#. Default: "username:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "username"
+msgstr ""
+
+msgid "office_contact"
+msgstr ""
+
+msgid "mobile_contact"
+msgstr ""
+
+msgid "label_company_name"
+msgstr ""
+
+msgid "description_company_name"
+msgstr ""
+
+msgid "label_company_address"
+msgstr ""
+
+msgid "description_company_address"
+msgstr ""
+
+msgid "label_company_optional_address"
+msgstr ""
+
+msgid "description_company_optional_address"
+msgstr ""
+
+msgid "label_company_city"
+msgstr ""
+
+msgid "description_company_city"
+msgstr ""
+
+msgid "label_company_province"
+msgstr ""
+
+msgid "description_company_province"
+msgstr ""
+
+msgid "label_company_zip"
+msgstr ""
+
+msgid "description_company_zip"
+msgstr ""
+
+msgid "label_company_website"
+msgstr ""
+
+msgid "description_company_website"
+msgstr ""
+
+msgid "label_company_office"
+msgstr ""
+
+msgid "description_company_office"
+msgstr ""
+
+msgid "label_company_fax"
+msgstr ""
+
+msgid "description_company_fax"
+msgstr ""
+
+msgid "description_company_logo"
+msgstr ""
+
+msgid "label_company_logo_in"
+msgstr ""
+
+msgid "label_user_name"
+msgstr ""
+
+msgid "description_user_name"
+msgstr ""
+
+msgid "label_user_password"
+msgstr ""
+
+msgid "description_user_password"
+msgstr ""
+
+msgid "label_user_confirm_password"
+msgstr ""
+
+msgid "description_user_confirm_password"
+msgstr ""
+
+msgid "label_user_email"
+msgstr ""
+
+msgid "description_user_email"
+msgstr ""
+
+msgid "label_user_telephone"
+msgstr ""
+
+msgid "description_user_telephone"
+msgstr ""
+
+msgid "label_user_fullname"
+msgstr ""
+
+msgid "description_user_fullname"
+msgstr ""
+
+msgid "label_user_duty"
+msgstr ""
+
+msgid "description_user_duty"
+msgstr ""
+
+msgid "label_user_mobile"
+msgstr ""
+
+msgid "description_user_mobile"
+msgstr ""
+
+msgid "label_user_office"
+msgstr ""
+
+msgid "description_user_office"
+msgstr ""
+
+msgid "label_user_fax"
+msgstr ""
+
+msgid "description_user_fax"
+msgstr ""
+
+msgid "label_user_location"
+msgstr ""
+
+msgid "description_user_location"
+msgstr ""
+
+msgid "label_user_portrait"
+msgstr ""
+
+msgid "description_user_portrait"
+msgstr ""
+
+msgid "mail_subject"
+msgstr ""
+
+#. Default: "${companyname} create a account for you.  your account information is:\n Username: ${username}\n Password: ${password}\n\nPlease visit the following address and Login:\n${portal_url}\n\nThen visit the site top right corner "My Info", amend your password in time."
+msgid "mail_body"
+msgstr ""
+
+msgid "label_description"
+msgstr ""
+
+msgid "help_description"
+msgstr ""
+
+
+#: browser/teammanage/list.pt
+msgid "add_another_team"
+msgstr ""
+
+#: browser/teammanagelist.pt
+msgid "all_teams"
+msgstr ""
+
+
+#: browser/teammanage/list.pt
+msgid "teams"
+msgstr ""
+
+#. Default: "Done"
+#: browser/teammanage/list.pt
+msgid "done"
+msgstr ""
+
+#. Default: "Rename"
+#: browser/teammanage/list.pt
+msgid "rename"
+msgstr ""
+
+#. Default: "save"
+#: browser/teammanage/list.pt
+msgid "save"
+msgstr ""
+
+msgid "please_enter_team_title."
+msgstr "。"
+
+msgid "modified success."
+msgstr ""
+
+msgid "team_${title}_was_added."
+msgstr ""
+
+
+msgid "team_${title}_was_existed."
+msgstr ""
+
+
+msgid "Info"
+msgstr ""
+
+#: browser/teammange/kssview.py
+msgid "Deleted."
+msgstr ""
+
+
+
+#. Default: "team:"
+#: browser/team.pt
+msgid "team"
+msgstr ""
+
+
+#: browser/teammange/list.pt
+msgid "team_name"
+msgstr ""
+
+
+#: browser/teammange/list.pt
+msgid "description"
+msgstr ""
+
+#: browser/teammange/list.pt
+msgid "edit_team"
+msgstr ""
+
+msgid "inhibit_login"
+msgstr ""
+
+msgid "notify_by_email"
+msgstr ""
+
+msgid "existing_people"
+msgstr ""
+
+msgid "all_people"
+msgstr ""
+
+msgid "remove_out_project"
+msgstr ""
+
+#. View
+#: brower/permissionsetting.pt
+msgid "view"
+msgstr ""
+
+#. View private content
+#: brower/permissionsetting.pt
+msgid "view_private"
+msgstr ""
+
+#. Modify 
+#: brower/permissionsetting.pt
+msgid "modify"
+msgstr ""
+
+#. Review content 
+#: brower/permissionsetting.pt
+msgid "review_content"
+msgstr ""
+
+#: brower/permissionsetting.pt
+msgid "tabs_categories"
+msgstr ""
+
+#: brower/permissionsetting.pt
+msgid "acquire_permission"
+msgstr ""
+
+#: brower/permissionsetting.pt
+msgid "permission"
+msgstr ""
+
+#.Here you can view and modify the permission settings of all the project tabs and categories, that is who, where, and what permission should be allocated. In right side of this page, can be define project group. The project content stored similar tree, in order to simplify settings, can be the lower deck acquire the upper folder permission settings.
+#: brower/permissionsetting.pt
+msgid "permission_formhelp"
+msgstr ""
+
+#. Here you can view the permission settings, but not to modify. only buy advanced servier can be customize.
+msgid "cancustom_permission"
+msgstr ""
+
+msgid "tras_permission"
+msgstr ""
+
+msgid "in_group_permission"
+msgstr ""

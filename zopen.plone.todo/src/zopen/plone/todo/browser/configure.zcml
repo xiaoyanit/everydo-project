@@ -1,0 +1,246 @@
+<configure xmlns="http://namespaces.zope.org/browser"
+           xmlns:kss="http://namespaces.zope.org/kss"
+           i18n_domain="zopen.todo">
+
+  <page for="*"
+      name="test"
+      template="test.pt"
+      permission="zope2.View"
+   />
+
+  <page for="..interfaces.ITodoFolderContent"
+      name="todo_list"
+      class=".todo.TodoListView"
+      template="todolist.pt"
+      permission="zope2.View"
+   />
+
+  <page for="..interfaces.ITodoFolderContent"
+      name="todo_template"
+      class=".todo.TodoListView"
+      template="todo_template.pt"
+      permission="zope2.View"
+   />
+
+  <page for="..interfaces.ITodoFolderContent"
+      name="todo_time"
+      class=".todo.ReportView"
+      template="todo_time.pt"
+      permission="zope2.View"
+   />
+
+  <page for="*"
+      name="todos_report"
+      class=".todo.ReportView"
+      template="todo_report.pt"
+      permission="cmf.SetOwnPassword"
+   />
+
+  <page for="*"
+      name="todos_report_time"
+      class=".todo.ReportView"
+      template="todo_report_time.pt"
+      permission="cmf.SetOwnPassword"
+   />
+
+  <page for="..interfaces.ITodoListContent"
+      name="todo_view"
+      class=".todo.TodoView"
+      template="todo.pt"
+      permission="zope2.View"
+   />
+
+  <page for="*"
+      name="todoitem_view"
+      class=".todo.TodoItemView"
+      template="todoitem_view.pt"
+      permission="zope2.View"
+   />
+
+  <page for="*"
+        name="macros_todo"
+        template="macros_todo.pt"
+        permission="zope2.View"
+        />
+
+  <page for="..interfaces.ITodoFolderContent"
+        name="addTodoList"
+        class=".kssview.KssView"
+        attribute="addTodolist"
+        permission="zopen.todo.AddList"/>
+
+  <page for="..interfaces.ITodoListContent"
+        name="addTodoItem"
+        class=".kssview.KssView"
+        attribute="addTodoItem"
+        permission="zopen.todo.AddItem"/>
+
+  <page for="..interfaces.ITodoListContent"
+        name="editList"
+        class=".kssview.KssView"
+        attribute="editList"
+        permission="cmf.ModifyPortalContent"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="trackItem"
+        class=".kssview.KssView"
+        attribute="trackItem"
+        permission="zope2.View"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="editItem"
+        class=".kssview.KssView"
+        attribute="editItem"
+        permission="cmf.ModifyPortalContent"/>
+
+  <page for="..interfaces.ITodoListContent"
+        name="saveList"
+        class=".kssview.KssView"
+        attribute="saveList"
+        permission="cmf.ModifyPortalContent"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="saveItem"
+        class=".kssview.KssView"
+        attribute="saveItem"
+        permission="cmf.ModifyPortalContent"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="saveItemMore"
+        class=".kssview.KssView"
+        attribute="saveItemMore"
+        permission="cmf.ModifyPortalContent"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="addTrack"
+        class=".kssview.KssView"
+        attribute="addTrack"
+        permission="zope2.View"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="addTrackMore"
+        class=".kssview.KssView"
+        attribute="addTrackMore"
+        permission="zope2.View"/>
+
+  <page for="*"
+        name="viewMilestones"
+        class=".kssview.KssView"
+        attribute="viewMilestones"
+        permission="zope2.View"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="uploadFile"
+        class=".kssview.UploadFile"
+        attribute="uploadFile"
+        permission="zope2.View"/>
+
+  <page for="..interfaces.ITodoFolderContent"
+        name="reorderTodoLists"
+        class=".kssview.KssView"
+        attribute="reorderLists"
+        permission="zopen.todo.MoveItems"/>
+
+  <page for="..interfaces.ITodoListContent"
+        name="reorderTodoItems"
+        class=".kssview.KssView"
+        attribute="reorderItems"
+        permission="zopen.todo.MoveLists"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="completeTodoItem"
+        class=".kssview.KssView"
+        attribute="completeTodoItem"
+        permission="zopen.todo.ReportState"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="completeTodoItemMore"
+        class=".kssview.KssView"
+        attribute="completeTodoItemMore"
+        permission="zopen.todo.ReportState"/>
+
+  <page for="..interfaces.ITodoItemContent"
+        name="activeTodoItem"
+        class=".kssview.KssView"
+        attribute="activeTodoItem"
+        permission="zopen.todo.ReportState"/>
+
+  <page for="*"
+        name="csvURL"
+        class=".todo.ReportView"
+        attribute="csv_url"
+        permission="zope2.View"/>
+
+  <page for="*"
+        name="todo-export.csv"
+        class=".todo.ReportView"
+        attribute="csv"
+        permission="zope2.View"/>
+
+  <resource name="todo-tour.gif"
+            file="resources/todo-tour.gif" />
+
+  <resource name="todo-template.png"
+            file="resources/todo-template.png" />
+
+  <resource name="clock-on.gif"
+            file="resources/clock-on.gif" />
+
+  <resource name="clock-off.gif"
+            file="resources/clock-off.gif" />
+
+  <resource name="todo.gif"
+            file="resources/todo.gif" />
+
+  <resource name="drag_handle.gif"
+            file="resources/drag_handle.gif" />
+
+  <resource name="opentodo.gif"
+            file="resources/opentodo.gif" />
+
+  <resource name="closetodo.gif"
+            file="resources/closetodo.gif" />
+
+  <resource name="edit.gif"
+            file="resources/edit.gif" />
+
+  <resource name="todo.js"
+            file="resources/todo.js" />
+
+  <resource name="todo.css"
+            file="resources/todo.css" />
+
+  <resource name="todoreport.kss"
+            file="resources/todoreport.kss" />
+
+  <resource name="todo.kss"
+            file="resources/todo.kss" />
+
+  <resource
+      file="resources/dragdrop.js"
+      name="dragdrop.js"
+      />
+
+  <resource name="todoitem.kss"
+            file="resources/todoitem.kss" />
+
+  <kss:action
+      name="sortTodoItems"
+      jsfile="resources/kssplugin.js"
+      command_factory="global"
+      />
+
+  <kss:action
+      name="sortTodoLists"
+      jsfile="resources/kssplugin.js"
+      command_factory="global"
+      />
+
+  <kss:commandset
+      name="todo"
+      for="kss.core.interfaces.IAzaxView"
+      class=".commands.TodoCommands"
+      provides=".commands.ITodoCommands"
+      />
+
+</configure>

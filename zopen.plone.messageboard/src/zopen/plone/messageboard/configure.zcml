@@ -1,0 +1,31 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:five="http://namespaces.zope.org/five">
+
+  <i18n:registerTranslations directory="locales"/>
+
+  <include file="permissions.zcml" />
+
+  <include package="..widgets" />
+  <include package="..subscription" />
+  <include package="..filerepos" />
+
+  <include file="profiles.zcml" />
+
+  <include package=".browser" />
+  <adapter factory=".adapters.MessageCommentsManager" />
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <!-- disable attachment
+
+  <five:implements
+    class="zopen.plone.messageboard.content.message.Message"
+    interface="zopen.plone.messageboard.interfaces.IDisableAttach"
+    />
+
+  -->
+
+</configure>

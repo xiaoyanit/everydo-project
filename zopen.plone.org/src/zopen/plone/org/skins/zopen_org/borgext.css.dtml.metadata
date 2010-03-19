@@ -1,0 +1,3 @@
+[default]
+title = Borgext CSS
+cache = HTTPCache

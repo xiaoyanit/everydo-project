@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone">
+
+<body>
+
+<!-- THE PORTAL LOGO DEFINITION -->
+<h1 metal:define-macro="portal_logo"
+    id="portal-logo"
+    tal:attributes="id python:project and 'portal-logo' or 'portal-logo-title'"
+    tal:define="project basecamp_view/getCurrentProject">
+
+    <a accesskey="1"
+       tal:condition="python:project is not None"
+       tal:content="project/Title"
+       tal:attributes="href project/absolute_url">
+
+       <span id="company-title" tal:condition="python:project is None"
+             tal:content="portal/Title">title</span>
+    </a>
+
+    <tal:projectname tal:condition="python:project is not None">
+         <span tal:define="company project/getCompany"
+               tal:content="python:company and company.Title() or 'NO CAMPANY!!'">title</span>
+
+         <span tal:define="projectstate basecamp_view/getCurrentProjectState"
+               tal:condition="python: projectstate != 'active'"
+               i18n:domain="zopen.project">
+               (<span i18n:translate="" tal:content="string:$projectstate">onhold</span>)
+         </span>
+
+    </tal:projectname>
+
+    <a  href="" tal:attributes="href portal_url;" 
+        tal:condition="python:project is None">
+       <span tal:replace="portal/Title">title</span>
+    </a>
+
+
+</h1>
+
+</body>
+</html>

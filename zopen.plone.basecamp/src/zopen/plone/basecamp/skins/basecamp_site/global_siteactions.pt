@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xml:lang="en"
+      lang="en"
+      i18n:domain="zopen.basecamp">
+
+<body>
+<ul metal:define-macro="site_actions"
+    tal:define="showProjectSettings basecamp_view/showProjectSettings;
+                showSiteSettings basecamp_view/showSiteSettings;
+
+                project_url string:$portal_url/projects/${basecamp_view/getCurrentProjectId};"
+
+    id="portal-siteactions">
+       
+
+    <tal:block condition="not: isAnon">
+       <li class="portalUser"
+           tal:define="author python:mtool.getMemberInfo(user.getId())"
+           id="user-name"
+          ><span class="visualCaseSensitive" 
+                 tal:content="python:author and author['fullname'] or user.getUserName()">
+                John
+           </span>
+           </li>
+    </tal:block>
+
+       <li tal:condition="nothing"> 
+           <a tal:attributes="href string:${here_url}/switchLanguage?set_language=en"
+            tal:condition="python:hasattr(portal, 'portal_languages') and portal.portal_languages.getLanguageBindings()[0] != 'en'"
+            i18n:translate="switch_en">
+           English 
+         </a>
+       </li>
+       <li tal:condition="nothing"> 
+           <a tal:attributes="href string:${here_url}/switchLanguage?set_language=zh"
+            tal:condition="python:hasattr(portal, 'portal_languages') and portal.portal_languages.getLanguageBindings()[0] != 'zh'"
+            i18n:translate="switch_zh">
+            Simplified Chinese
+         </a>
+       </li>
+    <li tal:condition="showProjectSettings"><a href=""
+           title="Project team management and security management."
+           i18n:attributes="title setting_team_security"
+           i18n:translate="project_team"
+           tal:attributes="href string:$project_url/teams/@@prefs_project_team;"
+           >People & Permissions</a></li>
+
+    <li tal:condition="showProjectSettings"><a href=""
+           title="Setting project property, project state, and delete project."
+           i18n:attributes="title show_project_setting"
+           i18n:translate="project_settings"
+           tal:attributes="href string:$project_url/prefs_project_settings;"
+           >Project settings</a></li>
+
+    <li tal:condition="showSiteSettings"><a href=""
+           title="Add/modify contact information for everyone in your system."
+           i18n:attributes="title all_people_setting"
+           i18n:translate="all_people"
+           tal:attributes="href string:$portal_url/@@site_setting;"
+           >All people</a></li>
+
+     <li tal:condition="showSiteSettings"><a href=""
+             title="Name/logo, global color, and so on."
+             i18n:attributes="title site_settings_title"
+             i18n:translate="site_settings"
+             tal:attributes="href string:$portal_url/prefs_site_settings;"
+             >Settings</a></li>
+    <tal:condition tal:condition="showSiteSettings">
+    <li tal:define="site_actions portal/@@operationoptions/getSiteActions | python:[]"
+        tal:repeat="action site_actions">
+      <a href="/online-chat" target="_blank"
+         tal:attributes="href action/href;
+                         title action/title"
+         tal:content="action/content" >account service</a>
+    </li></tal:condition>
+    <li><a href=""
+           title="Review and edit accout information."
+           i18n:attributes="title edit_my_info"
+           i18n:translate="my_info"
+           tal:attributes="href string:$portal_url/@@basecamp_view/gotoMyAccountPage;"
+           >My info</a></li>
+    <li><a href=""
+           title="Logout and clear cookie off your machine."
+           i18n:attributes="title log_out_clear"
+           i18n:translate="log_out"
+           tal:attributes="href string:$portal_url/logout;"
+           >Logout</a></li>
+
+
+
+</ul>
+</body>
+</html>

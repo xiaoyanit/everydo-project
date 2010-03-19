@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="actions" version="20040630-01"
+              handler="Products.CMFCore.exportimport.actions.importActionProviders"
+              title="Action Providers">
+  <dependency step="componentregistry"/>
+    Import actions tool's action providers and their actions.
+ </import-step>
+ <import-step id="content" version="20050927-01"
+              handler="Products.CMFCore.exportimport.content.importSiteStructure"
+              title="Content">
+  <dependency step="languagetool"/>
+  <dependency step="basecamp-final"/>
+    Import the site's structure and content.
+ </import-step>
+ <import-step id="cssregistry" version="20051015-01"
+              handler="Products.ResourceRegistries.exportimport.cssregistry.importCSSRegistry"
+              title="Stylesheet registry">
+  <dependency step="componentregistry"/>
+    Import stylesheet registry
+ </import-step>
+ <import-step id="jsregistry" version="20051015-01"
+              handler="Products.ResourceRegistries.exportimport.jsregistry.importJSRegistry"
+              title="Javascript registry">
+  <dependency step="componentregistry"/>
+    Import javascript registry
+ </import-step>
+ <!--import-step id="mailhost" version="20050803-01"
+              handler="Products.CMFCore.exportimport.mailhost.importMailHost"
+              title="MailHost">
+  <dependency step="componentregistry"/>
+    Import mailhost settings
+ </import-step-->
+
+ <import-step id="languagetool" version="20070615-01"
+           handler="Products.PloneLanguageTool.exportimport.importLanguageTool"
+           title="Plone Language Tool">
+  Import language settings.
+ </import-step>
+
+ <import-step id="basecamp-content" version="20070306-01"
+     handler="zopen.plone.basecamp.setuphandlers.importContent"
+     title="basecamp Content Import">
+     <dependency step="content"/>
+     <dependency step="basecamp-final"/>
+ </import-step>
+
+ <import-step id="basecamp-final" version="20051110-01"
+              handler="zopen.plone.basecamp.setuphandlers.importFinalSteps"
+              title="Final Basecamp Config">
+  <dependency step="kss_mimetype"/>
+  <dependency step="plone_various"/>
+  <dependency step="portlets"/>
+    Final Plone configuration
+ </import-step>
+
+ <import-step id="properties" version="20041215-01"
+              handler="Products.CMFCore.exportimport.properties.importSiteProperties"
+              title="Site Properties">
+    Import site properties.
+ </import-step>
+ <import-step id="rolemap" version="20040523-01"
+              handler="Products.GenericSetup.rolemap.importRolemap"
+              title="Role / Permission Map">
+    Import custom roles and non-default role-permission mappings.
+ </import-step>
+
+ <import-step id="skins" version="20040630-01"
+              handler="Products.CMFCore.exportimport.skins.importSkinsTool"
+              title="Skins Tool">
+  <dependency step="componentregistry"/>
+    Import skins tool's filesystem directory views and skin path definitions.
+ </import-step>
+
+ <import-step id="workflow" version="20040630-01"
+              handler="Products.CMFCore.exportimport.workflow.importWorkflowTool"
+              title="Workflow Tool">
+  <dependency step="componentregistry"/>
+  <dependency step="typeinfo"/>
+
+    Import workflow tool's workflow definitions and supporting scripts.
+ </import-step>
+
+</import-steps>

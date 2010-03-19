@@ -1,0 +1,419 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.filerepos">
+
+<metal:noborder fill-slot="top_slot"
+    tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:fill fill-slot="style_slot">
+<link href="/++resource++files.css?34223332"
+      type="text/css" rel="stylesheet" media="screen"/>
+<link href="#" type="text/css" rel="stylesheet" media="screen"
+      tal:attributes="href string:$portal_url/++resource++category.css?34223332" />
+<link href="/++resource++files.kss?34223332"
+      type="text/css" rel="kinetic-stylesheet" />
+<link href="/++resource++category-list.kss?34223332"
+      type="text/css" rel="kinetic-stylesheet" />
+</metal:fill>
+<metal:fill fill-slot="javascript_head_slot">
+
+<script type="text/javascript"><!--
+    function getParentElement(node, tagName) {
+        tagName = tagName.toUpperCase();
+        while (node && node.tagName.toUpperCase() != tagName)
+            node = node.parentNode;
+        return node;
+    }
+
+    var delete_version_item = function(node, message, kssurl, version_id) {
+                                if ((message == '') || (typeof(message) == 'undefined')) {
+                                    message = '您确定要删除这个条目吗？删除操作是不可恢复的。';
+                                }
+                                if (confirm(message) == false) {
+                                    return false;
+                                }
+                                
+                                kssServerAction(node, kssurl +"/delete_version", {version_id: version_id});
+                        };
+--></script>
+</metal:fill>
+
+
+<metal:fill fill-slot="main"
+     tal:define="category request/category | nothing;
+                 global last_date nothing;
+                 group_by request/group_by | string:modified;
+                 results python:request.get('files_review','')!='True' and view.getTimelinedResults(category) or view.getReviewContents(category);
+                 categoryTitle view/categoryTitle;
+                 canAdd view/canAdd;
+                 Batch python:modules['Products.CMFPlone'].Batch;
+                 b_size python:20;b_start python:0;b_start request/b_start | b_start; ">
+    <div class="SectionHeader">
+
+    <h1><span i18n:translate="project_files">Files for this project</span>
+        <span tal:condition="categoryTitle"
+              tal:replace="string:($categoryTitle)"> </span>
+    </h1>
+
+    <a href="#" class="admin EVadd TGadd" 
+       tal:condition="canAdd"
+       i18n:translate="add_new_file">Add a new file</a>
+    <a href="#" 
+       tal:condition="canAdd"
+       class="donelink hideme EVadd TGadd" i18n:translate="cancel">Cancel</a></div>
+
+    <form class="showhide hideme fileForm TGadd"
+          tal:condition="canAdd"
+          action="filerepos_add" method="post" enctype="multipart/form-data">
+
+        <h2><tal:block i18n:translate="choose_a_file">Choose a file to upload</tal:block>
+        <span class="upload_limit" i18n:translate="upload_limit">(each file should be under 30M)</span>
+    </h2>
+    <div class="errmsgFile"></div>
+
+    <table class="upload_layout">
+    <tr>
+       <td class="choose_file">
+          <input type="file" name="file.file:records" />
+       </td>
+       <td class="meta">
+
+          <p>
+             <span id="category_category" i18n:translate="category">Category: </span>
+             <span id="category_category_input" style="display:none;">Input new category: </span>
+             <select
+                 tal:define="name string:file.category:records"
+                 tal:replace="structure
+                     provider:zopen.categoryselection" />
+          </p>
+
+          <span i18n:translate="optional_description">Optional description:</span><br />
+          <input type="text" class="bigInput" size="33px" name="file.description:records" />
+
+          <p> 
+             <input type="checkbox" name="file.mark_private:records" />
+             <span i18n:translate="file_private">Make this file</span>
+             <a class="link-plain" i18n:translate="private" href="http://docs.everydo.com/project/faq/view.html">Private</a>
+             <input type="checkbox" name="file.submit:records" />
+             <span i18n:translate="submit_for_review">Submit for review</span>
+          </p>
+
+          <a href="#" class="admin" style="float: right; display: none"
+             onclick="javascript:
+                    tr = getParentElement(this, 'TR');
+                    tbody = getParentElement(this, 'TBODY');
+                    rows = tbody.getElementsByTagName('TR');
+                    if (rows.length > 2)
+                        tr.parentNode.removeChild(tr);
+                    return false;"
+              i18n:translate="delete"
+             > Delete </a>
+       </td>
+     </tr>
+     <tr>
+        <td colspan="2"><p class="add_another">
+            <a href="#" class="admin"
+                onclick="javascript:
+                    tr = getParentElement(this, 'TR');
+                    tbody = getParentElement(this, 'TBODY');
+                    row = tbody.getElementsByTagName('tr')[0];
+                    var newr = row.cloneNode(true);
+                    anchor = newr.getElementsByTagName('a')[1];
+                    anchor.style.display = 'inline';
+                    inputs = newr.getElementsByTagName('input');
+                    for (var i = 0; i &lt; inputs.length; ++i)
+                        inputs[i].value = inputs[i].defaultValue;
+                    tr.parentNode.insertBefore(newr, tr);
+                    return false;" >
+                    <tal:block  i18n:translate="add_another_file">Add another file</tal:block></a></p> 
+        </td>
+     </tr>
+   </table>
+
+    <h3 i18n:translate="notify_email">Notify people via email</h3>
+    <div class="extra" tal:content="structure provider:zopen.multipersonselection" />
+
+    <div class="action toggleArea">
+               <p class="TGtoggle">
+                   <input type="submit" i18n:attributes="value upload_file" class="EVtoggle" value="Upload the file" />
+                   <span i18n:translate="or">or</span>
+                   <a class="admin EVadd" href="#" i18n:translate="cancel">Cancel</a>
+               </p>
+               <input type="submit" disabled="disabled" i18n:attributes="value please_wait_upload"
+                      class="TGtoggle hideme" value="Upload files, please wait..." />
+
+               <img alt="Indicator" class="TGtoggle hideme"
+                    tal:attributes="src string:/++resource++indicator.gif"
+                    style="vertical-align: middle;" height="5" width="21"
+                    i18n:attributes="alt indicator;"
+                 />
+
+     </div>
+
+</form>
+
+
+    <div class="TGadd" tal:condition="not:results"
+         i18n:domain="zopen.basecamp">
+       <div class="blankBar"
+            tal:condition="canAdd">
+          <div><span i18n:translate="upload_file_for">Upload, download, and share files related to this project. </span></div>
+          <p style="padding:15px 0 8px;">
+          <a class="EVnewlist create_project" 
+             tal:attributes="style string:background:transparent url('${portal_url}/start_img/create_buttom2.png') no-repeat;;padding:12px 50px 8px 40px;;font-weight:bold;;color:#000;;white-space:normal;;text-align:center;;width:170px;;text-decoration:none;;border-style:none;;" 
+             href="#"
+             >
+              <span class="EVadd" style="font-size:18px;color:#FFF;" i18n:translate="upload_first_file">
+              Upload the first file</span></a>
+              
+          </p>
+
+        </div>
+        <div class="blankOr">
+           <p class="or_t">文件是项目最重要的资产，项目的相关文档、资料，都是可在文件区分类存储：</p>
+           <table style="margin:0pt auto; width:80%">
+              <tr>
+                <td style="text-align:center"><img tal:attributes="src string:${portal_url}/start_img/writeboard.png" /></td>
+                <td style="border-left:1px dotted #CCCCCC"><ul>
+                     <li>集中分类存储，项目资产不再丢失！</li>
+                     <li>图片可直接预览 </li>
+                     <li>支持多版本，得到的文件永远是最新版本</li>
+                     <li>评注讨论，评注可订阅 </li>
+                     <li>支持文件审批</li>
+                     <li>非常灵活的权限管理，谁可看到，谁能审批，谁能发布</li>
+                    </ul>
+                </td>
+               </tr>
+           </table>
+        </div>
+
+      <div class="blankMore">
+         <table width="100%" style="padding:0 0 30px;">
+            <tr>
+              <td width="45%" style="vertical-align: top;border-right:1px dotted #CCCCCC;">
+                <p class="or_t">文件共享视频介绍</p>
+                <div style="text-align:center">
+                  <a class="image" target="_blank"  href="http://cache.everydo.com/demo/file.htm"><img tal:attributes="src string:${portal_url}/start_img/play_view_o7.gif" /></a>
+                </div>
+              </td>
+              <td style="vertical-align: top; padding-left:20px">
+                <p class="or_t">文件共享使用帮助</p>
+                <ul>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/09file.rst">[常见问题]上传文件对文件大小和格式有限制吗？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/09file.rst">[常见问题]什么是“保密”？如何将文件设为保密？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/09file.rst">[常见问题]文件支持多版本是怎么做的？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/09file.rst">[常见问题]文件的审批是怎么做的？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/09file.rst">[在线教程]文件共享功能介绍。</a></li>
+              </td>
+            </tr>
+         </table>
+      </div>
+    </div>
+
+    <metal:listing metal:define-macro="files_listing">
+    <div tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);
+                     basecamp_view context/@@basecamp_view;">
+    <tal:files tal:repeat="brain batch">
+
+        <tal:define tal:define="item_datetime python:getattr(brain, group_by);
+                                item_date python:basecamp_view.getExactTime(item_datetime);
+                                is_new_day python:item_date != last_date;
+                                global last_date item_date;
+                               ">
+        <h2 class="date" tal:condition="is_new_day">
+             <span tal:attributes="class python:item_date=='Today' and 'Today' or ''"
+                   i18n:domain="zopen.basecamp"
+                   i18n:translate=""
+                   tal:content="item_date" > 2005-12-12</span></h2>
+
+        <div metal:define-macro="fileitem"
+             tal:define=" obj nocall:options/obj | python:brain.getObject();
+                          item_creator brain/Creator | obj/Creator;
+                          type_name obj/getPortalTypeName;
+                          basecamp_view basecamp_view | context/@@basecamp_view;
+                          currentContributor python:obj.Contributors() and obj.Contributors()[0] or obj.Creator();
+                          author python:basecamp_view.getMemberName(currentContributor);
+                          canEdit options/canEdit | python:checkPermission('Modify portal content', obj);
+                          review_state options/review_state | brain/review_state;
+                          item_url brain/getURL | obj/absolute_url;
+                          category python:obj.aq_parent;
+                          brain nocall:brain | nocall:obj;
+                          brefs python:obj.getBRefs('relatesTo');
+                          desc brain/Description;
+             "
+             class="kssDeletionRegion Post state-private"
+             tal:attributes="class string:kssDeletionRegion Post state-$review_state kssattr-kssurl-$item_url;
+                             id string:file_${obj/UID}">
+
+           <div class="file_icon">
+                <img src="" 
+                     tal:attributes="src string:$portal_url/${brain/getIcon}" />
+           </div>
+
+              <div class="file_image"
+                   tal:condition="python: brain.portal_type == 'Image'">
+                <a tal:attributes="href string:$item_url/image_view_fullscreen;
+                                   title brain/pretty_title_or_id">
+                   <img  class="tileImage" tal:attributes="src string:$item_url/image_tile" />
+                </a></div>
+           <div class="file_info">
+                <h1><a href="#"
+                       tal:define="file_view string:${item_url}/file_view"
+                       tal:attributes="href python:brain.portal_type in ['Document', 'ChatLog'] and item_url or file_view"
+                      tal:content="brain/pretty_title_or_id">a</a>
+                      <span class="private_bug"
+                            tal:condition="python:review_state.startswith('private')"
+                            i18n:translate="private"
+                            >Private</span>
+                      <span class="pending_bug"
+                            tal:define="pending python:review_state.endswith('pending') and 'pending';
+                                        published python:review_state.endswith('published') and 'published';
+                                        state python:pending or published;"
+                            tal:condition="state"
+                            tal:attributes="class string:${state}_bug"
+                            i18n:translate=""
+                            tal:content="state">Private</span>
+                      <tal:con condition="python:brain.portal_type == 'Document'">
+                          <span id="lock-icon"
+                            tal:define="locked python:basecamp_view.was_locked(obj)"
+                            tal:condition="locked">
+                            <img tal:attributes="src string:$portal_url/lock_icon.gif" alt="locked" i18n:attributes="title Locked;" />
+                          </span>
+                      </tal:con>
+                </h1>
+                 <!-- Fix in IE7, don't remove!! -->
+                <p tal:condition="python:(not (desc or brefs)) and brain.portal_type == 'Image'" class="discreet">(<span i18n:domain="zopen.project" i18n:translate="Image">Image</span>)</p>
+                <p tal:condition="python:desc or brefs">
+                   <span tal:content="desc">description</span>
+                   <span class="event_type" tal:repeat="bref brefs">
+                     <img tal:attributes="src string:$portal_url/allow_g.gif" alt="" />
+                     <span i18n:domain="zopen.project" i18n:translate="" tal:attributes="class string:${bref/portal_type}" tal:content="bref/portal_type" /> 
+                        <a href="#" 
+                               tal:attributes="href string:${bref/bc_url}"
+                               tal:content="bref/pretty_title_or_id" >...</a>
+                   </span>
+                </p>
+
+               <h3> 
+                <span class="discreet" i18n:translate="file_by_line">
+                       post by <span i18n:name="author" tal:replace="author" /> in
+                       <tal:info i18n:name="category"
+                                 define="canEdit python:checkPermission('Modify portal content', obj.aq_parent.aq_parent);">
+                        <tal:can condition="python: canEdit and not basecamp_view.was_locked(obj)">
+                          <a class="EVselCat" href="#" tal:content="category/pretty_title_or_id"> </a>
+                          <img class="EVselCat" src="/++resource++edit.gif" alt="" />
+                        </tal:can>
+                        <tal:nocan condition="python:not canEdit or basecamp_view.was_locked(obj)">
+                          <a href="#" tal:content="category/pretty_title_or_id"
+                                      tal:attributes="href string:$here_url?category=${category/getId}"> </a>
+                        </tal:nocan>
+                       </tal:info>
+                        on <tal:rep i18n:name="modified" replace="python:toLocalizedTime(brain.ModificationDate)" />,
+                       size <tal:rep i18n:name="size" replace="brain/getObjSize" />
+                  </span> 
+
+                   <a href="#" class="discreet" 
+
+                      tal:condition="python:type_name not in ['Document', 'ChatLog'] and canEdit"
+                      tal:attributes="class string:discreet EV${type_name}Update"
+                      i18n:translate="upload_new_version">Upload a new versions</a>
+
+                   <span tal:condition="python:type_name not in ['Document', 'ChatLog'] and canEdit">|</span>
+
+                   <a href="#" class="discreet" 
+                      tal:condition="python:canEdit and type_name not in ('ChatLog', 'Document')"
+                      tal:attributes="class string:discreet EV${type_name}Prop"
+                      i18n:translate="edit">Edit</a>
+
+                   <a href="#" class="discreet" 
+                      tal:condition="python:canEdit and type_name == 'Document' and not basecamp_view.was_locked(obj)"
+                      tal:attributes="href string:${brain/bc_url}?edit=true"
+                      i18n:translate="edit">Edit</a>
+
+                   <span tal:condition="python:canEdit and type_name not in ['ChatLog', 'Document']">|</span>
+
+
+                   <a href="#" class="discreet"
+
+                      tal:condition="python:type_name not in ['Document','ChatLog']"
+                      tal:attributes="href obj/absolute_url">
+
+                      <tal:nothing condition="nothing">
+                      <tal:comments i18n:domain="zopen.messages" 
+                      tal:define="pd nocall:obj/portal_discussion;
+                                  comments python:len(pd.getDiscussionFor(obj).getReplies());"
+                      condition="comments" i18n:translate="exist_comments">
+                        <span i18n:name="comments" tal:replace="comments" /> comments
+                      </tal:comments>
+                      </tal:nothing>
+
+                      <span i18n:translate="download">Download</span></a>
+                   <tal:rep 
+                        tal:condition="python:not basecamp_view.was_locked(obj)"
+                        tal:replace="structure provider:zopen.deletion" />
+                   </h3>
+
+
+           <div metal:define-macro="versions_list"
+                tal:define="versions python:0 or context.portal_repository.getHistory(obj, countPurged=False)"
+                tal:condition="python:versions and obj.getPortalTypeName() not in ['Document', 'ChatLog']">
+           
+
+             <h3 tal:repeat="vdata versions" class="maydel">
+             <span class="discreet">
+                <span tal:replace="python:len(versions) - path('repeat/vdata/number') + 1"/>)  
+                  <img src="" style="width:15px; height:15px;" tal:attributes="src string:$portal_url/${obj/getIcon}" />
+                  <a href="#" class="version"  title="View this version" 
+                     tal:content="python:vdata.metadata['title']"
+                     tal:attributes="href string:${obj/absolute_url}/view_version?version_id=${vdata/version_id}" > 
+                   <tal:block i18n:translate="view">view</tal:block>
+                  </a>
+                  <tal:block i18n:translate="version_post">
+                 post by <tal:rep i18n:name="principal" replace="python:basecamp_view.getMemberName(vdata.metadata['principal'])" /> 
+                 on <tal:rep i18n:name="timestap" replace="python:toLocalizedTime(vdata.sys_metadata['timestamp'])" />, 
+                 size <tal:rep i18n:name="size" replace="python:context.getObjSize(size=vdata.metadata['byte_size'])" />
+                 </tal:block> 
+                 <span tal:condition="python:canEdit">
+                          <img src="/++resource++trash.gif" title="Delete this version" i18n:attributes="title delete_this_version;" onclick="" class="delimage"
+                            tal:attributes="onclick string:javascript:return delete_version_item(this, '', '${item_url}', '${vdata/version_id}')" />
+                </span>
+                  </span>
+                     </h3>
+               </div>
+                    
+                   <div class="visualClear" ><!-- --></div>
+
+            </div>
+           </div>
+        </tal:define>
+        </tal:files>
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+      </div>
+      </metal:listing>
+
+</metal:fill>
+
+<div metal:fill-slot="portlets_two_slot">
+
+  <div metal:define-macro="review_files_project" id="review_files"
+       tal:define="category request/category | nothing;
+                   review_list context/@@review_lists;
+                   getReviewList python:review_list.getReviewList(category);
+                   getReviewLists python:review_list.getReviewLists()"
+       tal:condition="getReviewList">
+
+      <h1 i18n:translate="review_information">Review information</h1>
+      <p i18n:translate="review_list_for">
+         <tal:i18n i18n:name="ca">
+           <tal:ca condition="category" i18n:translate="here_category">This category have</tal:ca>
+         </tal:i18n>
+         [<tal:i18n i18n:name="click">
+           <a href="" tal:define="no_category string:${here_url}?files_review=True;
+                                  in_category string:${here_url}?category=${category}&files_review=True;"
+                      tal:attributes="href python:category and in_category or no_category" i18n:translate="click_here"><span i18n:name="len" tal:replace="python:len(getReviewList)" /> files</a></tal:i18n>] need you to review. </p>
+  </div>
+
+  <div tal:replace="structure provider:zopen.categorylist"></div>
+
+</div>
+
+</html>

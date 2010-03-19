@@ -1,0 +1,194 @@
+<configure xmlns="http://namespaces.zope.org/browser"
+           xmlns:zope="http://namespaces.zope.org/zope"
+
+           i18n_domain="zopen.plone.org">
+
+  <zope:include package=".personselection" />
+  <zope:include package=".teammanage" />
+  <zope:include package="zopen.validations" />
+
+  <page
+      for="*"
+      name="organizationunit_view"
+      class=".organizationunit.OrganizationUnitView"
+      template="organizationunit.pt"
+      permission="zope2.View"
+      />
+
+  <pages
+      for="*"
+      class=".organizationunit.KSSView"
+      permission="cmf.ModifyPortalContent"
+      >
+    <page
+        name="site_add_new_company"
+        attribute="site_add_new_company"
+        />
+    <page
+        name="site_set_team"
+        attribute="site_set_team"
+        />
+    <page
+        name="setProjectCreator"
+        attribute="setProjectCreator"
+        />
+  </pages>
+
+  <page
+      for="..interfaces.IOrganizationUnitContent"
+      name="addNewPerson"
+      class=".organizationunit.KSSView"
+      attribute="addNewPerson"
+      permission="zopen.org.AddPerson"
+      />
+
+  <page
+      for="..interfaces.IOrganizationUnitContent"
+      name="setProjectCreator"
+      class=".organizationunit.KSSView"
+      attribute="setProjectCreator"
+      permission="zopen.org.AddPerson"
+      />
+
+  <page
+      for="..interfaces.IPersonContent"
+      name="unlockPerson"
+      class=".organizationunit.KSSView"
+      attribute="unlockPerson"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <page
+      for="..interfaces.ITeamFolderContent"
+      name="teamfolder_view"
+      class=".team.TeamView"
+      template="team.pt"
+      permission="zope2.View"
+      />
+
+  <pages
+      for="..interfaces.ITeamFolderContent"
+      class="zopen.plone.org.browser.permissionsetting.PermissionSettingKssView"
+      permission="cmf.ModifyPortalContent"
+	  >
+	  <page
+		name="updateInherit"
+		attribute="updateInherit" 
+		/>
+	  <page
+		name="addPrivilege"
+		attribute="addPrivilege" 
+		/>
+	  <page
+		name="getTeamsOrUsers"
+		attribute="getTeamsOrUsers" 
+		/>
+	  <page
+		name="deletePrivilege"
+		attribute="deletePrivilege" 
+		/>
+  </pages>
+  <pages
+      for="..interfaces.ITeamFolderContent"
+      class=".team.TeamKssView"
+      permission="cmf.ModifyPortalContent"
+      >
+    <page
+        name="add_new_company"
+        attribute="add_new_company"
+        />
+    <page
+        name="getTeamSelect"
+        attribute="getTeamSelect"
+	/>
+    <page
+        name="getPersonTeam"
+        attribute="getPersonTeam"
+	/>
+    <page
+        name="setPersonTeam"
+        attribute="setPersonTeam"
+        />
+    <page
+        name="select_add_company"
+        attribute="select_add_company"
+        />
+    <page
+        name="updateCompany"
+        attribute="updateCompany"
+        />
+    <page
+        name="addExistingPerson"
+        attribute="select_add_person"
+        />
+    <page
+        name="add_new_person"
+        attribute="add_new_person"
+        />
+    <page
+        name="remove_person_from_project"
+        attribute="remove_person_from_project"
+        />
+    <page
+        name="remove_person_from_team"
+        attribute="remove_person_from_team"
+        />
+    <page
+        name="remove_company_from_project"
+        attribute="remove_company_from_project"
+        />
+  </pages>
+
+
+  <page
+      for="*"
+      name="permission_setting"
+      class="zopen.plone.org.browser.permissionsetting.PermissionSettingView"
+      template="permissionsetting.pt"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <resource
+      name="permission_setting.png"
+      file="resource/permission_setting.png" />
+
+  <resource
+      name="organizationunit.gif"
+      file="resource/organizationunit.gif" />
+
+  <resource
+      name="person.gif"
+      file="resource/person.gif" />
+	  
+  <resource
+      name="addTeam.gif"
+      file="resource/addTeam.gif" />
+	  
+  <resource
+      name="delTeam.gif"
+      file="resource/delTeam.gif" />
+
+  <resource
+      name="teamfolder.gif"
+      file="resource/teamfolder.gif" />
+
+  <resource
+      name="team.gif"
+      file="resource/team.gif" />
+
+  <resource
+      name="contacts.css"
+      file="resource/contacts.css" />
+
+  <resource
+      name="team.kss"
+      file="resource/team.kss" />
+
+  <resource
+      name="organizationunit.kss"
+      file="resource/organizationunit.kss" />
+
+  <resource
+      name="permissionsetting.kss"
+	  file="resource/permissionsetting.kss" />
+</configure>

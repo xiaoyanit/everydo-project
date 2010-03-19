@@ -1,0 +1,90 @@
+.contacts {
+    padding: 0;
+    margin: 0 0 25px 0;
+    text-align: left;
+    width: 100%;
+    }
+
+.contacts td {
+    text-align: left;
+    width: 33%;
+    padding: 5px 5px 5px 10px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+
+    }   
+
+.contacts td.nopeople {
+    background: #ffc;
+    width: 66%;
+}
+
+.contacts td.nopeople {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.contacts tr.top td {
+    border-top: 1px solid #efefef;
+}
+
+.contacts td.blank,
+.contacts tr.top td.blank {
+    background: #fff;
+    border: none;
+}
+
+.contacts td.company {
+    background: #F0F0F0;
+}
+
+.contacts td.person div {
+    margin-left: 55px;
+}
+
+.contacts td.person div.noavatar {
+    margin-left: 0;
+}
+
+.contacts td.person div.avatar {
+    margin: 0;
+    width: 48px;
+    float: left;
+}
+
+.contacts td h1 {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 2px;
+    border: none;
+    font-size: 14px;
+    }   
+
+.contacts td p {
+    font-size: 11px;
+    line-height: 13px;
+    padding: 0;
+    margin: 2px 0 3px 0;
+    font-weight: normal;
+    }   
+
+.contacts span.item {
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.contacts span.label {
+    color: #666;
+    font-weight: normal;    
+}
+
+div.error {
+   width:auto;
+   margin:0pt 0pt;
+}
+
+div.field {
+  margin:0pt 0pt;
+}

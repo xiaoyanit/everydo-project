@@ -1,0 +1,116 @@
+<form  id="SaveMilestoneForm" class="TGedit" method="post" action="save_milestone"
+      metal:define-macro="milestoneitem"
+      tal:define="item nocall:options/item | nothing;
+                  end item/end;
+                  DateTime python:modules['DateTime'].DateTime;
+                  now DateTime;
+                  today python:DateTime(now.year(), now.month(), now.day());
+                  "
+      tal:attributes="action string:${item/absolute_url}/@@save_milestone"
+      i18n:domain="zopen.milestone">    
+    <div class="showhide">
+      <h2><tal:i18n i18n:translate="edit">Edit</tal:i18n> "<span tal:replace="item/pretty_title_or_id" />"</h2>
+       <div class="form_field">
+         <p class="label_field" i18n:translate="title">Title</p>
+          <input id="form_title" type="text" value=" wev" name="milestone.title:record" size="40"
+                        tal:attributes="value item/Title" /></div>
+      <div class="form_field">
+        <p><span class="label_field" i18n:translate="date_due_filed">Date due</span>
+        <span class="formHelp"> <tal:i18n i18n:translate="original_date"> (Original date: </tal:i18n> <span tal:replace="end" />) </span></p>
+
+         <tal:block tal:define="from_date  item/end;
+                              show_hm    nothing;
+                              inputname  string:deadline.dead_line:record;
+                              formname   string:SaveMilestoneForm;
+                              inputvalue python:from_date;" >
+            
+              <div metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox">
+                calendar pop-up
+              </div>
+              
+            </tal:block>
+            
+        <p>
+         <input type="checkbox" class="EVshiftmilestones" name="move_upcoming_milestones:boolean" />
+         <tal:i18n i18n:translate="subsequent_milestones"> Shift subsequent milestones the same number of days </tal:i18n><br/>
+  
+         <span class="hideme TGshiftmilestones">
+           <input type="checkbox" name="move_upcoming_milestones_off_weekends:boolean"/>
+           <tal:i18n i18n:translate="keep_shifted_milestones">Keep shifted milestones to business days only</tal:i18n>
+         </span>
+        </p>
+  
+       <p class="smallnote" i18n:translate="moving_deading_out">
+        (ex: Moving this deadline out 5 days will move all future milestones by 5 days as well.
+         Selecting 'Keep Shifted dates to business days only' will move milestones that land on a weekend forward to Monday.)
+       </p>
+      </div>  
+  
+      <div class="form_field">
+       <p class="label_field" i18n:translate="party_responsible_n">Party Responsible: </p>
+            <select name="milestone.responsible_party:record"
+                    id="responsible_parties_3001199"
+                    tal:define="selected python:[item.getResponsibleParty()]"
+                    tal:content="structure provider:zopen.xpersonselection" />
+        <span id="reminder">
+          <input type="checkbox"
+                 name="milestone.notify:record:boolean" checked="checked"
+                 tal:attributes="checked item/getNotify"
+                 />
+
+                <tal:i18n i18n:translate="send_reminder"> Send reminder </tal:i18n>
+        </span>
+       </div>
+  
+       <div class="submit">
+         <input type="submit" i18n:attributes="value save_changes;" value="Save changes"/>
+           <tal:i18n i18n:translate="or"> or </tal:i18n>
+         <a class="admin TGedit" href="/projects/939794/milestones"
+            tal:attributes="href string:$here_url/.."
+            i18n:translate="cancel">Cancel</a>
+       </div>
+    </div>    
+  </form>
+
+ <div class="showhide TGprogress"
+      metal:define-macro="progressitem"
+      i18n:domain="zopen.milestone"
+      tal:define="obj nocall:options/item;
+                  basecamp_view context/@@basecamp_view;
+                  canReport python:checkPermission('zopen.milestone: Report state', obj);
+                  state python:obj.portal_workflow.getInfoFor(obj, 'review_state');
+                  review_history python:obj.portal_workflow.getInfoFor(obj, 'review_history', []);
+                  review_history python:[review for review in review_history if review.get('action','')]">
+           <a class="admin TGprogress" style="float: right" href="#" i18n:translate="show_close">Close</a>
+             1.
+             <span tal:replace="python:toLocalizedTime(obj.CreationDate(), long_format=False)"/> 
+             <span style="color:blue" tal:content="python:basecamp_view.getMemberName(obj.Creator())" /> 
+             <span style="color:green" i18n:translate="progress_created_milestone">created the milestone. </span><br />
+           <tal:block tal:repeat="items review_history">
+
+             <span tal:replace="python:repeat['items'].number()+1"/>.
+             <span tal:replace="python:toLocalizedTime(items['time'],long_format=False)" />
+             <span style="color:blue" tal:content="python:basecamp_view.getMemberName(items.get('actor'))" />
+             <span style="color:green" i18n:translate="" tal:content="python:wtool.getTitleForTransitionOnType(items['action'],context.aq_parent.portal_type)" />
+             <span tal:replace="items/comments|nothing"> some comments </span>
+             <br />
+           </tal:block>
+         <form class="progressForm" tal:condition="python:canReport and state != 'completed'">
+            <strong i18n:translate="progress_report">Progress report: </strong> <br />
+            <tal:i18n i18n:translate="has_completed">Has completed: </tal:i18n>
+            <select name="progress:int">
+              <option tal:repeat="percent python:range(0, 105, 5)" tal:content="string:$percent"
+                      tal:attributes="value percent; selected python:obj.getHours() == percent"></option>
+            </select>%
+            <br />
+            <tal:i18n i18n:translate="add_comment">Add comment: </tal:i18n> 
+            <input class="bigInput" size="30" name="comment"/>
+            <img alt="Indicator" class="spinner hideme TGsubmitprogress"
+                 src="/++resource++indicator.gif"
+                 height="5" width="21" />
+            <input type="submit" name="submit" value="Submit" class="TGsubmitprogress submitInput"
+                   i18n:attributes="value value_submit;"/>
+         </form>
+         <br />
+         </div>
+

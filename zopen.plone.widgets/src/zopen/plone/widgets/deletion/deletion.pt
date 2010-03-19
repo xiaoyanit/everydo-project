@@ -1,0 +1,7 @@
+<tal:condition condition="view/visible"><img class="delimage" src="/++resource++trash.gif"
+tal:condition="python:view.show_mode != 'text'"
+title="Delete" i18n:domain="zopen.widgets" i18n:attributes="title delete_all;" 
+tal:attributes="onclick string:delete_confirm(this,'','${view/deletion_href_base}')" /><a 
+tal:condition="python:view.show_mode == 'text'"
+class="admin" href="#" src="/++resource++trash.gif"
+tal:attributes="onclick string:return delete_confirm(this,'','${view/deletion_href_base}')" i18n:domain="zopen.widgets" i18n:translate="delete">Delete</a></tal:condition>

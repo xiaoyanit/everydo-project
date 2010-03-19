@@ -1,0 +1,243 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-14 04:23+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.messages\n"
+
+#. Default: "add a new message"
+#: browser/messages.pt
+msgid "add_a_new_message"
+msgstr ""
+
+#. Default: "all messages"
+#: browser/messages.pt
+msgid "all_messages"
+msgstr ""
+
+#. Default: "Add another file"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "another_file"
+msgstr ""
+
+#. Default: "(this part only appears on comments page)"
+#: browser/edit.pt
+msgid "appears_on"
+msgstr ""
+
+#. Default: "Associate this message with a milestone"
+#: browser/add_message.pt
+msgid "associate_milestone"
+msgstr ""
+
+#. Default: "Attach files"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "attach_files"
+msgstr ""
+
+#. Default: "Attach files to this message"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "attach_files_to"
+msgstr ""
+
+#. Default: "Cancel"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "cancel"
+msgstr ""
+
+#. Default: "Category:"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "category"
+msgstr ""
+
+#. Default: "Check the"
+#: browser/edit.pt
+msgid "check_the"
+msgstr ""
+
+#. Default: "Choose a file less than 30MB in size."
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "choose_file"
+msgstr ""
+
+#. Default: "Completes this milestone"
+#: browser/add_message.pt
+msgid "complete_milestone"
+msgstr ""
+
+#. Default: "Continue read..."
+#: browser/messages.pt
+msgid "continue_read"
+msgstr ""
+
+#. Default: "${creator} posted ${modified}"
+#: browser/message.pt
+msgid "create_by"
+msgstr ""
+
+#. Default: "edit"
+#: browser/message.pt
+#: browser/messages.pt
+msgid "edit"
+msgstr ""
+
+#. Default: "Edit message:"
+#: browser/edit.pt
+msgid "edit_message"
+msgstr ""
+
+#. Default: "${comments} comments"
+#: browser/messages.pt
+msgid "exist_comments"
+msgstr ""
+
+#. Default: "(this part only appears on comments page)"
+#: browser/add_message.pt
+msgid "extended_discription"
+msgstr ""
+
+#. Default: "Extended message:"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "extended_message"
+msgstr ""
+
+#. Default: "You can use simple, easy-to-write codes to format your text."
+#: browser/edit.pt
+msgid "format_your_text"
+msgstr ""
+
+#. Default: "Simple formatting codes"
+#: browser/edit.pt
+msgid "formatting_codes"
+msgstr ""
+
+#. Default: "Attachments"
+#: browser/edit.pt
+#: browser/message.pt
+msgid "legend_attachments"
+msgstr ""
+
+#. Default: "to easily make lists, headers, and more."
+#: browser/edit.pt
+msgid "make_lists"
+msgstr ""
+
+#. Default: "Make this message"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "make_message"
+msgstr ""
+
+#. Default: "Message body:"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "message_body"
+msgstr ""
+
+#. Default: "This is Message in ${category_title}"
+#: browser/message.pt
+msgid "message_in_category"
+msgstr ""
+
+#. Default: "Messages in"
+#: browser/messages.pt
+msgid "messages_in"
+msgstr ""
+
+#. Default: "No result yet."
+#: browser/messages.pt
+msgid "no_result"
+msgstr ""
+
+#. Default: "Notify people of this message via email"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "notify_email"
+msgstr ""
+
+#. Default: "Post a comment"
+#: browser/messages.pt
+msgid "post_comment"
+msgstr ""
+
+#. Default: "Post a new message"
+#: browser/add_message.pt
+msgid "post_new_message"
+msgstr ""
+
+#. Default: "Posted by ${author} in"
+#: browser/messages.pt
+msgid "posted_by_in_category"
+msgstr ""
+
+#. Default: "private"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "private"
+msgstr ""
+
+#. Default: "Private"
+#: browser/messages.pt
+msgid "Private"
+msgstr ""
+
+#. Default: "Save changes"
+#: browser/add_message.pt
+msgid "save_change"
+msgstr ""
+
+#. Default: "Type the codes in your text and you will see the results after clicking Save."
+#: browser/edit.pt
+msgid "see_the_results"
+msgstr ""
+
+#. Default: "A link to this message will appear below the milestone you select."
+#: browser/add_message.pt
+msgid "select_milestone"
+msgstr ""
+
+#. Default: "Show extended message body"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "show_extended_message"
+msgstr ""
+
+#. Default: "Here are some examples:"
+#: browser/edit.pt
+msgid "some_examples"
+msgstr ""
+
+#. Default: "Title:"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "title"
+msgstr ""
+
+msgid "attachment_msg_msg"
+msgstr ""
+
+#. Default: "A new message has been posted. DO NOT REPLY TO THIS EMAIL. To comment on this message, visit: \n ${msg_url} \n \n ${user_name} <${user_email}> said：\n --------------------------------------------------------------- \n ${msg_body} \n ${attachments} \n \n -- \n DO NOT REPLY TO THIS EMAIL. \n To comment on this message, visit: \n ${msg_url}"
+msgid "body_email"
+msgstr ""
+
+msgid "or"
+msgstr ""

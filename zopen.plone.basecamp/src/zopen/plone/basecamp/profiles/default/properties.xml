@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<site>
+ <property name="layout" type="string">@@basecamp_dashboard</property>
+ <property name="default_page" type="string">@@basecamp_dashboard</property>
+</site>

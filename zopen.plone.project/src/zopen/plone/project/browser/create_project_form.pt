@@ -1,0 +1,124 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.project">
+
+<head>
+
+<metal:noborder fill-slot="top_slot"
+       tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+<style type="text/css">
+ #basic_form {
+    margin:5px;
+ }
+ #basic_form p{
+    padding:5px;
+ }
+</style>
+</metal:css>
+
+</head>
+
+<div metal:fill-slot="main">
+
+    <div class="SectionHeader">
+        <h1 i18n:translate="new_project">create a new project</h1>
+    </div>
+
+    <form  class="enableUnloadProtection enableAutoFocus" method="post">
+        <div id="basic_form">
+
+            <input type="hidden" name="form.submitted" value="1"/>
+
+          <div class="field">
+            <label><tal:i18n i18n:translate="project_name"> Project name: </tal:i18n>
+            <span class="discreet" i18n:translate="shopping_cart">("Home page redesign" or "Marketing ideas", etc.)</span></label>
+
+            <div class="block">
+              <input id="project_name" class="bigInput firstToFocus" type="text" name="projectname" />
+            </div>
+          </div>
+
+
+          <div class="field">
+            <label i18n:translate="company_project">Give a client or another company access to this project? </label>
+            <p id="blockintro">
+              <span i18n:translate="select_company">If you'd like, you can 
+              <tal:i18n i18n:name="yes_add"><a href="#" i18n:translate="give_client_project" id="yes_add_company" onclick="document.getElementById('choose_company').style.display='block';document.getElementById('blockintro').style.display='none';return false;"> give another client or company access to this project</a></tal:i18n>.</span><br />
+              <span i18n:translate="do_it_later">You can also do this later so don't worry about it if you aren't sure.</span>
+            </p>
+
+            <div id="choose_company" class="block" style="display:none; margin-top: 0px">
+              <span i18n:translate="do_it_later">You can also do this later so don't worry about it if you aren't sure.</span>
+            <p><span i18n:translate="select_existing_company"> select an existing company:</span><br /> 
+            <select name="company">
+                <option value=""> -- </option>
+                <option tal:repeat="company view/getAvailableCompanies"
+                        tal:content="python:company[1]" 
+                        tal:attributes="value python:company[0]" value="b">b</option>
+            </select>
+            </p>
+
+            <p><span  i18n:translate="enter_new_company"> -or- enter a new company name:</span><br />
+             <input id="newcompany" class="bigInput" name="newcompany" />
+            </p>
+            </div>
+           </div>
+
+      <div class="field" tal:condition="nothing">
+         <label i18n:translate="project_functions"> Project tabs </label>
+         <span class="discreet" i18n:translate="desc_project_functions"> Select project space features. This will hide the unselected tabs.</span>
+         <div class="block" i18n:domain="zopen.basecamp">
+             <input type="checkbox" name="enable:list" value="messages"
+                    checked="checked"/> <span i18n:translate="messages">Messages</span>
+             <input type="checkbox" name="enable:list" value="todos"
+                    checked="checked"/> <span i18n:translate="to_do_list">To-Do</span>
+             <input type="checkbox" name="enable:list" value="milestones"
+                    checked="checked"/> <span i18n:translate="milestones"> Milestones </span>
+             <input type="checkbox" name="enable:list" value="writeboards"
+                    checked="checked"/> <span i18n:translate="writeboards">Writeboards</span>
+             <input type="checkbox" name="enable:list" value="time"
+                    checked="checked"/> <span i18n:translate="timetrack">Time</span>
+             <input type="checkbox" name="enable:list" value="chatroom"
+                    checked="checked"/><span i18n:translate="chat">Chat</span>
+             <input type="checkbox" name="enable:list" value="files"
+                    checked="checked"/> <span i18n:translate="files">Files</span>
+         </div>
+      </div>
+
+           <div class="action toggleArea" style="margin-top: 15px;">
+               <p class="TGtoggle">
+                   <input type="submit" class="EVtoggle" i18n:attributes="value create_this_project;" value="Create this project"/>
+                   <span i18n:domain="zopen.todo" i18n:translate="or">or</span>
+                   <a class="admin" href="#" tal:attributes="href string:$portal_url" i18n:translate="cancel">Cancel</a>
+               </p>
+               <input type="submit" disabled="disabled" i18n:attributes="value please_wait"
+                      class="TGtoggle hideme" value="Create project needs one or two minutes, please wait..." />
+
+               <img alt="Indicator" class="TGtoggle hideme"
+                    tal:attributes="src string:/++resource++indicator.gif"
+                    style="vertical-align: middle;" height="5" width="21"
+                    i18n:attributes="alt indicator;"
+                 />
+
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<div metal:fill-slot="portlets_two_slot">
+        <h1 i18n:translate="new_project_faq">New project FAQ</h1>
+        <h2 i18n:translate="add_companyies_people">Can I add companyies and people to projects later?</h2>
+
+        <p i18n:translate="yes_add_companyies">Yes. You can add as many companies and people to a project as you'd
+        like. Once you've created the project, go into the project and click
+        the People tab.</p>
+
+        <h2 i18n:translate="see_which_projects"> Can specify who can see which projects? </h2>
+
+        <p i18n:translate="yes_see_which">Yes. Once you've created the project, go into the project and click
+        the "Permissions" link (it will be in th eupper right corner) to
+        specify who can see the project.</p>
+</div>
+</html>

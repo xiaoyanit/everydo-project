@@ -1,0 +1,287 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.writeboard">
+
+    <metal:noborder fill-slot="top_slot"
+        tal:define="dummy python:request.set('showright', 1)" />
+
+<tal:block metal:fill-slot="style_slot">
+    <link type="text/css" rel="kinetic-stylesheet"
+          tal:attributes="href string:$portal_url/++resource++writeboard.kss?34223332"/>
+    <link type="text/css" rel="kinetic-stylesheet"
+          tal:attributes="href string:$portal_url/++resource++comments.kss?34223332"/>
+    <link type="text/css" rel="kinetic-stylesheet"
+          tal:attributes="href string:$portal_url/++resource++subscribe.kss?34223332"/>
+    <link href="#"
+      tal:attributes="href string:$portal_url/++resource++comments.css?34223332"
+      type="text/css" rel="stylesheet" media="screen"/>
+</tal:block>
+
+<tal:block metal:fill-slot="javascript_head_slot">
+    <script type="text/javascript" 
+            src="/++resource++kupu.js?34223332">
+    </script>
+    <script type="text/javascript" 
+            src="/++resource++writeboard.js?34223332">
+    </script>
+    <script type="text/javascript">
+
+        var delete_version_item = function(node, message, kssurl, version_id) {
+                                    if ((message == '') || (typeof(message) == 'undefined')) {
+                                        message = '您确定要删除这个条目吗？删除操作是不可恢复的。';
+                                    }
+                                    if (confirm(message) == false) {
+                                        return false;
+                                    }
+
+                                    kssServerAction(node, kssurl +"/delete_writeboard_version", {version_id: version_id});
+                            };
+    </script>
+</tal:block>
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+           tal:define="kssClassesView context/@@kss_field_decorator_view;
+                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                       templateId python:template.getId() or 'writeboard_view';
+                       text context/getText | nothing;
+
+                       version_id request/form/version_id | nothing;
+                       pr nocall:context/portal_repository;
+                       vdata python:version_id and pr.retrieve(here,version_id);
+                       text python:version_id and vdata.object.getText() or text;
+                       description context/Description;
+                       ">
+
+        <div class="SectionHeader">
+        <span style="float:left" class="hideme TimeToView discreet">正在保存...</span>
+        <h1 tal:content="context/Title">
+          Title or id
+        </h1>
+        <p class="documentDiscription" 
+           tal:content="description"> description </p>
+        <div id="plone-lock-status"><!-- --></div>
+       </div>
+    <div id="compare-legend" class="hideme">
+     <p style="text-align:right">
+       <span class="insert" i18n:translate="green">Green</span>
+       <tal:i18n i18n:translate="increase_in_text">It means the increase in text</tal:i18n>
+       <span class="delete" i18n:translate="red">Red</span>
+       <tal:i18n i18n:translate="deletion_in_text">It means deletion in text</tal:i18n><br />
+     </p>
+
+     </div>
+     
+     <div id="body-wrapper">
+
+       <tal:view tal:condition="python:request.get('edit','')!='true'">
+        <div metal:define-macro="text-field-view"
+             id="parent-fieldname-text" class="stx"
+             onmouseover="if(this.className.indexOf('inlineEditable')==-1)return true; this.style.background='White url(input_background.gif) repeat-x';this.style.border='1px solid #ddd';this.style.borderColor='#666 #ddd #ddd #666';"
+             onmouseout="this.style.background='';this.style.color='#000000';this.style.border='None'" style="cursor:text"
+             tal:define="kss_class python:getKssClasses('text',
+                             templateId=templateId, macro='text-field-view'); 
+                         text text | context/getText"
+             tal:attributes="class python:context.Format() in
+                                     ('text/structured', 'text/x-rst', ) and
+                                     'stx' + kss_class or 'plain' + kss_class;"
+                                     >
+
+            <div metal:define-slot="inside" 
+                 tal:replace="structure python:text or default">
+                 <p style="text-align: center"
+                    i18n:translate="no_text_yet">This document have no text yet. 
+                    Clik here to edit this document.
+                 </p>
+            </div>
+        </div>
+        </tal:view>
+
+  <tal:editWriteboard define="fieldName string:text;
+                       templateId string:writeboard_view;
+                       macro string:text-field-view;
+                       field python:context.getField(fieldName);
+                       widget nocall:field/widget;
+                       accessor python:field.getAccessor(here);
+                       widgetMacro python:widget('edit', context);
+                       containingMacro python:template.macros[macro];
+                       mode python:'edit';
+                       n python:{};
+                       errors n;
+                       kssClassesView context/@@kss_field_decorator_view;
+                       getKssClasses nocall:kssClassesView/getKssClasses;
+                       dummy python:field.getContentType(here) == 'text/plain' and request.form.update({'kupu.suppress':'text'});"
+         tal:condition="python:request.get('edit','')=='true'">
+    <metal:containingMacro use-macro="containingMacro"><metal:insideSlot fill-slot="inside">
+         <form tal:attributes="class string:field inlineForm;
+                             id string:kss-inlineform-$fieldName;">
+           <metal:editWidget use-macro="widgetMacro" />
+           <div class="formControls"
+                tal:attributes="class string:form-element"
+                tal:condition="not:widget/blurrable"><br />
+
+             <input name="kss-save"
+                    value="Save" type="button"
+                    i18n:attributes="value save"
+                    class="context" />
+
+             <input name="kss-cancel"
+                    i18n:attributes="value cancel;"
+                    value="Cancel" type="button"
+                    class="standalone" />
+
+             <span i18n:domain="zopen.writeboard" i18n:translate="or">or</span> 
+             <input type="text" size="30" title="Version comment" value="Version comment" id="comment" name="comment" style="color:#76797C;" 
+                    i18n:attributes="title version_comment; value version_comment;"
+                    onblur="javascript:str_var = document.getElementById('comment').value; str_title = document.getElementById('comment').title; if (str_var=='') {document.getElementById('comment').value=str_title; document.getElementById('comment').style.color='#76797C'}; if (str_var==str_title) {document.getElementById('comment').value=str_title; document.getElementById('comment').style.color='#76797C'};"
+                    onfocus="javascript:str_var = document.getElementById('comment').value; str_title = document.getElementById('comment').title; if (str_var==str_title) {document.getElementById('comment').value=''; document.getElementById('comment').style.color='#000';}"/> 
+             <input name="kss-save-version"
+                    i18n:domain="zopen.writeboard"
+                    i18n:attributes="value save_new_version;"
+                    tal:condition="python:fieldName=='text'"
+                    value="Save as a new version" type="button"
+                    class="context" 
+                    onclick="javascript:if (document.getElementById('comment').value==document.getElementById('comment').title) {document.getElementById('comment').value='';}"/>
+
+           </div>
+         </form>
+    </metal:insideSlot></metal:containingMacro>
+  </tal:editWriteboard>
+        </div>
+
+
+
+                      <!-- canEdit python:checkPermission('Modify portal content', context);-->
+        <br />
+
+        <div tal:replace="structure provider:zopen.comments" />
+
+    </tal:main-macro>
+</metal:main>
+
+  <metal:right metal:fill-slot="portlets_two_slot">
+     <div id="help-writerboard"
+             tal:condition="python:checkPermission('Modify portal content', context)">
+        <h1 i18n:translate="edit_document">Edit document</h1>
+
+          <form id="editProperty" class="GeditProperty showhide hideme">
+
+           <span i18n:translate="edit_title">Title: </span>
+
+           <input name="title" size="32px" tal:attributes="value context/Title"/>
+
+           <p><span style="display:block;padding-bottom:5px;" i18n:translate="optional_description">Optional description:</span> 
+           <textarea name="description" rows="3" style="width:80%" tal:content="context/Description"></textarea>
+
+           </p>
+         
+           <p>
+                 <input type="checkbox"
+                    name="private"
+                    tal:define="review_state python:wtool.getInfoFor(context, 'review_state', '')"
+                    tal:attributes="checked python:review_state=='private'"
+                    />
+              <tal:i18n i18n:translate="private">private</tal:i18n>
+           </p>
+           <p class="submit">
+             <input type="submit" class="submitInput"
+                    i18n:attributes="value save_change;"
+                    value="Save change"
+                    />
+              <span i18n:translate="or">or</span> 
+              <a class="admin TeditProperty" href="#" i18n:translate="cancel">Cancel</a>
+           </p>
+
+         </form>
+
+         <p class="GeditProperty">
+           <tal:i18n i18n:translate="edit_html" condition="python:not checkPermission('Delete objects', context)">
+          Double click the document body area, or click <a id="editBody" class="admin" href="#">here</a> to edit the document.<br />You can also <a class="admin TeditProperty" href="#">modify document attributes</a>. </tal:i18n> 
+           <tal:i18n i18n:translate="edit_html_candel" condition="python:checkPermission('Delete objects', context)">
+          Double click the document body area, or click <a id="editBody" class="admin" href="#">here</a> to edit the document.<br />You can also <a class="admin TeditProperty" href="#">modify document attributes</a>, </tal:i18n> 
+           <span tal:define="project_url python:basecamp_view.getCurrentProject().absolute_url();"
+              i18n:translate="property_del"
+              tal:condition="python:checkPermission('Delete objects', context) and (not basecamp_view.was_locked(context))"
+              tal:attributes="class string:kssattr-delSelector-redirect2${project_url}/writeboards kssattr-kssurl-$here_url;">
+            Or<span i18n:name="del" tal:define="obj nocall:context; show_mode string:text;"
+                                     tal:replace="structure provider:zopen.deletion"/>
+             this document.
+            </span>
+         </p>
+     </div>
+    <div metal:define-macro="revisions"
+         id="compare-revisions" class="Sidebar"
+         tal:define="pr nocall:context/portal_repository;
+                     history python:pr.getHistory(context, countPurged=False);
+                     versions request/form/versions | python:[];
+                     basecamp_view context/@@basecamp_view;
+                     currentContributor python:context.Contributors() and context.Contributors()[0] or context.Creator()
+                     ">
+
+    <h1 i18n:translate="historical_versions">Historical versions</h1>
+
+    <form action="." id="compare_form"
+          tal:attributes="action string:$here_url/version_diff">
+
+          <tal:revisions>
+
+          <div style="white-space: nowrap" class="CurrentVersion">
+               <input type="checkbox" name="version_C" value="current" 
+                      onclick="checkVersion(this)"/>
+               *
+               <a tal:attributes="href here_url"
+                  tal:content="python:toLocalizedTime(context.ModificationDate(),long_format=0)"
+                  >2004/10/21 03:15 PM</a>
+               <span tal:replace="python:basecamp_view.getMemberName(currentContributor)">user</span>
+          </div>
+
+        <tal:block repeat="vdata history">
+        
+        <div style="white-space: nowrap"
+             tal:define="versionid vdata/version_id;
+                         canDelete python:checkPermission('Delete objects', context);
+                         principal vdata/sys_metadata/principal;
+                         fullname python:basecamp_view.getMemberName(principal)"
+             tal:attributes="class string:versionkss kssattr-version_id-$versionid">
+             <input type="checkbox" name="versions" value="" onclick="checkVersion(this)"
+                    tal:attributes="value versionid; 
+                                    name string:version_$versionid"/>
+             <span tal:replace="python:len(history) - path('repeat/vdata/number') + 1">1</span>
+             <a href="#"
+                class="version-table-version EV-display-version"
+                tal:attributes="href string:$here_url?version_id:int=$versionid;">
+                <span tal:replace="python:toLocalizedTime(vdata.sys_metadata['timestamp'], long_format=0)"> 2004/10/21 03:15 PM </span></a>
+             <span tal:replace="fullname">francesco</span>
+             <span tal:condition="python:canDelete">
+                <img src="/++resource++trash.gif" title="Delete this version" onclick="" class="delimage"
+                    tal:attributes="onclick string:javascript:return delete_version_item(this, '', '${here_url}', '${vdata/version_id}')" />
+             </span>
+             <br /> <span tal:condition="vdata/comment" style="margin-left:35px;" class="discreet" tal:content="python:vdata.comment[0]" />
+        </div>
+        </tal:block>
+        </tal:revisions>
+
+        <div >
+        <tal:i18n i18n:translate="choice_of_versions">Choice of two versions 
+         <tal:i18n i18n:name="compare">
+           <input id="compare_button" type="submit" name="submit" disabled="disabled"
+                  i18n:attributes="value compare;" value="Compare"/></tal:i18n></tal:i18n>
+        </div>
+
+    </form>
+
+  </div>
+
+<div tal:replace="structure provider:zopen.subscription"/>
+
+</metal:right>
+
+</body>
+</html>
+

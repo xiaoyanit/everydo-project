@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="Anonymous"/>
+    <role name="Authenticated"/>
+    <role name="Manager"/>
+    <role name="Administrator"/>
+    <role name="Member"/>
+    <role name="Owner"/>
+    <role name="Reviewer"/>
+    <role name="Reader" />
+    <role name="Editor" />
+    <role name="Responsor" />
+    <role name="ProjectCreator" />
+  </roles>
+  <permissions>
+
+    <permission name="zopen.project: Manage Project"
+        acquire="True">
+        <role name="Administrator"/>
+    </permission>
+    <permission name="zopen.project: Add Project"
+        acquire="False">
+        <role name="ProjectCreator" />
+        <role name="Manager" />
+        <role name="Administrator"/>
+    </permission>
+  </permissions>
+</rolemap>

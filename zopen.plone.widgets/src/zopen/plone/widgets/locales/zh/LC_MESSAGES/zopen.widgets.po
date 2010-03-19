@@ -1,0 +1,158 @@
+# zopen.widgets translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.widgets 1.0\n"
+"POT-Creation-Date: 2007-05-28 06:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.widgets\n"
+"X-Is-Fallback-For: zh-cn\n"
+
+#. Default: "Add another category"
+#: ./category/list.pt
+msgid "add_another_category"
+msgstr "添加一个分类"
+
+#. Default: "-- add a new category --"
+#: ./category/selection.pt
+msgid "add_new_category"
+msgstr "-- 添加一个分类 --"
+
+#. Default: "all"
+#: ./uploader/upload.pt
+msgid "all"
+msgstr "全部"
+
+#. Default: "All Messages"
+#: ./category/list.pt
+msgid "all_messages"
+msgstr "全部内容"
+
+#. Default: "Attach files"
+#: ./comments/comments.pt
+msgid "attach_files"
+msgstr "附件"
+
+#. Default: "Attach files to this comment"
+#: ./comments/comments.pt
+msgid "attach_files_to_comment"
+msgstr "附加文件到这个评注中"
+
+#. Default: "Cancel"
+#: ./uploader/upload.pt
+msgid "cancel"
+msgstr "取消"
+
+#. Default: "Categories"
+#: ./category/list.pt
+msgid "categories"
+msgstr "分类"
+
+#. Default: "Choose a file less than 10MB in size."
+#: ./uploader/upload.pt
+msgid "choose_file_less"
+msgstr "选择一个小于30MB的文件"
+
+#. Default: "${count} comment so far"
+#: ./comments/comments.pt
+msgid "count_comment"
+msgstr "${count}条评注"
+
+#. Default: "${creator} said…"
+#: ./comments/comments.pt
+msgid "creator_said"
+msgstr "${creator}说..."
+
+#. Default: "Done"
+#: ./category/list.pt
+msgid "done"
+msgstr "完成"
+
+#. Default: "Edit"
+#: ./category/list.pt
+msgid "edit"
+msgstr "编辑"
+
+#. Default: "or"
+#: ./uploader/upload.pt
+msgid "or"
+msgstr "或"
+
+#. Default: "Post this Comment"
+#: ./comments/comments.pt
+msgid "post_this_comment"
+msgstr "发表评注"
+
+#. Default: "Rename"
+#: ./category/list.pt
+msgid "rename"
+msgstr "改名"
+
+
+#. Default: "Upload"
+#: ./uploader/upload.pt
+msgid "upload"
+msgstr "上传"
+
+#. Default: "upload a file"
+#: ./uploader/upload.pt
+msgid "upload_a_file"
+msgstr "上传一个文件"
+
+#. Default: "${month} 月"
+#: ./datetime/month.pt
+msgid "which_month"
+msgstr "${month} 月"
+
+msgid "Info"
+msgstr "信息"
+
+msgid "Deleted."
+msgstr "已删除。"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "please enter category title."
+msgstr "请输入分类名称。"
+
+msgid "modified success."
+msgstr "更改成功。"
+
+msgid "category ${title} was added."
+msgstr "${title}的分类已添加。"
+
+msgid "category ${title} was existed."
+msgstr "${title}的分类已存在。"
+
+msgid "save"
+msgstr "保存"
+
+msgid "delete"
+msgstr "删除"
+
+msgid "delete_all"
+msgstr "删除所有与这个文件有关的版本及当前文件"
+
+#. Default: "This comment contains ${len_attachments} attachment(s): \n "
+msgid "attachments_msg"
+msgstr "此评注包含${len_attachments}个附件：\n "
+
+#. Default: "${project_name} of the ${company_name} have a new comment posted. DO NOT REPLY TO THIS EMAIL. To comment on this message, visit:\n${msg_url}\n\n${user_name} <${user_email}> said:\n-----------------------------------------------------\n${msg_body}\n\n${attachments}\n\n--\nDO NOT REPLY TO THIS EMAIL.\nTo comment on this message, visit:\n${msg_url}"
+msgid "mail_body"
+msgstr "在${company_name}的${project_name}中有新评注张贴。请不要回复此邮件。若要发表评论，请访问: \n${msg_url}\n\n${user_name} <${user_email}> 写到：\n---------------------------------------------------------------\n${msg_body}\n\n${attachments}\n\n--\n请不要回复此邮件。\n若要对此消息发表评论，请访问: \n${msg_url}"
+
+msgid "img_html"
+msgstr "<img class=\"delimage\" src=\"/++resource++trash.gif\" title=\"删除\" onclick=\"delete_confirm(this,'','${url}')\" />"
+
+msgid "text_html"
+msgstr "<a class=\"admin\" href=\"#\" src=\"/++resource++trash.gif\" onclick=\"return delete_confirm(this,'','%s')\">删除</a>"

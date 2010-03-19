@@ -1,0 +1,88 @@
+<h1 i18n:domain="zopen.widgets" tal:condition="not: view/is_template_setting">
+  <tal:edit tal:condition="view/canModify">
+    <a class="admin EVcatEdit TGcatDoneS TGcatEditH" style="float: right;" href="#"
+       i18n:translate="edit">Edit</a>
+    <a class="admin EVcatDone TGcatEditS TGcatDoneH hideme" style="float: right;" href="#"
+       i18n:translate="done">Done</a>
+  </tal:edit>
+    
+    <tal:i18n i18n:translate="categories">Categories</tal:i18n>
+</h1>
+
+
+<div id="CategoryList"
+     tal:define="is_template_setting view/is_template_setting | options/is_template_setting | python: True;"
+     tal:attributes="class string:kssattr-is_template_setting-$is_template_setting"
+     i18n:domain="zopen.widgets">
+<div class="category">
+   <a href="#" class="category_link"
+      tal:attributes="class python: request.form.has_key('category') and 'category_link' or 'selected category_link'"
+      tal:condition="not: view/is_template_setting"
+    ><tal:i18n i18n:translate="all_messages">All</tal:i18n></a></div>
+
+<tal:items tal:repeat="category view/categories">
+<div metal:define-macro="categoryitem"
+     tal:define="here_url options/here_url | python:view.content_info[1];
+                 is_template_setting is_template_setting | view/is_template_setting | options/is_template_setting | python: True;
+                 hideme python: is_template_setting or not exists('options/here_url') and 'hideme' or '';
+                 cat_id  options/cat_id  | category/id;
+                 cat_title options/cat_title | category/title;
+                 cat_del options/cat_del | python:view.categoryDeletable(cat_id);
+                 cat_cur options/cat_cur | python:request.form.get('category', None) == category['id']"
+     tal:attributes="class string:kssDeletionRegion category kssattr-caturl-$here_url">
+    <div class="operations hideme TGcatRename"
+         tal:attributes="class string:operations TGcatEditS TGcatDoneH TGcatRename $hideme"
+         tal:define="mtool context/portal_membership;
+                     checkPermission nocall:checkPermission | python:mtool.checkPermission"
+         tal:condition="python:checkPermission('Modify portal content', context)"
+         >
+         <a href="#" class="admin TGrename" i18n:translate="rename" i18n:domain="zopen.widgets">Rename</a>
+         <img class="delimage" src="/++resource++trash.gif" 
+              tal:condition="cat_del"
+              tal:attributes="onclick string:delete_confirm(this,'','$here_url/$cat_id')" />
+    </div>
+
+    <a href="#" class="category_linky"
+        tal:attributes="href string:$here_url?category=$cat_id;
+            class python: cat_cur and 'selected category_link TGcatEditS TGcatDoneS TGcatRename' or 'TGcatEditS TGcatDoneS TGcatRename category_link';"
+        tal:condition="not:is_template_setting"
+        tal:content="cat_title">Title</a>
+    <div class="category_linky" style="padding:5px;border-bottom:1px dashed #CCCCCC;" 
+        tal:attributes="class python: cat_cur and 'selected category_link TGcatEditS TGcatDoneS TGcatRename' or 'TGcatEditS TGcatDoneS TGcatRename category_link';"
+        tal:condition="is_template_setting"
+        tal:content="cat_title">Title</div>
+<form style="padding:12px 0pt;" class="hideme TGcatRename TGcatEditH TGcatDoneH"> 
+  <div class="operations submit_rename hideme">
+      <img alt="Indicator" src="/++resource++indicator.gif" />
+  </div>
+  <div style="padding-top:0pt" class="operations submit_rename">
+      <input type="submit" class="submit" value="Save" i18n:attributes="value save;" /> 
+      <tal:i18n i18n:translate="or">or</tal:i18n> <a href="#" class="admin EVrename" i18n:translate="cancel">Cancel</a>
+  </div>
+  <input type="hidden" name="id" value="" tal:attributes="value string:$cat_id">
+  <input type="text"  class="category_input" name="new_title" size="20" value="" tal:attributes="value string:$cat_title"/>
+</form>
+</div>
+</tal:items>
+
+<div id="add_new_category" 
+     tal:define="is_template_setting view/is_template_setting | python:True;
+                 here_url options/here_url | python:view.content_info[1];
+                 cat_id python:view.content_info[0];
+                 hideme python:not is_template_setting and 'hideme' or ''"
+     tal:attributes="id string:add_new_category_$cat_id;
+                     class string:category TGcatEditS TGcatDoneH $hideme kssattr-caturl-$here_url;"
+     i18n:domain="zopen.widgets">
+<form style="padding:12px 0pt;" 
+      tal:attributes="class string:hideme TGaddCategory-$cat_id TGcatEditH TGcatDoneH"> 
+  <div style="padding-top:0pt;" class="operations">
+      <input type="submit" class="submit" value="Save" i18n:attributes="value save;" /> 
+      <tal:i18n i18n:translate="or">or</tal:i18n> <a href="#" class="admin EVrename" i18n:translate="cancel">Cancel</a>
+  </div>
+  <input type="text" tal:attributes="id string:new_category_input_$cat_id"  name="title" size="20" value=""/>
+</form>
+<a tal:attributes="class string:category_link admin TGaddCategory-$cat_id TGcatEditS TGcatDoneH"
+    href="#"
+    i18n:domain="zopen.widgets"
+    i18n:translate="add_another_category">Add another category</a></div>
+</div>

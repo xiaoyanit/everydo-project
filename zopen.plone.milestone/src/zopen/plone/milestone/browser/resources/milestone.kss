@@ -1,0 +1,67 @@
+.EVaddmilestone:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGaddmilestone');
+   toggleClass-value: hideme;
+
+   action-client: focus;
+   focus-kssSelector: css('.new_list_title');
+}
+
+.EVcomplete:click {
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGcomplete');
+   toggleClass-value: hideme;
+}
+
+.Milestone a.edit-link:click {
+   evt-click-preventdefault: true;
+
+   action-server: edit_milestone url(kssAttrJoin('*item_id', '/@@edit_milestone'));
+
+   action-client: toggleClass parentnodecss('.Milestone|.item');
+   toggleClass-value: hideme;
+}
+
+a.togglePastMonths:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass htmlid(past_months);
+    toggleClass-value: hideme;
+}
+
+.EVprogress:click {
+   evt-click-preventdefault: true;
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGprogress');
+   toggleClass-value: hideme;
+
+   action-server: add_progress url(kssAttrJoin('*item_id', '/@@add_progress'));
+}
+
+.TGedit:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGedit');
+   toggleClass-value: hideme;
+
+}
+
+.TGprogress:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGprogress');
+   toggleClass-value: hideme;
+}
+
+form.progressForm input.submitInput:click {
+   evt-click-preventdefault: true;
+
+   action-server: submitProgress url(kssAttrJoin('*item_id', '/@@submitProgress')) currentForm();
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGsubmitprogress');
+   toggleClass-value: hideme;
+}
+
+.EVshiftmilestones:click {
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGshiftmilestones');
+   toggleClass-value: hideme;
+}

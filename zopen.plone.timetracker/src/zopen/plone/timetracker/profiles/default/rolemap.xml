@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="Administrator"/>
+    <role name="Owner"/>
+    <role name="Reader"/>
+    <role name="Editor"/>
+    <role name="Manager"/>
+    <role name="Responsor"/>
+  </roles>
+  <permissions>
+
+    <permission name="zopen.timetracker: Add Time Log"
+                acquire="True">
+        <role name="Manager" />
+        <role name="Contributor" />
+        <role name="Administrator"/>
+    </permission>
+
+    <permission name="zopen.timetracker: Time Report"
+                acquire="True">
+        <role name="Manager" />
+        <role name="Editor" />
+        <role name="Authenticated" />
+        <role name="Member" />
+        <role name="Reader" />
+        <role name="Owner" />
+        <role name="Contributor" />
+        <role name="Administrator"/>
+    </permission>
+
+  </permissions>
+</rolemap>

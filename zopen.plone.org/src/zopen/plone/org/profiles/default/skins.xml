@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tool">
+  <object name="zopen_org" meta_type="Filesystem Directory View"
+      directory="zopen.plone.org:skins/zopen_org"/>
+  <skin-path name="Plone Default">
+    <layer name="zopen_org"/>
+  </skin-path>
+</object>
+

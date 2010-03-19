@@ -1,0 +1,252 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.writeboard">
+
+ <metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:fill fill-slot="style_slot">
+<link href="#"
+      tal:attributes="href string:$portal_url/++resource++files.css?34223332"
+      type="text/css" rel="stylesheet" media="screen"/>
+<link href="#"
+      tal:attributes="href string:$portal_url/++resource++files.kss?34223332"
+      type="text/css" rel="kinetic-stylesheet" />
+</metal:fill>
+
+
+<metal:main metal:fill-slot="main"
+       tal:define="files nocall:context/files;    
+                   categories python:files.objectValues();
+                   canAdd view/canAdd;">
+
+       <div class="SectionHeader"> 
+          <h1 tal:content="context/pretty_title_or_id"> Title or id </h1>
+          <a tal:condition="canAdd" 
+             class="admin EVadd TGadd"  href="#" 
+             i18n:translate="new_writebord">Create a new writeboard</a>
+          <a tal:condition="canAdd" href="#"
+             class="donelink TGadd hideme EVadd" 
+             i18n:translate="cancel_creater">cancel</a>
+       </div>
+
+       <div id="new_writeboard" 
+            tal:condition="canAdd"
+            class="showhide hideme TGadd">
+
+         <form method="post" 
+               tal:attributes="action string:$here_url/../files/@@createWriteboard">
+
+          <h2 i18n:translate="new_writeboard">New writeboard</h2>
+          <div class="form_field">
+            <p><span class="label_field" i18n:translate="writeboard_title">Writeboard title</span>
+              <span class="formHelp" i18n:translate="example_title">(Example: "Home page text" or "Business letter draft")</span>
+          </p>
+            
+            <input type="text" size="40" name="title" class="bigInput"/>
+            <img alt="Indicator" class="spinner hideme TGcommitnew" id="new_writeboard_spinner"
+                 tal:attributes="src string:$portal_url/++resource++indicator.gif" 
+                 style="vertical-align: middle;" height="5" width="21"/>
+          </div>
+
+         <div class="form_field">
+          <p> <span class="label_field" i18n:translate="category"> Category: </span></p>
+             <select tal:define="cat_context python:context.aq_parent.files"
+                     tal:replace="structure provider:zopen.categoryselection"/>
+          </div>
+
+          <div class="form_field">
+            <p><span class="label_field" i18n:translate="writeboard_discription">Optional: Writeboard discription: </span></p>
+             <input name="description" size="40" class="bigInput"/>
+          </div>
+
+          <p>
+            <input type="checkbox" value="text/plain" name="text_format"/>
+            <tal:i18n i18n:translate="plain_text"> Plain text </tal:i18n>
+          </p>
+
+          <p id="writeboard_private_p">
+            <input type="checkbox" value="1" name="private" id="writeboard_private"/>
+            <tal:i18n i18n:translate="make_writeboard"> Make this writeboard </tal:i18n>
+             <a class="link-plain" href="http://docs.everydo.com/project/faq/01general.rst" i18n:translate="private">private</a>
+          </p>
+          <p class="submit TGcommitnew">
+            <input type="submit" i18n:attributes="value create_new_writeboard;" value="Create a new writeboard" name="commit"/> <tal:i18n i18n:translate="or">or</tal:i18n>
+            <a href="#" class="admin EVadd" i18n:translate="cancel">Cancel</a>
+          </p>
+         </form>
+        </div>
+
+    <div class="TGadd"
+         tal:define="path python:'/'.join(files.getPhysicalPath());
+                     results python:context.portal_catalog(path=path,portal_type='Document');"
+         tal:condition="not:results"
+                    i18n:domain="zopen.basecamp">
+       <div class="blankBar"
+            tal:condition="canAdd"> 
+          <div><span i18n:translate="create_writeboard_for">Writeboards make collaborative writing simple. </span></div>
+          <p style="padding:15px 0 8px;">
+          <a class="EVnewlist create_project" 
+             tal:attributes="style string:background:transparent url('${portal_url}/start_img/create_buttom2.png') no-repeat;;padding:12px 50px 8px 40px;;font-weight:bold;;color:#000;;white-space:normal;;text-align:center;;width:170px;;text-decoration:none;;border-style:none;;" 
+             href="#"
+             >
+              <span class="EVadd" style="font-size:18px;color:#FFF;" i18n:translate="create_first_writeboard">Create the first writeboard</span></a>
+              
+          </p>
+
+        </div>
+        <div class="blankOr">
+           <p class="or_t">写字板采用多种方便的编辑方式，用于多人在线协作写文档</p>
+           <table style="margin:0pt auto; width:80%">
+              <tr>
+                <td style="text-align:center"><img tal:attributes="src string:${portal_url}/start_img/writeboard.png" /></td>
+                <td style="border-left:1px dotted #CCCCCC"><ul>
+                     <li>类似office的web富文本编辑器，支持图文混排</li>
+                     <li>多人协作编辑，多版本，版本差异对比 </li>
+                     <li>评注讨论，评注可订阅 </li>
+                    </ul>
+                </td>
+               </tr>
+           </table>
+        </div>
+
+      <div class="blankMore">
+         <table width="100%" style="padding:0 0 30px;">
+            <tr>
+              <td width="45%" style="vertical-align: top;border-right:1px dotted #CCCCCC;">
+                <p class="or_t">写字板视频介绍</p>
+                <div style="text-align:center">
+                  <a class="image" target="_blank"  href="http://cache.everydo.com/demo/writeboard.htm"><img tal:attributes="src string:${portal_url}/start_img/play_view_o5.gif" /></a>
+                </div>
+              </td>
+              <td style="vertical-align: top; padding-left:20px">
+                <p class="or_t">写字板使用帮助</p>
+                <ul>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/11writeboard.rst">[常见问题]写字板有什么作用，与项目中的消息有什么不同？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/11writeboard.rst">[常见问题]能否对写字板进行评注？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/11writeboard.rst">[常见问题]编辑完后，如何保存为一个新版本和只保存到当前版本？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/11writeboard.rst">[常见问题]当有多个版本时，如何进行版本对比？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/11writeboard.rst">[在线教程]写字板功能介绍。</a></li>
+		 </ul>
+              </td>
+            </tr>
+         </table>
+      </div>
+    </div>
+
+    <span tal:replace="python:categories.reverse()" />
+    <tal:category 
+    repeat="category categories">
+    
+       <div class="wclist" metal:define-macro="category_list" 
+            tal:define="path python:'/'.join(files.getPhysicalPath()) + '/' + category.getId();
+                        group_by string:modified;
+                        brains python:context.portal_catalog(path=path, portal_type='Document', sort_order = 'reverse', sort_on = group_by,);">
+        <h1 tal:condition="brains"> <img style="padding-right:5px;" tal:attributes="src string:${portal_url}/folder_g.png" /><span tal:content="category/title_or_id" /></h1>
+        
+        <tal:files repeat="brain brains" condition="brains">
+
+             <div tal:define=" obj python:brain.getObject();
+                          item_creator brain/Creator | obj/Creator;
+                          basecamp_view basecamp_view | context/@@basecamp_view;
+                          currentContributor python:obj.Contributors() and obj.Contributors()[0] or obj.Creator();
+                          author python:basecamp_view.getMemberName(currentContributor);
+                          canEdit options/canEdit | python:checkPermission('Modify portal content', obj);
+                          review_state options/review_state | brain/review_state;
+                          item_url brain/getURL | obj/absolute_url;
+                          category python:obj.aq_parent;
+                          brain nocall:brain | nocall:obj;
+                          brefs python:obj.getBRefs('relatesTo');
+             "
+             class="kssDeletionRegion Post state-private"
+             tal:attributes="class string:kssDeletionRegion Post state-$review_state kssattr-kssurl-$item_url;
+                             id string:file_${obj/UID}">
+
+           <div class="file_icon">
+                <img src="" 
+                     tal:attributes="src string:$portal_url/${brain/getIcon}" />
+           </div>
+
+           <div class="file_info"
+                tal:attributes="class string:file_info kssattr-category_id-${category/getId}">
+                <h1><a style="font-size:14px;" href="#"
+                      tal:attributes="href item_url"
+                      tal:content="brain/pretty_title_or_id">a</a>
+                      <span class="private_bug"
+                            tal:condition="python:review_state=='private'"
+                            i18n:translate="private">Private</span>
+                      <span id="lock-icon"
+                            tal:condition="python:basecamp_view.was_locked(obj)">
+                            <img tal:attributes="src string:$portal_url/lock_icon.gif" alt="locked" i18n:attributes="title Locked;" />
+                      </span>
+                <tal:de tal:define="desc brain/Description"
+                   tal:condition="python:desc or brefs">
+                   <span class="discreet" tal:content="desc">description</span>
+                </tal:de>
+               </h1>
+
+               <h3>
+                <span class="discreet" i18n:domain="zopen.filerepos" i18n:translate="file_by_line">
+                       post by <span i18n:name="author" tal:replace="author" /> in
+                       <tal:info i18n:name="category">
+                        <tal:can condition="python: canEdit and not basecamp_view.was_locked(obj)">
+                          <a class="EVselCat" href="#" tal:content="category/pretty_title_or_id"> </a>
+                          <img class="EVselCat" tal:attributes="src string:${portal_url}/++resource++edit.gif" alt="" />
+                        </tal:can>
+                        <tal:nocan condition="python:not canEdit or basecamp_view.was_locked(obj)">
+                          <a href="#" tal:content="category/pretty_title_or_id"
+                                      tal:attributes="href string:$here_url?category=${category/getId}"> </a>
+                        </tal:nocan>
+                       </tal:info>
+                        on <tal:rep i18n:name="modified" replace="python:toLocalizedTime(brain.ModificationDate)" />,
+                       size <tal:rep i18n:name="size" replace="brain/getObjSize" />
+                  </span> 
+
+                   <a href="#" class="discreet" 
+                      tal:condition="python:canEdit and not basecamp_view.was_locked(obj)"
+                      tal:attributes="href string:${item_url}?edit=true"
+                      i18n:translate="edit">Edit</a>
+                   <tal:rep 
+                        tal:condition="python:not basecamp_view.was_locked(obj)"
+                        tal:replace="structure provider:zopen.deletion" />
+                   </h3>
+
+                   <div class="visualClear" ><!-- --></div>
+
+            </div>
+           </div>
+        </tal:files>
+
+       </div>
+    </tal:category>
+
+
+</metal:main>
+
+<div metal:fill-slot="portlets_two_slot">
+   
+     <div class="col">
+       <h1 i18n:translate="about_writeboard">About writeboard</h1>
+       <div class="indent" i18n:translate="about_writeboard_info">
+          <p>
+           Writeboard become very handy when several people need to work on a document together online. For example, writing a contract, or an official announcment. It can also be used in knowledge manegement.
+           </p>
+
+          <p>
+           Writeboard make edit very easy. It has an Office-like web editor supporting various features, such as: mix image with words and version control. You can also add comment to a document and subscribe comment.
+       </div>
+     </div>
+     <div class="col">
+      <h1 i18n:translate="select_viewlet">Select viewlet</h1>
+     <p>
+        <tal:i18n i18n:translate="select_view_mode">Select the view mode: </tal:i18n><br />
+       <select name="todoRepotView"
+             tal:attributes="onchange string:window.location.href='$here_url/@@' + options[this.selectedIndex].value">
+        <option value="writeboards_listing"  i18n:translate="lastest_viewlet">Lastest viewlet</option>
+        <option value="writeboards" selected="selected" i18n:translate="category_viewlet">Category viewlet</option>
+     </select>
+     </p>
+    </div>
+
+
+</div>
+</html>

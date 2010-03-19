@@ -1,0 +1,421 @@
+# zopen.filerepos translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.filerepos 1.0\n"
+"POT-Creation-Date: 2007-05-25 08:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.filerepos\n"
+"X-Is-Fallback-For: zh-cn\n"
+
+#. Default: "Save change"
+#: browser/edit_writeboard.pt
+msgid "save_change"
+msgstr "保存更改"
+
+#. Default: "Upload and replace"
+#: browser/edit_file.pt
+msgid "Upload and replace"
+msgstr "提交"
+
+#. Default: "Upload the file"
+#: browser/filerepos_listing.pt
+msgid "Upload the file"
+msgstr "上传文件"
+
+#. Default: "Add another file"
+#: browser/filerepos_listing.pt
+msgid "add_another_file"
+msgstr "再添加一个文件"
+
+#. Default: "Add a new file"
+#: browser/filerepos_listing.pt
+msgid "add_new_file"
+msgstr "添加一个新文件"
+
+#. Default: "Cancel"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "cancel"
+msgstr "取消"
+
+#. Default: "Category:"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "category"
+msgstr "分类："
+
+#. Default: "Choose a file to upload"
+#: browser/filerepos_listing.pt
+msgid "choose_a_file"
+msgstr "选择一个文件上传"
+
+#. Default: "Edit"
+#: browser/filerepos_listing.pt
+msgid "edit"
+msgstr "编辑"
+
+#. Default: "post by ${author} in ${category} on ${modified}, size ${size}"
+#: browser/filerepos_listing.pt
+msgid "file_by_line"
+msgstr "${author} 于${modified}提交至 ${category}，大小为${size}"
+
+#. Default: "Make this file private"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "file_private"
+msgstr "使这个文件"
+
+#. Default: "No results."
+#: browser/filerepos_listing.pt
+msgid "no_results"
+msgstr "没有内容"
+
+#. Default: "Notify people via email"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "notify_email"
+msgstr "邮件通知"
+
+#. Default: "Optional description:"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "optional_description"
+msgstr "简单的描述："
+
+#. Default: "or"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "or"
+msgstr "或"
+
+#. Default: "Files for this project"
+#: browser/filerepos_listing.pt
+msgid "project_files"
+msgstr "项目中的文件"
+
+#. Default: "Select a file to replace"
+#: browser/filerepos_editing.pt
+msgid "select_file_replace"
+msgstr "选择一个文件替换"
+
+#: browser/filerepos_listing.pt
+msgid "upload_file"
+msgstr "上传文件"
+
+#. Default: "(each file should be under 30M)"
+#: browser/filerepos_listing.pt
+msgid "upload_limit"
+msgstr "（每个文件不能大于30M）"
+
+#. Default: "you may not upload files larger than 30 metabyates."
+#: browser/filerepos_editing.pt
+msgid "upload_limit_file"
+msgstr "不能上传一个大于30M的文件"
+
+#. Default: "Upload a new version"
+#: browser/filerepos_listing.pt
+msgid "upload_new_version"
+msgstr "上传新版本"
+
+#: browser/filerepos_editing.pt
+msgid "upload_replace"
+msgstr "上传并替换"
+
+#. Default: "post by ${principal} on ${timestap}, size ${size}"
+#: browser/filerepos_listing.pt
+msgid "version_post"
+msgstr "${principal}提交于 ${timestap} ${size}"
+
+#. Default: "view"
+#: browser/filerepos_listing.pt
+msgid "view"
+msgstr "查看"
+
+#. Default: "${writeboard} property"
+#: browser/edit_writeboard.pt
+msgid "writeboard_property"
+msgstr "${writeboard} 的属性"
+
+#. Default: "Writeboard Title"
+#: browser/edit_writeboard.pt
+msgid "writeboard_title"
+msgstr "写字板标题"
+
+msgid "you added ${count} files success."
+msgstr "您已成功添加${count}个文件。"
+
+msgid "modified success."
+msgstr "更改成功。"
+
+msgid "save as new version success."
+msgstr "保存新版本成功。"
+
+msgid "delete"
+msgstr "删除"
+
+#: browser/filerepos_listing.pt
+msgid "delete_this_version"
+msgstr "删除这个版本"
+
+#. Default: "A file submitted. DO NOT REPLY TO THIS EMAIL.\n\nSubmitted by ${user_name} <${user_email}>: \n\nFile: ${filename}\nDownload: ${file_url}\n\n${description}"
+msgid "mail_body"
+msgstr "有文件提交。请不要回复此邮件。\n\n文件由 ${user_name} <${user_email}> 提交：\n\n文件名: ${filename} \n下载地址: ${file_url}\n\n${description}" 
+
+
+#: browser/update_file.pt
+msgid "select_a_new_version"
+msgstr "选择一个新版本的 ${title}"
+
+#: browser/update_file.pt
+msgid "save_as_new_version"
+msgstr "保存新版本"
+
+
+msgid "va_need_file"
+msgstr "你刚才的操作无效，至少要选择一个文件做为操作对象。"
+
+#. Default: "Upload new version files, please wait..."
+#: browser/save_new_version.pt
+msgid "please_wait_upload_new"
+msgstr "上传新版本文件，请稍等..."
+
+#. Default: "Upload files, please wait..."
+#: browser/filerepos_listing.pt
+msgid "please_wait_upload"
+msgstr "正在上传文件，请稍等..."
+
+#. Default: "Change files, please wait..."
+#: browser/edit_file.pt
+msgid "please_wait_change"
+msgstr "正在更改，请稍等..."
+
+#. Default: "more..."
+#: browser/file_view.pt
+msgid "more"
+msgstr "更多"
+
+
+#. Default: "download"
+#: browser/file_view.pt
+msgid "download"
+msgstr "下载"
+
+
+#. Default: "is private file"
+#: browser/file_view.pt
+msgid "is_private_file"
+msgstr "这是一个保密的文件"
+
+
+#. Default: "is not private file"
+#: browser/file_view.pt
+msgid "is_not_private_file"
+msgstr "这是一个非保密的文件"
+
+#. Default: "Private"
+#: browser/filerepos_listing.pt
+msgid "Private"
+msgstr "保密"
+
+
+#. Default: "private"
+#: browser/filerepos_listing.pt
+msgid "private"
+msgstr "保密"
+
+#. Default: "Public"
+#: browser/filerepos_listing.pt
+msgid "Public"
+msgstr "公开"
+
+#. Default: "privatepending"
+#: browser/filerepos_listing.pt
+msgid "privatepending"
+msgstr "保密待审"
+
+#. Default: "privatepublished"
+#: browser/filerepos_listing.pt
+msgid "privatepublished"
+msgstr "保密发布"
+
+#. Default: "not published"
+#: browser/file_view.pt
+msgid "not_published"
+msgstr "这个文件正在被审核中"
+
+#. Default: "pending"
+#: browser/filerepos_listing.pt
+msgid "pending"
+msgstr "待审"
+
+#. Default: "reviewed"
+#: browser/filerepos_listing.pt
+msgid "reviewed"
+msgstr "这个文件已通过审核"
+
+#. Default: "published"
+#: browser/filerepos_listing.pt
+msgid "published"
+msgstr "发布"
+
+
+#. Default: "Submit"
+#: browser/filerepos_listing.pt
+msgid "Submit"
+msgstr "提交待审"
+
+#. Default: "Retract"
+#: browser/filerepos_listing.pt
+msgid "Retract"
+msgstr "收回"
+
+#. Default: "Send back"
+#: browser/filerepos_listing.pt
+msgid "Send back"
+msgstr "打回"
+
+#. Default: "Review content"
+#: browser/filerepos_listing.pt
+msgid "Review content"
+msgstr "审核通过"
+
+#. Default: "Publish"
+#: browser/filerepos_listing.pt
+msgid "Publish"
+msgstr "审核通过"
+
+#. Default: "Submit for review"
+#: browser/filerepos_listing.pt
+msgid "Submit for review"
+msgstr "提交待审"
+
+#. Default: "change state, please wait..."
+#: browser/filerepos_listing.pt
+msgid "change_state"
+msgstr "变更状态中，请稍等..."
+
+#. Default: "submitting"
+#: browser/filerepos_listing.pt
+msgid "submitting"
+msgstr "此文件还未提交审核"
+
+#. Default: "submit on"
+#: browser/file_view.pt
+msgid "submit_on"
+msgstr "提交于"
+
+#. Default: "the file in"
+#: browser/file_view.pt
+msgid "the_file_in"
+msgstr "文件位于"
+
+#. Default: "Review information"
+msgid "review_information"
+msgstr "审核信息"
+
+#. Default: "Need to Review files"
+msgid "need_review_files"
+msgstr "需要审核的文档"
+
+#. Default: "There are 2 files need to review, "
+msgid "review_list_for"
+msgstr "${ca}有 ${click} 需要您来审核"
+
+msgid "here_category"
+msgstr "当前分类中"
+
+msgid "click_here"
+msgstr "${len}个文件"
+
+#. Default: "There are 2 files need to review, "
+msgid "review_lists_for"
+msgstr "在 ${a_href} 项目中有 ${click} 需要您来审核"
+
+msgid "review_project"
+msgstr "${company}-${project}"
+
+msgid "submit_for_review"
+msgstr "同时提交审核"
+
+
+#.Default: "Make this file private"
+#: browser/file_view.pt
+msgid "Make private"
+msgstr "变为保密"
+
+#.Default: "Make this file visible"
+#: browser/file_view.pt
+msgid "Make visible"
+msgstr "解除保密"
+
+#.Default: "Make this file visible"
+#: browser/file_view.pt
+msgid "Show"
+msgstr "解除保密"
+
+#.Default: "Make this file visible"
+#: browser/file_view.pt
+msgid "Remove private"
+msgstr "解除保密"
+
+#.Default: "no history versions"
+#: browser/file_view.pt
+msgid "no_history"
+msgstr "没有历史版本"
+
+#.Default: "History versions"
+#: browser/file_view.pt
+msgid "history_version"
+msgstr "版本:"
+
+#.Default: "File state"
+#: browser/file_view.pt
+msgid "file_state"
+msgstr "文件状态"
+
+#.Default: "private or visisable:"
+#: browser/file_view.pt
+msgid "private_file_information"
+msgstr "保密性:"
+
+#.Default: "review information:"
+#: browser/file_view.pt
+msgid "review_file_information"
+msgstr "审核:"
+
+msgid "mail_submit_review"
+msgstr "有文件提交需要您来审核。请不要回复此邮件。\n\n文件由${user_name}<${user_email}>提交：\n\n文件名：${filename}\n访问地址：${file_url}\n\n${description}\n\n--\n请不要回复此邮件。"
+
+msgid "mail_publish_review"
+msgstr "有文件审核后发布。请不要回复此邮件。\n\n您提交的${filename}已审核发布，详情请访问：${file_url}\n\n--\n请不要回复此邮件。"
+
+msgid "mail_reject_review"
+msgstr "有文件审核后被打回。请不要回复此邮件。\n\n您提交的${filename}审核后被打回，详情请访问：${file_url}\n\n--\n请不要回复此邮件。"
+
+msgid "subject_submit"
+msgstr "[${project}]有文件提交待审"
+
+msgid "subject_publish"
+msgstr "[${project}]有文件审核发布"
+
+msgid "subject_reject"
+msgstr "[${project}]有文件审核被打回"
+
+msgid "related"
+msgstr "关联:"
+
+msgid "warning"
+msgstr "警告"
+
+msgid "warning_locked"
+msgstr "此文档正在被其他用户编辑已被锁定，您不能移动它。"

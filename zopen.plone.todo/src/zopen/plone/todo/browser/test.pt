@@ -1,0 +1,181 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.todo">
+
+<head>
+
+<metal:css fill-slot="style_slot">
+
+ <style type="text/css">
+
+	  .drag_handle {
+		  cursor: move;
+	  }
+
+	  div{
+		  border: 1px solid;
+	  }
+
+	  div.content{
+		  margin-left: 59px;
+	  }
+
+	  div.widget div.nubbin {
+		  position: relative;
+		  width: 0pt;
+                  display: none;
+	  }
+
+	  div.widget div.nubbin li a {
+		  color: #FF0000;
+		  font-size: 10px;
+		  text-decoration: underline;
+	  }
+
+	  div.widget div.nubbin div.wrapper {
+		  position: absolute;
+		  width: 66px;
+		  height: 19px;
+		  left: 0pt;
+		  line-height: 10px;
+	  }
+
+	  div.widget div.nubbin div.wrapper ul{
+		  margin: 0pt;
+		  padding: 0pt;
+	  }
+
+	  div.widget div.nubbin div.wrapper li {
+		  list-style-type: none;
+		  float: left;
+		  margin: 0pt 4px 0pt 0pt;
+	  }
+
+  </style>
+</metal:css>
+
+<metal:js fill-slot="javascript_head_slot">
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/prototype.js"
+          tal:attributes="src string:++resource++prototype.js"></script>
+
+  <script type="text/javascript"
+            src="http://wiki.script.aculo.us/javascripts/effects.js"
+            tal:attributes="src string:++resource++effects.js"></script>
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/dragdrop.js"
+          tal:attributes="src string:++resource++dragdrop.js"></script>
+
+</metal:js>
+</head>
+<body>
+<div metal:fill-slot="main">
+
+
+  <div id="content">
+
+    <h1>Sortable lists</h1>
+
+
+
+<p>Drag and drop items to reorder!</p>
+
+
+
+<div id="list" class="items widget_parent" style="position:relative;border: none;">
+
+	<div class="widget list_widget item_wrapper" id='asdf_as'
+		onmouseover="this.firstChild.style.display='block'"
+		onmouseout="this.firstChild.style.display='none'"
+		><div class="nubbin">
+			<div class="wrapper">
+				<ul>
+					<li class="delete">
+					<a class="image delete_lin">
+						<img src="trash.gif" />
+					</a>
+					</li>
+					<li class="edit">
+					<a href="#">edit</a>
+					</li>
+					<li class="drag">
+					<img title="Move" src="++resource++drag_handle.gif" class="drag_handle" alt="Drag_handle"/>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="content" >
+                      <input type="checkbox"  id="item_10036903_checkbox"/>
+			<span id="lis03_text" 
+				class="content nubbin_target" 
+				nubbin_region="show_list_1799643_item_10036903">
+				asdfasdfasdf
+			</span>
+		</div>
+	</div>
+
+
+	<div class="widget list_widget item_wrapper"  id="aasdf_ff"
+		onmouseover="this.firstChild.style.display='block'"
+		onmouseout="this.firstChild.style.display='none'"
+		><div class="nubbin">
+			<div class="wrapper">
+				<ul>
+					<li class="delete">
+					<a class="image delete_lin">
+						<img src="trash.gif" />
+					</a>
+					</li>
+					<li class="edit">
+					<a href="#">edit</a>
+					</li>
+					<li class="drag">
+					<img title="Move" src="++resource++drag_handle.gif" class="drag_handle" alt="Drag_handle"/>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="content" >
+                      <input type="checkbox"  id="item_10036903_checkbox"/>
+			<span id="lis03_text" 
+				class="content nubbin_target" 
+				nubbin_region="show_list_1799643_item_10036903">
+				asdfasdfasdf
+			</span>
+		</div>
+	</div>
+
+</div>
+
+
+
+<p id="list-info"></p>
+
+
+
+<script type="text/javascript">
+
+	Sortable.create('list', 
+			{ onUpdate:function(){ 
+    			  e = document.getElementById('list-info'); 
+                  new Effect.Highlight('list',{});
+			      e.innerHTML = Sortable.serialize('list', {name:'id',tag:'div'});
+                   },
+
+                          tag:'div',
+                          handle:'drag_handle',
+                          constraint:'vertical'
+			}
+		)
+
+
+</script>
+
+</div>
+
+</div>
+</body>
+</html>

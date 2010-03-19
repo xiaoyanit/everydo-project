@@ -1,0 +1,21 @@
+Metadata-Version: 1.0
+Name: zopen.plone.widgets
+Version: 0.1.1dev
+Summary: EDO widgets management
+Home-page: http://pypi.zopen.cn/zopen.wgsiapp
+Author: Benky
+Author-email: benky52@gmail.com
+License: Private
+Description: 
+        
+        
+Keywords: zope3 z3c rpc server client operation
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Natural Language :: Chinese
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Framework :: Zope3

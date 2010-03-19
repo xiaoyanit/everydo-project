@@ -1,0 +1,69 @@
+#add_company_form input.submit:click{
+    evt-click-preventdefault: true;
+
+    action-server: site_add_new_company currentForm();
+
+    action-client: toggleClass css('.TGaddcompany');
+    toggleClass-value: hideme;
+
+    action-client: clear css('#client_name');
+}
+
+.EVdisable:click {
+    action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGdisable');
+    toggleClass-value: hideme;
+}
+
+td.person select:change {
+    action-client: setStyle;
+    setStyle-name: display;
+    setStyle-value: none;
+
+    action-server: site_set_team;
+    site_set_team-person_id: kssAttr('person_id', true);
+    site_set_team-team_id: currentFormVar();
+    site_set_team-old_team_id: kssAttr('old_team_id');
+}
+
+.EVaddcompany:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('.TGaddcompany');
+    toggleClass-value: hideme;
+}
+
+.EVaddperson:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGaddperson');
+    toggleClass-value: hideme;
+}
+
+form.TGaddperson input.submit:click {
+    evt-click-preventdefault: true;
+
+    action-server: addNewPerson url(kssAttrJoin('*companyid', '/@@addNewPerson')) currentForm();
+
+    action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGaddperson');
+    toggleClass-value: hideme;
+}
+
+.new-person-email:blur {
+   action-server: validateEmail;
+   validateEmail-useremail: currentFormVar();
+}
+
+.new-person-name:blur {
+   action-server: validateUserName;
+   validateUserName-username: currentFormVar();
+}
+
+input[type="checkbox"].isProjectCreator:click {
+   action-server: setProjectCreator;
+   setProjectCreator-person_id: kssAttr('person_id', true);
+}
+
+.wasLocked:load {
+    action-server: unlockPerson  url(kssAttrJoin('*person_url','/@@unlockPerson'));
+}
+

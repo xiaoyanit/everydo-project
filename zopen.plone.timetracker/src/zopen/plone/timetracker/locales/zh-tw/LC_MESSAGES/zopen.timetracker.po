@@ -1,0 +1,172 @@
+# zopen.timetracker translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.timetracker 1.0\n"
+"POT-Creation-Date: 2007-04-27 04:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh-tw\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.timetracker\n"
+"X-Is-Fallback-For: zh-hk zh-mo zh-sg\n"
+
+#. Default: "Add to log"
+#: browser/timetracker.pt
+msgid "add_to_log"
+msgstr "添加日誌"
+
+#. Default: "All"
+#: browser/timetracker.pt
+msgid "all"
+msgstr "所有人"
+
+#. Default: "Back to the full time log"
+#: browser/timetracker.pt
+msgid "back_full_time"
+msgstr "返回到完整的工作日誌"
+
+#. Default: "Cancel"
+#: browser/edit_timelog.pt
+#: browser/timetracker.pt
+msgid "cancel"
+msgstr "取消"
+
+#. Default: "Cancel report creation"
+#: browser/timetracker.pt
+msgid "cancel_report_creation"
+msgstr "取消報表創建"
+
+#. Default: "Create a report"
+#: browser/timetracker.pt
+msgid "create_a_report"
+msgstr "創建一個報表"
+
+#. Default: "Create report"
+#: browser/timetracker.pt
+msgid "create_report"
+msgstr "創建報表"
+
+#. Default: "DATE"
+#: browser/timetracker.pt
+msgid "date"
+msgstr "日期"
+
+#. Default: "DESCRIPTION"
+#: browser/timetracker.pt
+msgid "description"
+msgstr "工作內容"
+
+#. Default: "edit"
+#: browser/timetracker.pt
+msgid "edit"
+msgstr "編輯"
+
+#. Default: "Edit this report"
+#: browser/timetracker.pt
+msgid "edit_report"
+msgstr "編輯這張報表"
+
+#. Default: "Export"
+#: browser/timetracker.pt
+msgid "export"
+msgstr "導出"
+
+#. Default: "HOURS"
+#: browser/timetracker.pt
+msgid "hours"
+msgstr "耗時"
+
+#. Default: "'s hours from"
+#: browser/timetracker.pt
+msgid "hours_from"
+msgstr "的工作日誌  從"
+
+#. Default: "or"
+#: browser/edit_timelog.pt
+#: browser/timetracker.pt
+msgid "or"
+msgstr "或"
+
+#. Default: "PERSON"
+#: browser/timetracker.pt
+msgid "person"
+msgstr "人員"
+
+#. Default: "Save"
+#: browser/edit_timelog.pt
+msgid "save"
+msgstr "保存"
+
+#. Default: "Show"
+#: browser/timetracker.pt
+msgid "show"
+msgstr "顯示"
+
+#. Default: "Time tracking"
+#: browser/timetracker.pt
+msgid "time_tracking"
+msgstr "工作日誌"
+
+#. Default: "Time tracking report"
+#: browser/time_repot.pt
+msgid "time_tracking_report"
+msgstr "工作日誌統計"
+
+#. Default: "to"
+#: browser/timetracker.pt
+msgid "to"
+msgstr "到"
+
+#. Default: "this table to CSV"
+#: browser/timetracker.pt
+msgid "to_csv"
+msgstr "這張表為CSV文件"
+
+#. Default: "TOTAL"
+#: browser/timetracker.pt
+msgid "total"
+msgstr "總計"
+
+#. Default: "Create by:"
+#: browser/timetracker.pt
+msgid "create_by"
+msgstr "創建人："
+
+#. Default: "No result yet."
+#: browser/timereport.pt
+msgid "no_result"
+msgstr "沒有滿足條件的工作日誌報告。"
+
+msgid "error"
+msgstr "錯誤"
+
+#. Default: "The date ${time} is invalib,please correct."
+msgid "va_time_error"
+msgstr "${time}日期有誤，請更正！"
+
+#. Default: "Need time;"
+msgid "va_time_need"
+msgstr "需要填寫工作日誌耗時；"
+
+#. Default: "Time is invalib, please correct;"
+msgid "va_time_invalib"
+msgstr "請正確填寫工作日誌耗時；"
+
+#. Default: "Need desciption;"
+msgid "va_description_need"
+msgstr "需要填寫工作內容; "
+
+#. Default: "DATE,PERSON,HOURS,DESCRIPTION"
+msgid "out_title"
+msgstr "日期,人員,耗時,工作內容"
+
+#. Default: ",TOTAL,${hours}"
+msgid "out_total"
+msgstr ",總計,${hours}"

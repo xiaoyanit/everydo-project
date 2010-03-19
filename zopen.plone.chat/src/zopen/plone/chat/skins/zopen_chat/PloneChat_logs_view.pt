@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      tal:attributes="lang language|default;
+                      xml:lang language|default;"
+      tal:define="portal_url here/portal_url;
+                  here_url here/absolute_url;
+                  charset python:here.portal_properties.site_properties.getProperty('default_charset')">
+
+<head>
+
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)" />
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    
+</head>
+<body tal:define="logs here/getLogs;
+                  global last_member string:"
+      i18n:domain="plonechat">
+
+  <table class="messages" id="message-log">
+  <tbody>
+    <tr tal:repeat="item logs">
+        <td tal:define="member_id item/member;
+                        classname python:member_id == last_member and 'sameuser' or ''"
+          tal:attributes="class string:messageInfo $classname">
+        <span tal:replace="item/member" /> 
+        [<span tal:replace="item/date" />]:
+      </td>
+      <td>
+        <span tal:replace="structure item/message" />
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
+  <p tal:condition="not:logs"
+     i18n:translate="">No logs</p>
+
+</body>
+</html>
+

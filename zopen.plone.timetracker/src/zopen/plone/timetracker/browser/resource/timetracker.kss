@@ -1,0 +1,56 @@
+.EV-create-time-track-form:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('.TG-create-time-track-form');
+    toggleClass-value: hideme;
+}
+
+.EV-edit-time-track-form:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('.TG-edit-time-track-form');
+    toggleClass-value: hideme;
+}
+
+table.TimeTrack tr.AddTimeTrack td.action input:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass parentnodecss('.AddTimeTrack|.submit');
+    toggleClass-value: hideme;
+
+    action-server: add_time_log currentForm();
+}
+
+table.TimeTrack tr.kssDeletionRegion td.action input:click {
+    evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.submit');
+   toggleClass-value: hideme;
+
+    action-server: save_time_log url(kssAttr('kssurl', true)) currentForm();
+}
+
+table.TimeTrack tr.kssDeletionRegion td.action a.admin:click {
+    evt-click-preventdefault: true;
+}
+
+table.TimeTrack tr.kssDeletionRegion td.action a.editlink:click {
+    action-server: edit_time_log url(kssAttr('kssurl', true));
+}
+
+table.TimeTrack tr.kssDeletionRegion td.action a.cancellink:click {
+    action-client: setStyle parentnodenextnode('tr.kssDeletionRegion');
+    setStyle-name: display;
+    setStyle-value: '';
+
+    action-client: deleteNode parentnode('tr.kssDeletionRegion');
+}
+
+a.test:click{
+    evt-click-preventdefault: true;
+
+    action-client: setAttribute css('#AddTimeTrack select');
+    setAttribute-name: disabled;
+    setAttribute-value: disabled;
+}
+

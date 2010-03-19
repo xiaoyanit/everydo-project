@@ -1,0 +1,251 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.filerepos">
+
+<head>
+    <metal:top fill-slot="top_slot"
+        tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+   <link type="text/css" rel="stylesheet" media="screen"
+         href="/++resource++message.css?34223332" />
+    <link type="text/css" rel="stylesheet" media="screen"
+          href="/++resource++comments.css?34223332" />
+    <link type="text/css" rel="kinetic-stylesheet"
+          href="/++resource++subscribe.kss?34223332" />
+    <link type="text/css" rel="kinetic-stylesheet"
+          href="/++resource++comments.kss?34223332" />
+    <link href="/++resource++files.kss?34223332"
+          type="text/css" rel="kinetic-stylesheet" />
+    <link href="/++resource++category-list.kss?34223332"
+          type="text/css" rel="kinetic-stylesheet" />
+
+   <style type="text/css">
+     .file_table {border-collapse:collapse; background:#FFF none repeat scroll 0% 50%;}
+     .file_table th { background:#EFEFEF; none repeat scroll 0%; width: 8%; text-align:center; white-space: nowrap;}
+     .file_table tr {border-top: 1px solid #DCDCDC; border-bottom: 1px solid #DDDDDD;}
+     .file_table tr.change_sh_state th {border-top: 2px solid #DCDCDC; border-bottom: 1px solid #DDDDDD;}
+     .file_table tr.history_version th {padding-top:8px; border-bottom: 2px solid #DCDCDC; border-top: 1px solid #DDD;}
+     .file_table tr.change_sh_state td {border-bottom: 1px solid #DDDDDD; border-top: 2px solid #DCDCDC;}
+     .file_table tr.history_version td {border-bottom: 2px solid #DCDCDC; border-top: 1px solid #DDDDDD;}
+     .file_table td.transition_block {white-space: nowrap; width: 1%}
+      
+   </style>
+</metal:css>
+<metal:fill fill-slot="javascript_head_slot">
+
+<script type="text/javascript"><!--
+    var delete_version_item = function(node, message, kssurl, version_id) {
+                                if ((message == '') || (typeof(message) == 'undefined')) {
+                                    message = '您确定要删除这个条目吗？删除操作是不可恢复的。';
+                                }
+                                if (confirm(message) == false) {
+                                    return false;
+                                }
+                                
+                                kssServerAction(node, kssurl +"/delete_version", {version_id: version_id});
+                        };
+--></script>
+</metal:fill>
+</head>
+
+<body>
+    <div metal:fill-slot="main"
+         tal:define="obj nocall:context/aq_inner;
+                     time python:toLocalizedTime(obj.ModificationDate());
+                     currentContributor python:obj.Contributors() and obj.Contributors()[0] or obj.Creator();
+                     author python:basecamp_view.getMemberName(currentContributor);
+                     size obj/getObjSize;
+                     category nocall:obj/aq_parent;
+                     description obj/Description;
+                     canEdit options/canEdit | python:checkPermission('Modify portal content', obj);
+                     wtool nocall:obj/portal_workflow;
+                     review_state python:wtool.getInfoFor(obj, 'review_state', '');
+                     versionable python:context.portal_repository.getHistory(obj, countPurged=False);">
+        <div class="ContextHeader">
+            <h1>
+                <tal:span i18n:translate="the_file_in">the file in</tal:span>
+                <a href="#"
+                   tal:content="category/pretty_title_or_id"
+                   tal:attributes="href string:${category/aq_parent/absolute_url}?category=${category/getId}"></a>
+            </h1>
+        </div>
+        <div class="kssDeletionRegion Post"
+             tal:attributes="class string:kssDeletionRegion state-normal Post kssattr-kssurl-${obj/absolute_url};
+                             id string:file_${obj/UID}">
+            <div class="SectionHeader"> 
+              <h1>
+               <a style="text-decoration:underline;" href="" tal:attributes="href string:${obj/absolute_url}">
+                  <span tal:content="object_title" />
+               </a>
+              </h1>
+
+                <span style="color: rgb(51, 51, 51);">
+                    <strong tal:content="author"></strong>
+                </span>
+                <tal:span i18n:translate="submit_on">on</tal:span>
+                <span tal:content="time"></span>
+                <span tal:content="size"></span>
+
+                <span class="file_operate"
+                     metal:define-macro="file_operate"
+                     tal:define="obj nocall:obj | nocall:options/obj;
+                                 category nocall:category | nocall:obj/aq_parent;
+                                 canEdit canEdit | python:checkPermission('Modify portal content', obj);
+                                 canDelete canDelete | python:checkPermission('Delete objects', obj);">
+                    <a href="#" class="discreet"
+                        tal:attributes="href obj/absolute_url;"
+                        i18n:translate="download">Download it
+                    </a>
+                     
+                  <span tal:condition="canEdit"
+                        tal:content="string:|"/>
+                   <a href="#" class="admin" 
+                      tal:define="type_name obj/Type;"
+                      tal:condition="python:type_name != 'ChatLog' and canEdit"
+                      tal:attributes="class string:admin EV${type_name}Prop kssattr-fileViewUrl-file_view"
+                      i18n:translate="edit">Edit</a>
+                      
+                 <span tal:condition="canDelete"
+                      tal:attributes="class string:kssattr-delSelector-redirect2${category/aq_parent/absolute_url}">
+                      |
+                    <span tal:define="obj nocall:obj;show_mode string:text;"
+                          tal:replace="structure provider:zopen.deletion"/>
+                 </span>
+                </span>
+                <p class="documentDiscription" tal:content="description">description</p>
+                <p class="documentDiscription" tal:condition="python: obj.Type() == 'Image'">
+                    <a tal:attributes="href string:${obj/absolute_url}/image_view_fullscreen;
+                                       title obj/pretty_title_or_id"><img tal:attributes="src string:${obj/absolute_url}/image_preview"/></a>
+                </p>
+
+            </div>
+
+            <table class="file_table" width="100%"
+                   tal:define="otherActions view/getActions;
+                               brefs python:context.getBRefs('relatesTo');
+                               shaction python:view.getActions(True);">
+             <tr class="file_brefs"
+                 tal:condition="python:brefs">
+              <th i18n:translate="related">Related:</th>
+              <td colspan="2">
+                <p style="margin:6px 0pt;">
+                   <span class="event_type" tal:repeat="bref brefs">
+                     <span i18n:domain="zopen.project" i18n:translate="" tal:attributes="class string:${bref/portal_type}" tal:content="bref/portal_type" /> 
+                        <a href="#" 
+                               tal:attributes="href string:${bref/bc_url}"
+                               tal:content="bref/pretty_title_or_id" >...</a>
+                   </span>
+                 </p>
+              </td>
+             </tr>
+            <tr class="change_sh_state"
+                metal:define-macro="change_sh_state"
+                tal:define="shaction shaction | options/shaction;
+                            brefs nocall:brefs | python:context.getBRefs('relatesTo');
+                            review_state review_state | options/review_state;">
+
+            <th style="width: 1%; white-space: nowrap" i18n:translate="private_file_information" >private or visisable:</th>
+            <td>
+                  <span tal:condition="python:review_state.startswith('private')"
+                                    i18n:translate="is_private_file">This is a private file.</span>
+                  <span tal:condition="not: python:review_state.startswith('private')"
+                         i18n:translate="is_not_private_file">This is not a private file.</span> 
+                  <span class="private_bug"
+                        tal:condition="python:review_state.startswith('private')"
+                        i18n:translate="private"
+                        >Private</span>
+
+            </td>
+            <td class="transition_block">
+                <tal:condition tal:condition="shaction">
+                     <input type="button" class="EVclickPrivate"
+                           i18n:attributes="value"
+                           tal:attributes="class string:EVclickPrivate EVtoggleArea kssattr-transition-${shaction/id};
+                                           value shaction/name" />
+
+                     <input type="button" disabled="disabled" i18n:attributes="value change_state"
+                            class="hideme EVtoggleArea" value="change state, please wait..." />
+
+                     <img alt="Indicator" class="hideme EVtoggleArea"
+                          tal:attributes="src string:/++resource++indicator.gif"
+                          style="vertical-align: middle;" height="5" width="21"
+                          i18n:attributes="alt indicator;" />
+                </tal:condition>
+            </td>
+            </tr>
+            <tr class="change_other_state"
+                metal:define-macro="change_other_state"
+                tal:define="otherActions otherActions | options/otherActions;
+                            review_state review_state | options/review_state;">
+            <th style="width: 1%; white-space: nowrap" i18n:translate="review_file_information">review information:</th>
+            <td>
+                  <span i18n:translate="reviewed" tal:condition="python:review_state.endswith('published')">The file has already reviewed.</span>
+                  <span i18n:translate="not_published" tal:condition="python:review_state.endswith('pending')">The file is being reviewed.</span>
+                  <span i18n:translate="submitting" tal:condition="python:not review_state.endswith('pending') and not review_state.endswith('published')">The file hasn't submitted.</span>
+
+                  <span class="pending_bug"
+                        tal:define="pending python:review_state.endswith('pending') and 'pending';
+                                    published python:review_state.endswith('published') and 'published';
+                                    state python:pending or published;"
+                        tal:condition="state"
+                        tal:attributes="class string:${state}_bug"
+                        i18n:translate=""
+                        tal:content="state">Pending</span>
+            </td>
+            <td class="transition_block">
+                   <tal:block tal:repeat="action otherActions">
+                         <input type="button" 
+                                i18n:attributes="value"
+                                tal:attributes="value action/name;
+                                                class string:EVclickPrivate EVtoggleArea kssattr-transition-${action/id};" />
+                   </tal:block>
+
+                   <input type="button" disabled="disabled" i18n:attributes="value change_state"
+                          class="hideme EVtoggleArea" value="change state, please wait..." />
+
+                   <img alt="Indicator" class="hideme EVtoggleArea"
+                        tal:attributes="src string:/++resource++indicator.gif"
+                        style="vertical-align: middle;" height="5" width="21"
+                        i18n:attributes="alt indicator;" />
+            </td>
+            </tr>
+
+            <tr valign="top" class="history_version"
+                metal:define-macro="history_version"
+                tal:define="obj nocall:obj | nocall:options/obj;
+                           item_url obj/absolute_url;
+                           canEdit canEdit | python:checkPermission('Modify portal content', obj);
+                           basecamp_view basecamp_view | nocall:context/@@basecamp_view;
+                           versionable versionable | python:context.portal_repository.getHistory(obj, countPurged=False);">
+            <th i18n:translate="history_version">History versions:</th>
+            <td class="field">
+               <metal:use metal:use-macro="context/filerepos_listing/macros/versions_list"></metal:use>
+               <p class="blocki" tal:condition="python:not versionable" i18n:translate="no_history">no history versions</p>
+
+            </td>
+            <td>
+               <input type="button"
+                  value="Upload a new versions"
+                  tal:define="type_name obj/Type;"
+                  tal:condition="python:type_name not in ['Document', 'ChatLog'] and canEdit"
+                  tal:attributes="class string:admin EVtoggleSpecialArea EV${type_name}Update kssattr-fileViewUrl-file_view"
+                  i18n:attributes="value upload_new_version" />
+                 <img alt="Indicator" class="hideme EVtoggleSpecialArea"
+                      tal:attributes="src string:/++resource++indicator.gif"
+                      style="vertical-align: middle;" height="5" width="21"
+                      i18n:attributes="alt indicator;" />
+            </td>
+            </tr>
+          </table>
+
+        </div>
+        <div tal:replace="structure provider:zopen.comments" />
+    </div>
+
+    <div metal:fill-slot="portlets_two_slot"
+         tal:replace="structure provider:zopen.subscription"
+         tal:on-error="string:" />
+</body>
+</html>

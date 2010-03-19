@@ -1,0 +1,48 @@
+div#CategoryList {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+div#CategoryList a:link.category_link,
+div#CategoryList a:visited.category_link {
+  position: relative;
+  display: block;
+  margin-right: 80px;
+  padding: 4px;
+  line-height: 18px;
+}
+div#CategoryList a:hover.category_link {
+  background-color: #0033cc;
+  color: #fff !important;
+}
+div#CategoryList div.category .operations {
+  position: relative;
+  margin: 0 0 1px 0;
+  width: 110px;
+  padding: 4px 0;
+  line-height: 15px;
+  text-align: right;
+  float: right;
+}
+
+div#CategoryList div.category img.spinner {
+  padding-top: 6px;
+}
+
+div#CategoryList div.category img {
+  vertical-align: middle;
+}
+
+div#CategoryList.editing div.category {
+  border-top: 1px solid #ccc;
+}
+
+div#CategoryList.editing a:link.category_link,
+div#CategoryList.editing a:visited.category_link {
+  margin-right: 80px;
+}
+
+div#CategoryList.editing div.category div.operations {
+  display: block;
+}
+

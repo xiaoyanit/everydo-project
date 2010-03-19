@@ -1,0 +1,38 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:five="http://namespaces.zope.org/five"
+  >
+
+  <adapter factory=".teammanage.TeamListProvider"
+           name="zopen.teamlist"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <adapter factory=".adapters.FolderConentsTeamManager" />
+
+
+  <browser:page
+      for="plone.app.kss.interfaces.IPortalObject"
+      class=".kssview.SelectionView"
+      permission="cmf.ModifyPortalContent"
+      name="listRenameTeam"
+	  attribute="renameTeam" />
+
+  <browser:page
+      for="plone.app.kss.interfaces.IPortalObject"
+      class=".kssview.SelectionView"
+      permission="cmf.ModifyPortalContent"
+      name="deleteTeam"
+	  attribute="deleteTeam" />
+
+  <browser:page
+      for="plone.app.kss.interfaces.IPortalObject"
+      class=".kssview.SelectionView"
+      permission="cmf.AddPortalContent"
+      name="listCreateTeam"
+      attribute="listCreateTeam" />
+  <browser:resource
+          name="team-list.kss"
+          file="resource/team-list.kss" />
+
+</configure>

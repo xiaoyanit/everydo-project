@@ -1,0 +1,46 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:five="http://namespaces.zope.org/five"
+  >
+
+  <adapter factory=".comments.CommentsListProvider"
+           name="zopen.comments"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <adapter factory=".adapters.CMFCommentsManager" />
+
+  <browser:resource 
+      name="comment_icon.gif"
+      file="comment_icon.gif" /> 
+
+  <browser:resource 
+      name="comments.kss"
+      file="comments.kss" />
+
+  <browser:resource 
+      name="comments.css"
+      file="comments.css" />
+
+  <permission
+      id="cmf.ReplyToItem"
+      title="Reply to item"
+      />
+
+  <browser:page 
+      for="*"
+      name="addComment"
+      class=".comments.AddCommentView"
+      attribute="addComment"
+      permission="cmf.ReplyToItem"
+      />
+
+  <browser:page 
+      for="*"
+      name="submitComment"
+      class=".comments.AddCommentView"
+      attribute="submitComment"
+      permission="cmf.ReplyToItem"
+      />
+
+</configure>

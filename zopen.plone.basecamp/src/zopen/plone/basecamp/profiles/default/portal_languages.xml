@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<object name="portal_languages" meta_type="Plone Language Tool">
+ <default_language value="zh"/>
+ <use_path_negotiation value="False"/>
+ <use_cookie_negotiation value="True"/>
+ <use_request_negotiation value="True"/>
+ <use_cctld_negotiation value="False"/>
+ <use_combined_language_codes value="True"/>
+ <display_flags value="True"/>
+ <start_neutral value="True"/>
+ <supported_langs>
+  <element value="en"/>
+  <element value="zh-tw"/>
+  <element value="zh"/>
+  <element value="jp"/>
+  <element value="kr"/>
+ </supported_langs>
+</object>

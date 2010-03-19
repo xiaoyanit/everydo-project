@@ -1,0 +1,251 @@
+
+    /* zrt-cssregistry: base_properties */
+    /*
+** Stylesheet with Internet Explorer-specific workarounds.
+*/
+
+/* <dtml-with base_properties */
+/* Plone */
+input {
+margin-bottom: 1px;
+}
+table.kssDeleteTag {
+width: auto;
+}
+table.listing td.top {
+/* insane IE row bug workaround */
+position: relative;
+left: -1px;
+top: -1px;
+}
+.visualOverflow {
+width: 88%;
+}
+.visualGhosted {
+filter:alpha(opacity=20);
+}
+#portal-colophon .colophonIcon {
+height: 0px !important;
+height /**/: 15px;
+}
+
+/* make spans within ABBR have a border in IE6 the same way it is in all other browsers */
+* html abbr .explain {
+border-bottom: borderWidth dotted fontColor;
+}
+
+.hiddenStructure { /* This is necessary to eliminate the 1px high object in
+the document flow in place of .hiddenStructure block objects */
+position: absolute;
+}
+
+#floatholder, #float {
+height: 1%;
+}
+
+/* Fix for IE float bug */
+* html .visualIEFloatFix,
+* html h1,
+* html h2,
+* html h3,
+* html h4,
+* html h5,
+* html h6,
+* html dd,
+* html .documentDescription,
+* html .visualClear,
+* html .portalMessage,
+* html .portalWarningMessage,
+* html .portalStopMessage,
+* html .system-message,
+* html #error-handling,
+* html .documentContent {
+height: 0.1%;
+}
+/* Fix for IE float bug - have to use the Limi Hack here, since the paragraph
+tag doesn't take nicely to the height hack above in IE. */
+* html p {
+position: relative;
+}
+* html h1.documentFirstHeading {
+height: auto;
+}
+
+* html .link-external,
+* html .link-external a,
+* html .link-mailto a,
+* html .link-mailto {
+height: 1%;
+}
+
+/* There appears to be a bug in some IE 6 versions that causes dashed borders
+to get positioned strangely (i.e. out of the portlet in this case), and
+to move about when scrolling.  May be related to:
+http://mtiki.mmf.at/mt/archives/000011.html */
+dd.portletFooter {
+border-top-style: solid;
+}
+
+/* Rounded corner workarounds for IE */
+* html .portletHeader {
+height: 1%;
+}
+* html .portletHeader a span {
+color: fontColor;
+}
+
+/* IE6 adds gap between portalMessage's DT and DD. We need to minimize it */
+* html dl.portalMessage dt {
+margin-right: 0;
+}
+
+
+/* fix for the horizontal scroll due to the floated searchbox without width definition */
+* html #portal-searchbox {
+overflow: auto;
+}
+* html body.fullscreen #portal-searchbox {
+overflow: visible;
+}
+
+/* plone calendar */
+.ploneCalendar {
+border-collapse:collapse;
+width:auto;
+height:1%;
+}
+.ploneCalendar td {
+width:1%;
+}
+.ploneCalendar .todaynoevent,
+.ploneCalendar .todayevent {
+position: relative;
+}
+/* IE doesn't know what to do with the caption element, hide it */
+table.ploneCalendar caption {
+display: none !important;
+}
+
+/* zopen */
+/* 表单元素 */
+/* 按钮 */
+input.servicebutton {
+    padding: 0.45em 0.5em 0.1em 0.5em;
+    width: auto;
+    _width: 0;
+    overflow:visible !ie;
+}
+textarea {
+    width: 90%;
+}
+
+/* 表格处理 */
+table.task_info_table {
+    width: 90%;
+    margin: 0.5em 1.5em;
+}
+/* 权限设置表格 */
+#above-content-bar .shareAuthorizeTable {
+    zoom: 1;
+}
+
+/* 总体布局 */
+* html #portal-columns {
+    width: 100%;
+}
+div#portal-columns div#portal-column-one,
+div#portal-columns div#portal-column-two {
+    overflow: hidden;
+}
+
+/* 中间导航 */
+#portal-globalnav {
+    padding-bottom: 0.2em;
+}
+* html #portal-globalnav table {
+    display: inline-block;
+    margin-bottom: -0.5em;
+}
+#portal-globalnav td a div {
+    padding-top: 0.2em;
+}
+
+/* content table hack */
+#content,
+#content div,
+#content div div,
+.showhideform {
+    zoom: 1;
+}
+
+/* float */
+.contentbar_right,
+.contentbar_left,
+.topNavTabs {
+    height: 0.1%;
+}
+.topNavTabs li {
+    +float: none;
+}
+
+/* actionMenu */
+.topNavTabs .actionMenu .actionMenuContent {
+    +top: 1.5em;
+    +margin-left: -4em;
+}
+
+/* 右下角消息盒 */
+* html div.MessageNotify {
+    position: absolute;
+    right: 0;
+    bottom: auto;
+    top: expression(eval(document.compatMode &&
+            document.compatMode=='CSS1Compat') ?
+            documentElement.scrollTop +
+            +(documentElement.clientHeight-this.clientHeight)
+            : document.body.scrollTop
+            +(document.body.clientHeight-this.clientHeight));
+}
+
+/* 订阅人表单位置 */
+.PopMemberSelect {
+    margin-top: 22px;
+}
+
+/* calendar 日历 */
+div.calendar {
+    width: 242px;
+}
+
+/* 标签 */
+.tagSelectorField {
+    +width: 248px;
+}
+
+/* 文件夹浮动层 */
+.PopBrowser {
+    +width: 300px;
+}
+* html .PopBrowser {
+    z-index: 3;
+}
+#portal-column-two .portlet .PopBrowser {
+    right: 0;
+}
+
+/* 文件夹高级搜索 */
+div.hightSearchField input.searchIE {
+    +width: 111px !important;
+}
+
+div.hightSearchField select.searchIE {
+    +width: 120px !important;
+}
+
+/* 消除IE6/7空元素高度 */
+.emptyElement {
+    height: 0;
+    font-size: 1px;
+}
+
+/* </dtml-with */

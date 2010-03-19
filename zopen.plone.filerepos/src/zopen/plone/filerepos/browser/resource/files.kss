@@ -1,0 +1,123 @@
+.EVadd:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('.TGadd');
+    toggleClass-value: hideme;
+}
+
+.EVuploadReplaceImg:click {
+    action-client: toggleClass css('.TGuploadReplaceImg');
+    toggleClass-value: hideme;
+}
+
+a.EVFileProp:click {
+    evt-click-preventdefault: true;
+
+    action-server: filerepos_edit_file url(kssAttrJoin('*kssurl', '/@@filerepos_edit_file'));
+    filerepos_edit_file-fileViewUrl: kssAttr('fileViewUrl');
+}
+
+a.EVFileUpdate:click {
+    evt-click-preventdefault: true;
+
+    action-server: filerepos_save_new_version url(kssAttrJoin('*kssurl', '/@@filerepos_save_new_version'));
+    filerepos_save_new_version-fileViewUrl: kssAttr('fileViewUrl');
+}
+
+td .EVFileUpdate:click {
+    evt-click-preventdefault: true;
+
+    action-server: filerepos_save_new_version url(kssAttrJoin('*kssurl', '/@@filerepos_save_new_version'));
+    filerepos_save_new_version-fileViewUrl: kssAttr('fileViewUrl');
+
+	action-client: toggleClass css('.EVtoggleSpecialArea');
+	toggleClass-value: hideme;
+}
+
+a.EVImageProp:click {
+    evt-click-preventdefault: true;
+
+    action-server: filerepos_edit_file url(kssAttrJoin('*kssurl', '/@@filerepos_edit_file'));
+    filerepos_edit_file-fileViewUrl: kssAttr('fileViewUrl');
+}
+
+a.EVImageUpdate:click {
+    evt-click-preventdefault: true;
+
+    action-server: filerepos_save_new_version url(kssAttrJoin('*kssurl', '/@@filerepos_save_new_version'));
+    filerepos_save_new_version-fileViewUrl: kssAttr('fileViewUrl');
+}
+
+td .EVImageUpdate:click {
+    evt-click-preventdefault: true;
+
+    action-server: filerepos_save_new_version url(kssAttrJoin('*kssurl', '/@@filerepos_save_new_version'));
+    filerepos_save_new_version-fileViewUrl: kssAttr('fileViewUrl');
+
+	action-client: toggleClass css('.EVtoggleSpecialArea');
+	toggleClass-value: hideme;
+}
+
+.EVitemCancel:click {
+    evt-click-preventdefault: true;
+
+    action-client: removeClassName parentnodenextnode('div.showhidewrapper');
+    removeClassName-name: hideme;
+
+    action-client: deleteNode parentnode('div.showhidewrapper');
+}
+
+.EVuploadItemCancel:click {
+    evt-click-preventdefault: true;
+
+	action-client: toggleClass css('.EVtoggleSpecialArea');
+	toggleClass-value: hideme;
+
+    action-client: removeClassName parentnodenextnode('div.showhidewrapper');
+    removeClassName-name: hideme;
+
+    action-client: deleteNode parentnode('div.showhidewrapper');
+}
+
+#new_writeboard input[name="commit"]:click {
+    action-client: toggleClass css('.TGcommitnew');
+    toggleClass-value: hideme;
+}
+
+/*
+.delete_version:click {
+    evt-click-preventdefault: true;
+	action-server: delete_version url(kssAttrJoin('*kssurl', '/@@delete_version'));
+	delete_version-version_id: kssAttr('version_id');
+}
+*/
+
+.EVclickPrivate:click {
+	evt-click-preventdefault: true;
+	
+    action-client: toggleClass parentnodecss('.transition_block|.EVtoggleArea');
+    toggleClass-value: hideme;
+
+	action-server: changeFileState;
+	changeFileState-transition: kssAttr('transition');
+}
+
+.EVselCat:click {
+    evt-click-preventdefault: true;
+    action-client: toggleClass parentnodecss('.file_info|.EVselCat');
+    toggleClass-value: hideme;
+
+    action-server: selectCategory url(kssAttrJoin('*kssurl', '/@@selectCategory'));
+}
+
+.file_info .categorySelect:blur {
+    action-client: toggleClass parentnodecss('.file_info|.EVselCat');
+    toggleClass-value: hideme;
+
+    action-client: deleteNode samenode('');
+}
+
+.file_info .categorySelect:change {
+    action-server: changeCategory url(kssAttrJoin('*kssurl', '/@@changeCategory'));
+    changeCategory-value: currentFormVar();
+}

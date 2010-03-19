@@ -1,0 +1,29 @@
+<metal:persons
+     tal:define="members view/getMembers"
+     tal:condition="members"
+     i18n:domain="zopen.org">
+<tal:rep repeat="company_title members/keys">
+<div tal:define="people members/?company_title;
+                 company python:people[0];
+                 people python:people[1:];
+                "
+    ><tal:cond define="person python:people[0]"
+             condition="python:len(people) == 1"><input
+            type="checkbox" name="persons:list" value=""
+            tal:attributes="value person/getId; checked python:person.getId() in context.getProperty('object_subscribers', []);"
+        /><strong><tal:block
+        replace="company/pretty_title_or_id" />:</strong> <tal:block
+        replace="person/pretty_title_or_id" />
+    </tal:cond>
+    <div class="toggleArea" tal:condition="python:len(people) > 1">
+         <span class="ASelect"><input type="checkbox" class="EVcheckAll" name="pt_toggle" value="#" /></span>
+         <span class="ASelect hideme"><input type="checkbox" class="EVuncheckAll" checked="checked" name="pt_toggle" value="#" /></span>
+            <strong><tal:i18n i18n:translate="all_of">All of</tal:i18n>
+     <tal:block replace="company/pretty_title_or_id" /></strong><br />
+     <div style="padding-left:20px;">
+        <tal:rep repeat="person people"><input type="checkbox" class="TGtogglecheck" name="persons:list"
+                 tal:attributes="value person/getId; checked python:person.getId() in context.getProperty('object_subscribers', []);"
+    /><span tal:replace="person/pretty_title_or_id"
+    /></tal:rep></div></div></div>
+</tal:rep>
+</metal:persons>

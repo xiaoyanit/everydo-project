@@ -1,0 +1,24 @@
+<configure
+    xmlns:zope="http://namespaces.zope.org/zope"
+    xmlns="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="zopen.edo.oc.portal">
+
+  <!-- zopen.css -->
+  <!-- something like plone's base_properties -->
+  <include file="baseproperty.zcml" />
+
+  <zrt-resource name="base.css" file="css/base.css"/>
+  <zrt-resource name="public.css" file="css/public.css" />
+  <zrt-resource name="forms.css" file="css/forms.css" />
+  <zrt-resource name="invisibles.css" file="css/invisibles.css" />
+
+  <collector name="everydo.css" type="zope.interface.Interface" />
+  <collectorItem collector="everydo.css" item="base.css" weight="1" />
+  <!--collectorItem collector="everydo.css" item="columns.css" weight="2" /-->
+  <collectorItem collector="everydo.css" item="public.css" weight="3" />
+  <collectorItem collector="everydo.css" item="forms.css" weight="4" />
+  <!--collectorItem collector="everydo.css" item="authoring.css" weight="5" /-->
+  <collectorItem collector="everydo.css" item="invisibles.css" weight="6" />
+  <!--collectorItem collector="everydo.css" item="ploneKss.css" weight="7" /-->
+</configure>

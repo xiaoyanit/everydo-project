@@ -1,0 +1,95 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.milestone">
+
+
+ <metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:fill fill-slot="style_slot">
+
+  <link href="#" type="text/css"  rel="stylesheet" media="screen" 
+        tal:attributes="href string:$portal_url/++resource++project.css?34223332" />
+<link href="#" type="text/css" rel="stylesheet" media="screen"
+      tal:attributes="href string:$portal_url/++resource++milestone.css?34223332" />
+                
+</metal:fill>
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/site-actions">site</metal:block>
+</div>
+
+<div metal:fill-slot="main" id="front-page-content"
+     tal:define="responsible view/getResponsibleInfo;
+                 responsibleName responsible/title;
+                 responsibleId responsible/id;
+                 milestones view/get3monthsMilestones">
+  
+  
+    <p style="text-align:center;">
+     <span i18n:translate="show_assigned_to">Show items assigned to:
+     <select name="responsibleParty"
+             i18n:name="someone"
+             tal:attributes="onchange string:window.location.href='$portal_url/@@milestones_report' + '?responsibleParty=' + options[this.selectedIndex].value">
+        <option value="" i18n:translate="all_responsibles">Anyone</option> 
+        <option tal:repeat="resp view/getAvaResponsibles"
+                tal:attributes="value python:resp[0];
+                                selected python:resp[0] == responsibleId;"
+                tal:content="python:resp[1]">company</option>
+     </select>
+     </span>
+          <tal:i18n i18n:translate="next_3_months_milestones">milestones over the next 3 months</tal:i18n>
+     </p>
+
+<table width="100%" cellspacing="1" cellpadding="0" border="0" class="Dashcal">
+    <tbody>
+    <tr>
+        <th> </th>
+        <th tal:repeat="NameDay view/getWeekHeader">
+          <tal:i18n i18n:translate="week" />
+          <tal:block tal:content="NameDay"
+                     i18n:translate="">Mon</tal:block></th>
+    </tr>
+
+    <tal:months tal:repeat="i python:range(3)">
+    <tal:define tal:define="monthcal python:view.getMonthCal(i);
+                            month_milestones python:milestones.get(monthcal['month'], {})">
+    <tr>
+        <th class="month"
+            tal:attributes="rowspan python:len(monthcal['days'])+1">
+            <span tal:replace="monthcal/name" /> 月
+        </th>
+    </tr>
+    <tr tal:repeat="row monthcal/days">
+        <tal:days tal:repeat="day row">
+        <td valign="top"
+            tal:define="dayInfo python:month_milestones.get(day, {'name':day, 'milestones':[]})"
+            tal:attributes="class python:not day and 'blank' or dayInfo['name'] == 'TODAY' and 'today' or dayInfo['milestones'] and 'with' or ''">
+            <span i18n:translate=""
+                  tal:replace="python:day in month_milestones and month_milestones[day]['name'] or day or ''"></span>
+            <ul tal:condition="dayInfo/milestones">
+              <li tal:repeat="milestone dayInfo/milestones">
+                  <a tal:content="milestone/Title"
+                     tal:define="project python:milestone.getObject().getProject();
+                                 company python:project.getCompany().Title();
+                                 person python:basecamp_view.getMemberName(milestone.getResponsibleParty);"
+                     tal:attributes="href string:${milestone/getURL}/..;
+                                     title string:$company | ${project/Title} | ${person}">title</a>
+              </li>
+            </ul>
+
+        </td>
+        </tal:days>
+    </tr>
+    </tal:define>
+    </tal:months>
+
+    </tbody>
+</table>
+
+</div>
+
+    <div metal:fill-slot="portlets_two_slot">
+        <div metal:use-macro="context/@@macro_basecamp/macros/companylogo" />
+        <div metal:use-macro="context/@@project_list/macros/projects" />
+    </div>
+</html>

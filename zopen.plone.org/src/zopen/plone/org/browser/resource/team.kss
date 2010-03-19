@@ -1,0 +1,153 @@
+.EVaddcompany:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('.TGaddcompany');
+    toggleClass-value: hideme;
+}
+
+.EVaddperson:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass parentnodecss('.companyRow|.TGaddperson');
+    toggleClass-value: hideme;
+}
+
+td.company a.EVremovecompany:click {
+    evt-click-preventdefault: true;
+
+    action-server: remove_company_from_project;
+    remove_company_from_project-company_name: kssAttr('companyname', true);
+}
+
+td.person a.EVremoveperson:click {
+    evt-click-preventdefault: true;
+
+    action-server: remove_person_from_project;
+    remove_person_from_project-person_name: kssAttr('person_name', true);
+}
+
+form.chooseCompany input.submitInput:click {
+    evt-click-preventdefault: true;
+
+    action-server: select_add_company currentForm();
+}
+
+form.addNewCompany input.submitInput:click {
+    evt-click-preventdefault: true;
+
+    action-server: add_new_company currentForm();
+}
+
+form.addexistingperson input.submitInput:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass parentnodecss('.companyRow|.TGaddperson');
+    toggleClass-value: hideme;
+
+    action-server: addExistingPerson currentForm();
+    addExistingPerson-company_name: kssAttr('companyname', true);
+}
+
+form.addnewperson input.submitInput:click {
+    evt-click-preventdefault: true;
+
+	action-client: toggleClass parentnodecss('.companyRow|.TGaddperson');
+	toggleClass-value: hideme;
+
+    action-server: add_new_person currentForm();
+}
+
+span.addTeamArea select:change {
+    action-client: toggleClass parentnodecss('.addTeamArea|.EVaddTeam');
+    toggleClass-value: hideme;
+
+    action-client: addClass samenode('');
+    addClass-value: hideme;
+
+    action-server: setPersonTeam currentForm();
+    setPersonTeam-person_id: kssAttr('person_name', true);
+    setPersonTeam-team_id: currentFormVar();
+    setPersonTeam-just_change: 'no';
+}
+
+.parentteamitem select:change {
+    action-server: setPersonTeam currentForm();
+    setPersonTeam-person_id: kssAttr('person_name', true);
+    setPersonTeam-team_id: currentFormVar();
+    setPersonTeam-the_item_id: kssAttr('theitemid', true);
+    setPersonTeam-just_change: 'yes';
+
+}
+
+.new-person-email:blur {
+   action-server: validateEmail;
+   validateEmail-useremail: currentFormVar();
+}
+
+.new-person-name:blur {
+   action-server: validateUserName;
+   validateUserName-username: currentFormVar();
+}
+
+.EVdisable:click {
+    action-client: toggleClass parentnodecss('.companyRow|.TGdisable');
+    toggleClass-value: hideme;
+}
+
+.EVaddTeam:click {
+	action-client: toggleClass samenode('');
+	toggleClass-value: hideme;
+
+	action-server: getTeamSelect;
+}
+
+.teamitemclick:click {
+	action-client: toggleClass samenode('');
+	toggleClass-value: hideme;
+
+	action-server: getTeamSelect;
+	getTeamSelect-team_id: kssAttr('team_id', true);
+}
+
+.addTeamArea .selectarea:blur {
+	action-client: toggleClass parentnodecss('.addTeamArea|.EVaddTeam');
+	toggleClass-value: hideme;
+
+    action-client: deleteNode samenode('');
+}
+
+.teamitems .selectarea:blur {
+	action-client: toggleClass parentnodecss('.parentteamitem|.teamitemclick');
+	toggleClass-value: hideme;
+
+    action-client: deleteNode samenode('');
+}
+
+.EVdeleteTeam:click {
+    action-server: remove_person_from_team; 
+    remove_person_from_team-person_name: kssAttr('person_name', true);
+	remove_person_from_team-team_id: kssAttr('team_id', true);
+}
+
+.EVdeletePerson:click {
+	evt-click-preventdefault: true;
+	action-server: updateCompany;
+	updateCompany-companyname: kssAttr('companyname', true);
+}
+
+.EVchangeDisplay:click {
+	evt-click-preventdefault: true;
+	action-client: toggleClass css('.ChooseArea');
+	toggleClass-value: hideme;
+}
+
+.EVchangeCompany:click {
+	evt-click-preventdefault: true;
+	action-client: toggleClass css('.TGchangeCompany');
+	toggleClass-value: hideme;
+}
+
+.wasLocked:load {
+    action-server: unlockPerson  url(kssAttrJoin('*person_url','/@@unlockPerson'));
+}
+

@@ -1,0 +1,63 @@
+
+    /* zrt-cssregistry: base_properties */
+
+/* Fallback for edit screen if both columns are hidden */
+/* Main portlet elements */
+.portlet {
+margin: 0 0 1em;
+border-bottom: borderWidth borderStyle globalBorderColor;
+background-color: backgroundColor;
+}
+
+.portletHeader {
+background-color: globalBackgroundColor;
+padding: 0 0.5em;
+border-width: 0 borderWidth borderWidth;
+border-style: borderStyle;
+border-color: globalBorderColor;
+text-transform: textTransform;
+font-size: fontMiddleSize;
+font-weight: normal;
+line-height: 1.6em;
+}
+.portletHeader .admin {
+float: right;
+}
+
+.portletItem {
+margin: 0;
+padding: 0.5em;
+border-left: borderWidth borderStyle globalBorderColor;
+border-right: borderWidth borderStyle globalBorderColor;
+}
+.portletItem ol {
+margin: 0 0 0 1.5em;
+}
+.portletItem ul {
+list-style-type: none;
+}
+
+/* 查看详细链接 */
+.portletItemDetail {
+text-align: right;
+}
+
+.portletFooter {
+background-color: evenRowBackgroundColor;
+margin: 0;
+padding: 0.25em 1em;
+border: borderWidth borderStyle globalBorderColor;
+border-style: dotted borderStyle none borderStyle;
+text-align: right;
+}
+.portletFooter a { border-bottom: none; }
+
+/* 背景透明的面板 */
+.transparentPortlet {
+    border-bottom: 0;
+}
+.transparentPortlet .portletItem {
+    border: 0;
+    background-color: edoBodyColor;
+}
+

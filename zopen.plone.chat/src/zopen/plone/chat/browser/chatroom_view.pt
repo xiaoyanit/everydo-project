@@ -1,0 +1,209 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      metal:use-macro="here/main_template/macros/master" i18n:domain="zopen.chat">
+<head>
+
+    <metal:noborder fill-slot="top_slot"
+    tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:baseslot fill-slot="base">
+<base tal:attributes="href string:$here_url/" /> 
+</metal:baseslot>
+
+<metal:css fill-slot="style_slot">
+
+  <style type="text/css" 
+         media="all"><!-- @import url(/++resource++plonechat.css?34223332); --></style>
+
+  <link type="text/css" rel="kinetic-stylesheet" 
+        href="/++resource++chat.kss?34223332" />
+
+</metal:css>
+
+<metal:block metal:fill-slot="javascript_head_slot">
+
+<script type="text/javascript"
+        src="/++resource++plonechat.js?34223332"></script>
+
+</metal:block>
+
+</head>
+
+<body>
+<div metal:fill-slot="main" 
+      tal:define="inserturl string:insertNewMessage;
+                  canPost here/canPost;
+                  global canEdit python:mtool.checkPermission('Modify portal content',here);
+                  charset here/getCharset;
+                  chatHeight here/getChatWindowHeight;
+                  ajax_users_url string:getChatUsers;
+                  onlyUpdate python:int(here.getOnlyUpdate());
+                  login python: request.AUTHENTICATED_USER;"
+      tal:attributes="onunload string:javascript:logout('logout')">
+
+
+
+
+<form method="post"
+      name="chat">
+  <div id="chat-window" tal:attributes="style string:height: ${chatHeight}px"></div>
+
+  <div>
+  <table width="100%">
+     <tr>
+       <td width="90%">
+         <textarea tal:condition="canPost"
+            type="text"
+            name="messageToSend"
+            id="chat-text"
+            tal:attributes="onkeyup string:clearIEReturn(event, this);
+             onkeypress string:javascript:return sendMessageOnKeyPress(event, '${inserturl}', document.chat.messageToSend);;"></textarea>
+       </td>
+       <td width="10%">
+        <input tal:condition="canPost"
+         type="button"
+         name="sendMessage"
+         id="sendMessage"
+         value="Send message"
+         i18n:attributes="value send_message;"
+         tal:attributes="onclick string:javascript:sendNewMessage('${inserturl}', document.chat.messageToSend)" />
+
+       </td>
+     </tr>
+  </table>
+  </div>
+</form>
+
+
+
+<p tal:condition="not:canPost"
+   i18n:translate="label_cannot_post">You don't have the rights to post messages.
+</p>
+</div>
+
+<tal:right metal:fill-slot="portlets_two_slot"
+        tal:define="kssClassesView context/@@kss_field_decorator_view;
+        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                  isPrivate view/isPrivate;
+        templateId string:asdf;">
+
+ <div style="margin-bottom: 1em">
+        <a tal:condition="canEdit"
+           href="#"
+           tal:attributes="onclick string:if(confirm('开启新会话，将清空本次讨论内容。\n 您确定要继续吗？')){if(confirm('开启新会话前，系统可将当前讨论记录在项目>文件区存档。\n您需要存档此次讨论记录吗？')){simpleAjaxRequest('${here_url}/newSession');;}else{simpleAjaxRequest('${here_url}/clearLogs');;}} return false"
+           style="display:block;background:transparent url('create-project.gif') no-repeat;padding:6px 0px 8px 10px;font-weight:bold;color:#000;white-space:normal;text-align:center;width:170px;text-decoration:none;"
+           i18n:translate="open_a_new_conversation">
+           <span style="font-size:11px;">New conversation</span></a>
+
+   <a href="#" target="_blank"
+      tal:define="all_sessions_url view/getAllSessionsURL"
+      tal:condition="all_sessions_url"
+      tal:attributes="href all_sessions_url" 
+      i18n:translate="archiving_conversation">Archiving all conversation...</a>
+
+ </div>
+
+<div id="chat-topic">
+
+   <h1> 
+       <a href="#" style="float: right" class="admin TGedit EVedit"
+          tal:condition="canEdit" i18n:translate="edit">Edit</a>
+       <tal:i18n i18n:translate="discussion_topic">Discussion topic</tal:i18n>
+       <span tal:condition="isPrivate" class="private_bug" i18n:domain="zopen.filerepos" i18n:translate="Private">Private</span>
+       <span tal:condition="not: isPrivate"></span>
+   </h1>
+
+   <p class="TGedit" id="chat-topic-content" style="margin-left: 1em">
+       <span tal:replace="python:context.Description() or default">
+         无主题
+       </span>
+   </p>
+
+   <form tal:condition="canEdit" id="edit-chat" class="hideme showhide TGedit">
+      <textarea name="description" style="width:80%" rows="4" tal:content="context/Description"></textarea>
+      <br />
+      <input type="checkbox" name="private" 
+             tal:attributes="checked isPrivate"/> 
+        <tal:i18n i18n:translate="private">Private</tal:i18n>
+      <p class="submit hideme">
+         <img src="/++resource++indicator.gif" />
+      </p>
+      <p class="submit">
+         <input type="submit" class="submitInput" name="submit" value="Save" i18n:attributes="value save;"/> 
+         <tal:i18n i18n:translate="or">or</tal:i18n> 
+         <a href="#" class="admin EVedit" i18n:translate="cancel">Cancel</a>
+      </p>
+   </form>
+</div>
+
+
+   <div>
+      <h1 i18n:translate="who_here">Who's here?</h1>
+
+      <div id="active-users" class="chat-users"></div>
+   </div>
+
+   <div i18n:domain="zopen.widgets">
+
+      <div class="TGuploadfile TGsubmitupload">
+      <a href="#" class="EVuploadfile" i18n:translate="upload_a_file">upload a file</a>
+      </div>
+
+
+      <p id="submit-progress-bar" class="submit hideme TGsubmitupload">
+          <img src="/++resource++progress_bar.gif" alt="Progress_bar"/>
+      </p>
+
+    <div id="upload-area" class="showhide TGuploadfile hideme TGsubmitupload">
+    <iframe id="upload_target" name="upload_target" style="width:0;height:0"
+            src="" frameborder="0"></iframe>
+    <form target="upload_target" method="post" 
+          enctype="multipart/form-data"
+          tal:attributes="action string:$here_url/@@uploadFile">
+
+      <p i18n:translate="choose_file_less">Choose a file less than 30MB in size.</p>
+      <p><input type="file" id="file-uploader" name="upload.file:record" />
+          <br />
+      <select tal:define="cat_context nocall:context/files;
+                         name string:upload.category:record;"
+             tal:replace="structure provider:zopen.categoryselection"/>
+      </p>
+
+      <p class="submit">
+        <input type="submit" i18n:attributes="value upload;" value="Upload" 
+               class="EVsubmitupload" name="commit"/> <tal:i18n i18n:translate="or">or</tal:i18n> 
+        <a href="#" class="admin EVuploadfile" i18n:translate="cancel">Cancel</a>
+      </p>
+    </form>
+    </div>
+
+
+   </div>
+
+
+<script type="text/javascript"
+      tal:define="refresh_rate python:5;
+                  refresh_rate python:refresh_rate * 1000;
+                  ajaxurl string:getModeratedMessages;
+                  moderation_url string:moderateMessages;                  
+                  inserturl string:insertNewMessage;
+                  charset here/getCharset;
+                  chatHeight here/getChatWindowHeight;
+                  ajax_users_url string:getChatUsers;
+                  onlyUpdate python:int(here.getOnlyUpdate());
+                  login python: request.AUTHENTICATED_USER;"
+        tal:content="structure string: 
+var interval = ${refresh_rate};
+var chat_height = ${chatHeight};
+var login = '${login}';
+var ajax_url = '${ajaxurl}';
+var onlyUpdate = ${onlyUpdate};
+var moderation = false;
+var lastID = 0;
+var msgList = document.getElementById('chat-window');
+var userList = document.getElementById('active-users');
+updateChat(); ">
+</script>
+</tal:right>
+
+</body>
+</html>

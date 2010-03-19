@@ -1,0 +1,13 @@
+setup.py
+src/zopen/__init__.py
+src/zopen.validations.egg-info/PKG-INFO
+src/zopen.validations.egg-info/SOURCES.txt
+src/zopen.validations.egg-info/dependency_links.txt
+src/zopen.validations.egg-info/namespace_packages.txt
+src/zopen.validations.egg-info/not-zip-safe
+src/zopen.validations.egg-info/requires.txt
+src/zopen.validations.egg-info/top_level.txt
+src/zopen/validations/__init__.py
+src/zopen/validations/interfaces.py
+src/zopen/validations/kssview.py
+src/zopen/validations/utils.py

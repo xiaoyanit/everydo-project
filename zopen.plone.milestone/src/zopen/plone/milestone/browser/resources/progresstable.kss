@@ -1,0 +1,37 @@
+tbody img.EVexpand:click{
+   action-client: removeClass parentnodecss('.projectblock|.TGcollaps');
+   removeClass-value: hideme;
+
+   action-client: addClass parentnodecss('.projectblock|.EVexpand');
+   addClass-value: hideme;
+}
+
+tbody img.EVcollaps:click{
+   action-client: addClass parentnodecss('.projectblock|.TGexpand');
+   addClass-value: hideme;
+
+   action-client: removeClass parentnodecss('.projectblock|.EVexpand');
+   removeClass-value: hideme;
+}
+
+thead img.EVexpand:click{
+   action-client: removeClass css('.TGcollaps');
+   removeClass-value: hideme;
+
+   action-client: addClass css('.EVexpand');
+   addClass-value: hideme;
+}
+
+thead img.EVcollaps:click{
+   action-client: addClass css('.TGexpand');
+   addClass-value: hideme;
+
+   action-client: removeClass css('.EVexpand');
+   removeClass-value: hideme;
+}
+
+a.EVdrag:click{
+   evt-click-preventdefault: true;
+
+   action-client: addclass css('not working....');
+}

@@ -1,0 +1,12 @@
+projectNameColor:string=#98CBE9
+clientNameColor:string=#fff
+headerBackground:string=#AC205F
+currentTabText:string=#AC205F
+tabBackground:string=#E44C90
+tabTextColor:string=#fff
+tabHoverText:string=#fff
+tabHoverBackground:string=#E96EA5
+
+linkActiveColor:string=#fff
+discreetColor:string=#76797c
+textTransform:string=none

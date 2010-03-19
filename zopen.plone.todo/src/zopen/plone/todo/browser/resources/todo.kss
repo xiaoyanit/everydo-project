@@ -1,0 +1,203 @@
+.EVnewlist:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGnewlist');
+   toggleClass-value: hideme;
+}
+
+div.SectionHeader span.TGnewlist a.EVnewlist:click {
+   evt-click-preventdefault: true;
+
+   action-client: focus css('#add_todolist .list_title');
+}
+
+a.EVadditem:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.todolist|.TGadditem');
+   toggleClass-value: hideme;
+}
+
+a.TGadditem:click {
+   evt-click-preventdefault: true;
+
+   action-client: focus;
+   focus-kssSelector: parentnodecss('.todolist|.new_item_title');
+}
+
+form.additemform input[type="submit"]:click {
+   evt-click-preventdefault: true;
+
+   action-server: addTodoItem url(kssAttrJoin('*listid','/@@addTodoItem')) currentForm();
+   addTodoItem-is_template: kssAttr(is_template, True);
+
+   action-client: toggleClass parentnodecss('.TGadditem|.submit');
+   toggleClass-value: hideme;
+
+   action-client: focus;
+   focus-kssSelector: parentnodecss('.todolist|.new_item_title');
+}
+
+form.addlistform input[type="submit"]:click{
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.TGnewlist|.submit');
+   toggleClass-value: hideme;
+
+   action-server: addTodoList currentForm();
+   addTodoList-is_template: kssAttr(is_template, True); 
+}
+
+form.edititem input[type="submit"]:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.edititemwrapper|.submit');
+   toggleClass-value: hideme;
+
+   action-server: saveItem url(kssAttrJoin('*listid', '/', '*itemid', '/@@saveItem')) currentForm();
+   saveItem-is_template: kssAttr(is_template, True);
+}
+
+form.editlist input[type="submit"]:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.editlistformwrapper|.submit');
+   toggleClass-value: hideme;
+
+   action-server: saveList url(kssAttrJoin('*listid', '/@@saveList')) currentForm();
+   saveList-is_template: kssAttr(is_template, True);
+}
+
+a.EVorderlists:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGorderlists');
+   toggleClass-value: hideme;
+
+}
+
+input[type="checkbox"].EVcomplete:click {
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGcomplete');
+   toggleClass-value: hideme;
+
+   action-server: completeTodoItem url(kssAttrJoin('*listid', '/', '*itemid', '/@@completeTodoItem'));
+}
+
+input[type="checkbox"].EVactivate:click {
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGactivate');
+   toggleClass-value: hideme;
+
+   action-server: activeTodoItem url(kssAttrJoin('*listid', '/', '*itemid', '/@@activeTodoItem'));
+}
+
+#startOrderLists:click {
+   action-client: sortTodoLists;
+}
+
+/*
+#endOrderLists:click {
+   action-client: sortTodoItems;
+}
+*/
+
+body:load {
+   action-client: sortTodoItems;
+}
+
+div.activetodos div.kssDeletionRegion div.hoverparti:mouseover {
+   action-client: setStyle parentnodecss('.kssDeletionRegion|.toolbox');
+   setStyle-name: display;
+   setStyle-value: block;
+}
+
+div.activetodos div.kssDeletionRegion div.hoverparti:mouseout {
+   action-client: setStyle parentnodecss('.kssDeletionRegion|.toolbox');
+   setStyle-name: display;
+   setStyle-value: none;
+}
+
+a.editlist:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.todolist|.TGeditlist');
+   toggleClass-value: hideme;
+
+   action-server: editList url(kssAttrJoin('*listid', '/@@editList'));
+   editList-is_template: kssAttr(is_template, True);
+}
+
+a.edititem:click {
+   evt-click-preventdefault: true;
+
+   action-server: editItem url(kssAttrJoin('*listid', '/', '*itemid', '/@@editItem'));
+   editItem-is_template: kssAttr(is_template, True);
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGedititem');
+   toggleClass-value: hideme;
+}
+
+img.timetracker:click {
+   evt-click-preventdefault: true;
+
+   action-server: trackItem url(kssAttrJoin('*listid', '/', '*itemid', '/@@trackItem'));
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGedititem');
+   toggleClass-value: hideme;
+}
+
+a.EVeditlist:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodenextnode('.editlistformwrapper');
+   toggleClass-value: hideme;
+
+   action-client: deleteNode parentnode('.editlistformwrapper');
+}
+
+
+.edititem a.EVcanceledititem:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.itemtext');
+   toggleClass-value: hideme;
+
+   action-client: deleteNode parentnodecss('.kssDeletionRegion|form.edititem');
+}
+
+
+a.EVcanceltrackitem:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.itemtext');
+   toggleClass-value: hideme;
+
+   action-client: deleteNode parentnodecss('.kssDeletionRegion|div.trackitem');
+}
+
+form.trackform input[type=submit]:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.trackitem|.submit');
+   toggleClass-value: hideme;
+
+   action-server:addTrack url(kssAttrJoin('*listid', '/', '*itemid', '/@@addTrack')) currentForm();
+}
+
+.smallgray a span.TGselett:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGselett');
+   toggleClass-value: hideme;
+}
+
+.EVfirst:load {
+   action-client: setStyle css('.TGfirst');
+   setStyle-name: 'display';
+   setStyle-value: 'none';
+}
+
+.EVfirst:click {
+   action-client: setStyle css('.TGfirst');
+   setStyle-name: 'display';
+   setStyle-value: 'block';
+}

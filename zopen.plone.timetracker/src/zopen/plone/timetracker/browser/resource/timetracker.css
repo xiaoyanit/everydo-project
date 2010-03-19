@@ -1,0 +1,187 @@
+table.MakeReport {
+    margin: 10px 0 0 0;
+}
+
+table.MakeReport td {
+    padding-right: 5px;
+    font-size: 12px;
+}
+
+h1#reporttitle {
+    font-size: 18px;
+    margin-bottom: 5px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid #000;
+}
+
+h1#reporttitle span {
+    font-size: 12px;
+    color: #999;
+    font-weight: normal;
+}
+
+
+/*-------------------------------------------------
+TIME TRACKING TAB
+-------------------------------------------------*/
+
+table.TimeTrack {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+table.TimeTrack th {
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 0 3px 3px 3px;
+    border-bottom: 1px solid #999;
+}
+
+table.TimeTrack th.project {
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+    background: #e9e9e9;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #fff;
+    text-align: left;
+    padding: 5px;
+    text-transform: none;
+    border-bottom: 1px solid #999;
+}
+
+table.TimeTrack th.project a {
+    color: #000;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+table.TimeTrack th.project span.project_link {
+    color: #666;
+    font-size: 11px;
+}
+
+table.TimeTrack th.project span.project_link a {
+    color: red;
+    text-decoration: underline;
+    font-weight: normal;
+    font-size: 11px;
+}
+
+table.TimeTrack th.project span.project_link a:hover {
+    color: #fff;
+}
+
+table.TimeTrack th.project a span {
+    color: #666;
+    font-size: 11px;
+}
+
+table.TimeTrack th.project a:hover,
+table.TimeTrack th.project a:hover span {
+    color: #fff;
+}
+
+table.TimeTrack td {
+    font-size: 12px;
+    padding: 4px 10px 4px 3px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+table.TimeTrack tr.shade td {
+    background: #f0f0f0;
+}
+
+table.TimeTrack th.date {
+    padding-left: 10px;
+}
+
+table.TimeTrack td.date {
+    padding-left: 14px;
+}
+
+table.TimeTrack td.action {
+    text-align: left;
+}
+
+table.TimeTrack td.action img {
+    vertical-align: middle;
+}
+
+table.TimeTrack td.action a.editlink {
+    margin-left: 20px;
+}
+
+table.TimeTrack td.hours {
+    text-align: left;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+table.TimeTrack td.desc {
+    font-size: 12px;
+    white-space: normal;
+    width: 100%;
+    line-height: 16px;
+}
+
+table.TimeTrack tr.AddTimeTrack td {
+    padding: 10px 10px 10px 0;
+    background: #efefef;
+    vertical-align: bottom;
+}
+
+table.TimeTrack tr.AddTimeTrack td.date {
+    padding-left: 10px;
+}
+
+table.TimeTrack tr.total td {
+    border-top: 2px solid #999;
+    border-bottom: none;
+}
+
+table.TimeTrack tr.total td.total {
+    text-align: right;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+table.TimeTrack tr.total td.hours {
+    font-size: 13px;
+}
+
+table.TimeTrack tr.total td.export {
+    font-size: 12px;
+    color: #666;
+    text-align: right;
+}
+
+div#new_time_report {
+    background: #efefef;
+    padding: 10px 10px 6px 10px;
+    margin-bottom: 20px;
+}
+
+div#new_time_report p {
+    margin: 0 0 5px 0;
+}
+
+div#new_time_report p.submit {
+    margin: 10px 0 0 0;
+    padding: 5px 0 0 0;
+    border-top: 1px solid #ccc;
+}
+
+.TodoItemIcon{
+    background-color:#C87800;
+    color:#FFFFFF;
+    padding:1px 3px;
+}
+
+table.TimeTrack td.mtitle {
+    width:100%;
+    white-space:normal;
+}

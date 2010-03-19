@@ -1,0 +1,28 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal" i18n:domain="plone">
+<body>
+
+<div metal:define-macro="portlet" tal:omit-tag="">
+<div class="portlet">
+  <style type="text/css">
+    .chat-users div {
+      margin: 2px; padding: 0;
+      padding-left: 18px;
+      font-size: 10px;
+      background: url(portal_skins/PloneChat/user.gif) no-repeat 2px;
+    }
+    .chat-users .moderator {
+      background: url(portal_skins/PloneChat/moderator.gif) no-repeat 2px;
+    }
+  </style>
+  <h5 i18n:translate="chat_rooms">Chat Rooms</h5>
+  <div class="portletBody"
+    tal:define="chatRooms python:container.objectValues('PloneChat')">
+    <div tal:repeat="room chatRooms">
+      <h4 tal:content="room/title_or_id" />
+      <div class="chat-users" tal:content="structure room/getChatUsers" /></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

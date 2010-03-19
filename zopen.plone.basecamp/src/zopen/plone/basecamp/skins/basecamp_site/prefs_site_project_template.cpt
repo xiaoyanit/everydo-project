@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="basecamp">
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<body>
+
+<div metal:fill-slot="main">
+
+            <div class="settingsnav">
+
+                <a tal:attributes="href string:$portal_url/companies/@@prefs_site_companies">人员</a>
+                |
+              <a href=""
+                  tal:attributes="href string:$portal_url/prefs_site_account">帐户</a> 
+                  |
+              <strong>项目模版</strong>
+              |
+                <a href=""
+                   tal:attributes="href
+                   string:$portal_url/prefs_site_settings">基本信息</a>
+            </div>
+
+        <h1>项目模版设置</h1>
+        <div id="basic_form">
+        <form action=""
+              name="users_search"
+              method="post"
+              tal:attributes="action template/getId">
+          <input type="hidden" name="form.submitted" value="1" />
+
+
+          <div class="field">
+              <label>选择网站色调</label>
+              <p class="formHelp">You can change the values on the right to create your own custom color scheme.</p>
+             <div class="block"> <input type="radio" /> llll<br />
+              <input type="radio" /></div>
+          </div>
+
+          <input class="context"
+             tabindex=""
+             type="submit"
+             name="form.button.Modify"
+             value="提交"
+             tal:attributes="tabindex tabindex/next;"
+        />
+
+        </form>
+        </div>
+
+    </div>
+
+  </body>
+</html>
+

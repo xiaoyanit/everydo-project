@@ -1,0 +1,19 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="Five">
+
+  <permission
+      id="zopen.org.AddTeam"
+      title="zopen.org: Add Team"
+      />
+
+  <permission
+      id="zopen.org.AddOrganizationUnit"
+      title="zopen.org: Add Organization Unit"
+      />
+
+  <permission
+      id="zopen.org.AddPerson"
+      title="zopen.org: Add Person"
+      />
+
+</configure>

@@ -1,0 +1,61 @@
+.toggleArea .EVcheckAll:click {
+    evt-click-preventdefault: true;
+    action-client: setAttribute;
+    setAttribute-kssSelector: parentnodecss('.toggleArea|.TGtogglecheck');
+    setAttribute-name: checked;
+    setAttribute-value: true;
+
+    action-client: toggleClass;
+    toggleClass-kssSelector: parentnodecss('.toggleArea|.ASelect');
+    toggleClass-value: hideme;
+}
+
+.toggleArea .EVuncheckAll:click {
+    evt-click-preventdefault: true;
+    action-client: setAttribute;
+    setAttribute-kssSelector: parentnodecss('.toggleArea|.TGtogglecheck');
+    setAttribute-name: checked;
+    setAttribute-value: false;
+
+
+    action-client: toggleClass;
+    toggleClass-kssSelector: parentnodecss('.toggleArea|.ASelect');
+    toggleClass-value: hideme;
+}
+
+
+.EVtoggle:click {
+    evt-click-preventdefault:false;
+
+    action-client: toggleClass;
+    toggleClass-kssSelector: parentnodecss('.toggleArea|.TGtoggle');
+    toggleClass-value: hideme;
+}
+
+#front-page-content:load {
+    action-client: setAttribute;
+    setAttribute-kssSelector: css('#front-page-content a');
+    setAttribute-name: target;
+    setAttribute-value: '_blank';
+}
+
+.front_page_view:timeout {
+    evt-timeout-delay: 1800000;
+    
+    action-server: redirctContextUrl;
+}
+
+#project_list:load {
+    action-client: setAttribute;
+    setAttribute-kssSelector: css('#project_list a');
+    setAttribute-name: target;
+    setAttribute-value: '_blank';
+}
+
+#siteMenuActions:load {
+    action-client: setAttribute;
+    setAttribute-kssSelector: css('#siteMenuActions a');
+    setAttribute-name: target;
+    setAttribute-value: '';
+}
+

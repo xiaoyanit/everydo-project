@@ -1,0 +1,12 @@
+<configure xmlns="http://namespaces.zope.org/browser"
+           xmlns:five="http://namespaces.zope.org/five">
+
+  <page
+      for="*"
+      name="wap_dashboard"
+      class="..dashboard.Dashboard"
+      template="wap_dashboard.pt"
+      permission="cmf.SetOwnPassword"
+      />
+
+</configure>

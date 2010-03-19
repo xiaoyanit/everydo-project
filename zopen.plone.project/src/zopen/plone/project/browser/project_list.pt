@@ -1,0 +1,66 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.project">
+
+    <div metal:fill-slot="main">
+
+       <metal:projects metal:define-macro="projects">
+
+      <div class="indent"
+           tal:define="canAddProject python:mtool.checkPermission('zopen.project: Add Project', context);
+                       project_limit_msg portal/@@operationoptions/checkProjectLimit | string:"
+           tal:condition="canAddProject">
+       <a class="create_project" style="background:transparent url('create-project.gif') no-repeat;padding:6px 0 8px 10px;font-weight:bold;color:#000;white-space:normal;text-align:center;width:170px;text-decoration:none;" 
+          tal:condition="not: project_limit_msg"
+          tal:attributes="href string:$portal_url/projects/create_project_form"
+          i18n:translate="create_a_new_project">
+          <span style="font-size:11px;">Create a new project</span></a>
+        <p tal:condition="project_limit_msg">
+           <strong i18n:translate="not_allowed_create">Not allowed to create new project</strong><br />
+           <span tal:content="structure project_limit_msg"/>
+        </p>
+         
+      </div>
+
+      <div id="project_list">
+       <h1 i18n:translate="your_project">Your projects</h1>
+
+       <div class="indent">
+        <tal:active tal:define="active_projects context/@@projectview/getActiveProjects"
+            tal:repeat="company_name active_projects">
+
+            <h2 tal:content="company_name"/>
+                <tal:block tal:repeat="project python:active_projects[company_name]">
+                    <a href="" 
+                        tal:attributes="href project/absolute_url"
+                        tal:content="project/Title">project tile</a>
+                </tal:block>
+        </tal:active>
+       </div> 
+       
+       <div class="indent">
+        <tal:onhold tal:define="onhold_projects context/@@projectview/getOnholdProjects"
+                    tal:condition="onhold_projects">
+          <h1 i18n:translate="onhold_project">Onhold projects</h1>
+          <tal:repeat tal:repeat="company_name onhold_projects">
+            <h2 tal:content="company_name"/>
+            <tal:block tal:repeat="project python:onhold_projects[company_name]">
+                <a href=""
+                    tal:attributes="href project/absolute_url"
+                    tal:content="project/Title">project tile</a>
+           </tal:block>
+          </tal:repeat>
+        </tal:onhold>
+       </div> 
+       
+       <div class="indent"
+            tal:condition="context/@@projectview/hasArchivedProject">
+        <p><a style="color: gray; font-weight: bold"
+            tal:attributes="href string:$portal_url/@@archived_project_list" i18n:translate="your_archived_project">Your archived projects</a></p>
+       </div>
+
+      </div>
+       
+     </metal:projects>
+
+    </div>
+</html>

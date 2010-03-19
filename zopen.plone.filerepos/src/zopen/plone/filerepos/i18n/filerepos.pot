@@ -1,0 +1,128 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-04-20 13:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.filerepos\n"
+
+#. Default: "Add another file"
+#: browser/filerepos_listing.pt
+msgid "add_another_file"
+msgstr ""
+
+#. Default: "Add a new file"
+#: browser/filerepos_listing.pt
+msgid "add_new_file"
+msgstr ""
+
+#. Default: "Cancel"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "cancel"
+msgstr ""
+
+#. Default: "Category:"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "category"
+msgstr ""
+
+#. Default: "Choose a file to upload"
+#: browser/filerepos_listing.pt
+msgid "choose_a_file"
+msgstr ""
+
+#. Default: "Edit"
+#: browser/filerepos_listing.pt
+msgid "edit"
+msgstr ""
+
+#. Default: "post by ${author} in ${category} on ${modified}, size ${size}"
+#: browser/filerepos_listing.pt
+msgid "file_by_line"
+msgstr ""
+
+#. Default: "Make this file private"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "file_private"
+msgstr ""
+
+#. Default: "No results."
+#: browser/filerepos_listing.pt
+msgid "no_results"
+msgstr ""
+
+#. Default: "Notify people via email"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "notify_email"
+msgstr ""
+
+#. Default: "Optional description:"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "optional_description"
+msgstr ""
+
+#. Default: "or"
+#: browser/filerepos_editing.pt
+#: browser/filerepos_listing.pt
+msgid "or"
+msgstr ""
+
+#. Default: "Files for this project"
+#: browser/filerepos_listing.pt
+msgid "project_files"
+msgstr ""
+
+#. Default: "Select a file to replace"
+#: browser/filerepos_editing.pt
+msgid "select_file_replace"
+msgstr ""
+
+#: browser/filerepos_listing.pt
+msgid "upload_file"
+msgstr ""
+
+#. Default: "(each file should be under 30M)"
+#: browser/filerepos_listing.pt
+msgid "upload_limit"
+msgstr ""
+
+#. Default: "you may not upload files larger than 30 metabyates."
+#: browser/filerepos_editing.pt
+msgid "upload_limit_file"
+msgstr ""
+
+#. Default: "Upload a new version"
+#: browser/filerepos_listing.pt
+msgid "upload_new_version"
+msgstr ""
+
+#: browser/filerepos_editing.pt
+msgid "upload_replace"
+msgstr ""
+
+#. Default: "post by ${principal} on ${timestap}, size ${size} - ${edit} | ${del_icon}"
+#: browser/filerepos_listing.pt
+msgid "version_post"
+msgstr ""
+
+#. Default: "view"
+#: browser/filerepos_listing.pt
+msgid "view"
+msgstr ""
+

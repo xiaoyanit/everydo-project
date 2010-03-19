@@ -1,0 +1,49 @@
+<configure
+    xmlns:zope="http://namespaces.zope.org/zope"
+    xmlns="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="zopen.edo.oc.portal">
+
+<cssregistry name="base_properties">
+            <property name="notifyBackgroundColor" value="#ffce7b" />
+<property name="tabHoverText" value="#fff" />
+<property name="tabTextColor" value="#fff" />
+<property name="globalBackgroundColor" value="#dee7ec" />
+<property name="fontFamily" value="&quot;Lucida Grande&quot;, Verdana, Lucida, Helvetica, Arial, sans-serif" />
+<property name="inputFontColor" value="Black" />
+<property name="tabHoverBackground" value="#1D64AD" />
+<property name="logoName" value="logo.jpg" />
+<property name="fontColor" value="#333" />
+<property name="linkVisitedColor" value="#03c" />
+<property name="linkActiveColor" value="#fff" />
+<property name="columnTwoWidth" value="16em" />
+<property name="borderStyleAnnotations" value="solid" />
+<property name="linkColor" value="#03c" />
+<property name="notifyBorderColor" value="#ffa500" />
+<property name="backgroundColor" value="#e5e5e5" />
+<property name="helpBackgroundColor" value="#ffffe1" />
+<property name="headerBackground" value="#036" />
+<property name="projectNameColor" value="#fc0" />
+<property name="columnOneWidth" value="16em" />
+<property name="clientNameColor" value="#fff" />
+<property name="contentViewBackgroundColor" value="#cde2a7" />
+<property name="tabBackground" value="#1A4F85" />
+<property name="oddRowBackgroundColor" value="transparent" />
+<property name="evenRowBackgroundColor" value="#eef3f5" />
+<property name="contentViewBorderColor" value="#74ae0b" />
+<property name="currentTabText" value="#090" />
+<property name="globalBorderColor" value="#8cacbb" />
+<property name="fontSmallSize" value="12px" />
+<property name="portalMinWidth" value="70em" />
+<property name="fontBaseSize" value="12px" />
+<property name="contentViewFontColor" value="#578308" />
+<property name="discreetColor" value="#76797c" />
+<property name="plone_skin" value="Plone Default" />
+<property name="globalFontColor" value="#436976" />
+<property name="borderWidth" value="1px" />
+<!--property name="title" value="Plone's color, font, logo and border defaults" /-->
+<property name="borderStyle" value="solid" />
+<property name="headingFontFamily" value="&quot;Lucida Grande&quot;, arial, sans-serif" />
+<property name="textTransform" value="none" />
+            </cssregistry>
+</configure>

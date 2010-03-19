@@ -1,0 +1,133 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:five="http://namespaces.zope.org/five"
+  >
+
+  <browser:resource
+      name="progress_bar.gif"
+      file="resource/progress_bar.gif"
+      />
+
+  <browser:page
+      for="*"
+      class=".filerepos.FileReposOperView"
+      permission="cmf.AddPortalContent"
+      name="filerepos_add"
+      attribute="filerepos_add"
+      />
+	  
+    <browser:page
+		for="*"
+		class=".filerepos.FileReposOperKssView"
+        name="delete_version"
+        attribute="delete_version"
+		permission="CMFEditions.PurgeVersion"
+        />
+
+  <browser:pages
+      for="*"
+      class=".filerepos.FileReposOperKssView"
+      permission="cmf.ModifyPortalContent"
+      >
+    <browser:page
+        name="filerepos_edit_file"
+        attribute="editFile"
+        />
+    <browser:page
+        name="filerepos_save_new_version"
+        attribute="save_new_version"
+        />
+    <browser:page
+        name="selectCategory"
+        attribute="selectCategory"
+        />
+    <browser:page
+        name="changeCategory"
+        attribute="changeCategory"
+        />
+  </browser:pages>
+
+  
+    <browser:page
+		for="*"
+		class=".filerepos.FileReposOperView"
+        name="view_version"
+        attribute="view_version"
+		permission="zope2.View"
+        />
+
+  <browser:pages
+      for="*"
+      class=".filerepos.FileReposOperView"
+      permission="cmf.ModifyPortalContent"
+      >
+    <browser:page
+        name="save_as_new_version"
+        attribute="save_as_new_version"
+        />
+    <browser:page
+        name="edit_file"
+        attribute="edit_file"
+        />
+  </browser:pages>
+
+  <browser:page
+      for="*"
+      name="filerepos_listing"
+      template="filerepos_listing.pt"
+      class=".filerepos.FileReposView"
+      permission="zope2.View"
+      />
+  <browser:page
+      for="*"
+      name="review_lists"
+      class=".filerepos.ReviewLists"
+      permission="zope2.View"
+      allowed_attributes="
+              getReviewList
+              getReviewLists
+              "/>
+
+  <browser:page
+      for="*"
+      name="file_view"
+      template="file_view.pt"
+      class=".filerepos.FileView"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="*"
+      name="image_view"
+      template="file_view.pt"
+      class=".filerepos.FileView"
+      permission="zope2.View"
+      />
+  
+  <browser:page
+      for="*"
+      class=".filerepos.FileKssView"
+      permission="zope2.View"
+      name="changeFileState"
+      attribute="changeFileState"
+      />
+
+  <browser:resource
+      name="file-tour.gif"
+      file="resource/file-tour.gif" 
+      />
+
+  <browser:resource
+      name="files.css"
+      file="resource/files.css" 
+      />
+
+  <browser:resource
+      file="resource/files.kss"
+      name="files.kss"
+      />
+
+	<five:implements class="Products.ATContentTypes.content.file.ATFile"
+					 interface="Products.CMFCore.interfaces.IContentish" />
+</configure>

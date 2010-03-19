@@ -1,0 +1,37 @@
+.EVattachfile:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass;
+    toggleClass-kssSelector: css('.TGattachfile');
+    toggleClass-value: hideme;
+}
+
+#kssSubmitComment:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass;
+    toggleClass-kssSelector: css('.waitIndicator');
+    toggleClass-value: hideme;
+
+    action-server: addComment;
+    addComment-text: currentFormVar('text');
+
+}
+
+#kssSubmitCommentAttach:click {
+    action-client: toggleClass;
+    toggleClass-kssSelector: css('.TGsubmitattach');
+    toggleClass-value: hideme;
+}
+
+.EVaddcomment:click {
+    evt-click-preventdefault: true;
+
+    action-client: setStyle;
+    setStyle-name: height;
+    setStyle-value: 100px;
+
+    action-client: removeClass;
+    removeClass-kssSelector: css('.TGaddcomment');
+    removeClass-value: hideme;
+}

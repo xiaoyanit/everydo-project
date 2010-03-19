@@ -1,0 +1,6 @@
+.delete-class img:click {
+    evt-click-preventdefault: true;
+
+    action-client: log;
+    action-server: @@kss_obj_delete;
+}

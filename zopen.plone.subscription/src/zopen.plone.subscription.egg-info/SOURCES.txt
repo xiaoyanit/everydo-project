@@ -1,0 +1,17 @@
+setup.py
+src/zopen/__init__.py
+src/zopen.plone.subscription.egg-info/PKG-INFO
+src/zopen.plone.subscription.egg-info/SOURCES.txt
+src/zopen.plone.subscription.egg-info/dependency_links.txt
+src/zopen.plone.subscription.egg-info/namespace_packages.txt
+src/zopen.plone.subscription.egg-info/not-zip-safe
+src/zopen.plone.subscription.egg-info/requires.txt
+src/zopen.plone.subscription.egg-info/top_level.txt
+src/zopen/plone/__init__.py
+src/zopen/plone/subscription/__init__.py
+src/zopen/plone/subscription/adapters.py
+src/zopen/plone/subscription/browser.py
+src/zopen/plone/subscription/interfaces.py
+src/zopen/plone/subscription/utils.py
+src/zopen/plone/subscription/tests/__init__.py
+src/zopen/plone/subscription/tests/test_doctests.py

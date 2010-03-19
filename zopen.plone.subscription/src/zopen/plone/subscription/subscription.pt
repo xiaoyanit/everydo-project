@@ -1,0 +1,29 @@
+<html>
+<head>
+      <meta http-equiv="content-type" content="text/html;charset=utf-8">
+      <title>邮件订阅</title>
+</head>
+<body tal:define="status options/status | nothing; email options/email | nothing">
+                  
+  <h2 tal:condition="python:status == 's'" tal:content="string: 订阅确认邮件已经发送到 $email, 请收到后点击确认链接即可">content title or id</h2>
+  <h2 tal:condition="python:status == 'u'" tal:content="string: 退定确认邮件已经发送到 $email，请收到后点击其中的确认链接即可">content title or id</h2>
+  <h2 tal:condition="python:status == 's_ok'" tal:content="string: ${email} 订阅成功">content title or id</h2>
+  <h2 tal:condition="python:status == 'u_ok'" tal:content="string:${email} 退定成功">content title or id</h2>
+  <h2 tal:condition="python:status == 's_fail'" tal:content="string:${email} 已经订阅了">content title or id</h2>
+  <h2 tal:condition="python:status == 'u_fail'" tal:content="string:${email} 并未订阅">content title or id</h2>
+
+<form tal:attributes="action string:${context/absolute_url}/@@subrequest">
+<fieldset>
+<legend>订阅/退定邮件</legend>
+您的邮件地址：<input name="email" tal:attributes="value email"/>
+<br />
+<input type="radio" name="oper" value="s" checked="checked"/> 订阅
+<input type="radio" name="oper" value="u" /> 退定
+<br />
+<input type="submit" value="提交"/>
+
+</fieldset>
+</form> 
+
+</body>
+</html>

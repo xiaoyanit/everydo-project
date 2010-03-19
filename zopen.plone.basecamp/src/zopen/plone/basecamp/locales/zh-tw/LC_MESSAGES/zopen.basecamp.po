@@ -1,0 +1,774 @@
+# zopen.basecamp translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.basecamp 1.0\n"
+"POT-Creation-Date: 2007-07-17 09:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh-tw\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.basecamp\n"
+"X-Is-Fallback-For: zh-hk zh-mo zh-sg\n"
+
+msgid "Completed"
+msgstr "完成"
+
+msgid "Created"
+msgstr "創建"
+
+msgid "Change"
+msgstr "變更"
+
+msgid "change_color"
+msgstr "變更色調"
+
+msgid "czug_project_site"
+msgstr "中文Zope/Plone用戶社區項目網"
+
+#. Default: "In the following several colors, choose the one to suit your company, as a new website appearance dominant hue."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "Choose_suit_color"
+msgstr "在下面的幾種顏色中，選擇一個最適合您公司的，作為新的網站外觀主色調"
+
+#. Default: "Delete this project"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "Delete_this_project"
+msgstr ""
+
+msgid "Modified"
+msgstr "修改"
+
+msgid "Responsible"
+msgstr "負責"
+
+#. Default: "Account"
+#: browser/prefs_site_permissions.pt
+#: browser/prefs_site_companies.pt
+msgid "account"
+msgstr "賬號"
+
+#. Default: "基本信息"
+#: browser/prefs_site_settings.pt
+msgid "base_property"
+msgstr "基本信息"
+
+#. Default: "No problem. Check the well-stocked help section, the screenshot tour, the lively customer forums, or find FAQs and more at the official Everything Basecamp support site."
+#: browser/firstproject.pt
+msgid "check_stocked"
+msgstr "您可<a href=\"http://everydo.com/help\">查看系統的幫助文檔</a>，<a href=\"http://everydo.com/tour\">截圖和視頻介紹</a>，<a href=\"http://everydo.com/forum\">論壇</a>，或其他相關文檔。"
+
+#. Default: "Click to play the video"
+msgid "click_video"
+msgstr "點擊播放視頻"
+
+#. Default: "Create accounts for your co-workers, clients, collaborators, etc."
+#: browser/firstproject.pt
+msgid "create_accounts_for"
+msgstr "為您的協作人員、客戶、合作者等，創建帳號。"
+
+#. Default: "Create the first milestone for this project above"
+msgid "create_first_milestone"
+msgstr "創建項目的第一個里程碑"
+
+#. Default: "Create your first project"
+#: browser/firstproject.pt
+msgid "create_first_project"
+msgstr "創建您的第一個項目"
+
+#. Default: "Create the first to-do list for this project"
+msgid "create_first_todo"
+msgstr "創建項目的第一個任務清單"
+
+#. Default: "Create the first writeboard for this project"
+msgid "create_first_writeboard"
+msgstr "創建項目的第一個寫字板"
+
+#. Default: "Create logins for other people"
+#: browser/firstproject.pt
+msgid "create_logins_for"
+msgstr "為其他人員創建帳號"
+
+#. Default: "Keep track of what's due, when it's due, and who's responsible for doing it."
+msgid "create_milestone_for"
+msgstr "製作項目計劃，報告項目進度。明確項目計劃各階段由誰負責，何時完成，各階段負責人可以報告項目進展情況。"
+
+#. Default: "Make lists, add items, and check them off. Get things done with to-do lists."
+msgid "create_todo_for"
+msgstr "製作電子化的任務清單，逐條添加分配任務，勾選表示完成任務。任務列表讓項目工作變得高效有序。"
+
+#. Default: "Writeboards make collaborative writing simple."
+msgid "create_writeboard_for"
+msgstr "寫字板是一個在線的文檔編輯工具，支持多版本和討論，特別適合多人協同寫作。"
+
+#. Default: "Customize your site"
+#: browser/firstproject.pt
+msgid "customize_your_site"
+msgstr "個性化您的網站"
+
+#. Default: "刪除網站標識圖片"
+#: browser/prefs_site_settings.pt
+msgid "delete_site_logo"
+msgstr "刪除網站標識圖片"
+
+#. Default: "Deleting a project ${immediately} all the messages, milestones, and to-do lists associated with this project. ${no_undo} so make sure you're absolutely sure you want to delete this project."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "deleting_a_project"
+msgstr ""
+
+#. Default: "You can do any of the above at any time."
+#: browser/firstproject.pt
+msgid "do_any_above"
+msgstr "您也可以在其他任何時候完成上面的工作。"
+
+#. Default: "Enter the first time log entry for this project above"
+msgid "enter_first_timetrack"
+msgstr "填寫項目的第一個工作日誌"
+
+#. Default: "It's easy: Just enter a date, person, time spent, and a description of what was done."
+msgid "enter_timetrack_for"
+msgstr "它使用非常容易：就只要輸入時間、人員和一段描述。"
+
+#. Default: "Files tour page"
+msgid "file_tour_page"
+msgstr "文件導讀頁面"
+
+#. Default: "Or first you can..."
+#: browser/firstproject.pt
+msgid "first_you_can"
+msgstr "或者，您可以先..."
+
+#. Default: "immediately and permanently deletes"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "immedately_deletes"
+msgstr ""
+
+#. Default: "Latert activity"
+#: browser/dashboard.pt
+msgid "latert_activity"
+msgstr "最近的項目更新"
+
+#. Default: "Learn about file sharing: Watch a video demo below"
+msgid "learn_about_file"
+msgstr "學習文件共享：觀看下面的視頻示例"
+
+#. Default: "You can watch this video or view a screenshot any time from the ${for}"
+msgid "learn_about_for"
+msgstr "花幾分鐘時間從${for}觀看視頻或看一些截屏"
+
+#. Default: "Learn about messages: Watch a video demo below"
+msgid "learn_about_message"
+msgstr "學習消息板：觀看下面的視頻示例"
+
+#. Default: "Learn about milestones: Watch a video demo below"
+msgid "learn_about_milestone"
+msgstr "學習里程碑：觀看下面的視頻示例"
+
+#. Default: "Learn about time tracking: Watch a video demo below"
+msgid "learn_about_timetrack"
+msgstr "學習工作日誌：觀看下面的視頻示例"
+
+#. Default: "Learn about to-do lists: Watch a video demo below"
+msgid "learn_about_todo"
+msgstr "學習任務列表：觀看下面的視頻示例"
+
+#. Default: "Learn about writeboards: Watch a video demo below"
+msgid "learn_about_writeboard"
+msgstr "學習寫字板：觀看下面的視頻示例"
+
+#. Default: "是否放置於一個白框中？"
+#: browser/prefs_site_settings.pt
+msgid "logo_put"
+msgstr "是否放置於一個白框中？"
+
+#. Default: "Message tour page"
+msgid "message_tour_page"
+msgstr "消息導讀頁面"
+
+#. Default: "Miletone tour page"
+msgid "miletone_tour_page"
+msgstr "項目里程碑導讀頁面"
+
+#. Default: "There hasn't been any activity in your project yet. After you begin posting messages, comments, milestones or to-do's, you'll see a log of recent activity on this page that looks like the example below:"
+#: browser/dashboard.pt
+msgid "no_activity_project"
+msgstr "您參與的項目還沒有任何活動。在您張貼消息、評注、里程碑或者任務里表之後，您將在這個頁面中看到最新活動的記錄，如下面的例子所示："
+
+#. Default: "If you can't find your answer there you can always email us at: support@basecampHQ.com. We do our best to get back to you within a few hours."
+#: browser/firstproject.pt
+msgid "no_answer_email"
+msgstr "如果不能找到你要的答案，可以發送郵件至：：<a href=\"mailto:support@everydo.com\">support@everydo.com</a>，我們會儘快給您回覆。"
+
+#. Default: "NOTE:"
+#: browser/firstproject.pt
+msgid "note"
+msgstr "提示："
+
+#. Default: "Other"
+#: browser/prefs_site_permissions.pt
+#: browser/prefs_site_companies.pt
+msgid "other"
+msgstr "其它"
+
+#. Default: "People"
+#: browser/prefs_site_permissions.pt
+#: browser/prefs_site_companies.pt
+msgid "people"
+msgstr "人員"
+
+#. Default: "Permissions"
+#: browser/prefs_site_permissions.pt
+msgid "permissions"
+msgstr "權限"
+
+#. Default: "Post the first message for this project"
+msgid "post_first_message"
+msgstr "張貼項目的第一則消息"
+
+#. Default: "Post messages, share project updates, ask questions, communicate."
+msgid "post_message_for"
+msgstr "張貼消息，分享項目最新動態，詢問問題，交流與溝通"
+
+#. Default: "posted"
+#: browser/dashboard.pt
+msgid "posted"
+msgstr "提交"
+
+#. Default: "Project property"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "project_property"
+msgstr "項目屬性"
+
+#. Default: "Setting global color"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "setting_global_color"
+msgstr "設置網站的外觀色調"
+
+#. Default: "Setting project property here."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "project_property_formhelp"
+msgstr "在這裡設置項目的屬性"
+
+#. Default: "Project template"
+#: browser/prefs_site_permissions.pt
+#: browser/prefs_site_companies.pt
+msgid "project_template"
+msgstr "項目模板"
+
+#. Default: "Questions? Need help?"
+#: browser/firstproject.pt
+msgid "questions_help"
+msgstr "存在問題？需要幫助？"
+
+#. Default: "網站標識圖片"
+#: browser/prefs_site_settings.pt
+msgid "site_logo"
+msgstr "網站標識圖片"
+
+#. Default: "您的網站標識圖片將會出現在登錄頁面上，和網站首頁上，和所有的消息頁面上。為取得更好的顯示效果，建議您使用不超過200像素寬的圖片，超過200像素寬的圖片將會按比例縮小成這個寬度。"
+#: browser/prefs_site_settings.pt
+msgid "site_logo_formhelp"
+msgstr "您的網站標識圖片將會出現在登錄頁面上，和網站首頁上，和所有的消息頁面上。為取得更好的顯示效果，建議您使用不超過200像素寬的圖片，超過200像素寬的圖片將會按比例縮小成這個寬度。"
+
+#. Default: "系统设置"
+#: browser/prefs_site_settings.pt
+msgid "site_setting"
+msgstr "系統設置"
+
+#. Default: "Submit"
+#: browser/prefs_site_settings.pt
+msgid "submit"
+msgstr "提交"
+
+#. Default: "提交圖片"
+#: browser/prefs_site_settings.pt
+msgid "submit_logo"
+msgstr "提交圖片"
+
+#. Default: "并代替當前這一個圖片"
+#: browser/prefs_site_settings.pt
+msgid "submit_logo_formhelp"
+msgstr "并代替當前這一個圖片"
+
+#. Default: "There is no Undo"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "there_no_undo"
+msgstr "沒有撤銷操作"
+
+#. Default: "time tour page"
+msgid "time_tour_page"
+msgstr "工作日誌導讀頁面"
+
+msgid "Today"
+msgstr "今天"
+
+#. Default: "To-do tour page"
+msgid "todo_tour_page"
+msgstr "任務列表導讀頁面"
+
+#. Default: "Yes, I understand — delete this project"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "understand_delete_project"
+msgstr "是的，我明白 - 請刪除這個項目"
+
+#. Default: "It takes just a few seconds and you'll be up and running"
+#: browser/firstproject.pt
+msgid "up_add_running"
+msgstr "僅需要幾秒鐘的時間您就可以使用了"
+
+#. Default: "Upload, download, and share files related to this project."
+msgid "upload_file_for"
+msgstr "上傳下載，共享涉及項目的文件。"
+
+#. Default: "Upload the first file for this project"
+msgid "upload_first_file"
+msgstr "上傳項目的第一個文件"
+
+#. Default: "Upload your logo, and customize your site theme. "
+#: browser/firstproject.pt
+msgid "upload_logo_change_color"
+msgstr "上傳您的logo，定制網站的外觀色調。"
+
+#. Default: "Views"
+#: browser/prefs_site_permissions.pt
+msgid "view"
+msgstr "查看"
+
+#. Default: "Watch a quick Getting Started with Basecamp video"
+#: browser/firstproject.pt
+msgid "watch_video"
+msgstr "觀看演示視頻"
+
+#. Default: "Or, watch the demo"
+#: browser/firstproject.pt
+msgid "watch_demo"
+msgstr "(先去示例站點看看...)"
+
+#. Default: "Welcome to your EveryDo"
+#: browser/firstproject.pt
+msgid "welcome_everydo"
+msgstr " 歡迎來到您的易度"
+
+#. Default: "Writeboard tour page"
+msgid "writeboard_tour_page"
+msgstr "寫字板導讀頁面"
+
+msgid "Yesterday"
+msgstr "昨天"
+
+msgid "Tomorrow"
+msgstr "明天"
+
+msgid "This week"
+msgstr "本周"
+
+msgid "Next week"
+msgstr "下周"
+
+#. Default: "您的網站名稱"
+#: browser/prefs_site_settings.pt
+msgid "your_site_name"
+msgstr "您的網站名稱"
+
+#. Default: "每個頁面上方都會顯示的站點名稱"
+#: browser/prefs_site_settings.pt
+msgid "your_site_name_formhelp"
+msgstr "每個頁面上方都會顯示的站點名稱"
+
+msgid "Password is invalid"
+msgstr "密碼有誤！"
+
+
+#. Default: "A list of all your clients and projects."
+#: skins/basecamp_site/global_sections.pt
+msgid "list_of_projects"
+msgstr "顯示各個項目的綜合信息"
+
+#. Default: "Dashboard"
+#: skins/basecamp_site/global_sections.pt
+msgid "dashboard"
+msgstr "項目更新"
+
+#. Default: "View all to-dos for a specific person across all their projects."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_all_todos"
+msgstr "我參與的所有項目中，需要處理的待辦任務"
+
+#. Default: "To-Dos"
+#: skins/basecamp_site/global_sections.pt
+msgid "to_dos"
+msgstr "待辦任務"
+
+#. Default: "View all milestones for a specific person across all their projects."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_all_milestones"
+msgstr "所有參與項目最近三個月的里程碑日曆"
+
+#. Default: "Milestones"
+#: skins/basecamp_site/global_sections.pt
+msgid "milestones_cal"
+msgstr "日曆"
+
+#. Default: "Milestones"
+#: skins/basecamp_site/global_sections.pt
+msgid "milestones"
+msgstr "里程碑"
+
+#. Default: "View progress of all projects."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_progress"
+msgstr "所有參與項目的進展情況表"
+
+#. Default: "Progress"
+#: skins/basecamp_site/global_sections.pt
+msgid "progress"
+msgstr "項目進度"
+
+#. Default: "View time track of all projects."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_time_track"
+msgstr "統計參與項目的工作日誌信息"
+
+#. Default: "Time"
+#: skins/basecamp_site/global_sections.pt
+msgid "time"
+msgstr "工作日誌"
+
+#. Default: "View current project integrated information."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_integreated_information"
+msgstr "綜合顯示項目的最新信息"
+
+#. Default: "Overview"
+#: skins/basecamp_site/global_sections.pt
+msgid "overview"
+msgstr "項目概覽"
+#. Default: "Post project message, and notified by email."
+#: skins/basecamp_site/global_sections.pt
+msgid "post_message"
+msgstr "張貼項目的各種消息，可郵件通知"
+
+#. Default: "Messages"
+#: skins/basecamp_site/global_sections.pt
+msgid "messages"
+msgstr "消息板"
+
+#. Default: "Todo list of project."
+#: skins/basecamp_site/global_sections.pt
+msgid "todo_list_project"
+msgstr "項目的任務清單"
+
+#. Default: "To-Do"
+#: skins/basecamp_site/global_sections.pt
+msgid "to_do_list"
+msgstr "任務列表"
+
+#. Default: "Phases of the project."
+#: skins/basecamp_site/global_sections.pt
+msgid "phases_project"
+msgstr "項目的階段劃分"
+
+#. Default: "On-line cooperation compilation documents."
+#: skins/basecamp_site/global_sections.pt
+msgid "online_document"
+msgstr "在線協作編寫文檔"
+
+#. Default: "Writeboards"
+#: skins/basecamp_site/global_sections.pt
+msgid "writeboards"
+msgstr "寫字板"
+
+#. Default: "Records workload statistics hours."
+#: skins/basecamp_site/global_sections.pt
+msgid "time_track_log"
+msgstr "記錄工作量情況，生成每天的工作日誌；統計工作記錄，輔助項目報價或者考核"
+
+#. Default: "Time"
+#: skins/basecamp_site/global_sections.pt
+msgid "timetrack"
+msgstr "工作日誌"
+
+#. Default: "On-line chat and discussion area."
+#: skins/basecamp_site/global_sections.pt
+msgid "online_chat"
+msgstr "在線的聊天討論區"
+
+#. Default: "Chat"
+#: skins/basecamp_site/global_sections.pt
+msgid "chat"
+msgstr "討論區"
+
+#. Default: "Storage ench kind of project file by categories."
+#: skins/basecamp_site/global_sections.pt
+msgid "files_storage"
+msgstr "分類存儲項目的各種文件"
+
+#. Default: "Files"
+#: skins/basecamp_site/global_sections.pt
+msgid "files"
+msgstr "文件"
+
+#. Default: "Privacy"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_privacy"
+msgstr "隱私政策"
+
+#. Default: "Terms"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_terms"
+msgstr "服務條款"
+
+#. Default: "Forum"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_forum"
+msgstr "公測反饋"
+
+#. Default: "Roadmap"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_roadmap"
+msgstr "開發線路"
+
+#. Default: "Online support"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_online_support"
+msgstr "在線客服"
+
+#. Default: "Project team management and security management."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "setting_team_security"
+msgstr "設置項目團隊人員，以及權限"
+
+#. Default: "People & Permissions"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "project_team"
+msgstr "項目人員"
+
+#. Default: "Setting project property, project state, and delete project."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "show_project_setting"
+msgstr "設置項目屬性，更改狀態，刪除項目"
+
+#. Default: "Project settings"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "project_settings"
+msgstr "項目設置"
+
+#. Default: "Add/modify contact information for everyone in your system."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "all_people_setting"
+msgstr "設置公司、人員以及權限"
+
+#. Default: "All people"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "all_people"
+msgstr "人員"
+
+#. Default: "Name/logo, global color, and so on."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "site_settings_title"
+msgstr "設置網站名稱、logo、色調等"
+
+#. Default: "Sittings"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "site_settings"
+msgstr "系統設置"
+
+#. Default: "Upgrade, degrade, payment, and logout."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "account_settings"
+msgstr "升級、降級、繳費、注銷等操作"
+
+#. Default: "Account service"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "account_service"
+msgstr "賬戶服務"
+
+#. Default: "My info"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "my_info"
+msgstr "我的資料"
+
+#. Default: "Review and edit accout information."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "edit_my_info"
+msgstr "設置我的聯繫方式、密碼、頭像"
+
+#. Default: "Logout"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "log_out"
+msgstr "退出"
+
+#. Default: "Logout and clear cookie off your machine."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "log_out_clear"
+msgstr "退出網站"
+
+#. Default: "Help"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "site_help"
+msgstr "幫助"
+
+#. Default: "Help & answer question."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "site_help_title"
+msgstr "獲得站點的幫助信息"
+
+
+#. Default: "Choose a project"
+#: skins/basecamp_site/global_pathbar.pt
+msgid "choose_a_project"
+msgstr "我的項目"
+
+#. Default: "Dashboard"
+#: skins/basecamp_site/global_pathbar.pt
+msgid "pathbar_dashboard_title"
+msgstr "站點主頁"
+
+#. Default: "Dashboard"
+#: skins/basecamp_site/global_pathbar.pt
+msgid "pathbar_dashboard"
+msgstr "站點首頁"
+
+msgid "delete"
+msgstr "刪除"
+
+#. Default: "Setting default language"
+#: browser/prefs_site_settings.pt
+msgid "setting_default_language"
+msgstr "設置網站默認語言"
+
+#. Default: "Choose a language as the default language of your website"
+#: browser/prefs_site_settings.pt
+msgid "default_language_helpform"
+msgstr "選擇下面的某種語言作為您網站的默認語言。但這與您的瀏覽器默認自動選擇網站語言或者登錄頁面選擇語言無關。"
+
+#. Default: "Simplified Chinese"
+#: browser/prefs_site_settings.pt
+msgid "lang_code_zh"
+msgstr "簡體中文"
+
+#. Default: "Simplified Chinese"
+#: browser/prefs_site_settings.pt
+msgid "lang_code_zh-tw"
+msgstr "繁體中文"
+
+#. Default: "English"
+#: browser/prefs_site_settings.pt
+msgid "lang_code_en"
+msgstr "英文"
+
+#. Default: "Simplified Chinese"
+#: browser/prefs_site_settings.pt
+msgid "switch_zh"
+msgstr "簡體中文版"
+
+#. Default: "Simplified Chinese"
+#: browser/prefs_site_settings.pt
+msgid "switch_zh_tw"
+msgstr "繁體中文版"
+
+#. Default: "English"
+#: browser/prefs_site_settings.pt
+msgid "switch_en"
+msgstr "English version"
+
+#. Default: "Default message categories"
+#: browser/prefs_site_settings.pt
+msgid "setting_message_category"
+msgstr "設置項目消息的默認分類"
+
+#: browser/prefs_site_settings.pt
+msgid "setting_message_category_helpform"
+msgstr "當創建新的項目時，將以下面模板創建消息分類，您可以修改調整。"
+
+#. Default: "Default file categories"
+#: browser/prefs_site_settings.pt
+msgid "setting_file_category"
+msgstr "設置項目文件的默認分類"
+
+#: browser/prefs_site_settings.pt
+msgid "setting_file_category_helpform"
+msgstr "當創建新的項目時，將以下面模板創建文件分類，您可以修改調整。"
+
+#. Default: "Password reset request"
+#: ./skins/PasswordReset/mail_password_template.pt:7
+msgid "mailtemplate_subject_resetpasswordrequest"
+msgstr "密碼重置請求"
+
+
+msgid "default_categories"
+msgstr "默認分類"
+
+msgid "default_categories_title"
+msgstr "新建項目時的默認分類"
+
+msgid "project_categories"
+msgstr "默認分類設置"
+
+#. Default: "Templates"
+#: browser/macros_basecamp.pt
+msgid "todo_templates"
+msgstr "任務模板"
+
+
+#. Default: "To add or edit the people in your company, go to the <a href="/companies/@@prefs_site_companies">All people</a> page."
+#: browser/prefs_site_settings.pt
+msgid "note_to_people"
+msgstr "如果要調整公司或人員信息，請到<a href=\"companies/@@prefs_site_companies\">人員</a>頁面中設置。"
+
+#. Default: "about_default_categories"
+#: browser/prefs_categories.pt
+msgid "about_default_categories"
+msgstr "關於默認分類"
+
+#. Default: "Every new project starts with, it will be created default message categories and default file categories . <br /> You can set up the default message categories and the default file categories at frist."
+#: browser/prefs_categories.pt
+msgid "about_default_categories_for"
+msgstr "每個項目創建後，系統會在消息板和文件中分別創建默認的消息分類和文件分類。<br />您可以預先設置這些分類。"
+
+#. Default: "Basic settings"
+#: browser/prefs_site_settings
+msgid "basic_settings"
+msgstr "基本設置"
+
+#. Default: "Basic site settings"
+#: browser/prefs_site_settings
+msgid "basic_site_setting"
+msgstr "網站基本設置"
+
+
+
+#. Person Operate
+#: browser/prefs_site_settings
+msgid "person_operate"
+msgstr "人員設置"
+
+
+#. Privilege Operate
+#: browser/prefs_site_settings
+msgid "privilege_operate"
+msgstr "權限設置"
+
+
+#. Privilege Operate Template
+#: browser/prefs_site_settings
+msgid "privilege_operate_template"
+msgstr "默認權限"
+
+msgid "your_project"
+msgstr "您的項目："
+
+msgid "title_search_site"
+msgstr "搜索內容"
+
+msgid "export_data"
+msgstr "数据導出"
+
+msgid "create_new_project"
+msgstr "創建新項目..."

@@ -1,0 +1,14 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="Five">
+
+  <permission
+      id="zopen.messageboard.AddComment"
+      title="zopen.messageboard: Add Comment"
+      />
+
+  <permission
+      id="zopen.messageboard.AddMessage"
+      title="zopen.messageboard: Add Message"
+      />
+
+</configure>

@@ -1,0 +1,93 @@
+<h1 i18n:domain="zopen.org" tal:condition="not: view/is_template_setting">
+    <tal:i18n i18n:translate="teams">Teams</tal:i18n>
+</h1>
+
+
+<div id="CategoryList"
+     tal:define="is_template_setting view/is_template_setting | options/is_template_setting | python: True;"
+     tal:attributes="class string:kssattr-is_template_setting-$is_template_setting"
+     i18n:domain="zopen.org">
+<tal:items tal:repeat="team view/teams">
+<div metal:define-macro="teamitem"
+     tal:define="here_url options/here_url | python:view.content_info[1];
+                 is_template_setting is_template_setting | view/is_template_setting | options/is_template_setting | python: True;
+                 team_id  options/team_id  | team/id;
+                 team_title options/team_title | team/title;
+                 team_description options/team_description | team/description;
+                 team_del options/team_del | python:view.teamDeletable(team_id);
+                 team_cur options/team_cur | python:request.form.get('team', None) == team['id']"
+     tal:attributes="class string:kssDeletionRegion category kssattr-teamurl-$here_url">
+    <div class="operations TGcatRename"
+         tal:attributes="class string:operations TGcatEditS TGcatDoneH TGcatRename"
+         tal:define="mtool context/portal_membership;
+                     checkPermission nocall:checkPermission | python:mtool.checkPermission"
+         tal:condition="python:checkPermission('Modify portal content', context)"
+         >
+         <a href="#" class="admin TGrename" 
+            i18n:translate="edit_team" 
+            i18n:domain="zopen.org"
+            tal:condition="python:team_del and team_id != 'projectmanagers'">
+            Rename
+        </a>
+         <img class="delimage" src="/++resource++trash.gif" 
+              tal:condition="python:team_del and team_id not in ['projectmanagers', 'projectseniors', 'projectmembers']"
+              tal:attributes="onclick string:delete_confirm(this,'','$here_url/$team_id', '', 'deleteTeam')" />
+    </div>
+
+    <p tal:attributes="class python: team_cur and 'TGcatEditS TGcatDoneS TGcatRename' or 'TGcatEditS TGcatDoneS TGcatRename';"
+        tal:condition="not:is_template_setting">
+        <strong tal:content="team_title">Title</strong>
+        <br />
+        <span class="discreet" tal:content="team_description"></span>
+    </p>
+    <div class="category_linky" style="padding:5px;border-bottom:1px dashed #CCCCCC;" 
+        tal:attributes="class python: team_cur and 'selected category_link TGcatEditS TGcatDoneS TGcatRename' or 'TGcatEditS TGcatDoneS TGcatRename category_link';"
+        tal:condition="is_template_setting"
+        tal:content="team_title">Title</div>
+<form class="showhide hideme TGcatRename TGcatEditH TGcatDoneH"> 
+  <input type="hidden" name="id" value="" tal:attributes="value string:$team_id">
+  <span i18n:translate="team_name">team name:</span><input type="text"  class="category_input team_input" name="new_title" size="32" value="" tal:attributes="value string:$team_title"/>
+  <p>
+     <span style="display:block;padding-bottom:5px;" i18n:translate="description">description:</span>
+  <textarea class="team_input" name="new_description" row="2" tal:content="team_description"></textarea>
+  </p>
+
+  <div class="operations submit_rename hideme">
+      <img alt="Indicator" src="/++resource++indicator.gif" />
+  </div>
+  <div class="submit submit_rename">
+      <input type="submit" value="Save" i18n:attributes="value save;" /> 
+      <tal:i18n i18n:translate="or">or</tal:i18n> <a href="#" class="admin EVrename" i18n:translate="cancel">Cancel</a>
+  </div>
+</form>
+</div>
+</tal:items>
+
+<div id="add_new_team" 
+     tal:define="is_template_setting view/is_template_setting | python:True;
+                 here_url options/here_url | python:view.content_info[1];
+                 team_id python:view.content_info[0];"
+     tal:attributes="id string:add_new_team-$team_id;
+                     class string:category TGcatEditS TGcatDoneH kssattr-teamurl-$here_url;"
+     i18n:domain="zopen.org">
+<form tal:attributes="class string:showhide hideme TGaddTeam-$team_id addForm TGcatEditH TGcatDoneH"> 
+  <span i18n:translate="team_name">team name:</span><input type="text" tal:attributes="id string:new_team_input-$team_id"  name="title" size="32" value=""/>
+  <p>
+     <span style="display:block;padding-bottom:5px;" i18n:translate="description">description:</span>
+     <textarea class="team_input" style="width:80%" name="description" rows="2" tal:attributes="id string:textarea-$team_id"></textarea></p>
+
+  
+  <div class="submit" >
+      <input type="submit" value="Save" i18n:attributes="value save;" /> 
+      <tal:i18n i18n:translate="or">or</tal:i18n> <a href="#" class="admin EVrename" i18n:translate="cancel">Cancel</a>
+  </div>
+</form>
+
+  <div class="operations submit_add hideme">
+      <img alt="Indicator" src="/++resource++indicator.gif" />
+  </div>
+<a tal:attributes="class string:category_link admin TGaddTeam-$team_id TGcatEditS TGcatDoneH"
+    href="#"
+    i18n:domain="zopen.org"
+    i18n:translate="add_another_team">Add another team</a></div>
+</div>

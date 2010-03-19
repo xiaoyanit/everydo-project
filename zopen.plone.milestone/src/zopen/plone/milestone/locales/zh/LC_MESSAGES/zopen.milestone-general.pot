@@ -1,0 +1,313 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-21 11:31+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.milestone\n"
+
+#. Default: "F"
+#: browser/milestones.pt
+msgid "Fri"
+msgstr ""
+
+#. Default: "M"
+#: browser/milestones.pt
+msgid "Mon"
+msgstr ""
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "Sat"
+msgstr ""
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "Sun"
+msgstr ""
+
+#. Default: "Th"
+#: browser/milestones.pt
+msgid "Thu"
+msgstr ""
+
+#. Default: "Tu"
+#: browser/milestones.pt
+msgid "Tue"
+msgstr ""
+
+#. Default: "W"
+#: browser/milestones.pt
+msgid "Wed"
+msgstr ""
+
+#. Default: "Add up to 10 new milestones"
+#: browser/batch_add.pt
+msgid "add_few_milestones"
+msgstr ""
+
+#. Default: "All upcoming"
+#: browser/milestones.pt
+msgid "all_upcoming"
+msgstr ""
+
+#. Default: "Anyone"
+#: browser/milestonereport.pt
+msgid "anyone"
+msgstr ""
+
+#. Default: "Cancel"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "cancel"
+msgstr ""
+
+#. Default: "Cancel and go back"
+#: browser/batch_add.pt
+#: browser/milestones.pt
+msgid "cancel_back"
+msgstr ""
+
+#. Default: "Completed"
+#: browser/milestones.pt
+msgid "completed"
+msgstr ""
+
+#. Default: "Create these milestones"
+#: browser/batch_add.pt
+msgid "create_these_milestones"
+msgstr ""
+
+#. Default: "Create this milestone"
+#: browser/milestones.pt
+msgid "create_this_milestone"
+msgstr ""
+
+#. Default: "Date due"
+#: browser/batch_add.pt
+msgid "date_due"
+msgstr ""
+
+#. Default: "Date due"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "date_due_filed"
+msgstr ""
+
+#. Default: "days away"
+#: browser/milestones.pt
+msgid "days"
+msgstr ""
+
+#. Default: "days ago"
+#: browser/milestones.pt
+msgid "days_ago"
+msgstr ""
+
+#. Default: "Due in the next 14 days"
+#: browser/milestones.pt
+msgid "due_days"
+msgstr ""
+
+#. Default: "Edit"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "edit"
+msgstr ""
+
+#. Default: "F"
+#: browser/milestones.pt
+msgid "fri"
+msgstr ""
+
+#. Default: "Indicator"
+#: browser/milestones.pt
+msgid "indicator"
+msgstr ""
+
+#. Default: "Keep shifted milestones to business days only"
+#: browser/edit.pt
+msgid "keep_shifted_milestones"
+msgstr ""
+
+#. Default: "Late"
+#: browser/milestones.pt
+msgid "late"
+msgstr ""
+
+#. Default: "Milestone title"
+#: browser/batch_add.pt
+msgid "milestone_title"
+msgstr ""
+
+#. Default: "Milestones"
+#: browser/milestones.pt
+msgid "milestones"
+msgstr ""
+
+#. Default: "Milestones on your own calendar"
+#: browser/milestones.pt
+msgid "milestones_on_calendar"
+msgstr ""
+
+#. Default: "M"
+#: browser/milestones.pt
+msgid "mon"
+msgstr ""
+
+#. Default: "(ex: Moving this deadline out 5 days will move all future milestones by 5 days as well. Selecting 'Keep Shifted dates to business days only' will move milestones that land on a weekend forward to Monday.)"
+#: browser/edit.pt
+msgid "moving_deading_out"
+msgstr ""
+
+#. Default: "New milestone"
+#: browser/milestones.pt
+msgid "new_milestone"
+msgstr ""
+
+#. Default: "milestones over the next 3 months"
+#: browser/milestonereport.pt
+msgid "next_3_months_milestones"
+msgstr ""
+
+#. Default: "No milestones"
+#: browser/milestones.pt
+msgid "no_milestones"
+msgstr ""
+
+#. Default: "Notify by email"
+#: browser/milestones.pt
+msgid "notify_mail"
+msgstr ""
+
+#. Default: "or"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "or"
+msgstr ""
+
+#. Default: "(Original date:"
+#: browser/edit.pt
+msgid "original_date"
+msgstr ""
+
+#. Default: "Party responsible"
+#: browser/batch_add.pt
+msgid "party_responsible"
+msgstr ""
+
+#. Default: "Party Responsible:"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "party_responsible_n"
+msgstr ""
+
+#. Default: "Moving, please wait..."
+#: browser/milestones.pt
+msgid "please_wait"
+msgstr ""
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "sat"
+msgstr ""
+
+#. Default: "Save changes"
+#: browser/edit.pt
+msgid "save_changes"
+msgstr ""
+
+#. Default: "Send email reminder now & 48-hours before this milestone is due"
+#: browser/milestones.pt
+msgid "send_email_reminder"
+msgstr ""
+
+#. Default: "Send reminder"
+#: browser/batch_add.pt
+#: browser/edit.pt
+msgid "send_reminder"
+msgstr ""
+
+#. Default: "Show items assigned to: ${someone}"
+#: browser/milestonereport.pt
+msgid "show_assigned_to"
+msgstr ""
+
+#. Default: "Shift subsequent milestones the same number of days"
+#: browser/edit.pt
+msgid "subsequent_milestones"
+msgstr ""
+
+#. Default: "Subscribe to iCalendar"
+#: browser/milestones.pt
+msgid "subsribe_to_icalendar"
+msgstr ""
+
+#. Default: "If you use ${apple}, ${mozilla}, or any other program that fully supports the iCalendar standard, you can subscribe to your Milestones in iCalendar format. This will allow you to view your project milestones in your own desktop computer calendar. Please read this ${security} before subscribing."
+#: browser/milestones.pt
+msgid "subsrible_icalendar_more"
+msgstr ""
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "sun"
+msgstr ""
+
+#. Default: "Th"
+#: browser/milestones.pt
+msgid "thu"
+msgstr ""
+
+#. Default: "Title"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "title"
+msgstr ""
+
+#. Default: "Today is"
+#: browser/milestones.pt
+msgid "today_is"
+msgstr ""
+
+#. Default: "Toggle past months"
+#: browser/milestones.pt
+msgid "toggle_past_months"
+msgstr ""
+
+#. Default: "Tu"
+#: browser/milestones.pt
+msgid "tue"
+msgstr ""
+
+#. Default: "up to 10 at once"
+#: browser/milestones.pt
+msgid "up_many_once"
+msgstr ""
+
+#. Default: "Upcoming"
+#: browser/milestones.pt
+msgid "upcoming"
+msgstr ""
+
+#: browser/milestones.pt
+#: browser/milestonereport.pt
+#: browser/provider/milestones.pt
+msgid "week"
+msgstr ""
+
+#. Default: "W"
+#: browser/milestones.pt
+msgid "wes"
+msgstr ""
+

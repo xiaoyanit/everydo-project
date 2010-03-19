@@ -1,0 +1,14 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           i18n_domain="frs-at">
+
+  <subscriber for="zopen.plone.project.interfaces.IProjectContent
+              zopen.plone.project.interfaces.IProjectCreatedEvent"
+              handler=".project.initProject" />
+
+  <subscriber for="zopen.plone.writeboard.interfaces.IWriteboardContent
+              zopen.plone.writeboard.interfaces.IWriteboardCreatedEvent"
+              handler=".writeboard.setSharing" />
+
+</configure>

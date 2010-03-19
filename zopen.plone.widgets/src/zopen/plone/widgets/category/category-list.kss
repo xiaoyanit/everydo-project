@@ -1,0 +1,93 @@
+.EVcatDone:click{
+    evt-click-preventdefault: true;
+
+    action-client: removeClass css('.TGcatDoneS');
+    removeClass-value: hideme;
+
+    action-client: addClass css('.TGcatDoneH');
+    addClass-value: hideme;
+}
+
+.EVcatEdit:click{
+    evt-click-preventdefault: true;
+
+    action-client: removeClass css('.TGcatEditS');
+    removeClass-value: hideme;
+
+    action-client: addClass css('.TGcatEditH');
+    addClass-value: hideme;
+}
+
+.operations .admin:click {
+    
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGcatRename');
+   toggleClass-value: hideme;
+
+   action-client: focus parentnodecss('.kssDeletionRegion|.category_input');
+}
+
+form.TGcatRename input[type=submit]:click {
+   evt-click-preventdefault: true;
+
+   action-server: listRenameCategory currentForm();
+   listRenameCategory-kssUrl: kssAttrJoin('*caturl', '/@@listRenameCategory');
+   listRenameCategory-is_template_setting: kssAttr(is_template_setting, True);
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.submit_rename');
+   toggleClass-value: hideme;
+}
+
+#add_new_category_files .category_link:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGaddCategory-files');
+   toggleClass-value: hideme;
+
+   action-client: focus css('#new_category_input_files');
+}
+
+#add_new_category_messages .category_link:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGaddCategory-messages');
+   toggleClass-value: hideme;
+
+   action-client: focus css('#new_category_input_messages');
+}
+
+form.TGaddCategory-messages input[type=submit]:click {
+   evt-click-preventdefault: true;
+
+   action-server: listCreateCategory url(kssAttrJoin('*caturl', '/@@listCreateCategory')) currentForm();
+   listCreateCategory-is_template_setting: kssAttr(is_template_setting, True);
+
+   action-client: toggleClass css('.TGaddCategory-messages');
+   toggleClass-value: hideme;
+}
+
+form.TGaddCategory-files input[type=submit]:click {
+   evt-click-preventdefault: true;
+
+   action-server: listCreateCategory url(kssAttrJoin('*caturl', '/@@listCreateCategory')) currentForm();
+   listCreateCategory-is_template_setting: kssAttr(is_template_setting, True);
+
+   action-client: toggleClass css('.TGaddCategory-files');
+   toggleClass-value: hideme;
+}
+
+.TGaddCategory-messages .EVrename:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGaddCategory-messages');
+   toggleClass-value: hideme;
+}
+
+.TGaddCategory-files .EVrename:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGaddCategory-files');
+   toggleClass-value: hideme;
+}
+ 

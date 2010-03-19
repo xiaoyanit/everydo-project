@@ -1,0 +1,150 @@
+<configure
+    xmlns="http://namespaces.zope.org/browser"
+    xmlns:zope="http://namespaces.zope.org/zope">
+
+  <collector
+      name="kupu.js"
+      type="zope.publisher.interfaces.browser.IDefaultBrowserLayer"
+      />
+
+<zrt-resource
+      name="kupunoi18n.js"
+      file="resources/kupu/kupunoi18n.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupunoi18n.js"
+    weight="101"
+    />
+
+<zrt-resource
+      name="sarissa_ieemu_xpath.js"
+      file="resources/kupu/sarissa_ieemu_xpath.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="sarissa_ieemu_xpath.js"
+    weight="102"
+    />
+
+<zrt-resource
+      name="kupuhelpers.js"
+      file="resources/kupu/kupuhelpers.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupuhelpers.js"
+    weight="103"
+    />
+
+<zrt-resource
+      name="kupueditor.js"
+      file="resources/kupu/kupueditor.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupueditor.js"
+    weight="104"
+    />
+<zrt-resource
+      name="kupubasetools.js"
+      file="resources/kupu/kupubasetools.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupubasetools.js"
+    weight="105"
+    />
+<zrt-resource
+      name="kupuloggers.js"
+      file="resources/kupu/kupuloggers.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupuloggers.js"
+    weight="106"
+    />
+<zrt-resource
+      name="kupucontentfilters.js"
+      file="resources/kupu/kupucontentfilters.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupucontentfilters.js"
+    weight="107"
+    />
+<zrt-resource
+      name="kupuploneeditor.js"
+      file="resources/kupu/kupuploneeditor.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupuploneeditor.js"
+    weight="108"
+    />
+<zrt-resource
+      name="kupuploneui.js"
+      file="resources/kupu/kupuploneui.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupuploneui.js"
+    weight="109"
+    />
+<zrt-resource
+      name="kupusourceedit.js"
+      file="resources/kupu/kupusourceedit.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupusourceedit.js"
+    weight="110"
+    />
+<zrt-resource
+      name="kupudrawers.js"
+      file="resources/kupu/kupudrawers.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupudrawers.js"
+    weight="111"
+    />
+<zrt-resource
+      name="kupuploneinit.js"
+      file="resources/kupu/kupuploneinit.js"
+      />
+  <collectorItem
+    collector="kupu.js"
+    item="kupuploneinit.js"
+    weight="112"
+    />
+
+<zrt-resource
+      name="kupustyles.css"
+      file="resources/kupu/kupustyles.css"
+      />
+  <collectorItem
+    collector="everydo.css"
+    item="kupustyles.css"
+    weight="10"
+    />
+<zrt-resource
+      name="kupuplone.css"
+      file="resources/kupu/kupuplone.css"
+      />
+  <collectorItem
+    collector="everydo.css"
+    item="kupuplone.css"
+    weight="11"
+    />
+<zrt-resource
+      name="kupudrawerstyles.css"
+      file="resources/kupu/kupudrawerstyles.css"
+      />
+  <collectorItem
+    collector="everydo.css"
+    item="kupudrawerstyles.css"
+    weight="12"
+    />
+
+</configure>

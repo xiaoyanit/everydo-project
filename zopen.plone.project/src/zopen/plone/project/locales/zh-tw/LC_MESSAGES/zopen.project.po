@@ -1,0 +1,599 @@
+# zopen.project translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.project 1.0\n"
+"POT-Creation-Date: 2007-05-28 08:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh-tw\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.project\n"
+"X-Is-Fallback-For: zh-hk zh-mo zh-sg\n"
+
+#. Default:
+msgid "Comment"
+msgstr "評注"
+
+#. Default:
+msgid "ChatLog"
+msgstr "討論記錄"
+
+#. Default: "Delete this project"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "Delete_this_project"
+msgstr "刪除這個項目"
+
+#. Default:
+msgid "Discussion Item"
+msgstr "評注"
+
+#. Default:
+msgid "Document"
+msgstr "寫字板"
+
+#. Default:
+msgid "File"
+msgstr "文件"
+
+#. Default:
+msgid "Image"
+msgstr "圖片"
+
+#. Default:
+msgid "Message"
+msgstr "消息"
+
+#. Default:
+msgid "Milestone"
+msgstr "里程碑"
+
+#. Default:
+msgid "TodoItem"
+msgstr "任務"
+
+#. Default:
+msgid "Todo Item"
+msgstr "任務"
+
+#. Default:
+msgid "TodoList"
+msgstr "任務清單"
+
+#. Default:
+msgid "Todo List"
+msgstr "任務清單"
+
+#. Default: "People with access to this project"
+#: browser/prefs_project_team.pt
+msgid "access_project"
+msgstr "項目參與人員"
+
+#. Default: "Active"
+#: browser/prefs_project_settings.pt
+msgid "active"
+msgstr "活動"
+
+#. Default: "Have the full functionality of the project."
+#: browser/prefs_project_settings.pt
+msgid "active_formhelp"
+msgstr "有全部功能的項目。"
+
+#. Default: "Can I add companyies and people to projects later?"
+#: browser/create_project_form.pt
+msgid "add_companyies_people"
+msgstr "我可以過後加公司和參與人員到這個項目嗎？"
+
+#. Default: "Add file"
+#: browser/dashboard.pt
+msgid "add_file"
+msgstr "添加文件"
+
+#. Default: "Add message"
+#: browser/dashboard.pt
+msgid "add_message"
+msgstr "添加消息"
+
+#. Default: "Add milestone"
+#: browser/dashboard.pt
+msgid "add_milestones"
+msgstr "添加里程碑"
+
+#. Default: "Add to-do list"
+#: browser/dashboard.pt
+msgid "add_todo"
+msgstr "添加任務清單"
+
+#. Default: "Add writeBoard"
+#: browser/dashboard.pt
+msgid "add_writeboards"
+msgstr "編寫文檔"
+
+#. Default: "存檔"
+#: browser/prefs_project_settings.pt
+msgid "archived"
+msgstr "存檔"
+
+#. Default: "This project is frozen: it can be viewed but not edited.  Archive projects don't count against your active project total."
+#: browser/prefs_project_settings.pt
+msgid "archived_formhelp"
+msgstr "這個項目被凍結了：它能夠被查看，但是無法編輯。存檔的項目不會計入您的活動項目總數。"
+
+#. Default: "Archived projects"
+#: browser/project_list.pt
+#: browser/archived_project_list.pt
+msgid "archived_project"
+msgstr "已經存檔的項目"
+
+#. Default: "If you post a comment you'll automatically be notified when others post comments."
+#: browser/subscription/sub.pt
+msgid "automatically_notified"
+msgstr "如果您張貼一則評註後，您將會自動地收到其它人張貼評註的通知。"
+
+#. Default: "Before Yesterday"
+#: browser/dashboard.pt
+msgid "before_yesterday"
+msgstr "昨天以前"
+
+#. Default: "Cancel"
+#: browser/create_project_form.pt
+msgid "cancel"
+msgstr "取消"
+
+#. Default: "Change project state"
+#: browser/prefs_project_settings.pt
+msgid "change_project_stauts"
+msgstr "更改項目狀態"
+
+#. Default: "Comment Notification"
+#: browser/subscription/sub.pt
+msgid "comment_notification"
+msgstr "評註通知"
+
+#. Default: "Give a client or another company access to this project?"
+#: browser/create_project_form.pt
+msgid "company_project"
+msgstr "希望客戶，或其它公司訪問這個項目?"
+
+#. Default: "Create a new project"
+#: browser/project_list.pt
+msgid "create_new_project"
+msgstr "創建一個新的項目"
+
+#. Default: "Create this project"
+#: browser/create_project_form.pt
+msgid "create_this_project"
+msgstr "創建這個項目"
+
+#. Default: "${author} posted on ${time}"
+#: browser/dashboard.pt
+msgid "creator_posted"
+msgstr "${author} 提交於 ${time}"
+
+#. Default: "Deleting a project ${immediately} all the messages, milestones, and to-do lists associated with this project. ${no_undo} so make sure you're absolutely sure you want to delete this project."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "deleting_a_project"
+msgstr "${immediately}刪除項目，及所有與項目關聯的消息、里程碑、任務。${no_undo}，所以確認您是否要刪除這個項目。"
+
+#. Default: "You can also do this later so don't worry about it if you aren't sure."
+#: browser/create_project_form.pt
+msgid "do_it_later"
+msgstr "如果您還不確定，不用擔心，您也可稍後再添加。"
+
+#. Default: "-or- enter a new company name:"
+#: browser/create_project_form.pt
+msgid "enter_new_company"
+msgstr "或，填寫一個新的公司名稱："
+
+#. Default: "Post a message, add a to-do, schedule a milestone. Get started!"
+#: browser/dashboard.pt
+msgid "get_started"
+msgstr "您可以張貼消息、分配任務、計劃里程碑，開始啟動項目！"
+
+#. Default: "give another client or company access to this project"
+#: browser/create_project_form.pt
+msgid "give_client_project"
+msgstr "讓客戶或其它的公司也能夠訪問這個項目"
+
+#. Default: "Select a new state for the project"
+msgid "help_projectState"
+msgstr "選擇一個新的項目狀態"
+
+#. Default:
+msgid "help_related_company"
+msgstr "選擇一個和此項目主要相關的公司，這個公司將在首頁項目清單中顯示。公司的名字將在每個項目的頁面上方，以及其他必要的地方顯示。這個公司的標識圖片(logo )將在項目首頁、消息頁面上方，以及項目其他必要的地方顯示。"
+
+#. Default: "immediately and permanently deletes"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "immedately_deletes"
+msgstr "立即永久"
+
+#. Default: "Indicator"
+#: browser/create_project_form.pt
+msgid "indicator"
+msgstr ""
+
+#. Default: "Participants"
+#: browser/prefs_project_team.pt
+msgid "join_people"
+msgstr "參與人員"
+
+#. Default: "Active — Fully functional project."
+msgid "label_active_state"
+msgstr "活動—有全部功能的項目."
+
+#. Default: "Archived — This project is frozen: it can be viewed but not edited.  Archived projects don't count against your active project total."
+msgid "label_archived_state"
+msgstr "存檔—這個項目被凍結了：它能夠被查看，但是無法編輯。存檔的項目不會在計入你的活動項目總數。"
+
+#. Default: "Change project state"
+msgid "label_projectState"
+msgstr "更改項目狀態"
+
+#. Default:
+msgid "label_related_company"
+msgstr "相關的公司或客戶"
+
+#. Default: "Last Login: ${login_time}"
+#: browser/dashboard.pt
+msgid "last_login"
+msgstr "最後登錄日期：${login_time}"
+
+#. Default: "create a new project"
+#: browser/create_project_form.pt
+msgid "new_project"
+msgstr "創建一個新的項目"
+
+#. Default: "New project FAQ"
+#: browser/create_project_form.pt
+msgid "new_project_faq"
+msgstr "新建項目常見問題"
+
+#. Default: "No activity today"
+#: browser/dashboard.pt
+msgid "no_activity_today"
+msgstr "今天沒有活動項"
+
+#. Default: "No activity yesterday"
+#: browser/dashboard.pt
+msgid "no_activity_yesterday"
+msgstr "昨天沒有活動項"
+
+#. Default: "No activity yet"
+#: browser/dashboard.pt
+msgid "no_activity_yet"
+msgstr "沒有活動項"
+
+#. Default: "No login yet"
+#: browser/dashboard.pt
+msgid "no_login_yet"
+msgstr "沒有登錄過"
+
+#. Default: "If you'd rather not comment, but want to be notified, then ${subscribe}"
+#: browser/subscription/sub.pt
+msgid "not_comment_subscribe"
+msgstr "如果您暫不評註，但是想接收評註通知，可${subscribe}"
+
+#. Default: "You aren't currently being notified when new comments are posted."
+#: browser/subscription/sub.pt
+msgid "not_notified"
+msgstr "當新的評註張貼後，您不會收到通知。"
+
+#. Default: "The following people will receive email notifications when new comments are posted."
+#: browser/subscription/sub.pt
+msgid "notification_caption"
+msgstr "當新的評註張貼後，下面的人員將會接收到郵件通知。"
+
+#. Default: "Onhold projects"
+#: browser/project_list.pt
+msgid "onhold_project"
+msgstr "擱置的項目"
+
+#. Default: "Other"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "other"
+msgstr "其它"
+
+#. Default: "Other setting"
+#: browser/prefs_project_team.pt
+msgid "other_setting"
+msgstr "其它設定"
+
+#. Default: "People"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "people"
+msgstr "人員"
+
+#. Default: "People on this project"
+#: browser/dashboard.pt
+msgid "people_project"
+msgstr "項目的參與人員"
+
+#. Default: "Create project needs one or two minutes, please wait..."
+#: browser/create_project_form.pt
+msgid "please_wait"
+msgstr "正在創建項目，請稍等..."
+
+#. Default: "reate an announcement that appears at the top of this project's Overview page. You can use this to describe the project, to make a special announcement, etc.
+#: browser/prefs_project_settings.pt
+msgid "project_annouce_formhelp"
+msgstr "創建一個顯示在項目概覽頁面的聲明。可使用它來描述項目，或發布一個特別的聲明等。（支持基本的HTML標記）"
+
+#. Default: "Select the company you want this project to be associated with in the "Your Projects" list on the Dashboard. The company name will also be displayed at the top of each project page and elsewhere where necessary. Finally, the company logo will appear at the top of the All Messages page for this project."
+#: browser/prefs_project_settings.pt
+msgid "project_client_formhelp"
+msgstr "選擇一個和此項目主要相關的公司，這個公司將在首頁項目清單中顯示。公司的名字將在每個項目的頁面上方，以及其它必要的地方顯示。這個公司的標識圖片（logo ）將在項目首頁、消息頁面上方，以及項目其他必要的地方顯示。"
+
+#. Default: "Select the primary company for this project"
+#: browser/prefs_project_settings.pt
+msgid "project_company_client"
+msgstr "相關的公司或客戶"
+
+#. Default: "Project name:"
+#: browser/create_project_form.pt
+msgid "project_name"
+msgstr "項目名稱"
+
+
+#. Default: "Start page"
+#: browser/create_project_form.pt
+msgid "start_page"
+msgstr "起始頁面"
+
+#. Default: "This is the first page people see when they view this project."
+#: browser/create_project_form.pt
+msgid "start_page_formhelp"
+msgstr "這是查看項目時，顯示的第一個頁面。根據項目的特點，您可選擇不同的起始頁面。"
+
+#. Default: "The project name appears at the top of every page."
+#: browser/prefs_project_settings.pt
+msgid "project_name_formhelp"
+msgstr "項目名稱將在項目的每個頁面上方顯示。"
+
+#. Default: "Project Overview"
+#: browser/dashboard.pt
+msgid "project_overview"
+msgstr "項目概覽"
+
+#. Default: "Overview page announcement"
+#: browser/prefs_project_settings.pt
+msgid "project_overview_announce"
+msgstr "項目概覽頁面的聲明"
+
+#. Default: "Project property"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "project_property"
+msgstr "項目設置"
+
+#. Default: "Setting project property here."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "project_property_formhelp"
+msgstr "在這裡修改項目屬性。"
+
+#. Default: "選擇一個新的項目狀態"
+#: browser/prefs_project_settings.pt
+msgid "project_stauts_formhelp"
+msgstr "選擇一個新的項目狀態"
+
+#. Default: "項目名稱:"
+#: browser/prefs_project_settings.pt
+msgid "project_title"
+msgstr ""
+
+#. Default: "remove"
+#: browser/subscription/sub.pt
+msgid "remove"
+msgstr "去除"
+
+#. Default: "Save"
+#: browser/prefs_project_settings.pt
+msgid "save"
+msgstr "保存"
+
+#. Default: "Can specify who can see which projects?"
+#: browser/create_project_form.pt
+msgid "see_which_projects"
+msgstr "可以指定誰可以看到哪個項目嗎？"
+
+#. Default: "If you'd like, you can ${yes_add}."
+#: browser/create_project_form.pt
+msgid "select_company"
+msgstr "您可以${yes_add}"
+
+#. Default: "select an existing company:"
+#: browser/create_project_form.pt
+msgid "select_existing_company"
+msgstr "選擇一個現有的公司："
+
+#. Default: "(\"Home page redesign\" or \"Marketing ideas\", etc.)"
+#: browser/create_project_form.pt
+msgid "shopping_cart"
+msgstr "（“主頁設計”或“控制系統建設”，等等。）"
+
+#. Default: "subscribe to this message."
+#: browser/subscription/sub.pt
+msgid "subscribe_message"
+msgstr "訂閱這個消息"
+
+#. Default: "There is no Undo"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "there_no_undo"
+msgstr "這是不可恢復的"
+
+#. Default: "Today"
+#: browser/dashboard.pt
+msgid "today"
+msgstr "今天"
+
+#. Default: "Overview tour page."
+#: browser/dashboard.pt
+msgid "tour_page"
+msgstr "概覽導讀頁面"
+
+#. Default: "Yes, I understand — delete this project"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "understand_delete_project"
+msgstr "好的，現在刪除項目"
+
+#. Default: "Learn about the overview: Watch a video demo below"
+#: browser/dashboard.pt
+msgid "watch_video_demo"
+msgstr "快速學習：請看下面的視頻示例"
+
+#. Default: "You can watch this video or view a screenshot any time from the ${tour}"
+#: browser/dashboard.pt
+msgid "watch_video_tour"
+msgstr "幾分鐘時間從${tour}觀看視頻或看一些截屏。"
+
+#. Default: "Welcome! Get started by clicking a tab above."
+#: browser/dashboard.pt
+msgid "welcome_start"
+msgstr "歡迎進入項目空間！點擊上面的標籤開始工作。"
+
+#. Default: "What's fresh?"
+#: browser/dashboard.pt
+msgid "what_fresh"
+msgstr "最近活動項"
+
+#. Default: "Yes. You can add as many companies and people to a project as you'd like. Once you've created the project, go into the project and click the People tab."
+#: browser/create_project_form.pt
+msgid "yes_add_companyies"
+msgstr "您可以添加更多的公司和人員到一個項目中。當您創建好了項目，進入項目的項目成員標籤進行設置。"
+
+#. Default: "Yes. Once you've created the project, go into the project and click the \"Permissions\" link (it will be in th eupper right corner) to specify who can see the project."
+#: browser/create_project_form.pt
+msgid "yes_see_which"
+msgstr "當您創建好了項目，進入“項目成員”的鏈接（在項目頁面的右上角）設置項目各個角色的參與人員，就可以指定人員誰可以看到這個項目，誰可以添加內容等。"
+
+#. Default: "Yesterday"
+#: browser/dashboard.pt
+msgid "yesterday"
+msgstr "昨天"
+
+#. Default: "Your archived projects"
+#: browser/project_list.pt
+msgid "your_archived_project"
+msgstr "已經存檔的項目..."
+
+#. Default: "Your projects"
+#: browser/project_list.pt
+msgid "your_project"
+msgstr "您的項目"
+
+#.
+msgid "Please input project name."
+msgstr "請輸入項目名稱。"
+
+msgid "Password is invalid"
+msgstr "密碼有誤！"
+
+#. Default: "Project current progress:"
+#: browser/dashboard.pt
+msgid "project_progress"
+msgstr "項目當前進度: "
+
+#. Default: "For security, please input your password: "
+#: browser/prefs_project_settings.pt
+msgid "for_security_password"
+msgstr "安全起見，請輸入您的密碼："
+
+#. Default: "Deleted!"
+#: browser/prefs_project_settings.pt
+msgid "project_deleted"
+msgstr "刪除項目！"
+
+msgid "Project data exported successfully."
+msgstr "項目數據已經成功導出."
+
+#. Default: "Not allowed to create new project"
+#: browser/prefs_project_settings.pt
+msgid "not_allowed_create"
+msgstr "禁止創建新項目"
+
+#. Default: "If you want to create new project, you can <a href=\"/@@switch_level\">upgrade service level</a>, or delete, archive other project."
+#: browser/prefs_project_settings.pt
+msgid "not_allowed_create_info"
+msgstr "如需創建新項目，可<a href=\"/@@switch_level\">升級服務等級</a>，或者刪除、存檔其他的項目。"
+
+#: browser/project_list.pt
+msgid "create_a_new_project"
+msgstr "<span style=\"font-size:13px;\">創建一個新項目</span>"
+
+#: borwser/create_project_form.pt
+msgid "enable_time_tracking"
+msgstr "開啟“工作日誌”功能，讓項目成員報告工作情況"
+
+msgid "project_functions"
+msgstr "項目欄目目"
+
+msgid "desc_project_functions"
+msgstr "項目工作區啟用的功能欄目，可根據項目的具體情況進行選擇。"
+
+msgid "modify_subscriptions"
+msgstr "修改訂閱人"
+
+#: browser/subscription/sub.pt
+#. Default: "Invitation these members to view the contents by E-mail now"
+msgid "now_nofity_members"
+msgstr "現在就通過郵件邀請這些成員瀏覽此內容"
+
+#: browser/subscription/sub.pt
+msgid "or"
+msgstr "或"
+
+#: browser/subscription/sub.pt
+msgid "save_change"
+msgstr "保存更改"
+
+#: browser/subscription/sub.pt
+#. Default: "You can <a href=\"#\" class=\"admin TeditNotified\">modify subscriptions</a>, and invitation members to view the contents by E-mail."
+msgid "modify_subscriptions_more"
+msgstr "您可以<a href=\"#\" class=\"admin TeditNotified\">修改訂閱人</a>，並同時通過郵件邀請成員瀏覽本內容。"
+
+msgid "Info"
+msgstr "信息"
+
+msgid "modified_success"
+msgstr "更改成功"
+
+#. Default: "${user_name} <${user_email}> invitation you view ${obj_title}. \nVisit URL: \n ${obj_url} \n \n--\nDO NOT REPLY TO THIS EMAIL.\nTo comment on this content, visit: \n${obj_url}"
+msgid "body_email"
+msgstr "${user_name} <${user_email}> 邀請您瀏覽${obj_title}。\n\n访问地址： ${obj_url} \n \n--\n請勿回覆此郵件。\n您可評註此內容，訪問地址：\n${obj_url}" 
+
+#. Default: "Project tags"
+msgid "project_tags"
+msgstr "項目標籤"
+
+#. Default: "Project tags can be associated with the projects, a number of tags separated by spaces."
+msgid "project_tags_formhelp"
+msgstr "可通過項目標籤將項目關聯起來，多個標籤用空格分隔。"
+
+msgid "Project"
+msgstr "項目"
+
+msgid "add_person_project"
+msgstr "設置人員"
+
+msgid "contain_tag_project"
+msgstr "<a href=\"#\" style=\"float:right\" class= \"admin close_tag_for\">關閉</a>包含\"${tag}\"標籤的其它項目有："
+
+msgid "contain_tag_project_no"
+msgstr "<div class=\"tag_for_projects\"><p><a href=\"#\" style=\"float:right\" class= \"admin close_tag_for\">关闭</a>沒有其它項目包含些標籤。</p></div>"
+
+msgid "add_tags"
+msgstr "添加標籤"
+
+msgid "add_tags_for"
+msgstr "一次添加一個標籤:"
+
+msgid "edit_tags"
+msgstr "編輯標籤"
+
+msgid "add"
+msgstr "添加"

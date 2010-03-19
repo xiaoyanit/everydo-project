@@ -1,0 +1,183 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.messages">
+
+<metal:noborder fill-slot="top_slot"
+    tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+   <link href="#" type="text/css" rel="stylesheet" media="screen"
+         tal:attributes="href string:$portal_url/++resource++message.css?34223332" />
+
+   <link href="#" type="text/css" rel="stylesheet" media="screen"
+         tal:attributes="href string:$portal_url/++resource++category.css?34223332" />
+
+   <link type="text/css" rel="kinetic-stylesheet"
+         tal:attributes="href string:$portal_url/++resource++category-list.kss?34223332"
+         />
+
+</metal:css>
+
+<div metal:fill-slot="main"
+     tal:define="category request/category | nothing;
+                 global last_date nothing;
+                 group_by request/group_by | string:modified;
+                 results python:view.getTimelinedResults(category) or [];
+                 Batch python:modules['Products.CMFPlone'].Batch;
+                 b_size python:8;b_start python:0;b_start request/b_start | b_start; ">
+    <div class="SectionHeader">
+    <h1 tal:condition="not: category" i18n:translate="all_messages"> All messages </h1>
+    <h1 tal:condition="category"><tal:i18n i18n:translate="messages_in">Messages in</tal:i18n> 
+        <span tal:replace="view/categoryTitle"> </span></h1>
+    <h3 tal:condition="python:checkPermission('zopen.messageboard: Add Message', context)">
+    <a class="admin"
+       href="#"
+       tal:attributes="href string:$here_url/add_message"
+       i18n:translate="add_a_new_message"
+       >Add a new message</a>
+    </h3>
+    </div>
+
+    <div tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
+    <tal:messages tal:repeat="brain batch">
+
+        <tal:define tal:define="item_datetime python:getattr(brain, group_by);
+                                item_date python:basecamp_view.getExactTime(item_datetime);
+                                item_creator brain/Creator;
+                                is_new_day python:item_date != last_date;
+                                message python:brain.getObject();
+                                category python:message.aq_parent;
+                                comments python:len(message.objectIds('Comment'));
+                                review_state brain/review_state;
+                                global last_date item_date;"
+                               >
+          <h2 class="date" tal:condition="is_new_day">
+              <span tal:attributes="class python:item_date=='Today' and 'Today' or ''"
+                    i18n:domain="zopen.basecamp" 
+                    i18n:translate=""
+                    tal:content="item_date"> 2005-12-12 </span></h2>
+          <div class="Post"
+               tal:attributes="class string:kssDeletionRegion Post state-$review_state">
+              <h1><a href="#"
+                     tal:attributes="href brain/getURL"
+                     tal:content="brain/pretty_title_or_id"></a>
+                   <span class="private_bug" tal:condition="python:review_state=='private'" i18n:translate="Private">Private</span>
+              </h1>
+              <div style="margin-bottom:6px">
+               <div tal:replace="structure message/getText"> </div>
+              </div>
+
+              <p tal:condition="nothing">
+                 <a href="#"
+                    tal:attributes="href message/absolute_url"
+                    i18n:translate="continue_read"
+                    >Continue read...</a></p>
+              
+   <tal:attachments tal:define="attachments message/getAttachedImagesAndFiles;
+                                files python:attachments[1];
+                                images python:attachments[0]">
+        <metal:block metal:use-macro="here/@@message_view/macros/attachments-images">
+                 use macro attachments-images (...)
+        </metal:block>
+        <metal:block metal:use-macro="here/@@message_view/macros/attachments-attachments">
+                 use macro attachments-attachment (...)
+        </metal:block>
+    </tal:attachments>
+
+              <h3>
+               <tal:block i18n:translate="posted_by_in_category">
+                  Posted by
+                  <span tal:define="currentContributor python:brain.Contributors and brain.Contributors[0] or brain.Creator;
+                                    author python:basecamp_view.getMemberName(currentContributor);
+                                    "
+                        tal:content="author"
+                        i18n:name="author">auther</span>
+                  in </tal:block>
+                   <a tal:content="category/pretty_title_or_id"
+                      tal:attributes="href string:$here_url?category=${category/getId}"
+                      >
+                      category </a>
+                   <tal:cond condition="python:checkPermission('Modify portal content', message)">
+                   | 
+                   <a href="#"
+                      class="admin"
+                      tal:attributes="href string:${brain/getURL}/edit_message"
+                      i18n:translate="edit">edit</a>
+                   </tal:cond>
+                   | 
+                   <a href="#"
+                      tal:attributes="href string:${brain/getURL}/#commentBody">
+                      <tal:none condition="not: comments" i18n:translate="post_comment">Post a comment</tal:none>
+                      <tal:comments condition="comments" i18n:translate="exist_comments"><span i18n:name="comments" tal:replace="comments" /> comments</tal:comments>
+                   </a>
+                   <span tal:define="obj nocall:message"
+                         tal:replace="structure provider:zopen.deletion"/>
+              </h3>
+         </div>
+        </tal:define>
+    </tal:messages> 
+
+        <!-- Navigation -->
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+    </div>
+
+    <tal:no_results condition="not:results"
+                    i18n:domain="zopen.basecamp">
+       <div class="blankBar"
+            tal:condition="python:checkPermission('zopen.messageboard: Add Message', context)">
+          <div><span i18n:translate="post_message_for">Post meesage, share project updates, ask quesstions, communicate. </span></div>
+          <p style="padding:15px 0 8px;">
+          <a class="create_project"
+             tal:attributes="href string:$here_url/@@add_message;
+                             style string:background:transparent url('${portal_url}/start_img/create_buttom2.png') no-repeat;;padding:12px 50px 8px 50px;;font-weight:bold;;color:#000;;white-space:normal;;text-align:center;;width:170px;;text-decoration:none;;border-style:none;;"
+             >
+              <span style="font-size:18px;color:#FFF;" i18n:translate="post_first_message">Post the first message</span></a>
+          </p>
+
+        </div>
+        <div class="blankOr">
+           <p class="or_t">消息板 - 让项目沟通更顺畅</p>
+           <table style="margin:0pt auto; width:80%">
+              <tr>
+                <td><a class="image" href="@@add_message"><img tal:attributes="src string:${portal_url}/start_img/message.png" /></a></td>
+                <td style="border-left:1px dotted #CCCCCC"><ul>
+                     <li>使用消息板，可取代邮件，分类发布项目消息，比如项目公告、新闻、知识情报等</li>
+                     <li>消息的邮件通知和订阅机制，可以适度的邮件传播 </li>
+                     <li>消息的附件自动进入项目文件区存档，图片可以预览</li>
+                     <li>消息分类管理，可搜索查看，沉淀项目知识</li>
+                     <li>支持评注讨论</li>
+                    </ul>
+                </td>
+               </tr>
+           </table>
+        </div>
+
+      <div class="blankMore">
+         <table width="100%" style="padding:0 0 30px;">
+            <tr>
+              <td width="45%" style="border-right:1px dotted #CCCCCC;">
+                <p class="or_t">消息板视频介绍</p>
+                <div style="text-align:center">
+                  <a class="image" target="_blank"  href="http://cache.everydo.com/demo/message.htm"><img tal:attributes="src string:${portal_url}/start_img/play_view_o2.gif" /></a>
+                </div>
+              </td>
+              <td style="vertical-align: top; padding-left:20px">
+                <p class="or_t">消息板使用帮助</p>
+                <ul>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/08message.rst">[常见问题]我能否发布消息的同时，通知相关项目成员？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/08message.rst">[常见问题]我能否在发布消息的同时添加一个或多个附件？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/08message.rst">[常见问题]“使这个消息保密”是什么意思？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/08message.rst">[常见问题]我张贴的消息能否不让其他项目成员看到？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/08message.rst">[在线教程]消息板功能介绍。</a></li>
+              </td>
+            </tr>
+         </table>
+      </div>
+
+    </tal:no_results>
+</div>
+
+<div metal:fill-slot="portlets_two_slot"
+     tal:content="structure provider:zopen.categorylist" />
+
+</html>

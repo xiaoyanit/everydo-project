@@ -1,0 +1,47 @@
+<configure xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    xmlns:mail="http://namespaces.zope.org/mail">
+
+  <browser:pages
+      for="*"
+      class=".kssview.KSSView"
+      permission="zope.Public">
+     <browser:page
+         name="validateFirmName"
+         attribute="validateFirmName"
+         />
+     <browser:page
+         name="validateLocation"
+         attribute="validateLocation"
+         />
+     <browser:page
+         name="validateURL"
+         attribute="validateURL"
+         />
+     <browser:page
+         name="validatePhone"
+         attribute="validatePhone"
+         />
+     <browser:page
+         name="validateFullName"
+         attribute="validateFullName"
+         />
+     <browser:page
+         name="validateEmail"
+         attribute="validateEmail"
+         />
+     <browser:page
+         name="validateUserName"
+         attribute="validateUserName"
+         />
+     <browser:page
+         name="validatePassword"
+         attribute="validatePassword"
+         />
+     <browser:page
+         name="validateConfirmPassword"
+         attribute="validateConfirmPassword"
+         />
+  </browser:pages>
+
+</configure>

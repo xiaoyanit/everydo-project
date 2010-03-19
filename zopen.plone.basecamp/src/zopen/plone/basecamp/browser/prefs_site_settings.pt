@@ -1,0 +1,153 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="zopen.basecamp">
+
+<metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+<body>
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/site-settings">site</metal:block>
+</div>
+
+<div metal:fill-slot="main">
+
+        <h1 i18n:translate="basic_site_setting">Basic site setting</h1>
+        <div id="basic_form">
+        <form action="@@saveLogo"
+              name="users_search"
+              method="post"
+              enctype="multipart/form-data">
+
+          <div class="field">
+              <label i18n:translate="site_logo">Site logo</label>
+              <p class="formHelp" i18n:translate="site_logo_formhelp">Your site logo appears on the login screen, the Dashboard, and the All Messages page. 
+              The logo suggest more than 200 pixels wide,it will be proportionately reduced when exceed.</p>
+              <div class="block" style="margin-bottom:-10px;" tal:condition="portal/companies/owner_company/getLogo">
+
+                  <table><tr><td>
+                  <div metal:use-macro="context/@@macro_basecamp/macros/companylogo" />
+                  </td><td>
+                  <input type="checkbox"
+                      name="logoInWhiteBox" checked="checked"
+                      tal:attributes="checked portal/companies/owner_company/getLogoInWhiteBox"
+                  /><tal:i18n i18n:translate="logo_put">Put the logo in a white box?</tal:i18n><br />
+                  <a id="delete-logo"
+                      tal:attributes="href string:$portal_url/@@deleteLogo"
+                      onclick="return confirm('你确定要删除它吗?\n注意：删除操作不能撤销。')"
+                       i18n:translate="delete_site_logo">Delete this logo</a></td></tr></table>
+
+               </div>
+
+               <div class="block">
+                <p style="margin-bottom:10px;"><input type="file" name="site_logo" /></p>
+                <input class="context" type="submit"
+                  tabindex=""
+                  name="form.button.upload_logo"
+                  i18n:attributes="value submit_logo;"
+                  value="Upload logo"
+              /><span class="discreet" i18n:translate="submit_logo_formhelp">and replace the current one</span></div>
+               
+          </div>
+        </form>
+
+        <form action="@@changeTitle"
+              name="users_search"
+              method="post">
+
+          <div class="field">
+              <label i18n:translate="your_site_name">Your EveryDo site name</label>
+              <p class="formHelp" i18n:translate="your_site_name_formhelp">The EveryDo Site name appears at the top of every page.</p>
+              
+           <div class="block">
+             <input name="site_name" value=""
+                  tal:attributes="value portal_title"
+              />
+            <input class="context"
+              tabindex=""
+              type="submit"
+              name="form.button.Modify"
+              value="Change"
+              i18n:attributes="value Change;"
+           /></div>
+            
+         </div>
+        </form>
+
+        <form action="@@setDefaultLanguage"
+              name="set_default_language"
+              method="post">
+
+          <div class="field">
+              <label i18n:translate="setting_default_language">Setting default language</label>
+              <p class="formHelp" i18n:translate="default_language_helpform">Choose a language as the default language of your website</p>
+              <div class="block">
+                <select name="langCode">
+                  <option value="zh"
+                          tal:attributes="selected python:portal.portal_properties.site_properties.default_language == 'zh'" 
+                          i18n:translate="lang_code_zh"
+                          >Simplified Chinese</option>
+                  <option value="zh-tw"
+                          tal:attributes="selected python:portal.portal_properties.site_properties.default_language == 'zh-tw'" 
+                          i18n:translate="lang_code_zh-tw"
+                          >Traditional Chinese</option>
+                  <option value="en"
+                          tal:attributes="selected python:portal.portal_properties.site_properties.default_language == 'en'" 
+                          i18n:translate="lang_code_en"
+                          >English</option>
+                </select>
+            <input class="context"
+              tabindex=""
+              type="submit"
+              name="form.button.Modify"
+              value="Change"
+              i18n:attributes="value Change;"
+           />
+              </div>
+
+          </div>
+
+        </form>
+
+        <form action="@@selectTheme"
+              name="users_search"
+              method="post">
+
+          <div class="field">
+              <label i18n:translate="setting_global_color">Setting global color</label>
+              <p class="formHelp" i18n:translate="Choose_suit_color">In the following several colors, choose the one to suit your company, as a new website appearance dominant hue.</p>
+
+              <div class="block" tal:define="colors python:['#036', '#195D00', '#000', '#CBEAC7', '#CCC', '#E8D5B4', '#900', '#C5E2E9', '#AC205F'];
+                                 theme_index python:int(context.getProperty('theme', '1'))-1;">
+
+                  <span style="line-height:4em" tal:repeat="color colors">
+                     <a tal:define="value python:repeat['color'].index + 1;"
+                        href="#" tal:attributes="style python:'font-size: 30px;; margin-right: 10px;;text-decoration:none;; padding-right:50px;; background-color:' + colors[repeat['color'].index];
+                        href string:@@selectTheme?theme=$value">&nbsp;</a>
+                        <br tal:condition="python:repeat['color'].index % 3 == 2"/>
+                  </span>
+ 
+           </div>
+        </form>
+
+
+       
+       
+       </div>
+    </div>
+
+    <div metal:fill-slot="portlets_two_slot">
+          <div class="col">
+             <h1 i18n:translate="note">Note</h1>
+              <p i18n:translate="note_to_people">To add or edit the people in your company, go to the <a href="/companies/@@prefs_site_companies">All people</a> page.</p>
+
+
+          </div>
+    </div>
+
+  </body>
+</html>

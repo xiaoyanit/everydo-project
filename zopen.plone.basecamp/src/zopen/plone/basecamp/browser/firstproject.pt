@@ -1,0 +1,141 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.basecamp">
+
+<head>
+
+   <metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+  
+<metal:fillcss fill-slot="css_slot">
+<style type="text/css">
+  
+/*-------------------------------------------------
+WELCOME
+-------------------------------------------------*/
+
+div.startBar {
+	text-align: center;
+	background-color: #ffc;
+	padding: 7px;
+	margin-bottom: 15px;
+}
+
+.blankOr {
+border-bottom:1px solid #FFCC00;
+margin:0pt 0pt 15px;
+padding:0pt;
+}
+
+.or_c {border-right:1px dotted #CCCCCC;padding-right:8px;}
+.or_c_s {border-style:none;}
+.or_c img {float:left;padding-top:10px;}
+.or_c div {padding-left:60px}
+.or_c p {margin-bottom:5px;}
+
+.or_t {font-weight:bold}
+.or_c .or_a {text-align:right; padding:10px 5px 0 0;}
+.blankMore li {margin-bottom:1em;}
+</style>
+  </metal:fillcss>
+</head>
+
+    <div metal:fill-slot="main">
+       <div class="SectionHeader">
+        <h1 i18n:translate="welcome_everydo"> Welcome to your EveryDo </h1>
+        </div>
+
+        <div class="startBar">
+          <div><span i18n:translate="up_add_running"> It takes just a few seconds and you'll be up and running </span> </div>
+          <p style="padding:15px 0 0;">
+          <a class="create_project" 
+             tal:attributes="href string:$portal_url/projects/create_project_form;
+                             style string:background:transparent url('${portal_url}/start_img/create_buttom.png') no-repeat;;padding:12px 12px 8px 40px;;font-weight:bold;;color:#000;;white-space:normal;;text-align:center;;width:170px;;text-decoration:none;;border-style:none;;"
+             >
+              <span style="font-size:18px;color:#FFF;" i18n:translate="create_first_project">Create your first project</span></a>
+          </p>
+
+        </div>
+        <div class="blankOr">
+            <p i18n:translate="first_you_can" class="or_t"> Or first you can...</p>
+
+         <table>
+          <tr>
+          <td class="or_c">
+            <img tal:attributes="src string:${portal_url}/start_img/add_people.png" />
+            <div>
+               <p class="or_t" i18n:translate="add_peoples">Add peoples</p>
+               <span class="formHelp" i18n:translate="people_formhelp">Here you can invitation to colleagues by e-mail to create a login site account.</span>
+
+               <p class="or_a"><a href="companies/@@prefs_site_companies" i18n:translate="add_now">Add now</a></p>
+            </div>
+          </td>
+          <td class="or_c">
+            <img tal:attributes="src string:${portal_url}/start_img/setting.png" />
+            <div>
+               <p class="or_t" i18n:translate="individuation_site">Individuation your site</p>
+               <span class="formHelp" i18n:translate="individuation_site_formhelp">You can upload your company LOGO, custom site hue, to adjust attributes.</span>
+               <p class="or_a"><a href="@@prefs_site_settings" i18n:translate="setting_now">Setting now</a></p>
+            </div>
+          </td>
+          <td class="or_c">
+            <img tal:attributes="src string:${portal_url}/start_img/modling.png" />
+            <div>
+               <p class="or_t" i18n:translate="customize_template">Customize site template</p>
+               <span class="formHelp" i18n:translate="customize_template_formhelp">You can modify the default project category, permission template, and todo template.</span>
+               <p class="or_a"><a href="@@prefs_categories" i18n:translate="custom_now">Custom now</a></p>
+            </div>
+          </td>
+          <td class="or_c or_c_s">
+            <img tal:attributes="src  string:${portal_url}/start_img/info.png" />
+            <div>
+               <p class="or_t" i18n:translate="modify_information">Modify your information</p>
+               <span class="formHelp" i18n:translate="modify_information_formhelp">Edit your nickname, communications information, upload personal portrait and change your password.</span>
+               <p class="or_a"><a href="personalize_form" i18n:translate="modify_now">Modify now</a></p>
+            </div>
+          </td>
+        </tr>
+       </table>
+       <p style="padding-top:15px;text-align:right" class="discreet">
+            <strong i18n:translate="note">NOTE:</strong> <tal:i18n i18n:translate="do_any_above">You can do any of the above at any time.</tal:i18n>
+       </p>
+      </div>
+
+      <div class="blankMore">
+         <table width="100%" style="padding:0 0 30px;">
+            <tr>
+              <td width="45%" style="border-right:1px dotted #CCCCCC;">
+                <p class="or_t">平台视频介绍</p>
+                <div style="text-align:center">
+                  <a class="image" target="_blank"  href="http://cache.everydo.com/demo/dash.htm"><img tal:attributes="src string:${portal_url}/start_img/play_view_o0.gif" /></a>
+                </div>
+              </td>
+              <td style="vertical-align: top; padding-left:20px">
+                <p class="or_t">平台使用帮助</p>
+                <ul>
+                  <li><a class="link-plain" href="http://everydo.com/tour/weishimeyaoshiyongyidu">[关于易度]什么是项目？易度是怎么为项目团队服务的？</a></li>
+                  <li><a class="link-plain" href="http://everydo.com/case">[使用案例]我在从事项目的工作吗？你们有成功案例吗？</a></li>
+                  <li><a class="link-plain" href="http://everydo.com/security">[常见问题]易度怎么保证我们的数据安全和保密性的？</a></li>
+                  <li><a class="link-plain" href="http://docs.everydo.com/project/manual/view.html">[在线教程]查看易度平台在线使用教程，让您快速上手。</a></li>
+              </td>
+            </tr>
+         </table>
+      </div>
+
+
+    </div>
+
+    <div metal:fill-slot="portlets_two_slot">
+        <div metal:use-macro="context/@@macro_basecamp/macros/companylogo" />
+         
+        <h5 i18n:translate="questions_help">Questions? Need help?</h5>
+
+        <p i18n:translate="check_stocked">No problem. Check the well-stocked help section, the screenshot tour,
+        the lively customer forums, or find FAQs and more at the official Everything Everydo support site.</p>
+
+        <p i18n:translate="no_answer_email">If you can't find your answer there you can always email us at:
+        support@everydo.com. We do our best to get back to you within a few
+        hours.</p>
+    </div>
+
+
+</html>

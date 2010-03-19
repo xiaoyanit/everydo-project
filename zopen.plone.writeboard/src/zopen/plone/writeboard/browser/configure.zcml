@@ -1,0 +1,97 @@
+<configure
+  xmlns="http://namespaces.zope.org/browser"
+  xmlns:cmf="http://namespaces.zope.org/cmf"
+  xmlns:five="http://namespaces.zope.org/five"
+  >
+
+  <page
+      for="*"
+      permission="zope2.View"
+      name="writeboards"
+      template="writeboards_view.pt"
+      class=".writeboards.WriteboardsView"
+      />
+  <page
+      for="*"
+      permission="zope2.View"
+      name="writeboards_listing"
+      template="writeboards_listing.pt"
+      class=".writeboards.WriteboardsView"
+      />
+  <page
+      for="*"
+      permission="zope2.View"
+      name="writeboard_view"
+      template="writeboard_view.pt"
+      />
+  <page
+      for="*"
+      permission="zope2.View"
+      name="version_diff"
+      template="version_diff.pt"
+      />
+
+  <pages
+      for="*"
+      class=".writeboard.KssView"
+      permission="cmf.ModifyPortalContent"
+      >
+    <page
+      name="saveNewVersion"
+      attribute="saveNewVersion"
+      />
+  </pages>
+  <page
+		for="*"
+		class=".writeboard.KssView"
+		attribute="delete_writeboard_version"
+		name="delete_writeboard_version"
+		permission="CMFEditions.PurgeVersion"
+		/>
+  <pages
+      for="*"
+      class=".writeboard.KssView"
+      permission="zope2.View"
+      >
+    <page
+      name="displayVersion"
+      attribute="displayVersion"
+      />
+    <page
+      name="TimeToSave"
+      attribute="TimeToSave"
+      />
+    <page
+      name="displayDiff"
+      attribute="displayDiff"
+      />
+    <page
+      name="editProperty"
+      attribute="editProperty"
+      />
+  </pages>
+
+  <page
+      for="*"
+      name="createWriteboard"
+      class=".writeboard.CreateBoard"
+      attribute="createWriteboard"
+      permission="cmf.AddPortalContent"
+      />
+
+  <resource
+      name="writeboard-tour.gif"
+      file="resource/writeboard-tour.gif"
+      />
+
+  <resource
+      name="writeboard.js"
+      file="resource/writeboard.js"
+      />
+
+  <resource
+      name="writeboard.kss"
+      file="resource/writeboard.kss"
+      />
+
+</configure>

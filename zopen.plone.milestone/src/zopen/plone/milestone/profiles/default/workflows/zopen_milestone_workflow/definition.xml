@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="zopen_milestone_workflow"
+             title="zopen milestone workflow"
+             state_variable="review_state"
+             initial_state="active">
+ <state state_id="active" title="Active">
+  <exit-transition transition_id="report"/>
+  <exit-transition transition_id="complete"/>
+ </state>
+ <state state_id="completed" title="Completed">
+  <exit-transition transition_id="activate"/>
+ </state>
+ <transition transition_id="activate" title="Activate"
+             new_state="active" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="global">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>zopen.milestone: Report state</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="report" title="Report"
+             new_state="active" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="global">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>zopen.milestone: Report state</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="complete" title="Complete"
+             new_state="completed" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow">De-activate</action>
+  <guard>
+   <guard-permission>zopen.milestone: Report state</guard-permission>
+  </guard>
+ </transition>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/search?review_state=pending"
+          category="global">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>

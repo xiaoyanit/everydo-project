@@ -1,0 +1,73 @@
+<configure
+  xmlns="http://namespaces.zope.org/browser"
+  xmlns:five="http://namespaces.zope.org/five"
+  >
+
+  <page
+      for="*"
+      name="messages"
+      template="messages.pt"
+      class=".messages.MessagesView"
+      permission="zope2.View"
+      />
+
+  <page
+      for="*"
+      name="message_view"
+      template="message.pt"
+      class=".message.MessageView"
+      permission="zope2.View"
+      />
+
+  <page
+      name="add_message"
+      for="*"
+      class=".message.AddMessageView"
+      permission="zopen.messageboard.AddMessage"
+      />
+
+  <page
+      for="*"
+      name="add_message_macro"
+      template="add_message.pt"
+      permission="zope2.View"
+      />
+
+  <page
+      for="..interfaces.IMessage"
+      permission="zope2.View"
+      class=".message.MessageView"
+      name="edit_message"
+      template="edit.pt"
+      />
+
+  <pages
+      for="..interfaces.IMessage"
+      permission="cmf.ModifyPortalContent"
+      class=".message.MessageView"
+      >
+    <page
+        name="save_message"
+	attribute="save_message"
+	/>
+  </pages>
+
+  <resource
+      name="message-tour.gif"
+      file="resources/message-tour.gif" />
+  <resource
+      name="message.gif"
+      file="resources/message.gif" />
+  <resource
+      name="comment.gif"
+      file="resources/comment.gif" />
+
+  <resource
+      name="edit-message.kss"
+      file="resources/edit-message.kss" />
+
+  <resource
+      name="message.css"
+      file="resources/message.css" />
+
+</configure>

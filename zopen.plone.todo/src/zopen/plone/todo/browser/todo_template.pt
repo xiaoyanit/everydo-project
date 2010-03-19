@@ -1,0 +1,338 @@
+
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.todo">
+
+<metal:noborder fill-slot="top_slot"
+    tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+  <link href="#" type="text/css" rel="stylesheet" media="screen"
+        tal:attributes="href string:$portal_url/++resource++todo.css?34223332" />
+
+  <link href="#" type="text/css" rel="kinetic-stylesheet"
+        tal:attributes="href string:$portal_url/++resource++todo.kss?34223332" />
+</metal:css>
+
+<metal:js fill-slot="javascript_head_slot">
+  <script src="++resource++prototype.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++prototype.js?34223332"></script>
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/effects.js"
+          tal:attributes="src string:$portal_url/++resource++effects.js?34223332"></script>
+
+  <script src="++resource++dragdrop.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++dragdrop.js?34223332"></script>
+  <script src="++resource++todo.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++todo.js?34223332"></script>
+</metal:js>
+
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/site-settings">site</metal:block>
+</div>
+
+<div metal:fill-slot="main"
+     tal:define="fulllists view/getFullLists;
+                 global activelists python:fulllists[0];
+                 canadd view/canAddList;
+                 canmoveitems view/canMoveItems;
+                 canmovelists view/canMoveLists;
+                 today python:modules['DateTime'].DateTime(); 
+                 todo_cats view/getTodoCategories;">
+
+  <div class="SectionHeader">
+
+   <h1 class="TGfirst" i18n:translate="todo_list_template">To-do list template</h1>
+
+   <input type="hidden" name="aaa" id="canmoveitems"
+          tal:attributes="value python:canmoveitems and 1 or 0" />
+
+   <div tal:condition="python:canadd or canmovelists">
+     <span class="TGfirst TGnewlist TGorderlists">
+        <a href="#" tal:condition="canadd" class="admin EVnewlist"
+           i18n:translate="create_todo_list_template">New to-do template list</a> 
+        <tal:block tal:condition="python:canadd and canmovelists">|</tal:block>
+        <a href="#" tal:condition="canmovelists" class="admin EVorderlists" id="startOrderLists"><tal:block i18n:translate="reorder_todo_list">Reorder lists</tal:block></a>
+     </span>
+     <a href="#" tal:condition="canadd"
+        class="hideme EVnewlist TGnewlist donelink"><tal:block i18n:translate="undo_create_todo_list">Undo create new to-do lists</tal:block></a>
+     <a href="#" class="hideme EVorderlists TGorderlists donelink"
+        tal:condition="canmovelists"
+        id="endOrderLists"><tal:block i18n:translate="undo_reorder_todo_list">Undo reorder lists</tal:block></a>
+   </div>
+  </div> 
+
+
+<div metal:define-macro="add_todolist"
+     tal:condition="view/canAddList"
+     tal:define="hideme hideme | string:hideme;
+                 is_template python:True;"
+     id="add_todolist" 
+     tal:attributes="class string:$hideme showhide TGnewlist kssattr-is_template-$is_template"
+     i18n:domain="zopen.todo">
+
+    <form class="addlistform" method="post">
+
+      <div class="form_field">
+       <p>
+        <span class="label_field" i18n:translate="enter_title">First enter a title</span> 
+        <span class="smallgray" tal:condition="python:0 and not view.isStandaloneTodo()">(<tal:block i18n:translate="or">or</tal:block>
+          <a onclick="return false;" href="#"><tal:block i18n:translate="choose_template">Choose a template</tal:block></a>)
+        </span>
+       </p>
+        <input type="text" name="title" class="list_title TGclear"
+               autocomplete="false" size="40"/>
+      </div>
+
+
+    <div class="form_field" tal:condition="not: view/isStandaloneTodo">
+       <p><span class="label_field" i18n:translate="list_description">Optional: List description:</span></p>
+       <textarea rows="6" name="description" class="TGclear"></textarea>
+    </div>
+  
+
+    <p class="submit hideme">
+       <img alt="Indicator" class="spinner" src="/++resource++indicator.gif" style="vertical-align: middle;" height="5" width="21" />
+    </p>
+
+    <p class="submit">
+      <input type="submit" name="submit"  i18n:attributes="value create_todo;" value="Create this list"/> <span i18n:translate="or">or</span>
+      <a href="#" class="admin EVnewlist"><tal:block i18n:translate="cancel">Cancel</tal:block></a>
+    </p>
+  </form>
+
+</div>
+
+
+<div id="fulllists"
+     tal:define="is_template python:True;"
+     tal:attributes="class string:kssattr-is_template-$is_template">
+  <tal:todolist tal:repeat="listinfo activelists">
+  <div tal:define="todolist nocall:options/todolist | python:listinfo[0];
+                     list_url todolist/getURL | todolist/absolute_url;
+                     list_id todolist/getId;
+                     list_title todolist/Title;
+                     list_description todolist/Description;
+                     activeitems options/activeitems | python:listinfo[1];
+                     completeditems options/completeditems | python:listinfo[2]; 
+                     review_state review_state | options/review_state | todolist/review_state;
+                     isAdding options/isAdding | nothing;
+                     todolist todolist/getObject | nocall:todolist;
+                     tracked todolist/getTracked;
+                     "
+         class="todolist"
+         tal:attributes="id string:list_$list_id;
+                         class string:todolist state-$review_state kssattr-listid-$list_id"
+         i18n:domain="zopen.todo">
+
+      <div class="listtitle" 
+           onmouseover="this.firstChild.style.display='block'"
+           onmouseout="this.firstChild.style.display='none'"><div class="nubbin"><div class="wrapper TGeditlist TGOrderLists">
+          <ul>
+          <li>
+          <img class="delimage" src="/++resource++trash.gif" title="Delete"
+                 i18n:attributes="title delete;"
+                 tal:condition="python:checkPermission('Delete objects', todolist)"
+             tal:attributes="class string:delimage kssattr-delBaseUrl-${todolist/getId} kssattr-delSelector-.todolist"
+             onclick="delete_confirm(this)"
+          />
+          </li>
+          <li>
+             <a class="admin editlist" href="#"
+                tal:condition="python:checkPermission('Modify portal content', todolist)"
+                i18n:translate="edit">Edit</a>
+          </li>
+          </ul>
+        </div>
+        </div>
+        <h2>
+
+          <img alt="Indicator" class="spinner hideme TGeditlist"
+               src="/++resource++indicator.gif"
+               style="vertical-align: middle;" height="5"
+               width="21" />
+
+          <img src="/++resource++drag_handle.gif" title="Order" class="handle TGorderlists hideme" 
+               i18n:attributes="title order;"/>
+
+          <span style="text-decoration:underline;" tal:content="list_title">title</span>
+           <span class="private_bug" tal:condition="python:review_state=='private'" i18n:translate="Private">Private</span>
+        </h2>
+        </div>
+
+        <p class="listdesc TGorderlists" tal:condition="list_description" tal:content="list_description">description</p>
+
+        <div class="TGorderlists">
+          <tal:active tal:define="items activeitems;">
+          
+           <div metal:define-macro="activeitems"
+                class="activetodos"
+                tal:define="is_template python:True;"
+                tal:attributes="id string:active_${todolist/getId}"
+                i18n:domain="zopen.todo">
+
+               <tal:block tal:repeat="item items">
+                 <div metal:define-macro="active"
+                  tal:define="global item nocall: options/item | nocall:item;
+                          item_url item/getURL | item/absolute_url;
+                          item_id item/getId;
+                          obj python:hasattr(item, 'getObject') and getattr(todolist, item_id) or item;
+                          canReportState python:checkPermission('zopen.todo: Report state', obj)"
+              class="kssDeletionRegion"
+              onmouseover="this.firstChild.style.display='block'"
+              onmouseout="this.firstChild.style.display='none'"
+              tal:attributes="id string:item_$item_id;
+                              class string:kssDeletionRegion kssattr-itemid-$item_id kssattr-is_template-$is_template"
+              ><div class="nubbin">
+                 <div class="wrapper TGedititem TGcomplete">
+                   <ul>
+                     <li>
+                        <img class="delimage" src="/++resource++trash.gif" title="Delete"
+                             i18n:attributes="title delete;"
+                             tal:condition="python:checkPermission('Delete objects', obj)"
+                             onclick="delete_todoitem(this)" />
+                     </li>
+                     <li>
+                        <a href="#" class="admin edititem"
+                           tal:condition="python:checkPermission('Modify portal content', obj)"
+                           i18n:translate="edit">
+                           Edit
+                        </a>
+                     </li>
+                     <li>
+                       <img src="/++resource++drag_handle.gif" title="Order"
+                         tal:condition="view/canMoveItems"
+                         class="handle"
+                         i18n:attributes="title order;"
+                         />
+                     </li>
+
+                  </ul>
+                </div>
+              </div>
+
+             <div class="visiblecontent">
+              <img alt="Indicator" class="spinner TGcomplete hideme TGedititem"
+                   src="/++resource++indicator.gif"
+                   style="vertical-align: middle;" height="5"
+                   width="21" />
+              <img src="/++resource++opentodo.gif" class="opentodo" />&nbsp;<div class="itemcontent">
+
+              <span class="itemtext">
+
+                  <span class="todocat"
+                        tal:define="todo_cats todo_cats | view/getTodoCategories" 
+                        tal:repeat="subj obj/Subject"
+                        tal:content="python:todo_cats[subj]" />
+                 <span class="discreet" 
+                       style="font-weight: bold"
+                       tal:define="basecamp_view basecamp_view | context/@@basecamp_view;
+                                   end obj/end;
+                                   end_status python:end and basecamp_view.getExactTime(end, extract=2);
+                                   end_time python:end and basecamp_view.getExactTime(end, extract=1);"
+                       tal:condition="end"
+                       tal:attributes="class python:end_status!=None and end_status or ''" 
+                       i18n:domain="zopen.basecamp" i18n:translate=""
+                       tal:content="end_time"/>
+
+                  <span tal:replace="structure obj/richTitle">
+                 item title
+                 </span>
+                </span>
+                  <div class="edititemwrapper"><!-- --></div>
+              </div>
+             </div>
+
+            </div>
+           </tal:block>
+
+          </div>
+
+          </tal:active>
+
+          <div class="additemlink" tal:condition="python:checkPermission('zopen.todo: Add item', todolist)">
+            <a class="admin EVadditem TGadditem" href="#"
+              tal:attributes="class python:isAdding and 'hideme admin EVadditem TGadditem' or 'admin EVadditem TGadditem'"
+              ><tal:block i18n:translate="add_an_item">Add an item</tal:block></a>
+
+
+<div metal:define-macro="additem"
+     class="TGadditem hideme showhide"
+     tal:define="isAdding isAdding | nothing;
+                 is_template python:True;"
+     tal:attributes="class python:isAdding and 'TGadditem showhide kssattr-is_template-$is_template' or 'TGadditem hideme showhide kssattr-is_template-True'"
+     i18n:domain="zopen.todo">
+
+     <form method="post" class="additemform" action="">
+
+        <p><tal:block i18n:translate="enter_todo_item">Enter a to-do item</tal:block><br/>
+           <textarea rows="3" name="title" tal:condition="not: view/isStandaloneTodo"
+             class="new_item_title"></textarea>
+           <input name="title" autocomplete="false" class="new_item_title" tal:condition="view/isStandaloneTodo" />
+        </p>
+
+        <p class="submit">
+          <input type="submit" name="submit" i18n:attributes="value add_item;"  value="Add this item" /> <span i18n:translate="or">or</span>
+          <a href="#" class="admin EVadditem"><tal:block i18n:translate="done_adding_items">I'm done adding items</tal:block></a>
+        </p>
+
+        <p class="submit hideme">
+           <img alt="Indicator" class="spinner" src="/++resource++indicator.gif" style="vertical-align: middle;" height="5" width="21" />
+        </p>
+    </form>
+</div>
+
+
+
+          </div>
+
+        </div>
+
+
+    </div>
+  </tal:todolist>
+ </div>
+
+    <div class="TGnewlist" id="blank-sample"
+         tal:condition="python: not activelists"
+         i18n:domain="zopen.todo">
+       <div class="blankBar"
+            tal:condition="python:canadd or canmovelists">
+         <h1><a class="adminfull EVnewlist EVfirst" href="#" i18n:translate="create_first_todo_template">
+              Create the first to-do template list for this project</a></h1>
+
+         <p i18n:translate="create_todo_template_for">Create to-do template,instead create same to-do lists over and over. </p>
+          </div>
+          <div class="blankExample">
+           <img src="/++resource++todo-template.png" />
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<div metal:fill-slot="portlets_two_slot">
+
+        <div class="col">
+
+          <h1 i18n:translate="about_todo_template">About to-do template</h1>
+          <div class="indent">
+           <tal:i18n i18n:translate="todo_template_help">
+            <p>If you find yourself creating the same to-do lists over and over, create a to-do list template instead. You can use that template in any project you wish.</p>
+            <p>
+            <strong>How do I use the templates?</strong>
+            <br/>
+            When you create a new to-do list in a project, you'll see a red link in the upper-right that says "Use a to-do list template." Click the link to choose a template for your list.
+            </p>
+           </tal:i18n>
+          </div>
+         </div>
+
+
+
+</div>
+</html>
+

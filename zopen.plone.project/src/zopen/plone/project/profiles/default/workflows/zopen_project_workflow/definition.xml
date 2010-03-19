@@ -1,0 +1,418 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="zopen_project_workflow"
+             title="Project workflow"
+             state_variable="review_state"
+             initial_state="active">
+ <permission>Access contents information</permission>
+ <permission>Add portal content</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <permission>Delete objects</permission>
+ <permission>ATContentTypes: Add Document</permission>
+ <permission>ATContentTypes: Add Folder</permission>
+ <permission>ATContentTypes: Add Image</permission>
+ <permission>zopen.todo: Report state</permission>
+ <permission>zopen.messageboard: Add Message</permission>
+ <permission>zopen.messageboard: Add Comment</permission>
+ <permission>Reply to item</permission>
+ <permission>zopen.todo: Move items</permission>
+ <permission>zopen.todo: Move lists</permission>
+ <permission>zopen.todo: Add list</permission>
+ <permission>zopen.todo: Add item</permission>
+ <permission>zopen.timetracker: Time Report</permission>
+ <permission>zopen.timetracker: Add Time Log</permission>
+ <permission>zopen.milestone: Add milestone</permission>
+ <permission>zopen.milestone: Report state</permission>
+ <permission>zopen.org: Add Team</permission>
+ <permission>Chat unmoderatedly</permission>
+ <permission>ATContentTypes: Add File</permission>
+ <permission>ATContentTypes: Add Large Plone Folder</permission>
+ <permission>List folder contents</permission>
+ <permission>CMFEditions: Purge version</permission>
+ <state state_id="active" title="Active">
+  <exit-transition transition_id="hold"/>
+  <exit-transition transition_id="archive"/>
+  <permission-map name="ATContentTypes: Add Document"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add File"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add Folder"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add Image"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add Large Plone Folder"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="True">
+  </permission-map>
+  <permission-map name="Chat unmoderatedly" acquired="True">
+  </permission-map>
+  <permission-map name="Delete objects" acquired="True">
+  </permission-map>
+  <permission-map name="CMFEditions: Purge version" acquired="True">
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="Reply to item" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+  </permission-map>
+  <permission-map name="zopen.messageboard: Add Comment"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.messageboard: Add Message"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.milestone: Add milestone"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.milestone: Report state"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.org: Add Team"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.timetracker: Add Time Log"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.timetracker: Time Report"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Add item"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Add list"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Move items"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Move lists"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Report state"
+                  acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="archived" title="Archived">
+  <exit-transition transition_id="hold"/>
+  <exit-transition transition_id="activate"/>
+  <permission-map name="ATContentTypes: Add Document"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add File"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add Folder"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add Image"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add Large Plone Folder"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Chat unmoderatedly" acquired="False">
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="CMFEditions: Purge version" acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="Reply to item" acquired="False">
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+  </permission-map>
+  <permission-map name="zopen.messageboard: Add Comment"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.messageboard: Add Message"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.milestone: Report state"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.milestone: Add milestone"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.org: Add Team"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.timetracker: Add Time Log"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.timetracker: Time Report"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Add item"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.todo: Add list"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.todo: Move items"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.todo: Move lists"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="zopen.todo: Report state"
+                  acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="onhold" title="On Hold">
+  <exit-transition transition_id="activate"/>
+  <exit-transition transition_id="archive"/>
+  <permission-map name="ATContentTypes: Add Document"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add File"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add Folder"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add Image"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="ATContentTypes: Add Large Plone Folder"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="True">
+  </permission-map>
+  <permission-map name="Chat unmoderatedly" acquired="True">
+  </permission-map>
+  <permission-map name="Delete objects" acquired="True">
+  </permission-map>
+  <permission-map name="CMFEditions: Purge version" acquired="True">
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="Reply to item" acquired="True">
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+  </permission-map>
+  <permission-map name="zopen.messageboard: Add Comment"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.messageboard: Add Message"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.milestone: Report state"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.milestone: Add milestone"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.org: Add Team"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.timetracker: Add Time Log"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.timetracker: Time Report"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Add item"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Add list"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Move items"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Move lists"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="zopen.todo: Report state"
+                  acquired="True">
+  </permission-map>
+ </state>
+ <transition transition_id="activate" title="Activate"
+             new_state="active" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow">Activate</action>
+  <guard>
+   <guard-permission>zopen.project: Manage Project</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="archive" title="Archive"
+             new_state="archived" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow">Archive</action>
+  <guard>
+   <guard-permission>zopen.project: Manage Project</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="hold" title="Hold the project"
+             new_state="onhold" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow">Hold</action>
+  <guard>
+   <guard-permission>zopen.project: Manage Project</guard-permission>
+  </guard>
+ </transition>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/search?review_state=pending"
+          category="global">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>

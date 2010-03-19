@@ -1,0 +1,188 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.todo">
+
+<metal:noborder fill-slot="top_slot"
+    tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+  <link href="#" type="text/css" rel="stylesheet" media="screen"
+        tal:attributes="href string:$portal_url/++resource++todo.css?34223332" />
+
+  <link href="#" type="text/css" rel="kinetic-stylesheet"
+        tal:attributes="href string:$portal_url/++resource++todo.kss?34223332" />
+</metal:css>
+
+<metal:js fill-slot="javascript_head_slot">
+  <script src="++resource++prototype.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++prototype.js?34223332"></script>
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/effects.js"
+          tal:attributes="src string:$portal_url/++resource++effects.js?34223332"></script>
+
+  <script src="++resource++dragdrop.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++dragdrop.js?34223332"></script>
+  <script src="++resource++todo.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++todo.js?34223332"></script>
+</metal:js>
+
+<div metal:fill-slot="main"
+     tal:define="fulllists view/getFullLists;
+                 global activelists python:fulllists[0];
+                 global completedlists python:fulllists[1];
+                 canadd view/canAddList;
+                 canmoveitems view/canMoveItems;
+                 canmovelists view/canMoveLists;
+                 today python:modules['DateTime'].DateTime(); 
+                 todo_cats view/getTodoCategories;">
+
+  <div class="SectionHeader">
+
+   <h1 i18n:translate="todo_list">To-do lists</h1>
+
+   <input type="hidden" name="aaa" id="canmoveitems"
+          tal:attributes="value python:canmoveitems and 1 or 0" />
+
+   <div tal:condition="python:canadd or canmovelists">
+     <span class="TGnewlist TGorderlists">
+        <a href="#" tal:condition="canadd" class="admin EVnewlist"
+           i18n:translate="create_todo_list">New to-do list</a> 
+        <tal:block tal:condition="python:canadd and canmovelists">|</tal:block>
+        <a href="#" tal:condition="canmovelists" class="admin EVorderlists" id="startOrderLists"><tal:block i18n:translate="reorder_todo_list">Reorder lists</tal:block></a>
+     </span>
+     <a href="#" tal:condition="canadd"
+        class="hideme EVnewlist TGnewlist donelink"><tal:block i18n:translate="undo_create_todo_list">Undo create new to-do lists</tal:block></a>
+     <a href="#" class="hideme EVorderlists TGorderlists donelink"
+        tal:condition="canmovelists"
+        id="endOrderLists"><tal:block i18n:translate="undo_reorder_todo_list">Undo reorder lists</tal:block></a>
+   </div>
+  </div> 
+
+  <tal:block metal:use-macro="here/@@macros_todo/macros/add_todolist" />
+
+  <div id="fulllists">
+  <tal:lists tal:define="macro_list nocall:here/@@macros_todo/macros/todolist"
+             tal:repeat="listinfo activelists">
+
+     <tal:block metal:use-macro="macro_list" />
+
+ </tal:lists>
+ </div>
+
+    <div class="TGnewlist" id="blank-sample"
+         tal:condition="python: (not activelists) and (not completedlists)"
+         i18n:domain="zopen.basecamp">
+       <div class="blankBar"
+            tal:condition="python:canadd or canmovelists">
+          <div><span i18n:translate="create_todo_for">Make lists, add items, and check them off. Get things done with to-do lists. </span></div>
+          <p style="padding:15px 0 8px;">
+          <a class="EVnewlist create_project"
+             tal:attributes="style string:background:transparent url('${portal_url}/start_img/create_buttom2.png') no-repeat;;padding:12px 50px 8px 40px;;font-weight:bold;;color:#000;;white-space:normal;;text-align:center;;width:170px;;text-decoration:none;;border-style:none;;" 
+             href="#"
+             >
+              <span class="EVnewlist" style="font-size:18px;color:#FFF;" i18n:translate="create_first_todo">Create first to-do list</span></a>
+          </p>
+
+        </div>
+        <div class="blankOr">
+           <p class="or_t">任务是提升项目执行力的利器</p>
+           <table style="margin:0pt auto; width:80%">
+              <tr>
+                <td style="text-align:center"><img tal:attributes="src string:${portal_url}/start_img/task.png" /></td>
+                <td style="border-left:1px dotted #CCCCCC"><ul>
+                     <li>精心设计、非常易用的操作界面</li>
+                     <li>邮件通知，确保送达负责人</li>
+                     <li>清晰自己的任务，工作从此井然有序，不在焦虑</li>
+                     <li>可了解他人的任务，看大家都在忙什么，是否有空</li>
+                     <li>通过任务清单，对任务分类组织</li>
+                    </ul>
+                </td>
+               </tr>
+           </table>
+        </div>
+
+      <div class="blankMore">
+         <table width="100%" style="padding:0 0 30px;">
+            <tr>
+              <td width="45%" style="vertical-align: top;border-right:1px dotted #CCCCCC;">
+                <p class="or_t">任务视频介绍</p>
+                <div style="text-align:center">
+                  <a class="image" target="_blank"  href="http://cache.everydo.com/demo/todo.htm"><img tal:attributes="src string:${portal_url}/start_img/play_view_o3.gif" /></a>
+                </div>
+              </td>
+              <td style="vertical-align: top; padding-left:20px">
+                <p class="or_t">任务使用帮助</p>
+                <ul>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/06task.rst">[常见问题]任务列表、任务清单、任务项各指什么？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/06task.rst">[常见问题]如何给任务项排优先级，和编辑、删除任务？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/06task.rst">[常见问题]任务项支持评注吗？支持添加附件吗？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/06task.rst">[常见问题]任务项是如何与工作记录关联的？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/06task.rst">[常见问题]“使这个消任务列表密”是什么意思？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/06task.rst">[在线教程]任务功能介绍。</a></li>
+              </td>
+            </tr>
+         </table>
+      </div>
+
+    </div>
+
+    </div>
+
+    <div metal:fill-slot="portlets_two_slot"
+         tal:define="responsible request/getResponsibleParty | nothing;
+                     responsiblePartyId python:responsible and responsible or 'ALL'"
+         tal:condition="not: view/isStandaloneTodo">
+
+        <form>
+           <p>
+           <tal:block i18n:translate="assigned_todo">Show to-dos assigned to:</tal:block> 
+           <br />
+           <select tal:define="selected responsiblePartyId;"
+              tal:attributes="onchange string:window.location.href='$here_url' + '?getResponsibleParty=' + options[this.selectedIndex].value">
+             <option value="ALL" i18n:translate="all_responsibles">Anyone</option>
+             <option tal:replace="structure provider:zopen.xpersonselection"/>
+           </select>
+           </p>
+        </form>
+
+     <p>
+        <tal:i18n i18n:translate="select_view_mode">Select the view mode: </tal:i18n><br />
+       <select name="todoRepotView"
+             tal:attributes="onchange string:window.location.href='$here_url/@@' + options[this.selectedIndex].value + '?getResponsibleParty=$responsiblePartyId'">
+        <option value="todo_list" selected="selected" i18n:translate="to_do_list">To-do list</option>
+        <option value="todo_time" i18n:translate="todo_complete_time">To-do complete-time</option>
+     </select>
+     </p>
+
+        <div class="active_lists" tal:condition="activelists">
+        <h2 i18n:translate="current_todo_list">Current to-do lists</h2>
+        <ul>
+           <li tal:repeat="listinfo activelists">
+               <a href="#"
+                  tal:define="activelist python:listinfo[0]"
+                  tal:content="activelist/Title"
+                  tal:attributes="href string:$here_url#list_${activelist/getId}">aaaa</a></li>
+        </ul>
+        </div>
+
+        <div class="completed_lists" tal:condition="completedlists">
+        <h2 i18n:translate="completed_todo_list">Completed to-do lists</h2>
+        <ul>
+           <li tal:repeat="item completedlists">
+               <a href="#"
+                  tal:content="item/Title"
+                  tal:attributes="href item/getURL">bbb</a></li>
+        </ul>
+        </div>
+
+        <div class="todo-export" style="color:#666">
+             <a class="admin" href="#"
+                tal:define="csv_url nocall:context/@@csvURL;"
+                tal:attributes="href csv_url;"
+                i18n:translate="export">Export</a>
+                <tal:i18n i18n:translate="to_csv">to-do list to csv</tal:i18n>
+        </div>
+
+    </div>
+
+</html>

@@ -1,0 +1,91 @@
+<html metal:use-macro="context/@@cancelled/macros/master">
+    <title metal:fill-slot="title"> 易度一分钟快速入门 </title>
+
+    <div metal:fill-slot="header"
+         tal:define="step request/step | python:1">
+
+      <table width="100%"><tr><td >
+         <img  src="/++resource++everydo-logo.gif" alt="EveryDo" title="易度项目协作管理平台" />
+      </td><td style="text-align: right; vertical-align:bottom" >
+         <span tal:define="username python:user.getUserName()" style="color: gray"
+               tal:condition="python: username != 'Anonymous User'" tal:content="string:您好，$username！" />
+
+         <span tal:content="string:易度一分钟快速入门 (${step}/4)"/> 
+         </td></tr>
+      </table>
+   </div>
+
+
+    <div metal:fill-slot="main"
+         tal:define="step request/step | python:1">
+
+
+       <div tal:condition="python:step==1">
+				  <h1 style="text-align:center">易度: 在线团队协作、项目管理平台</h1>
+				  
+                  <p style="text-align:center">
+                  <img src="/++resource++qv1.gif"/>
+                  </p>
+
+				  <p>易度是一个在线团队协作和项目管理平台，是一个团队在互联网上做事的空间。它可以帮助团队或中小企业加强相互协作，管理好自己的项目。</p>
+				  
+				  <p>“一群人一起做事”，“一个团队在互联网上做事的空间”就是易度的简单诠释。</p>
+       </div>
+
+       <div tal:condition="python:step==2">
+		  <h1 style="text-align:center">网站的二层结构</h1>
+
+           <p style="text-align:center">
+                  <img src="/++resource++qv3.gif"/>
+           </p>
+
+           <p><b>站点首页</b> 展现了全部项目总体概况信息，包括项目清单、最近更新、总体进度、近期里程碑汇总、待办任务汇总、工时统计等； 
+              <b>项目工作区</b> 是各个项目的独立协作区域，包括项目组员，以及七种项目协作管理工具。</p>
+       </div>
+
+       <div tal:condition="python:step==3">
+		  <h1 style="text-align:center">七种项目协作管理工具</h1>
+
+          <p style="text-align:center">
+                  <img src="/++resource++qv2.gif"/>
+          </p>
+
+          <p>每个项目有独立的工作空间，配备七种实用的项目协作和管理工具，相互关联，简单易用。</p>
+          <p>配合邮件通知，可将身处异地的项目参与人员紧密连接在一起，跟踪和快速推进项目。 </p>
+       </div>
+
+       <div tal:condition="python:step==4">
+           <h1 style="text-align:center">好了，准备开始了...</h1>
+
+           <p style="text-align:center">
+                  <img src="/++resource++qv4.gif"/>
+           </p>
+       </div>
+
+     <div style="text-align:right" tal:define="nextstep python:step + 1;
+                                               laststep python:step - 1">
+       <span style="color: gray" tal:condition="python:step==2">(还有2页)</span>
+       <input type="button" tal:condition="python:step &gt; 1" 
+              tal:attributes="onclick string:window.location='quickstart?step:int=$laststep'" value="« 上一页" />
+       <input type="button" tal:condition="python:step &lt; 4" 
+              tal:attributes="onclick string:window.location='quickstart?step:int=$nextstep';
+                              value python:['下一页 »', '下一页 »', '最后一页 »'][nextstep -2]; " />
+
+       <input type="button" tal:condition="python:step==4" value="进入网站 »" 
+              tal:define="nexturl python:'/'"
+              tal:attributes="onclick string:window.location='$nexturl'" />
+     </div>
+   </div>
+
+   <div style="text-align: center" metal:fill-slot="footer"
+        tal:define="step request/step | python:1">
+
+       <span style="color: gray">
+       <strong tal:omit-tag="python:step!=1">易度是什么</strong>  -  
+       <strong tal:omit-tag="python:step!=2">站点结构</strong>  -  
+       <strong tal:omit-tag="python:step!=3">七种武器</strong>  -  
+       <strong tal:omit-tag="python:step!=4">使用步骤</strong>
+       </span>
+
+   </div>
+</html>

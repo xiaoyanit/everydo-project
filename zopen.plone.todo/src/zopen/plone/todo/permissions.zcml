@@ -1,0 +1,29 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="Five">
+
+  <permission
+      id="zopen.todo.AddList"
+      title="zopen.todo: Add list"
+      />
+
+  <permission
+      id="zopen.todo.AddItem"
+      title="zopen.todo: Add item"
+      />
+
+  <permission
+      id="zopen.todo.MoveLists"
+      title="zopen.todo: Move lists"
+      />
+
+  <permission
+      id="zopen.todo.MoveItems"
+      title="zopen.todo: Move items"
+      />
+
+  <permission
+      id="zopen.todo.ReportState"
+      title="zopen.todo: Report state"
+      />
+
+</configure>

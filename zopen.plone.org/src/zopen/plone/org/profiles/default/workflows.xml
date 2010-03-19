@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+    <object name="zopen_group_workflow" meta_type="Workflow"/>
+    <object name="zopen_person_workflow" meta_type="Workflow"/>
+
+    <bindings>
+        <type type_id="OrganizationUnit">
+            <bound-workflow workflow_id="zopen_group_workflow"/>
+        </type>
+        <type type_id="Person">
+            <bound-workflow workflow_id="zopen_person_workflow"/>
+        </type>
+        <type type_id="TeamFolder">
+            <bound-workflow workflow_id="zopen_group_workflow"/>
+        </type>
+        <type type_id="Team">
+            <bound-workflow workflow_id="zopen_group_workflow"/>
+        </type>
+    </bindings>
+</object>
