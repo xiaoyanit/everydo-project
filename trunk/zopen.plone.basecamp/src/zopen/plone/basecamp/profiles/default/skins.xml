@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tool">
+
+ <object name="basecamp_site" meta_type="Filesystem Directory View"
+    directory="zopen.plone.basecamp:skins/basecamp_site"/>
+
+ <object name="new_mimeicons" meta_type="Filesystem Directory View"
+	 directory="zopen.plone.basecamp:skins/new_mimeicons"/>
+
+  <skin-path name="*">
+    <layer name="basecamp_site" insert-after="custom"/>
+    <layer name="new_mimeicons" insert-after="custom"/>
+  </skin-path>
+
+</object>

@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="plone">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="basecamp site"
+      description="Profile for basecamp site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+      name="test"
+      title="basecamp site test"
+      directory="profiles/test"
+      description="Profile for basecamp site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>

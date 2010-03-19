@@ -1,0 +1,112 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="zopen.basecamp">
+
+<body>
+
+<!-- THE SECTION TABS DEFINITION -->
+<div metal:define-macro="portal_tabs"
+     tal:omit-tag=""
+     tal:define="project basecamp_view/getCurrentProject;
+                 inProject here/@@basecamp_view/getCurrentProjectId;
+                 project_url string:$portal_url/projects/$inProject;
+                 projects context/@@projectview/getActiveProjects;
+                 type_name context/getPortalTypeName;
+                 url request/URL; 
+                 url python:inProject and url[len(project_url):] or url">
+    <h5 class="hiddenStructure" i18n:translate="heading_sections">Sections</h5>
+
+    <ul id="portal-globalnav">
+
+        <tal:dashboard tal:condition="python: 0 and not inProject"><li 
+            tal:attributes="class python:url.endswith('@@basecamp_dashboard') and 'selected' or 'plain';">
+            <a href="/"
+               i18n:translate="dashboard"
+               title="A list of all your clients and projects."
+               i18n:attributes="title list_of_projects;">Dashboard</a></li><tal:condition condition="projects"><li
+            tal:attributes="class python:url.find('@@todos_report')!=-1 and 'selected' or 'plain';">
+            <a href="/@@todos_report" 
+               title="View all to-dos for a specific person across all their projects."
+               i18n:translate="to_dos"
+               i18n:attributes="title view_all_todos;">To-Dos</a></li><li
+            tal:attributes="class python:url.find('@@milestones_report')!=-1 and 'selected' or 'plain';">
+            <a href="/@@milestones_report"
+               title="View all milestones for a specific person across all their projects."
+               i18n:translate="milestones_cal"
+               i18n:attributes="title view_all_milestones;">Milestones</a></li><li
+            tal:attributes="class python:url.find('@@progress_table')!=-1 and 'selected' or 'plain';">
+            <a href="/@@progress_table"
+               title="View progress of all projects."
+               i18n:translate="progress"
+               i18n:attributes="title view_progress;">Progress</a></li><li
+            tal:condition="python:checkPermission('zopen.timetracker: Time Report', here)"
+            tal:attributes="class python:url.find('@@time_report')!=-1 and 'selected' or 'plain';">
+            <a href="/@@time_report"
+               title="View time track of all projects."
+               i18n:translate="time"
+               i18n:attributes="title view_time_track;"
+               >Time</a></li></tal:condition></tal:dashboard><tal:project
+        tal:condition="inProject"><li
+            tal:attributes="class python:url.endswith('@@dashboard') and 'selected' or 'plain';">
+            <a title="View current project integrated information."
+               tal:attributes="href string:$project_url/@@dashboard"
+               i18n:translate="overview"
+               i18n:attributes="title view_integreated_information;">Overview</a></li><li
+               tal:on-error="string:"
+               tal:condition="python:not project.messages.getExcludeFromNav()"
+            tal:attributes="class python:url.startswith('/messages') and 'selected' or 'plain'">
+            <a tal:attributes="href string:$portal_url/projects/$inProject/messages"
+               title="Post project message, and notified by email."
+               i18n:translate="messages"
+               i18n:attributes="title post_message;">Messages</a></li><li
+               tal:on-error="string:"
+               tal:condition="python:not project.todos.getExcludeFromNav()"
+            tal:attributes="class python:url.startswith('/todos') and 'selected' or 'plain'">
+            <a tal:attributes="href string:$project_url/todos"
+               title="Todo list of project."
+               i18n:translate="to_do_list"
+               i18n:attributes="title todo_list_project;">To-Do</a></li><li
+               tal:on-error="string:"
+               tal:condition="python:not project.milestones.getExcludeFromNav()"
+            tal:attributes="class python:url.startswith('/milestones') and 'selected' or 'plain';">
+            <a title="Phases of the project."
+               tal:attributes="href string:$project_url/milestones"
+               i18n:translate="milestones"
+               i18n:attributes="title phases_project;">Milestones</a></li><li
+               tal:on-error="string:"
+               tal:condition="python:not project.writeboards.getExcludeFromNav()"
+            tal:attributes="class python:(type_name=='Document' or url.startswith('/writeboards')) and 'selected' or 'plain';">
+            <a title="On-line cooperation compilation documents."
+               tal:attributes="href string:$project_url/writeboards"
+               i18n:translate="writeboards"
+               i18n:attributes="title online_document">Writeboards</a></li><li
+               tal:on-error="string:"
+               tal:condition="python:not project.time.getExcludeFromNav() and checkPermission('View', project.time)"
+            tal:attributes="class python:url.startswith('/time') and 'selected' or 'plain';">
+            <a title="Records workload statistics hours."
+               tal:attributes="href string:$project_url/time"
+               i18n:translate="timetrack"
+               i18n:attributes="title time_track_log;">Time</a></li><li
+               tal:on-error="string:"
+               tal:condition="python:not project.chatroom.getExcludeFromNav()"
+            tal:attributes="class python:url.startswith('/chatroom') and 'selected' or 'plain';">
+            <a title="On-line chat and discussion area."
+               tal:attributes="href string:$project_url/chatroom"
+               i18n:translate="chat"
+               i18n:attributes="title online_chat;">Chat</a></li><li
+               tal:on-error="string:"
+               tal:condition="python:not project.files.getExcludeFromNav()"
+            tal:attributes="class python:(url.startswith('/files') and not type_name=='Document') and 'selected' or 'plain'">
+            <a title="Storage ench kind of project file by categories."
+               tal:attributes="href string:$portal_url/projects/$inProject/files"
+               i18n:translate="files"
+               i18n:attributes="title files_storage">Files</a></li>
+        </tal:project>
+
+    </ul>
+</div>
+
+</body>
+</html>

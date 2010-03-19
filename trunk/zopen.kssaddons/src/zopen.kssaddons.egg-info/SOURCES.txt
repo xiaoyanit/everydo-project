@@ -1,0 +1,14 @@
+setup.py
+src/zopen/__init__.py
+src/zopen.kssaddons.egg-info/PKG-INFO
+src/zopen.kssaddons.egg-info/SOURCES.txt
+src/zopen.kssaddons.egg-info/dependency_links.txt
+src/zopen.kssaddons.egg-info/namespace_packages.txt
+src/zopen.kssaddons.egg-info/not-zip-safe
+src/zopen.kssaddons.egg-info/requires.txt
+src/zopen.kssaddons.egg-info/top_level.txt
+src/zopen/kssaddons/__init__.py
+src/zopen/kssaddons/actionwrapper.py
+src/zopen/kssaddons/commands.py
+src/zopen/kssaddons/kssview.py
+src/zopen/kssaddons/selectors.py

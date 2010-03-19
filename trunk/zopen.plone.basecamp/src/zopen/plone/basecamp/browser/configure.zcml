@@ -1,0 +1,215 @@
+<configure xmlns="http://namespaces.zope.org/browser"
+           xmlns:zope="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five">
+
+  <include package="zopen.kssaddons" />
+  <include file="zopen.css.zcml" />
+  <include file="kupu.zcml" />
+  <include file="zopen.js.zcml" />
+
+  <page
+      for="*"
+      name="macro_basecamp"
+      template="macro_basecamp.pt"
+      permission="zope2.View"
+      />
+
+  <page
+      for="*"
+      name="site_setting"
+      class=".basecamp.BasecampView"
+      attribute="redirectToSiteSetting"
+      permission="zope2.View"
+      />
+
+  <page
+      for="*"
+      name="project_setting"
+      class=".basecamp.BasecampView"
+      attribute="redirectToProjectSetting"
+      permission="zope2.View"
+      />
+
+  <page
+      for="*"
+      name="basecamp_view"
+      class=".basecamp.BasecampView"
+      permission="zope2.View"
+      allowed_attributes="
+          getCurrentProject
+          getCurrentProjectState
+          getCurrentProjectId
+          gotoMyAccountPage
+          showProjectSettings
+          showSiteSettings
+          isSiteAdmin
+          isProjectAdmin
+          isClient
+          getLogo
+          hasLogo
+          getPhoto
+          hasPhoto
+          getMemberName
+          getGroupName
+          getCachedURL
+          isLogoInWhiteBox
+          getActionName
+          getExactTime
+     "/>
+
+  <page
+      for="*"
+      name="basecamp_dashboard"
+      class=".dashboard.Dashboard"
+      permission="cmf.SetOwnPassword"
+      />
+
+ <page
+      for="*"
+      name="prefs_site_companies"
+      class="zopen.plone.org.browser.organizationunit.OrganizationUnitView"
+      template="prefs_site_companies.pt"
+      permission="zopen.org.AddPerson"
+      />
+
+  <page
+      for="*"
+      name="setexportpwd"
+      class=".export.Export2FRS"
+      permission="cmf.ModifyPortalContent"
+      attribute="setExportPWD"
+      />
+
+  <page for="*"
+     name="export2frs"
+     class=".export.Export2FRS"
+     permission="cmf.ModifyPortalContent"
+     />
+
+  <page
+      for="*"
+      name="quickstart"
+      template="quickstart.pt"
+      permission="zope2.View"
+      />
+
+  <page
+      for="*"
+      name="redirctContextUrl"
+      class=".dashboard.BasecampKssView"
+      attribute="redirctContextUrl"
+      permission="zope2.View"
+      />
+
+  <resource
+      name="qv1.gif"
+      file="resources/qv1.gif"/>
+
+  <resource
+      name="qv2.gif"
+      file="resources/qv2.gif"/>
+
+  <resource
+      name="qv3.gif"
+      file="resources/qv3.gif"/>
+
+  <resource
+      name="qv4.gif"
+      file="resources/qv4.gif"/>
+
+  <resource
+      name="export-01.png"
+      file="resources/export-01.png"/>
+
+  <resource
+      name="export-02.png"
+      file="resources/export-02.png"/>
+
+  <resource
+      name="export-03.png"
+      file="resources/export-03.png"/>
+
+  <resource
+      name="export-04.png"
+      file="resources/export-04.png"/>
+
+ <resource name="whats_fresh-example.gif"
+     file="resources/whats_fresh-example.gif"/>
+
+ <resource name="play-welcome.gif"
+     file="resources/play-welcome.gif" />
+
+ <resource name="favicon.ico"
+     file="resources/favicon.ico" />
+
+  <page
+      for="*"
+      name="prefs_site_settings"
+      template="prefs_site_settings.pt"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <page
+      for="*"
+      name="prefs_permission_settings"
+      template="prefs_permission_settings.pt"
+      permission="cmf.ModifyPortalContent"
+      />
+	  
+ <page
+      for="*"
+      name="prefs_categories"
+      template="prefs_categories.pt"
+      permission="cmf.ModifyPortalContent"
+      />
+
+ <page
+      for="*"
+      name="prefs_export_data"
+      template="prefs_export_data.pt"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <pages
+      for="*"
+      class=".settings.SiteSettingsView"
+      permission="cmf.ModifyPortalContent"
+      >
+      <page name="saveLogo" attribute="saveLogo" />
+      <page name="changeTitle" attribute="changeTitle" />
+      <page name="deleteLogo" attribute="deleteLogo" />
+      <page name="setDefaultLanguage" attribute="setDefaultLanguage" />
+      <page name="selectTheme" attribute="selectTheme" />
+  </pages>
+
+  <collector name="everydo.kss" type="zope.publisher.interfaces.browser.IDefaultBrowserLayer" />
+
+<resource
+      name="at.kss"
+      file="resources/at.kss"
+      />
+  <collectorItem
+    collector="everydo.kss"
+    item="at.kss"
+    weight="1"
+    />
+<resource
+      name="kss.kss"
+      file="resources/kss.kss"
+      />
+  <collectorItem
+    collector="everydo.kss"
+    item="kss.kss"
+    weight="2"
+    />
+<resource
+      name="plone.kss"
+      file="resources/plone.kss"
+      />
+  <collectorItem
+    collector="everydo.kss"
+    item="plone.kss"
+    weight="3"
+    />
+
+</configure>

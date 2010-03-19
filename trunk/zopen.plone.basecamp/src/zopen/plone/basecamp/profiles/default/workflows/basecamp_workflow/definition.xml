@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="basecamp_workflow"
+             title="Basecanmp Workflow" description=""
+             state_variable="review_state"
+             initial_state="normal">
+ <permission>Access contents information</permission>
+ <permission>List folder contents</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <permission>Delete objects</permission>
+ <state state_id="internal"
+        title="Visible only to intranet members">
+  <exit-transition transition_id="hide"/>
+  <exit-transition transition_id="show"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="normal" title="">
+  <exit-transition transition_id="hide"/>
+  <exit-transition transition_id="protect"/>
+  <exit-transition transition_id="submit"/>
+ </state>
+ <state state_id="pending" title="">
+  <exit-transition transition_id="hidepending"/>
+  <exit-transition transition_id="publish"/>
+  <exit-transition transition_id="retract"/>
+  <permission-map name="Access contents information"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <state state_id="private"
+        title="Visible and editable only by owner">
+  <exit-transition transition_id="privatesubmit"/>
+  <exit-transition transition_id="show"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="privatepending" title="">
+  <exit-transition transition_id="privatepublish"/>
+  <exit-transition transition_id="privateretract"/>
+  <exit-transition transition_id="showpending"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="privatepublished" title="">
+  <exit-transition transition_id="privatereject"/>
+  <exit-transition transition_id="showpublished"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Responsor</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="published" title="">
+  <exit-transition transition_id="hidepublished"/>
+  <exit-transition transition_id="reject"/>
+  <permission-map name="Access contents information"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="Delete objects" acquired="False">
+   <permission-role>Administrator</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="True">
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+  </permission-map>
+  <permission-map name="View" acquired="True">
+  </permission-map>
+ </state>
+ <transition transition_id="hide"
+             title="Member makes content private"
+             new_state="private" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=hide"
+          category="workflow">Make private</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="hidepending" title=""
+             new_state="privatepending" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=hidepending"
+          category="workflow">Make private</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="hidepublished" title=""
+             new_state="privatepublished" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=hidepublished"
+          category="workflow">Make private</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="privatepublish" title=""
+             new_state="privatepublished" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=privatepublish"
+          category="workflow">Review content</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="privatereject" title=""
+             new_state="private" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=privatereject"
+          category="workflow">Send back</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="privateretract" title=""
+             new_state="private" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=privateretract"
+          category="workflow">Retract</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="privatesubmit"
+             title="Submit for review"
+             new_state="privatepending" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=privatesubmit"
+          category="workflow">Submit for review</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="protect"
+             title="make content internal"
+             new_state="internal" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=protect"
+          category="workflow">make internal</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="publish" title=""
+             new_state="published" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=publish"
+          category="workflow">Publish</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="reject" title=""
+             new_state="normal" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=reject"
+          category="workflow">Send back</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="retract" title=""
+             new_state="normal" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=retract"
+          category="workflow">Retract</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="show"
+             title="Remove private"
+             new_state="normal" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=show"
+          category="workflow">Remove private</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="showpending" title=""
+             new_state="pending" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=showpending"
+          category="workflow">Remove private</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="showpublished" title=""
+             new_state="published" trigger="USER"
+             before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=showpublished"
+          category="workflow">Remove private</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="submit"
+             title="Submit for review" new_state="pending"
+             trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=submit"
+          category="workflow">Submit for review</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/search?review_state=pending"
+          category="global">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The last transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Comments about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False"
+           for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False"
+           for_status="True" update_always="True">
+  <description>Time of the last transition</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>

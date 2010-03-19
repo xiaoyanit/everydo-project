@@ -1,0 +1,263 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="zopen.org">
+
+<body>
+
+<metal:block fill-slot="style_slot">
+<metal:block define-macro="style_slot">
+    <style type="text/css"
+        tal:content="structure string:<!-- @import url($portal_url/++resource++contacts.css?34223332); -->"></style>
+    <link rel="kinetic-stylesheet" type="text/css"
+        href="" tal:attributes="href string:$portal_url/++resource++organizationunit.kss?3422333211"
+        />
+</metal:block>
+</metal:block>
+
+<div metal:fill-slot="main">
+
+ <metal:macro-main    metal:define-macro="main">
+
+    <div class="SectionHeader">
+        <h1 class="documentFirstHeading" i18n:translate="company_person_system">
+            Every company and person in your system
+        </h1>
+        <h3 class="TGaddcompany"><a class="admin EVaddcompany" href="createObject?type_name=OrganizationUnit"
+               i18n:translate="add_new_company">Add a new company</a><tal:i18n i18n:translate="then_add_people_that">(then you can add people to that company)</tal:i18n></h3>
+    </div>
+
+    <div class="popup_add_dialog insert-company-after-stub hideme showhide TGaddcompany" id="AddCompany">
+      <h2 i18n:translate="add_new_company">Add a new company</h2>
+      <p i18n:translate="after_add_people">After you add a company you'll be able to add people to that company.</p>
+
+      <form method="post" id="add_company_form">
+          <label for="client_name" i18n:translate="enter_new_company_name"> Enter a new company name </label>
+
+          <input type="text" value="" class="text" name="company_name" id="client_name" size="30"/>
+          <p class="submit">
+              <input type="submit" class="submit" name="submit" i18n:attributes="value create_add_company;" value="Create and add company"/>
+              <tal:i18n i18n:translate="or"> or </tal:i18n>
+              <a href="#" class="admin EVaddcompany" i18n:translate="cancel">Cancel</a>
+          </p>
+      </form>
+
+    </div>
+
+    <div id="company_list">
+        <tal:rep repeat="company_and_people view/get_companies_and_people">
+
+        <div class="kssDeletionRegion" metal:define-macro="company"
+             tal:define="company_and_people company_and_people | options/company_and_people;
+                        Batch python:modules['Products.CMFPlone'].Batch;
+                        show_mode string:text;
+                        company python:company_and_people[0];"
+             tal:attributes="class string:kssDeletionRegion kssattr-companyid-${company/getId}">
+        <form class="showhide hideme TGaddperson">
+          <h2 i18n:translate="add_new_person">Add a new person: </h2>
+          <table>
+            <tbody>
+                  <tr><td i18n:translate="full_name">Full Name: </td>
+                    <td><input name="fullname" /></td></tr>
+                  <tr><td i18n:translate="email">Email: </td>
+                        <td>
+                            <div class="field">
+                                <div style="float:left;">
+                                     <input class="new-person-email" type="text" name="email" />
+                                </div>
+                                 <div class="errmsg" style="margin-left:200px;"></div>
+                            </div>
+                        </td>
+                  </tr>
+                  <tr><td i18n:translate="username">username:</td>
+                        <td>
+                            <div class="field">
+                                <div style="float:left;">
+                                     <input class="new-person-name" name="username" />
+                                </div>
+                                 <div class="errmsg" style="margin-left:200px;"></div>
+                            </div>
+                        </td>
+                  </tr>
+                  <tr><td i18n:translate="password">Password: </td>
+                      <td><input type="password" name="password"/>
+                      </td></tr>
+
+             </tbody>
+          </table>
+          <input type="checkbox" name="disable:boolean"
+                 class="EVdisable"/> <tal:i18n i18n:translate="inhibit_login">Inhibit，inhibit login</tal:i18n>
+          <input type="checkbox" name="notify" checked="checked"
+                 class="TGdisable"/> <span class="TGdisable" i18n:translate="notify_by_email">Notify_by_email</span>
+          <p class="submit">
+             <input class="submit click-dismiss-source" type="submit"
+                    name="add-new-person-button" value="Create and add person" 
+                    i18n:attributes="value create_add_person;"/>
+             <tal:i18n i18n:translate="or"> or </tal:i18n>
+             <a href="#" class="admin click-dismiss-source EVaddperson"  i18n:translate="cancel"> Cancel </a>
+          </p>
+        </form>
+
+        <table class="contacts">
+            <tal:batch tal:repeat="batch_start python:range(0, len(company_and_people), 3)">
+            <tal:row tal:define="batch python:Batch(company_and_people, 3, batch_start)">
+            <tr class="top">
+                <tal:cell tal:repeat="obj batch">
+                <td class="company" tal:condition="python:obj.meta_type == 'OrganizationUnit'">
+                    <h1 tal:content="obj/pretty_title_or_id">Company Name</h1>
+
+                    <!-- img src="" tal:condition="obj/getLogo" tal:attributes="src string:${obj/absolute_url}/logo_thumb" /-->
+                    <p tal:condition="obj/address_1"><span class="label">A:</span>
+                        <span tal:replace="obj/address_1">1234</span></p>
+                    <p tal:condition="obj/address_2"><span class="label">A:</span>
+                        <span tal:replace="obj/address_2">1234</span></p>
+                    <p tal:condition="obj/getWebAddress"><span class="label">W:</span>
+                        <a href="" tal:attributes="href
+                            obj/getWebAddress" tal:content="obj/getWebAddress">1234</a></p>
+                    <p tal:condition="obj/office"><span class="label">O:</span>
+                        <span tal:replace="obj/office">1234</span></p>
+                    <p tal:condition="obj/fax"><span class="label">F:</span>
+                        <span tal:replace="obj/fax">1234</span></p>
+                    <p class="admin"
+                       tal:define="basecamp_view nocall:context/@@basecamp_view;"
+                       tal:attributes="class string:kssattr-person_name-${obj/getId} kssattr-person_url-${obj/absolute_url_path};">
+                        <a href="#" 
+                           class="admin EVaddperson"
+                           i18n:translate="add_person">Add person</a>
+                           <tal:i18n i18n:translate="to_this_company">to this company</tal:i18n><br />
+                        <a href="#" class="admin" tal:attributes="href string:${obj/absolute_url}/edit;
+                                       class python:basecamp_view.was_locked(obj) and 'wasLocked admin' or 'admin'" i18n:translate="edit">Edit</a>
+                        <tal:condition tal:condition="python:obj.getId() != 'owner_company'">
+                        |
+                        <span tal:replace="structure provider:zopen.deletion"/>
+                        </tal:condition>
+                    </p>
+                </td>
+                <td class="nopeople" colspan="2" tal:condition="python:len(company_and_people) == 1">
+                    →  <a href="#" class="admin EVaddperson" 
+                         i18n:translate="add_the_first">Add the first person</a>
+                         <tal:i18n i18n:translate="to">to</tal:i18n>
+                         <span tal:replace="company/Title">this company</span><br/>
+                </td>
+
+                <td class="person" tal:condition="python:obj.meta_type == 'Person'"
+                    metal:define-macro="person-sheet"
+                    tal:define="obj nocall:obj | nocall:options/obj; 
+                                disabled python:context.portal_workflow.getInfoFor(obj, 'review_state') == 'inactive';
+                                old_team nocall:options/old_team | python:view.get_team_of_person(obj);
+                                old_team_id old_team/getId | nothing;" 
+                    tal:attributes="class string:person kssDeletionRegion kssattr-person_id-${obj/getId} kssattr-delSelector-td.person">
+                   <div class="person_info" style="margin:0pt">
+                    <p class="permission-operations" style="float: right;"
+                        metal:define-macro="permisson"
+                        >
+                        <a class="admin" href="#"
+                           onclick="javascript:
+                                this.style.display = 'none';
+                                select = this.parentNode.getElementsByTagName('select')[0];
+                                select.style.display = 'inline';
+                                select.focus();
+                                return false;"
+
+                           tal:omit-tag="python:obj.getId() == member.getId()"
+                           tal:content="python:disabled and '禁用' or old_team and old_team.Title() or default">一般人员</a>
+                        <select style="display: none;"
+                                onblur="javascript:
+                                this.style.display = 'none';
+                                anchor = this.parentNode.getElementsByTagName('a')[0];
+                                anchor.style.display = 'inline';
+                                return false;"
+                            tal:condition="python:obj.getId() != member.getId()"
+                            tal:attributes="class string:kssattr-old_team_id-${old_team_id};">
+                           <option value="">一般人员</option>
+                           <option
+                            tal:repeat="t view/getAvailableTeams"
+                            tal:content="t/pretty_title_or_id"
+                            tal:attributes="value t/getId;
+                                            selected python:t.getId() == old_team_id; "/>
+                           <option value="-" tal:attributes="selected disabled">禁用</option>
+                        </select>
+                    </p>
+
+                    <h1> 
+                       <span tal:replace="obj/pretty_title_or_id">Roché Compaan</span>
+                       <span class="discreet" tal:condition="obj/getPosition">
+                             (<span tal:replace="obj/getPosition" />)</span> 
+                    </h1>
+
+                    <img src="" style="float: right" tal:condition="obj/getPhoto"
+                        tal:attributes="src string:${obj/absolute_url_path}/photo_thumb" />
+                    <p><a href="mailto:user@domain.com"
+                        tal:attributes="href string:mailto:${obj/email}"
+                        tal:content="obj/email">user@domain.com</a></p>
+                    <p tal:condition="obj/phone"><span class="label">P:</span>
+                        <span tal:replace="obj/phone">1234</span></p>
+                    <p tal:condition="obj/mobilePhone"><span class="label">M:</span>
+                        <span tal:replace="obj/mobilePhone">123</span></p>
+                    <p tal:condition="obj/office"><span class="label">O:</span>
+                        <span tal:replace="obj/office">123</span></p>
+                    <p tal:condition="obj/fax"><span class="label">F:</span>
+                        <span tal:replace="obj/fax">123</span></p>
+                    <p tal:condition="obj/location"><span class="label">L:</span>
+                        <span tal:replace="obj/location">1324</span></p>
+
+                    <p tal:define="user_roles python:mtool.getMemberById(obj.getId()).getRolesInContext(portal);
+                                   project_creator python:('ProjectCreator' in user_roles) or ('Administrator' in user_roles);
+                                   manager python:'Administrator' in user_roles;
+                                   "
+                       tal:condition="not:manager">
+                        <input style="margin-left:1px" type="checkbox" class="isProjectCreator"
+                              tal:attributes="id string:isProjectCreator-${obj/getId};
+                                              checked python:project_creator and 'checked' or ''" /> 
+                       <label style="font-size:12px;font-weight:normal" 
+                              tal:attributes="for string:isProjectCreator-${obj/getId}"
+                              i18n:translate="allow_create_projects">Allow to create projects</label>
+                     </p>
+
+                    <p class="admin">
+                        <a href="#" class="admin" tal:attributes="href
+                            string:${obj/absolute_url_path}/edit" i18n:translate="edit">Edit</a>
+                        <tal:condition tal:condition="python:obj.getId() != member.getId()">
+                        |
+                        <span tal:replace="structure provider:zopen.deletion"/>
+                        </tal:condition>
+                    </p>
+                  </div>
+                </td>
+                </tal:cell>
+                <tal:blank tal:condition="python:len(batch) < 3">
+                    <tal:block tal:repeat="i python:range(3 - len(batch))">
+                        <td class="blank">&nbsp;</td>
+                    </tal:block>
+                </tal:blank>
+
+            </tr>
+            </tal:row>
+            </tal:batch>
+        </table>
+        </div>
+        </tal:rep>
+    </div>
+
+    <div style="padding-left:10px">
+    <p>
+     <strong>人员和项目成员的区别？</strong>
+    </p>
+     默认情况下“人员”页面中的一般人员是无法访问具体项目的，需要在创建项目后，在“项目成员”页面添加人员。
+     <p></p>
+     “人员”相当于做项目的人员库，可以在“人员”页面中设置相关人员的全局权限，比如“全局项目人员、”设置“允许创建项目”；<br />而为具体项目加入人员或为某个人员在具体项目中的权限设置需要在该项目中“项目成员”页面中设置。 <a href="http://docs.everydo.com/project/manual/02permission.rst" target="_blank">了解更多...</a>
+     <p></p>
+
+     什么是<strong>全局管理员</strong>、<strong>全局项目人员</strong>、<strong>一般人员</strong>、<strong>联系人</strong>？
+     <ul>
+       <li style="margin:0pt"><strong>全局管理员</strong>拥有最大的权限，能创建和管理项目、管理系统用户、进行系统设置等。</li>
+       <li style="margin:0pt"><strong>全局项目人员</strong>能够访问所有的项目，包括项目中的保密内容，同时自动成为新建项目的内部人员。</li>
+       <li style="margin:0pt"><strong>一般人员</strong>可以登录站点，但联系人不能登录站点，<strong>联系人</strong>可做为项目的相关联系人，比如用在工作记录统计上</li>
+     </ul>
+    </div>
+
+    </metal:macro-main>
+
+</div>
+</body>
+</html>

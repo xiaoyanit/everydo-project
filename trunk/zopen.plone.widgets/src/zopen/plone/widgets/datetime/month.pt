@@ -1,0 +1,11 @@
+<option tal:define="DateTime python:modules['DateTime'].DateTime;
+                    selected_month python:view.month or DateTime().month();"
+        tal:repeat="month python:range(1, 13)"
+        tal:attributes="value month;
+                        selected python:month == selected_month;"
+        i18n:domain="zopen.widgets">
+        
+        <tal:block i18n:translate="which_month">
+           <span i18n:name="month" tal:replace="string:${month}" />月
+        </tal:block>
+       </option>

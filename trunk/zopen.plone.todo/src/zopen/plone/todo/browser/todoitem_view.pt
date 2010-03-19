@@ -1,0 +1,246 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.todo">
+
+<head>
+    <metal:top fill-slot="top_slot"
+        tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+  <link href="#" type="text/css" rel="stylesheet" media="screen"
+        tal:attributes="href string:$portal_url/++resource++todo.css?34223332" />
+  <link href="#" type="text/css" rel="stylesheet" media="screen"
+        tal:attributes="href string:$portal_url/++resource++comments.css?34223332" />
+
+  <link href="#" type="text/css" rel="kinetic-stylesheet"
+        tal:attributes="href string:$portal_url/++resource++todoitem.kss?34223332" />
+
+    <link type="text/css" rel="kinetic-stylesheet"
+          tal:attributes="href string:$portal_url/++resource++subscribe.kss?34223332"
+          />
+
+    <link type="text/css" rel="kinetic-stylesheet"
+          tal:attributes="href string:$portal_url/++resource++comments.kss?34223332"
+          />
+
+   <link href=""
+         tal:attributes="href string:$portal_url/++resource++timetracker.css?34223332"
+         type="text/css" rel="stylesheet" media="screen"/>
+
+   <style type="text/css">
+   .todo_more {border-collapse:collapse; background:#FFF none repeat scroll 0% 50%;}
+   .todo_more tr td.todo_more_left {padding-left:10px;font-weight:bolder;border-bottom:1px solid #DDDDDD; background:#EFEFEF none repeat scroll 0%;width:12%; vertical-align:top;}
+   .todo_more tr td.todo_more_right {border-bottom:1px solid #DDDDDD;}
+   .todo_more tr td.todo_more_top {border-top:2px solid #DCDCDC;}
+   .todo_more tr td.todo_more_bottom {border-bottom:2px solid #DCDCDC;vertical-align:top;}
+
+   .trackform table {background:transparent;}
+   .trackform td {background:transparent;}
+div.trackitemmore {
+    border:2px solid #CCCCCC;
+    padding: 10px 10px 1px;
+    background:#EFEFEF none repeat scroll 0%;
+    margin:0pt 0pt 20px;
+}
+
+div.trackitemmore span.item_title {
+   display:block;
+   padding:8px;
+   background: #FFF;
+}
+
+div.trackitemmore div.total {
+   background:#D2E9D2 none repeat scroll 0%;
+   padding:10px;
+}
+
+div.trackitemmore div.form {
+   margin: 10px 10px 10px;
+}
+
+.trackformmore table td {
+   padding: 3px 10px;
+}
+
+.trackform .submit {
+   border-top:1px solid #DDDDDD;
+   font-size:12px;
+   margin:5px 0pt;
+}
+
+   </style>
+</metal:css>
+
+</head>
+
+<body>
+    <div metal:fill-slot="main"
+         tal:define="obj nocall:context/aq_inner;
+                     todoList nocall:obj/aq_parent;
+                     basecamp_view context/@@basecamp_view;
+                     ">
+        <div class="ContextHeader">
+            <h1>
+               <tal:i18n i18n:translate="todo_in_list">Todo in todolist</tal:i18n>
+                <a href="#"
+                   tal:content="todoList/pretty_title_or_id"
+                   tal:attributes="href string:${todoList/absolute_url}"></a>
+            </h1>
+        </div>
+         
+     <div class="kssDeletionRegion"> 
+        <div class="ContextHeader"
+             tal:define="obj nocall:context/aq_inner;
+                         currentContributor python:obj.Contributors() and obj.Contributors()[0] or obj.Creator();
+                         canEdit canEdit | python:checkPermission('Modify portal content', obj);
+                         canDelete canDelete | python:checkPermission('Delete objects', obj); ">
+                <tal:i18n i18n:translate="create_by_time">
+                  Created by <span i18n:name="con" tal:replace="python:basecamp_view.getMemberName(currentContributor)" />
+                  on <span  i18n:name="date" tal:replace="obj/CreationDate" />
+                </tal:i18n>
+                  <a href="#" class="admin edititemMore"
+                     tal:condition="canEdit"
+                     i18n:translate="edit"> Edit </a>
+                      
+                 <span tal:condition="canDelete"
+                      tal:attributes="class string:kssattr-delSelector-redirect2${todoList/aq_parent/absolute_url}">
+                    <span tal:define="obj nocall:obj;show_mode string:text;"
+                          tal:replace="structure provider:zopen.deletion"/>
+                 </span>
+        </div>
+
+        <div id="todo_more" metal:define-macro="todo_more"
+                   tal:define="obj nocall:context/aq_inner;
+                               basecamp_view context/@@basecamp_view;
+                               todoList nocall:obj/aq_parent;
+                               rich_title view/richDesTitle|obj/richTitle;
+                               wtool nocall:obj/portal_workflow;
+                               end obj/end;
+                               relatedItems python:context.getRelatedItems();
+                               files python:[f for f in relatedItems if f.portal_type in ('File', 'Image')];"
+             tal:attributes="class string:state-normal Post;">
+
+            <div class="edititemwrapper"></div>
+            <table class="todo_more" width="100%" style="border-collapse:collapse;">
+              <tbody>
+                <tr>
+                  <td class="todo_more_left todo_more_top" i18n:translate="todo_item_des">ToDo:</td>
+                  <td class="todo_more_right todo_more_top" tal:content="structure rich_title" />
+                </tr>
+                <tr>
+                  <td class="todo_more_left" i18n:translate="responsible">Respnsible:</td>
+                  <td class="todo_more_right" tal:define="responsor obj/getResponsibleParty;">
+                     <span tal:condition="responsor" tal:replace="obj/getResponsiblePartyTitle" />
+                     <span tal:condition="not:responsor"  i18n:translate="anyone">Anyone</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="todo_more_left" i18n:translate="deadline">Due time:</td>
+                  <td class="todo_more_right" tal:define="end_status python:end and basecamp_view.getExactTime(end, extract=2);
+                                  end_time python:end and basecamp_view.getExactTime(end, extract=1);">
+                     <span tal:condition="end"
+                           tal:attributes="class python:end_status!=None and end_status or ''" 
+                           i18n:domain="zopen.basecamp" i18n:translate=""
+                           tal:replace="end_time"/>
+                      <span tal:condition="not:end" i18n:translate="due_undefined">Undefined</span>
+                   </td>
+                </tr>
+                <tr>
+                  <td class="todo_more_left" i18n:translate="whether_completed">Whether completed?</td>
+                  <td  class="todo_more_right"><span id="todo_is_completed" metal:define-macro="todo_more_completed" tal:define="obj nocall:context/aq_inner; 
+                                  review_state python:wtool.getInfoFor(obj, 'review_state', '');
+                                  todo_completed python: review_state == 'completed';
+                                  is_completed python:todo_completed and 'Complete' or 'Not completed';
+                                  click_completed python:todo_completed and 'Reset' or 'Complete';">
+                         <span tal:condition="todo_completed" tal:replace="python:toLocalizedTime(obj.ModificationDate(), long_format=0)" />
+                         <span i18n:translate="" tal:content="is_completed" />
+                         <input type="button" class="EVclickComplete" 
+                                i18n:attributes="value" 
+                                tal:attributes="value click_completed;
+                                                class string:EVclickComplete EVtoggleArea;" />
+
+
+                     <img alt="Indicator" class="hideme EVtoggleArea"
+                          tal:attributes="src string:/++resource++indicator.gif"
+                          style="vertical-align: middle;" height="5" width="21"
+                          i18n:attributes="alt indicator;" />
+                   </span>
+                  
+                  </td>
+                </tr>
+                <tr>
+                  <td class="todo_more_left" i18n:translate="timetracker">Time trakcer:</td>
+                  <td class="todo_more_right"
+                      tal:define="timetrackers python:[t for t in relatedItems if t.portal_type=='TimeLog']; 
+                                  hours_b python: map(lambda b:b.getHours(), timetrackers);
+                                  hours python: sum(hours_b)">
+                         <tal:i18n i18n:translate="tracker_hours"><span i18n:name="hours" tal:replace="hours" /> hours</tal:i18n>
+                         <span tal:condition="python:hours!=0">(<a target="_blank" href="" tal:attributes="href string:${context/absolute_url}/../../../time?relateTo=${context/UID}&amp;responsibleParty=" i18n:domain="zopen.todo" i18n:translate="view_item_log">View this item time log</a>)</span>
+                   <p style="padding-top:10px"><a class="admin TGtimetrack" href="" i18n:translate="report_time">Report time tracker</a></p>
+                    <div class="edititemwrappertracker"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="todo_more_left todo_more_bottom" i18n:translate="attachments">Attachments:</td>
+                  <td class="todo_more_right todo_more_bottom">
+                  <ul class="commentAttachments visualNoMarker"
+                      tal:condition="files">
+                   <tal:rep repeat="attachment files">
+                   <li style="list-style:none" class="kssDeletionRegion" 
+                       tal:attributes="class string:InnerDeletionRegion kssattr-delSelector-.InnerDeletionRegion kssattr-kssurl-${attachment/absolute_url}"
+                        tal:condition="python:checkPermission('View', attachment)">
+                      <img src="" height="16px" width="16px" tal:attributes="src string:/${attachment/getIcon}" />
+                    <a tal:attributes="href string:${attachment/absolute_url}/@@file_view;">
+                      <span class="visualIconPadding" tal:content="attachment/pretty_title_or_id" />
+                      <span tal:define="size attachment/getObjSize" tal:condition="size" tal:omit-tag=""> (<span tal:replace="size">257 kB</span>)</span></a>
+                    <a href="" tal:attributes="href attachment/absolute_url" i18n:domain="zopen.filerepos" i18n:translate="download">Download</a>
+
+                 <span tal:define="obj nocall:attachment;show_mode string:img;"
+                       tal:condition="python:checkPermission('Delete objects',attachment)">
+                   <tal:rep replace="structure provider:zopen.deletion" />
+                 </span>
+                  </li>
+                 <ul tal:condition="python:not checkPermission('View', attachment)"><li style="color:red;">您没有权限查看这个附件</li></ul>
+                 </tal:rep>
+                 </ul>
+                 <div class="" style="padding:10px 0;"><a class="TGattachfile EVattachfile admin" href="" i18n:translate="upload_files">Upload files</a>
+                 <form class="upload_file TGattachfile showhide hideme" method="post" enctype="multipart/form-data" action="uploadFile" tal:attributes="action string:$here_url/uploadFile">
+
+                   <metal:block metal:use-macro="context/@@add_message_macro/macros/upfile" />
+                   <p class="submit" i18n:domain="zopen.filerepos" style="padding-left:300px;">
+                    <span class="TGtoggle">
+                       <input type="submit" i18n:attributes="value upload_file" class="EVtoggle" value="Upload the file" />
+                       <span i18n:translate="or">or</span>
+                       <a class="admin EVattachfile" href="#" i18n:translate="cancel">Cancel</a>
+                    </span>
+                    <input type="submit" disabled="disabled" i18n:attributes="value please_wait_upload" class="TGtoggle hideme" value="Upload files, please wait..." />
+                   </p>
+
+
+                 </form>
+                 
+                 </div>
+
+
+                   </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+     </div>
+
+    <div class="visualClear"><!-- --></div>
+
+
+        <div tal:replace="structure provider:zopen.comments" />
+    </div>
+
+    <div metal:fill-slot="portlets_two_slot">
+
+      <div tal:replace="structure provider:zopen.subscription"
+           tal:on-error="string:" />
+      
+    </div>  
+</body>
+</html>

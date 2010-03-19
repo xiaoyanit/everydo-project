@@ -1,0 +1,29 @@
+<html class="kupu-html">
+  <head tal:define="portal_url context/portal_url">
+    <title i18n:translate="emptypage_title">Kupu contentarea</title>
+
+    <style type="text/css" media="screen"
+        tal:content="structure string:&lt;!-- @import url($portal_url/++resource++everydo.css); --&gt;">
+    </style>
+    <!-- Internet Explorer CSS Fixes -->
+    <tal:iefixstart replace="structure string:&lt;!--[if IE]&gt;" />
+    <style type="text/css" media="all" 
+           tal:define="cached_url string:$portal_url/++resource++IEFixes.css?34223332"
+           tal:content="string:@import url($cached_url);">
+    </style>
+    <tal:iefixend replace="structure string:&lt;![endif]--&gt;" />
+
+    <base href="emptypage"
+        tal:define="folderish here/isPrincipiaFolderish;
+          tail python:test(folderish, '/', '');"
+        tal:attributes="href string:${request/URL1}${tail}" />
+  </head>
+  <body class="kupu documentContent" id="content">
+
+   <tal:comment replace="nothing">    
+      This template is an empty placeholder, used for loading contents
+      into the Kupu editor-iframe.
+   </tal:comment>
+   <script type="text/javascript">document._kssReadyForLoadEvent=1;</script> 
+  </body>
+</html>

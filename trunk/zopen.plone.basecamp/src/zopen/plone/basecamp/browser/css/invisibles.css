@@ -1,0 +1,75 @@
+    /* zrt-cssregistry: base_properties */
+/* List classes without markers */
+ul.visualNoMarker,
+ol.visualNoMarker {
+list-style-type: none;
+list-style-image: none;
+margin: 0.5em 0 0 0;
+line-height: 1em;
+}
+
+.visualOverflow {
+overflow: auto;
+margin: 0 0 1em 0;
+}
+.visualOverflow pre,
+.visualOverflow table,
+.visualOverflow img {
+margin: 0;
+}
+
+/* Accessibility and visual enhancement elements */
+.hiddenStructure {
+display: block;
+background: transparent;
+background-image: none /* safari bug */
+border: none;
+height: 1px;
+overflow: hidden;
+padding: 0;
+margin: -1px 0 0 -1px;
+width: 1px;
+}
+.contentViews .hiddenStructure,
+.contentActions .hiddenStructure {
+position: absolute;
+top: -200px;
+left: -200px;
+}
+.hiddenLabel {
+display: block;
+background: transparent;
+background-image: none /* safari bug */
+border: none;
+height: 1px;
+overflow: hidden;
+padding: 0;
+margin: -1px 0 0 -1px;
+width: 1px;
+}
+
+/* Helper element to work with CSS floats */
+.visualClear {
+display: block;
+clear: both;
+}
+.clearfix:after {
+  content: ".";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  display: block;
+}         /* 这是对Firefox进行的处理，因为Firefox支持生成元素，而IE所有版本都不支持生成元素 */
+.clearfix {
+  display: inline-block;     
+}                /* 这是对 Mac 上的IE浏览器进行的处理 */
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}        /* 这是对 win 上的IE浏览器进行的处理 */
+.clearfix {display: block;}        /* 这是对display: inline-block;进行的修改，重置为区块元素*/
+/* End hide from IE-mac */
+
+/* Hiding helper elements for old browsers */
+.netscape4 {
+display: none;
+}
+

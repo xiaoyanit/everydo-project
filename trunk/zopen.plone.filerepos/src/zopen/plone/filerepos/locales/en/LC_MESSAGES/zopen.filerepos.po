@@ -1,0 +1,379 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2008-01-08 07:48+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.filerepos\n"
+
+#: ./filerepos.py:44
+msgid "A file submitted. DO NOT REPLY TO THIS EMAIL.  Submitted by ${user_name} <${user_email}>: File: ${filename} Download: ${file_url} ${description}"
+msgstr ""
+
+#. Default: "Change files, please wait..."
+#: ./edit_file.pt
+#: ./edit_writeboard.pt
+msgid "Change files, please wait..."
+msgstr ""
+
+#. Default: "Private"
+#: ./edit_file.pt
+#: ./save_new_version.pt
+msgid "Private"
+msgstr ""
+
+#. Default: "Upload and replace"
+#: ./edit_file.pt
+msgid "Upload and replace"
+msgstr ""
+
+#. Default: "Upload files, please wait..."
+#: ./filerepos_listing.pt
+msgid "Upload files, please wait..."
+msgstr ""
+
+#. Default: "Upload new version files, please wait..."
+#: ./save_new_version.pt
+msgid "Upload new version files, please wait..."
+msgstr ""
+
+#. Default: "Upload the file"
+#: ./filerepos_listing.pt
+msgid "Upload the file"
+msgstr ""
+
+#: ./filerepos.py:220
+msgid "You added ${count} files success."
+msgstr ""
+
+#. Default: "Add another file"
+#: ./filerepos_listing.pt
+msgid "add_another_file"
+msgstr ""
+
+#. Default: "Add a new file"
+#: ./filerepos_listing.pt
+msgid "add_new_file"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./edit_file.pt
+#: ./edit_writeboard.pt
+#: ./filerepos_listing.pt
+msgid "cancel"
+msgstr ""
+
+#. Default: "Category:"
+#: ./edit_file.pt
+#: ./edit_writeboard.pt
+#: ./filerepos_listing.pt
+msgid "category"
+msgstr ""
+
+#. Default: "change state, please wait..."
+#: ./review_file.pt
+msgid "change state, please wait..."
+msgstr ""
+
+#. Default: "Choose a file to upload"
+#: ./filerepos_listing.pt
+msgid "choose_a_file"
+msgstr ""
+
+#. Default: "Delete"
+#: ./filerepos_listing.pt
+msgid "delete"
+msgstr ""
+
+#. Default: "Delete this version"
+#: ./filerepos_listing.pt
+msgid "delete_this_version"
+msgstr ""
+
+#. Default: "点击下载"
+#: ./review_file.pt
+msgid "download"
+msgstr ""
+
+#. Default: "Edit"
+#: ./filerepos_listing.pt
+#: ./review_file.pt
+msgid "edit"
+msgstr ""
+
+#. Default: "post by ${author} in ${category} on ${modified}, size ${size}"
+#: ./filerepos_listing.pt
+#: ./review_file.pt
+msgid "file_by_line"
+msgstr ""
+
+#. Default: "Make this file"
+#: ./edit_file.pt
+#: ./filerepos_listing.pt
+#: ./save_new_version.pt
+msgid "file_private"
+msgstr ""
+
+#. Default: "Indicator"
+#: ./edit_file.pt
+#: ./edit_writeboard.pt
+#: ./filerepos_listing.pt
+msgid "indicator"
+msgstr ""
+
+#. Default: "This is not a private file."
+#: ./review_file.pt
+msgid "isNotPrivateFile"
+msgstr ""
+
+#. Default: "This is a private file."
+#: ./review_file.pt
+msgid "isPrivateFile"
+msgstr ""
+
+#: ./filerepos.py:359
+msgid "modified success."
+msgstr ""
+
+#: ./filerepos_listing.pt
+msgid "more"
+msgstr ""
+
+#. Default: "Notify people via email"
+#: ./edit_file.pt
+#: ./edit_writeboard.pt
+#: ./filerepos_listing.pt
+msgid "notify_email"
+msgstr ""
+
+#. Default: "Optional description:"
+#: ./edit_file.pt
+#: ./edit_writeboard.pt
+#: ./filerepos_listing.pt
+msgid "optional_description"
+msgstr ""
+
+#. Default: "or"
+#: ./edit_file.pt
+#: ./edit_writeboard.pt
+#: ./filerepos_listing.pt
+msgid "or"
+msgstr ""
+
+#. Default: "The file hasn't reviewed."
+#: ./review_file.pt
+msgid "pending"
+msgstr ""
+
+#. Default: "Private"
+#: ./filerepos_listing.pt
+msgid "private"
+msgstr ""
+
+#. Default: "Files for this project"
+#: ./filerepos_listing.pt
+msgid "project_files"
+msgstr ""
+
+#. Default: "The file has already reviewed."
+#: ./review_file.pt
+msgid "reviewed"
+msgstr ""
+
+#: ./filerepos.py:291
+msgid "save as new version success."
+msgstr ""
+
+#. Default: "save_as_new_version"
+#: ./save_new_version.pt
+msgid "save_as_new_version"
+msgstr ""
+
+#. Default: "Save change"
+#: ./edit_writeboard.pt
+msgid "save_change"
+msgstr ""
+
+#. Default: "select a new version of “ ${title} ”"
+#: ./save_new_version.pt
+msgid "select_a_new_version"
+msgstr ""
+
+#. Default: "Select a file to replace"
+#: ./edit_file.pt
+msgid "select_file_replace"
+msgstr ""
+
+#. Default: "The file hasn't submitted."
+#: ./review_file.pt
+msgid "submitting"
+msgstr ""
+
+#. Default: "(each file should be under 30M)"
+#: ./filerepos_listing.pt
+msgid "upload_limit"
+msgstr ""
+
+#. Default: "you may not upload files larger than 30 metabyates."
+#: ./edit_file.pt
+#: ./save_new_version.pt
+msgid "upload_limit_file"
+msgstr ""
+
+#. Default: "Upload a new versions"
+#: ./filerepos_listing.pt
+#: ./review_file.pt
+msgid "upload_new_version"
+msgstr ""
+
+#: ./filerepos.py:66
+msgid "va_need_file"
+msgstr ""
+
+#. Default: "post by ${principal} on ${timestap}, size ${size}"
+#: ./filerepos_listing.pt
+msgid "version_post"
+msgstr ""
+
+#. Default: "view"
+#: ./filerepos_listing.pt
+msgid "view"
+msgstr ""
+
+#. Default: "${writeboard} property"
+#: ./edit_writeboard.pt
+msgid "writeboard_property"
+msgstr ""
+
+#. Default: "Writeboard Title"
+#: ./edit_writeboard.pt
+msgid "writeboard_title"
+msgstr ""
+
+
+#. Default: "Submit for review"
+msgid "submit_for_review"
+msgstr ""
+
+#. Default: "change state, please wait..."
+#: browser/filerepos_listing.pt
+msgid "change_state"
+msgstr ""
+
+#. Default: "submit on"
+#: browser/file_view.pt
+msgid "submit_on"
+msgstr ""
+
+#. Default: "the file in"
+#: browser/file_view.pt
+msgid "the_file_in"
+msgstr ""
+
+#. Default: "Review information"
+msgid "review_information"
+msgstr ""
+
+#. Default: "Need to Review files"
+msgid "need_review_files"
+msgstr ""
+
+#. Default: "There are 2 files need to review, "
+msgid "review_list_for"
+msgstr ""
+
+msgid "here_category"
+msgstr ""
+
+msgid "click_here"
+msgstr ""
+
+#. Default: "There are 2 files need to review, "
+msgid "review_lists_for"
+msgstr ""
+
+msgid "review_project"
+msgstr ""
+
+#.Default: "Make this file private"
+#: browser/file_view.pt
+msgid "Make private"
+msgstr ""
+
+#.Default: "Make this file visible"
+#: browser/file_view.pt
+msgid "Make visible"
+msgstr ""
+
+#.Default: "Make this file visible"
+#: browser/file_view.pt
+msgid "Show"
+msgstr ""
+
+#.Default: "Make this file visible"
+#: browser/file_view.pt
+msgid "Remove private"
+msgstr ""
+
+#.Default: "no history versions"
+#: browser/file_view.pt
+msgid "no_history"
+msgstr ""
+
+#.Default: "History versions"
+#: browser/file_view.pt
+msgid "history_version"
+msgstr ""
+
+#.Default: "File state"
+#: browser/file_view.pt
+msgid "file_state"
+msgstr ""
+
+#.Default: "private or visisable:"
+#: browser/file_view.pt
+msgid "private_file_information"
+msgstr ""
+
+#.Default: "review information:"
+#: browser/file_view.pt
+msgid "review_file_information"
+msgstr ""
+
+msgid "mail_submit_review"
+msgstr ""
+
+msgid "mail_publish_review"
+msgstr ""
+
+msgid "mail_reject_review"
+msgstr ""
+
+msgid "subject_submit"
+msgstr ""
+
+msgid "subject_publish"
+msgstr ""
+
+msgid "subject_reject"
+msgstr ""
+
+msgid "related"
+msgstr ""
+
+msgid "warning"
+msgstr ""
+
+msgid "warning_locked"
+msgstr ""

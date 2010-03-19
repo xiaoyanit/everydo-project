@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tool">
+
+  <object name="zopen_chat" meta_type="Filesystem Directory View"
+    directory="zopen.plone.chat:skins/zopen_chat"/>
+
+  <skin-path name="*">
+    <layer name="zopen_chat" />
+  </skin-path>
+
+</object>

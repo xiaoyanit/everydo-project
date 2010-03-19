@@ -1,0 +1,70 @@
+
+    /* zrt-cssregistry: base_properties */
+
+
+/* New navtree styles */
+
+.portletNavigationTree {
+padding: 0;
+list-style: none !important;
+list-style-image: none !important;
+line-height: 1em;
+}
+.navTree {
+list-style: none;
+list-style-image: none;
+margin-top: 1px;
+}
+.navTree li {
+margin-bottom: 1px;
+}
+.navTreeItem {
+display: block;
+padding: 0;
+margin: 0;
+}
+.navTreeItem a,
+dd.portletItem .navTreeItem a {
+border: borderWidth borderStyle backgroundColor;
+display: block;
+text-decoration: none;
+padding-top: 0.2em;
+padding-bottom: 0.25em;
+}
+.navTreeItem a:hover,
+dd.portletItem .navTreeItem a:hover {
+background-color: globalBackgroundColor;
+color: globalFontColor;
+border: borderWidth borderStyle #B9D0FB;
+}
+.navTreeCurrentItem {
+background-color: globalBackgroundColor;
+color: globalFontColor;
+border: borderWidth borderStyle globalBorderColor !important;
+}
+li.navTreeCurrentItem {
+display: block;
+padding: 0 0 0 1px;
+margin: 0 0 2px -1px;
+}
+li.navTreeCurrentItem a,
+li.navTreeCurrentItem a:hover {
+display: block;
+border: borderWidth borderStyle globalBackgroundColor;
+min-height: 1.6em;
+line-height: 1.6em;
+height: auto;
+}
+
+/* Another workaround for broken Internet Explorer */
+* html li.navTreeCurrentItem a,
+* html li.navTreeCurrentItem a:hover {
+height: 1.6em;
+}
+
+.navTreeLevel0 { margin: 0 }
+.navTreeLevel1 { margin-left: 1.25em; }
+.navTreeLevel2 { margin-left: 1.25em }
+.navTreeLevel3 { margin-left: 1em }
+.navTreeLevel4 { margin-left: 1em }
+.navTreeLevel5 { margin-left: 1em }

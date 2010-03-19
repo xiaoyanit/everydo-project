@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="zopen.basecamp">
+
+<body>
+
+<!-- THE PATHBAR (breadcrumbs) DEFINITION -->
+<div metal:define-macro="path_bar"
+     id="portal-breadcrumbs"
+     tal:define="projectid context/@@basecamp_view/getCurrentProjectId;
+                 isClient context/@@basecamp_view/isClient;
+                 isSiteAdmin context/@@basecamp_view/isSiteAdmin;
+                 edoskin_view nocall:context/@@edoskin_view | nothing;
+                 global projectview nocall:context/@@projectview;
+                 "
+     tal:condition="python: projectid or (edoskin_view is not None and not isClient)" >
+
+ <ul id="contentActionMenus">
+
+    <tal:services tal:condition="python:edoskin_view is not None and not isClient">
+    <li tal:repeat="tab python:edoskin_view.servicetabs" 
+        tal:attributes="class tab/class;">
+           <a href="/" style="padding-right:3px;"
+              tal:attributes="href tab/href;"><span
+              tal:content="tab/title">Dashboard</span></a>
+    </li>
+    </tal:services>
+
+    <li tal:condition="python: (edoskin_view is None or isClient) and projectid" >
+        <a href="/" style="padding-right:3px;"
+           tal:attributes="href string:$portal_url;"><span class="selectChange" i18n:translate="choose_a_project">Dashboard</span></a>
+    </li>
+
+    <li tal:define="projects projectview/getActiveProjects;
+                    cur_projectstate python: projectid and basecamp_view.getCurrentProjectState() or 'active';"
+                  tal:condition="python: cur_projectstate != 'active' or len(projects) > 1 or (projects and len(projects.values()[0]) > 1)">
+     <dl class="actionMenu deactivated" id="selectSiteMenu">
+        <dt class="actionMenuHeader">
+           <a href="/"
+              title="My projects"
+              i18n:attributes="title choose_a_project;"
+              tal:attributes="href string:$portal_url;">
+              <img src="#" 
+                   tal:attributes="src string:$portal_url/menu_pop_arrow.gif" />
+           </a>
+        </dt>
+        <dd class="actionMenuContent">
+            <ul>
+                <li tal:repeat="projectinfo projects/items">
+                   <span tal:replace="python:projectinfo[0]" />
+                   <ul>
+                      <li tal:repeat="project python:projectinfo[1]">
+                            <span class="current_project" tal:condition="python:project.getId()==projectid"
+                                  tal:content="project/Title" />
+                         <a href="#" 
+                            tal:condition="python:project.getId()!=projectid"
+                            tal:attributes="href project/absolute_url;">
+                            <span tal:replace="project/Title" /></a>
+                      </li>
+                   </ul>
+                </li>
+                <li><a href="" style="margin-top:5px; border-top:1px solid lightgray"
+                       tal:attributes="href portal_url"
+                       i18n:translate="pathbar_dashboard">Dashboard</a></li>
+                <li tal:define="canAddProject python:mtool.checkPermission('zopen.project: Add Project', context);
+                                      project_limit_msg portal/@@operationoptions/checkProjectLimit | string:"
+                          tal:condition="python: canAddProject and (not project_limit_msg)"
+                      ><a href=""
+                          tal:attributes="href string:$portal_url/projects/create_project_form">
+                         <b i18n:translate="create_new_project">Create a project...</b></a></li>
+              </ul>
+        </dd>
+     </dl>
+    </li>
+   </ul>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="Five">
+
+  <permission
+      id="zopen.timetracker.AddTimeTracker"
+      title="zopen.timetracker: Add Time Tracker"
+      />
+
+  <permission
+      id="zopen.timetracker.AddTimeLog"
+      title="zopen.timetracker: Add Time Log"
+      />
+
+  <permission
+      id="zopen.timetracker.TimeReport"
+      title="zopen.timetracker: Time Report"
+      />
+
+</configure>

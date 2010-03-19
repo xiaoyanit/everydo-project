@@ -1,0 +1,16 @@
+<configure
+    xmlns:zope="http://namespaces.zope.org/zope"
+    xmlns="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="zopen.edo.oc.portal">
+
+  <collector name="zopen.js" type="zope.publisher.interfaces.browser.IBrowserRequest" />
+  <collectorItem collector="zopen.js" item="sarissa.js" weight="1" />
+  <collectorItem collector="zopen.js" item="base2-dom-fp.js" weight="2" />
+  <collectorItem collector="zopen.js" item="kukit.js" weight="3" />
+  <collectorItem collector="zopen.js" item="deletion.js" weight="4" />
+  <collectorItem collector="zopen.js" item="choice-widget.js" weight="5" />
+
+  <resource name="choice-widget.js" file="js/choice-widget.js" />
+
+</configure>

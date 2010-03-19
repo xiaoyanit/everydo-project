@@ -1,0 +1,72 @@
+
+.Post {
+    margin: 10px 10px 0 10px;	
+    padding: 0 0 10px;
+}
+
+.Post h1 {
+    padding-top: 5px;
+    padding-bottom: 8px;
+    color: #000;
+    margin: 0pt;
+    border-style: none;
+}
+
+.Post h1 a {
+    font-size: 18px;	
+}
+
+.Post li {
+    margin-left: 20px;
+}
+
+.Post ul li {
+    list-style-type: none;
+ }
+
+#post_form_container h2 {
+    font-size: 13px;
+}    
+
+.ContextHeader h1 a:hover {
+   color:#FFF !important;
+}
+
+#post_form_container h2 span a:link,
+#post_form_container h2 span a:visited {
+    color: #0033CC !important;
+    text-decoration:underline;
+}    
+
+#post_form_container h2 span a:hover {
+    color: #FFFFFF !important;
+}    
+
+.photoAlbumEntry{
+  padding:0px;	
+  margin:20px 5px 10px;
+  background-image:none;
+  border:1px solid #CCCCCC;
+  width:140px;
+  height:140px;
+}
+.photoAlbumEntry a{
+   margin:8px auto 0px;
+   width:130px;
+   height:130px;
+}
+.photoAlbumEntry a:hover{
+   background-color:transparent;
+}
+.photoAlbumEntry img {
+  border:none;
+}
+
+h2 a{
+  text-decoration:underline;
+}
+
+h2 a:hover{
+  color: #fff !important;
+}
+  

@@ -1,0 +1,56 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:five="http://namespaces.zope.org/five"
+  >
+
+  <adapter factory=".category.CategorySelectionProvider"
+           name="zopen.categoryselection"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <adapter factory=".category.CategoryListProvider"
+           name="zopen.categorylist"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <adapter factory=".adapters.FolderConentsCategoryManager" />
+
+  <browser:page
+      for="plone.app.kss.interfaces.IPortalObject"
+      class=".kssview.SelectionView"
+      permission="cmf.AddPortalContent"
+      name="selectionCreateCategory"
+      attribute="selectionCreateCategory" />
+
+  <browser:page
+      for="plone.app.kss.interfaces.IPortalObject"
+      class=".kssview.SelectionView"
+      permission="cmf.AddPortalContent"
+      name="listCreateCategory"
+      attribute="listCreateCategory" />
+
+  <browser:page
+      for="plone.app.kss.interfaces.IPortalObject"
+      class=".kssview.SelectionView"
+      permission="cmf.ModifyPortalContent"
+      name="listRenameCategory"
+      attribute="renameCategory" />
+
+  <!-- for test only, don't use!
+  <browser:resource
+          name="category-selection.kss"
+          file="category-selection.kss" />
+  -->
+
+  <browser:resource
+          name="category-list.kss"
+          file="category-list.kss" />
+
+  <browser:resource
+          name="category-rename.js"
+          file="category-rename.js" />
+
+  <browser:resource
+          name="category.css"
+          file="category.css" />
+
+</configure>

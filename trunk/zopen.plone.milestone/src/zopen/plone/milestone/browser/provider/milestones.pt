@@ -1,0 +1,78 @@
+<table class="latemilestones"
+     tal:define="late_milestones view/late_milestones;
+                 basecamp_view context/@@basecamp_view;
+                 today view/today;"
+     tal:condition="late_milestones"
+     i18n:domain="zopen.milestone">
+  <tr><th i18n:translate="late_milestones">Late Milestones</th></tr>
+  <tr>
+    <td>
+      <ul>
+      <li tal:repeat="item late_milestones">
+      <strong i18n:translate="days_late"
+               tal:define="DateTime python:modules['DateTime'].DateTime;
+                        end item/end;
+                        late_end python:DateTime(end.year(),end.month(),end.day())"><span tal:replace="python:int(today-late_end)" i18n:name="today_end">2198</span> days late</strong>:
+      <a href="/projects/939794/milestones"
+         tal:attributes="href string:${item/getPath}/.."
+         tal:content="item/Title"
+         >fwefwef</a>
+        <tal:block define="project python:item.getObject().getProject();
+                           company python:project.getCompany();
+                           responsibleParty python:item.getResponsibleParty;
+                           responsible python:basecamp_view.getMemberName(responsibleParty)">
+           [
+           <span tal:replace="python:company and company.Title() or ''">company name</span>
+           |
+           <span tal:replace="python:project.Title()">project name</span>
+           <tal:line condition="responsibleParty">|</tal:line>
+           <span tal:replace="python:responsibleParty and responsible or responsibleParty">bwrgfvwegf</span>]</tal:block>
+      </li>
+      </ul>
+     </td>
+  </tr>
+</table>
+
+<tal:block define="next_14_days_cal view/next_14_days_cal;
+                   next_14_days_milestones view/next_14_days_milestones;
+                   basecamp_view context/@@basecamp_view;"
+           condition="next_14_days_milestones"
+           i18n:domain="zopen.milestone">
+<h2 class="dashheader" i18n:translate="due_next_days">Due in the next 14 days</h2>
+
+<table width="100%" cellspacing="1" cellpadding="0" border="0" class="Dashcal">
+    <tbody>
+    <tr>
+        <th tal:repeat="NameDay view/NameDays">
+           <tal:i18n i18n:domain="zopen.milestone" i18n:translate="week" />
+           <tal:block  tal:content="NameDay"
+                       i18n:domain="zopen.milestone"
+                       i18n:translate="">Mon</tal:block></th>
+    </tr>
+    <tr tal:repeat="row next_14_days_cal">
+        <tal:rep repeat="day row">
+
+        <td valign="top" class="with"
+            tal:define="milestones python:next_14_days_milestones.get(repeat['row'].index, {}).get(repeat['day'].index, [])"
+            tal:attributes="class python:day=='TODAY' and 'today' or milestones and 'with'" >
+
+            <tal:i18n  i18n:translate="" tal:content="day"> TODAY </tal:i18n> 
+
+            <ul tal:condition="milestones">
+              <li tal:repeat="it milestones">
+               <a title="bwrgfvwegf | Design | rae LLL" href="/projects/939794/milestones"
+                tal:define="project python:it.getObject().getProject();
+                            projectname project/Title | string:;
+                            company python:project.getCompany();
+                            companyname python:company and company.Title() or 'No Company!!';
+                            membername  python:basecamp_view.getMemberName(it.getResponsibleParty)"
+                tal:attributes="title string: $companyname | $projectname | $membername;
+                                href string:${it/getPath}/.."
+                tal:content="it/Title"
+                >wer</a></li>
+      </ul>
+        </td>
+        </tal:rep>
+    </tr>
+</tbody></table>
+</tal:block>

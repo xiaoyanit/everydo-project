@@ -1,0 +1,32 @@
+input[type="checkbox"].EVcomplete:click {
+   action-client: toggleClass;
+   toggleClass-kssSelector: parentnodecss('.kssDeletionRegion|.TGcomplete');
+   toggleClass-value: hideme;
+
+   action-server: completeTodoItem;
+   completeTodoItem-kssUrl: kssAttrJoin('*listurl','/','*itemid', '/@@completeTodoItem');
+}
+
+.GViewMilestone:click {
+   evt-click-preventdefault: true;
+   action-server: viewMilestones;
+   viewMilestones-getResponsibleParty: kssAttr(getResponsibleParty, True);
+
+   action-client: toggleClass;
+   toggleClass-kssSelector: css('.HViewMilestone');
+   toggleClass-value: hideme;
+}
+
+.CMilestone:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass;
+   toggleClass-kssSelector: css('.GViewMilestone');
+   toggleClass-value: hideme;
+  
+   action-client: addClass;
+   addClass-kssSelector: css('.CMilestone');
+   addClass-value: hideme;
+
+   action-client: deleteNode css('.milestone_table');
+}

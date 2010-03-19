@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="basecamp">
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<body>
+
+<div metal:fill-slot="main">
+
+<div class="settingsnav">
+                <a tal:attributes="href string:$portal_url/companies/@@prefs_site_companies">人员</a>
+                |
+              <strong>帐户</strong> 
+              |
+                <a href="" tal:attributes="href
+                    string:$portal_url/prefs_site_project_template">项目模版</a>
+                    |
+                <a href=""
+                   tal:attributes="href
+                   string:$portal_url/prefs_site_settings">基本信息</a>
+            </div>
+
+        <h1>租用帐号</h1>
+
+        <form action=""
+              name="users_search"
+              method="post"
+              tal:attributes="action template/getId">
+          <input type="hidden" name="form.submitted" value="1" />
+
+          <div class="field">
+              <label>缴费时间、级别</label>
+              <p class="formHelp">
+              参看 http://zope.grouphub.com/global/account </p>
+          </div>
+
+          <input class="context"
+             tabindex=""
+             type="submit"
+             name="form.button.Modify"
+             value="提交"
+             tal:attributes="tabindex tabindex/next;"
+        />
+
+        </form>
+
+
+    </div>
+
+  </body>
+</html>
+

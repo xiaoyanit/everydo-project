@@ -1,0 +1,105 @@
+/* <dtml-call expr="RESPONSE.setHeader('pragma','no-cache')"> */
+
+/*
+    The above trick to let this file not be cached does not work, unless this file is renamed to have
+    a kss.dtml extension.
+*/
+
+
+/* General stylesheet for Plone AJAX */
+
+/* Add class to body to allow conditional styling when kss is available */
+
+body:load {
+  action-client: addClass;
+  addClass-value: kssActive;
+}
+
+/* 
+Load the kupu editor.
+
+The editor is also loaded from the page, so
+we give the initial=false, otherwise that
+should be left out if we do that too.
+*/
+
+iframe.kupu-editor-iframe:load {
+    action-client: plone-initKupu;
+}
+
+/*
+#region-content:load {
+    evt-load-initial: false;
+    action-client: initializeCollapsible;
+}
+*/
+
+/*
+This loads the external links markers each time an element marked inlineEditable
+is reloaded (needed to make it work with inlineEditable). However, this isn't the best,
+client-performance wise.
+TODO: Find a better way to "bind just once" or just bind the effectively reloaded links,
+and not rebind everything
+
+#region-content .inlineEditable:load {
+    evt-load-initial: false;
+    action-client: bindExternalLinks;
+}
+*/
+
+/* Spinner */
+
+#kss-spinner:spinneron {
+    action-client: setStyle;
+    setStyle-name: display;
+    setStyle-value: block;
+}
+
+#kss-spinner:spinneroff {
+    action-client: setStyle;
+    setStyle-name: display;
+    setStyle-value: none;
+}
+
+/* Temporarily disabled because it acts foul with queryFormLeave.
+   This is realy an overwrite of the rule in at.kss !!!
+*/
+
+/*
+input[name="form_submit"]:click {
+    evt-click-preventdefault:     false;
+    action-cancel:                kssValidateForm;
+}
+*/
+
+/* kupu stuff */
+#kupu-save-button:load {
+   action-client: setStyle;
+   setStyle-name: display;
+   setStyle-value: inline;
+}
+
+button.kupu-save:click {
+   action-server: savekupu;
+   savekupu-text: currentFormVarFromKssAttr("atfieldname", true);
+   savekupu-fieldname: kssAttr("atfieldname", true);
+}
+
+/* kupu stuff */
+#kupu-save-button:load {
+   action-client: setStyle;
+   setStyle-name: display;
+   setStyle-value: inline;
+}
+
+div.kupu-save-message:timeout {
+   evt-timeout-delay: 2000;
+   evt-timeout-repeat: '';
+   action-client: deleteNode;
+}
+
+#portal-message:timeout {
+   evt-timeout-delay: 2000;
+   evt-timeout-repeat: '';
+   action-client: deleteNode;
+}

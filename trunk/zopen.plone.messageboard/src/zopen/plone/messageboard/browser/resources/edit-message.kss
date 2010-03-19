@@ -1,0 +1,19 @@
+.EVattachfile:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('.TGattachfile');
+    toggleClass-value: hideme;
+}
+
+div#RelatedMilestone_link a:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('#RelatedMilestone');
+    toggleClass-value: hideme;
+}
+
+form:submit {
+    action-client: toggleClass css('div.TG-submit');
+    toggleClass-value: hideme;
+}
+

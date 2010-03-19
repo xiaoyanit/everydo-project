@@ -1,0 +1,151 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.milestone">
+
+ <metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+
+  <link href="#" type="text/css"  rel="stylesheet" media="screen" 
+        tal:attributes="href string:$portal_url/++resource++project.css?34223332" />
+
+   <link href=""
+         tal:attributes="href string:$portal_url/++resource++timetracker.css?34223332"
+         type="text/css" rel="stylesheet" media="screen"/>
+   <link href=""
+         tal:attributes="href string:$portal_url/++resource++progresstable.kss?34223332"
+         type="text/css" rel="kinetic-stylesheet" />
+
+<style type="text/css">
+
+.project {
+    white-space: nowrap;
+}
+
+.milestonetitle {
+    padding-left: 1em;
+}
+
+.milestone-state-completed .mstate,
+.milestone-state-completed .mtitle span{
+    text-decoration:line-through;
+    }
+
+.milestone-state-late {
+    background: #FFCCCC;
+    }
+.mstate {
+}
+.milestone-state-late .mstate,
+.milestone-state-late .desc span,
+.milestone-state-late .mtitle{
+    color: #CC0000;
+    font-weight: bold;
+    }
+
+img.EVdrag,
+img.EVexpand,
+img.EVcollaps {
+    cursor: pointer;
+}
+.progressBar {border: 1px solid #76797C; background-color: lightyellow; width: 200px;}
+.progressBar .innerBar{background-color: #5F6E43; font-size: 6px;}
+</style>    
+</metal:css>
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/site-actions">site</metal:block>
+</div>
+<div metal:fill-slot="main" id="front-page-content"
+   tal:define="pi view/getProgressInfo;
+               today modules/DateTime/DateTime">
+
+    <p tal:condition="pi" i18n:translate="completion_of_milestones">List all the projects progress, and display the completion of the activties milestones.</p> 
+    <table class="TimeTrack" tal:condition="pi">
+
+    <thead>
+    <tr>
+        <th style="white-space: nowrap">
+          <img class="EVexpand hideme" src="/treeCollapsed.gif" />
+          <img class="EVcollaps TGexpand TGcollaps" src="/treeExpanded.gif"/> 
+        </th>
+        <th class="date" i18n:translate="progress_title">Title</th>
+        <th i18n:translate="progress_complete_time">Complete-Time</th>
+        <th i18n:translate="progress_responsible">Responsible</th>
+        <th i18n:translate="progress_state">State</th>
+        <th i18n:translate="progress_progress">Progress</th>
+        <th i18n:translate="progress_discription">Discription</th>
+    </tr>
+    </thead>
+
+    <tbody class="projectblock" tal:repeat="projectid pi">
+    <tr tal:define="projectinfo python:pi[projectid][0]">
+
+      <th class="project"> 
+          <img class="TGdrag hideme" src="/++resource++drag_handle.gif"/>
+          <img class="EVexpand hideme" src="/treeCollapsed.gif" />
+          <img class="EVcollaps TGexpand TGcollaps" src="/treeExpanded.gif"/> </th>
+      <th class="project"><a href="#" tal:attributes="href string:$portal_url/projects/$projectid/milestones" 
+         tal:content="projectinfo/name">一、润普 - Everydo开发</a>
+      </th>
+      <th class="project" tal:content="projectinfo/end"></th>
+      <th class="project" colspan="2" tal:content="python:'、'.join(projectinfo['responsibles'])"></th>
+      <th class="project" tal:content="string:${projectinfo/progress}%"></th>
+      <th class="project">
+            <div class="progressBar">
+                 <div class="innerBar" title="70%" tal:attributes="style string:width: ${projectinfo/progress}%">&nbsp;</div>
+            </div>
+      </th>
+
+    </tr>
+
+    <tal:milestones  tal:repeat="milestone python:pi[projectid][1:]">
+    <tr class="TGcollaps TGexpand"
+        tal:define="delaytime python:today - milestone.end - 1;
+                    delaydays python:int(delaytime) + 1;
+                    state python:milestone.review_state == 'active' and delaytime &gt; 0 and 'late' or milestone.review_state"
+        tal:attributes="class string:TGcollaps TGexpand milestone-state-$state">
+        <td></td>
+        <td class="mtitle"><span tal:replace="repeat/milestone/number"/>)
+                           <span tal:content="milestone/Title">设计与说明</span></td>
+        <td tal:content="milestone/end">2007/12/12</td>
+        <td tal:define="responsor milestone/getResponsibleParty"
+            tal:content="python:responsor and (basecamp_view.getMemberName(responsor) or basecamp_view.getGroupName(responsor)) or responsor">潘俊勇</td>
+        <td class="mstate">
+            <span tal:replace="string:${state}_state" i18n:translate="">active</span>
+           
+        </td>
+        <td tal:content="python:milestone.review_state == 'active' and milestone.getHours and str(milestone.getHours) + '%' or ''"> 12% </td>
+        <td class="desc">
+            <span tal:condition="python:state == 'late'"
+                       i18n:translate="late_delaydays"> 
+                 (Late <span tal:replace="string:$delaydays" i18n:name="delaydays"></span>
+                 dyas)</span>
+
+            <span tal:replace="milestone/Description"> 出现问题 </span>
+        </td>
+    </tr>
+    </tal:milestones>
+
+    </tbody>
+
+    </table>
+     <p tal:condition="pi" style="float:right;font-size:12px;font-weight:normal;color:#666666">
+         <a class="admin" href="#"
+            tal:define="csv_url nocall:context/@@csv_url;"
+            tal:attributes="href csv_url;"
+            i18n:translate="export">Export</a> 
+            <tal:i18n i18n:translate="to_csv">all project progress to csv</tal:i18n>
+     </p>
+
+    <p tal:condition="not: pi" i18n:translate="no_progress">
+       No progress yet. The progress will be displayed here when the projects you participated has milestone. 
+    </p>
+
+</div>
+
+    <div metal:fill-slot="portlets_two_slot">
+        <div metal:use-macro="context/@@macro_basecamp/macros/companylogo" />
+        <div metal:use-macro="context/@@project_list/macros/projects" />
+    </div>
+</html>

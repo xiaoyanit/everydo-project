@@ -1,0 +1,87 @@
+#chat-window {
+  overflow: auto;
+  font-size: 12px;
+}
+
+#active-users {
+  padding-bottom: 16px;
+}
+
+.chat-users div {
+	margin: 2px; padding: 0;
+	padding-left: 18px;
+	font-size: 10px; 
+	background: url(/user.gif) no-repeat 2px;
+}
+
+#chat-text {  
+	line-height: 1.5em; height: 3em; /*width: 100%;*/
+	margin: 5px 0; margin-right: -2px;
+}
+#sendMessage {  float: right; }
+.controlButtons { clear: left;  }
+#moderation-controls { margin: 5px 0; }
+
+#chat-window fieldset {
+  color : blue;
+  border: 1px solid blue;
+  position: relative;
+  padding: 0; margin: 10px 2px;
+}
+
+* html #chat-window fieldset {
+  padding: 0; 
+  margin: 25px 2px;
+}
+
+#chat-window fieldset.mine {
+  color: red;
+  border-color: red;
+}
+
+#chat-window fieldset legend {
+  	font-weight: bold;
+  	text-align: center;
+  	white-space: nowrap;
+  	float: left;
+	width: 80px; 
+	height: 14px;
+	padding: 0;
+	-moz-border-radius: 8px 8px 0 0;
+	border-width: 1px;
+	border-style: solid;
+	border-color: inherit;
+	border-bottom-width: 0;
+	position: inherit;
+	margin: 0; 
+	margin-left: 80px; 
+	margin-top: -15px;	
+}
+* html #chat-window fieldset legend {	
+	position: absolute; 
+	top: -18px; 
+	left: -7px;
+	margin: 0; 
+	background: #eee;
+}
+
+#chat-window fieldset:hover, #chat-window fieldset:hover legend {
+	border-style: outset;
+}
+
+#chat-window {  background: #eee; }
+#chat-window div { 
+	border-top: 1px solid #ccc; color: #000; line-height: 18px; background: #fff; padding-top: 1px;
+}
+#chat-window div input { border: 0; }
+#chat-window div label { text-align: center; font-weight: normal; width: 80px; background: #eee; margin-right: 5px;}
+#chat-window div strong { font-weight: bold; color: blue; padding: 0 2px; }
+#chat-window div strong.mine { color: red; }
+#chat-window div:hover { text-decoration: underline; }
+#chat-text {
+	background: #fff; 
+	width: 100%;
+	height: 3em;
+	font: inherit;
+}
+

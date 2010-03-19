@@ -1,0 +1,428 @@
+/* <dtml-with "getattr(portal_url.getPortalObject(), 'header_props' + REQUEST.get('theme', '1'))"> (do not remove this :) */
+#P2P_selector {
+    padding: 7px;
+    font-size: 11px;
+  color: #fff;
+}
+
+#portal-top h3 #P2P_selector span.light {
+    color: #999;
+    font-size: 11px;
+}
+
+#portal-top h3 #P2P_selector a:link,
+#portal-top h3 #P2P_selector a:visited {
+  color: red;
+  background: #f0f0f0;
+  padding: 3px;
+  font-weight: bold;
+}
+
+#portal-top h3 #P2P_selector a:hover {
+  color: white;
+  background: red;
+}
+
+
+#portal-top {
+    /*width: 100%;*/
+    background: &dtml-headerBackground;;
+    padding: 1px 0 0 0;
+    margin: 0;
+    text-align: left;
+    }
+
+#portal-siteactions a,
+#portal-actionMenu a {
+    color: &dtml-clientNameColor; !important;
+    text-decoration: underline;
+}
+ 
+#portal-breadcrumbs a:hover {
+    background: &dtml-tabHoverBackground;;
+    text-decoration: none;
+}
+
+#project-switcher-select {
+    display: none;
+    border:1px solid #FFFFFF; 
+    color:&dtml-projectNameColor;;
+    padding:7px;
+}
+
+#portal-top h1{
+    border-bottom: none;
+}
+
+#portal-top h1#portal-logo-title,
+#portal-top h1#portal-logo-title a /* project name */ {
+    background-color: transparent;
+    margin:7px 0pt 0pt 10px;
+    padding:10px 0pt 0pt 10px;
+    font-size: 24px;
+    font-weight: normal;
+    color: &dtml-projectNameColor; !important;
+    text-align: left;
+    }
+
+#portal-logo-title a {
+   text-decoration:underline;
+}
+#portal-top h1#portal-logo,
+#portal-top h1#portal-logo a /* project name */ {
+    padding:0pt 0pt 10px;
+    background-color: transparent;
+    margin: 7px 0 0 30px;
+    font-size: 24px;
+    font-weight: normal;
+    color: &dtml-projectNameColor; !important;
+    text-align: left;
+    }
+
+#portal-top h1 span /* client name */ {
+    /*padding: 0 0 7px 0;
+    margin: 0 0 5px 32px;*/
+    font-size: 16px;
+    font-weight: normal;
+    color: &dtml-clientNameColor;;
+    border: none;
+    font-family: "Lucida Grande", arial, sans-serif;
+    }
+
+#portal-top h3 {
+    padding: 0 30px 0 32px;
+    margin: 7px 0 0 0;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: verdana;
+    text-align: left;
+}
+#portal-top h3.global {
+  position: relative;
+  float: right;
+  text-align: right;
+  width: 300px;
+}
+
+#portal-top h3 span#floatright {
+  text-align: right;
+  width: 300px;
+  position: relative;
+  float: right;
+}
+
+#portal-top h3 span.pipe {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+#portal-top h3 a.current {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#fresh_all h2 {
+    padding: 0 0 2px 0;
+    margin: 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+#portal-top a:hover.image {
+    background-color: none;
+    background-color: transparent;
+}
+
+/* The global section tabs. */
+
+#portal-globalnav {
+    margin: 0 0 0 30px;
+    height: 25px;
+    padding: 0;
+}
+
+#portal-globalnav li {
+    margin: 0; 
+    padding: 0;
+    display: inline;
+    list-style: none;
+    border: none;
+}
+
+#portal-globalnav a:link,
+#portal-globalnav a:visited {
+  text-decoration: none;
+  background-color: &dtml-tabBackground;;
+  color: &dtml-tabTextColor;;
+  border-top: 1px solid &dtml-headerBackground;;
+  border-right: 1px solid &dtml-headerBackground;;
+  border-left: 1px solid &dtml-headerBackground;;
+}
+
+#portal-globalnav a:hover {
+    color: &dtml-tabHoverText;; 
+    text-decoration: none;
+    background: &dtml-tabHoverBackground;;
+    margin: 0;
+}
+
+
+#portal-globalnav a:link, 
+#portal-globalnav a:visited {
+    float: left; /* for IE6 */
+    font-size: 13px;
+    padding: 4px 8px 2px 8px;
+    margin: 0;
+}
+
+#portal-globalnav .selected a:link, 
+#portal-globalnav .selected a:visited {
+    background: #e5e5e5 url(tab-bg.gif) top repeat-x;
+    border-bottom: 1px solid #e5e5e5;
+    color: &dtml-currentTabText;;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0;
+}
+
+.visualCaseSensitive {
+    text-transform: none;
+}
+.addFavorite {
+    vertical-align: bottom;
+}
+.documentEditable {
+    padding: 0em 2em 1em 2em !important;
+}
+#content-news h1 {
+    margin-bottom: 1em;
+}
+
+
+/* Site-wide action menu - font size, contact, index, sitemap etc */
+#portal-siteactions {
+    color: &dtml-clientNameColor;;
+    background-color: transparent;
+    white-space: nowrap;
+    list-style-image: none;
+    list-style-type: none;
+    margin: 1px 0 0 0;
+    height: auto;
+    line-height: normal;
+    float: right;
+    padding: 3px 2em 3px 0;
+}
+#portal-siteactions li {
+    float:left;
+}
+#portal-siteactions li a {
+    height: auto;
+    padding: 0.2em;
+    margin-right: 0.1em;
+    margin-left: 0.1em;
+    text-decoration: underline;
+    text-transform: &dtml-textTransform;;
+}
+#portal-siteactions li.selected a, 
+#portal-siteactions li a:hover {
+    background: &dtml-tabHoverBackground;;
+    text-decoration: none;
+}
+
+#portal-header .portalUser {
+    background:transparent url(user.gif) no-repeat scroll left center;
+    padding-left:18px;
+    padding-right:2px;
+}
+
+/* Searchbox style and positioning */
+
+#portal-searchbox {
+    float: right;
+    clear: right;
+    background-color: transparent;
+    margin: 0.5em 0 0 0;
+    padding: 0 2em 0 0;
+    text-transform: &dtml-textTransform;;
+    white-space: nowrap;
+    z-index: 2;
+}
+#portal-advanced-search {
+    margin-top: 0.2em;
+    clear: both;
+}
+#portal-advanced-search a {
+    color: &dtml-discreetColor;;
+    text-decoration: none;
+    text-transform: &dtml-textTransform;;
+}
+.searchSection {
+    color: &dtml-clientNameColor;;
+    margin-top: 0.25em; 
+}
+
+#portal-breadcrumbs {
+font-family:verdana;
+font-size:12px;
+font-weight:normal;
+margin:7px 0pt 0pt;
+padding:0pt 0pt 0pt 32px;
+text-align:left;
+height:1.6em;
+position:relative;
+text-transform:none;
+width:250px;
+z-index:2;
+}
+#portal-breadcrumbs dt a, #portal-breadcrumbs a span{
+text-decoration: none;
+font-weight:normal;
+color: &dtml-clientNameColor; !important;
+}
+
+#portal-breadcrumbs a span.selectChange{
+text-decoration: underline;
+}
+
+#portal-breadcrumbs a span.selectDot{
+font-size:10px;
+text-decoration: none;
+}
+
+#portal-breadcrumbs ul, #portal-breadcrumbs li{
+line-height:normal;
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+margin:0pt;
+text-align:left;
+}
+#portal-breadcrumbs li {
+  float:left;
+  z-index:4;
+}
+
+.actionMenu {
+margin:0pt;
+padding:0pt;
+position:relative;
+}
+.actionMenu.deactivated .actionMenuContent {
+display:none !important;
+}
+.actionMenu .actionMenuContent {
+height:auto;
+margin:0pt;
+padding:0pt;
+position:absolute;
+z-index:5;
+}
+.actionMenu .actionMenuHeader {
+font-weight:normal;
+margin:0pt;
+padding:0pt;
+}
+.actionMenu .actionMenuContent ul {
+background-color:#FFF;
+border-color:&dtml-projectNameColor;;
+border-style:none solid solid;
+border-width:1px;
+display:block;
+padding:3px;
+margin:0pt;
+}
+
+.actionMenu .actionMenuContent ul ul {
+border-style:none;
+}
+
+.actionMenu .actionMenuContent li {
+background-color: transparent;
+border:0pt none;
+display:inline;
+float:none !important;
+margin:0pt;
+padding:0pt;
+color:#333;
+font-style:normal;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.current_project {
+ font-weight:normal;
+ padding: 0 10px;
+ line-height: 20px;
+ white-space:nowrap;
+ display:block;
+}
+
+.actionMenu .actionMenuContent li a {
+display:block;
+white-space:nowrap;
+text-decoration:none;
+padding:0 10px;
+line-height:20px;
+font-weight:normal;
+white-space:nowrap;
+}
+.actionMenu .actionMenuContent li a:hover {
+background-color:#0033CC !important;
+color:#FFF;
+}
+#selectMainMenu dd.actionMenuContent{
+margin-left:-30px;
+}
+
+#swich-language {
+  cursor: pointer;
+  float:right;
+  margin: 1em 0pt 0pt;
+  width: 150px;
+}
+
+.out {
+  background :transparent url(/language_bg.gif) repeat scroll center top;
+  height: 18px;
+  padding: 4px 0pt 0pt 10px;
+  width: 122px;
+}
+.over {
+  background :transparent url(/language_bg.gif) repeat scroll center bottom;
+  height: 18px;
+  padding: 4px 0pt 0pt 10px;
+  width: 122px;
+}
+
+#swich-op {
+  position: absolute;
+  z-index: 99999;
+}
+
+#swich-language ul {
+  background: #FFF;
+  border-color: -moz-use-text-color #96969E rgb(150, 150, 158);
+  border-style: none solid solid;
+  border-width: 0pt 1px 1px;
+  list-style-position: outside;
+  list-style-type: none;
+  margin-left: 3px;
+  padding: 5px;
+  width: 97px;
+}
+
+#swich-language li {height: 16px;}
+
+#selectSiteSetting li a {
+  color:#0033CC !important;
+  text-decoration: none;
+  padding: 0pt 10px;
+  line-height: 20px;
+}
+
+#selectSiteSetting li a:hover {
+  color:#FFF !important;
+}
+
+
+/* </dtml-with> */
+

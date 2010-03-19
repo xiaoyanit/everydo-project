@@ -1,0 +1,164 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="zopen.org">
+
+<metal:baseslot fill-slot="base">
+</metal:baseslot>
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('showright',1)" />
+
+<metal:block fill-slot="style_slot">
+
+
+<link href="#"
+      tal:attributes="href string:$portal_url/++resource++permissionsetting.kss?34223332"
+      type="text/css" rel="kinetic-stylesheet"/>
+<link href="#"
+      tal:attributes="href string:$portal_url/++resource++team-list.kss?34223332"
+      type="text/css" rel="kinetic-stylesheet" />
+       <!--<metal:style use-macro="context/@@teamfolder_view/macros/style"/>-->
+
+<style type="text/css">
+.beauty table{border:1px solid #DDDDDD;border-width:1px 0 0 1px;margin:2px 0 2px 0;text-align:center;border-collapse:collapse;}
+.beauty td, .beauty th{border:1px solid #DDDDDD;border-width:0 1px 1px 0;margin:2px 0 2px 0;text-align:left;}
+.beauty th{text-align:center;font-weight:600;font-size:12px;background-color:#F4F4F4;}
+.category .operations {float:right;}
+</style>
+</metal:block>
+
+
+<metal:js fill-slot="javascript_head_slot">
+
+  <script src="++resource++prototype.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++prototype.js?34223332"></script>
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/effects.js"
+          tal:attributes="src string:$portal_url/++resource++effects.js?34223332"></script>
+
+</metal:js>
+
+<body>
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/permission-settings">site</metal:block>
+</div>
+
+<div metal:fill-slot="main">
+<tal:define_macro metal:define-macro="privilege_settting"
+     tal:define="canCustomPermission portal/@@operationoptions/canCustomPermission | python:1">
+
+<p tal:condition="canCustomPermission" i18n:translate="permission_formhelp">
+Here you can view and modify the permission settings of all the project tabs and categories, that is who, where, and what permission should be allocated. In right side of this page, can be define project group. The project content stored similar tree, in order to simplify settings, can be the lower deck acquire the upper folder permission settings.
+</p>
+
+<p tal:condition="not:canCustomPermission" i18n:translate="cancustom_permission">
+Here you can view the permission settings, but not to modify. only buy advanced servier can be customize.
+</p>
+
+<div class="beauty" tal:attributes="class string:kssattr-baseurl-${here_url} beauty">
+<table width="100%">
+    <thead>
+        <tr>
+            <th class="" rowspan="2"  i18n:translate="tabs_categories">Tabs and categories</th>
+            <th class="" rowspan="2" i18n:translate="acquire_permission">Acquire permission settings?</th>
+            <th class="" colspan="5" i18n:translate="permission">Permission</th>
+        </tr>
+        <tr>
+            <th class="" i18n:translate="view">View</th>
+            <th class="" i18n:translate="view_private">View private content</th>
+            <th class="" i18n:translate="add">Add</th>
+            <th class="" i18n:translate="modify">Modify</th>
+            <th class="" i18n:translate="review_content">Review content</th>
+        </tr>
+    </thead>
+    <tbody class="">
+    <tal:root tal:define="filefolds python:view.getFileFolds();
+                          roles python:view.getRoles();"
+              tal:repeat="filefold filefolds">
+        <tr tal:define="obj_url python:filefold[0];
+                        Privileges python:view.listPrivilege(obj_url);
+                        inherit python:Privileges[0];
+                        filefoldinfo python:filefold[1];"
+                        
+            tal:attributes="class string:kssattr-subpath-$obj_url  $filefoldinfo $obj_url">
+
+            <td width="12%">
+            <div tal:attributes="style python:filefoldinfo not in ['parent', ''] and 'padding-left:20px' or '';">
+               <div tal:attributes="style python: filefoldinfo != 'parent' and obj_url != '' and 'padding-left:14px' or '';">
+            <span tal:condition="python: filefoldinfo == 'parent'" class="itemTitle">
+                <img src="/treeCollapsed.gif" tal:attributes="class string:hideme toggleImage ${obj_url}children;" />
+                <img src="/treeExpanded.gif" tal:attributes="class string:toggleImage ${obj_url}children;" />
+            </span>
+                    <span tal:replace="python:obj_url and path('context/' + obj_url + '/Title') or '(整个项目)'"></span>
+               </div>
+            </div>
+            
+            </td>
+            <td width="8%" class="clickItem" style="text-align:center;">
+            
+            <input type="checkbox" name="clickItem"  tal:condition="python:obj_url" tal:attributes="checked inherit;class string:EVclickCheckbox TGcomplete; disabled not:canCustomPermission" />
+              <img alt="Indicator" class="TGcomplete hideme"
+                   tal:condition="canCustomPermission"
+                   src="/++resource++indicator.gif"
+                   style="vertical-align: middle;" height="5" width="21" />
+            </td>
+            <td width="16%" tal:repeat="item python:Privileges[1]">
+                <span class="privilegeItem" metal:define-macro="privilegeItem"
+                      tal:define="item nocall:item | nocall:options/item;
+                                  roles nocall:options/roles | nocall:roles;
+                                  role python:path('exists:options/role') and path('options/role') or roles[path('repeat/item/index')];
+                                  obj_url options/obj_url | obj_url;
+                                  canCustomPermission canCustomPermission | options/canCustomPermission"
+                      tal:attributes="class python:'privilegeItem kssattr-role-' + role">
+                <span class="tditem" style="display: inline;" tal:repeat="t_item python:item['groups']"
+                      tal:attributes="class string:teamitemroot-${t_item}  tditem" >
+                    <span tal:content="python:view.getResponsiblePartyTitle(t_item)" tal:attributes="class string:teamitem-$t_item" />
+                    <img title="去除" class="delimage"
+                         tal:condition="canCustomPermission"
+                         tal:attributes="src string:/++resource++delTeam.gif;
+                                        class python:'delimage EVdeletePrivilege kssattr-delvalue-' + t_item"/>
+                    <br />
+                </span>
+                <span class="tditem" style="display: inline;" tal:repeat="u_item python:item['users']">
+                    <span tal:content="python:view.getResponsiblePartyTitle(u_item)" />
+                    <img title="去除" class="delimage EVdeletePrivilege"
+                        tal:condition="python: canCustomPermission and (obj_url or role != 'Member')"
+                        tal:attributes="src string:/++resource++delTeam.gif;
+                                        class python:'delimage EVdeletePrivilege kssattr-delvalue-' + u_item"/>
+                    <br />
+                </span>
+                <img alt="" class="delimage" title="分配权限"
+                    tal:condition="python:canCustomPermission and (role != 'Reviewer' or obj_url.split('/')[0] == 'files') and (role != 'Member' or obj_url)"
+                    tal:attributes="src string:/++resource++addTeam.gif;
+                                    class string:delimage EVaddPrivilege"/>
+                </span>
+            </td>
+        </tr>
+    </tal:root>
+    </tbody>
+</table>
+</div>
+<p><strong>注意：</strong>工作日志只有内部人员才能查看，新建项目组没有查看保密内
+容的权限将不能看到工作日志栏目。</p>
+<div class="toggleArea" style="padding-top:20px;">
+   <p i18n:translate="tras_permission">
+      <strong>Acquire permission settings: <strong>the checkbox have checked <input type="checkbox" checked='checked' disabled="disabled"/>, will be acquire the upper folder permission; have not checked, the acquire will invalid.<a href="#" onclick="return false" class="EVtoggle TGtoggle">View the example...</a>
+   </p>
+   <p class="TGtoggle hideme">
+      <strong>示例：</strong>“设计文档”分类的文件，只有“设计部”才能添加，只有项目的“内部人员”才能查看，只有“设计部”能查看保密内容，由Benky负责最终的审核发布。应该如下设置：</p><p class="TGtoggle hideme" style="text-align:center"><img src="/++resource++permission_setting.png" alt="" />
+   </p>
+</div>
+</tal:define_macro>
+</div>
+<div metal:fill-slot="portlets_two_slot">
+  <div tal:replace="structure provider:zopen.teamlist" />
+</div>
+</body>
+</html>

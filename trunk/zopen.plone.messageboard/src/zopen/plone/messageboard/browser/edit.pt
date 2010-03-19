@@ -1,0 +1,224 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.messages">
+
+<head>
+    <metal:top fill-slot="top_slot"
+               tal:define="dummy python:request.set('showright', True)" />
+    <metal:kss fill-slot="css_slot">
+    <link rel="kinetic-stylesheet"
+          type="text/css"
+          tal:attributes="href string:$portal_url/++resource++edit-message.kss?34223332"
+          />
+
+    <link type="text/css"  rel="stylesheet" media="screen" 
+          tal:attributes="href string:$portal_url/++resource++message.css?34223332"
+          />
+    </metal:kss>
+</head>
+
+<body>
+
+<div metal:fill-slot="main">
+
+      <div class="ContextHeader">
+        <h1><tal:i18n i18n:translate="edit_message">Edit message: </tal:i18n><span tal:replace="object_title" /></h1>
+      </div>
+
+      <form class="enableUnloadProtection enableAutoFocus" method="post"
+            action="save_message"
+            enctype="multipart/form-data"
+            >
+      <div id="post_form_container" class="FormBlock">
+        <h2><tal:i18n i18n:translate="title">Title: </tal:i18n>
+        <input style="width: 547px;" id="post_title" class="firstToFocus" name="title" size="50" value="bwefwe" type="text"
+               tal:attributes="value object_title"
+               /></h2>
+
+        <h2 style="margin-bottom: 4px;">
+         <tal:i18n i18n:translate="category"> Category: </tal:i18n><select tal:define="category view/categoryInfo;
+                                        category category/id;
+                                        cat_context python:context.aq_inner.aq_parent.aq_parent"
+                            tal:replace="structure provider:zopen.categoryselection"/>
+        </h2>
+
+        <h2><tal:i18n i18n:translate="message_body">Message body: </tal:i18n>
+          <tal:block condition="nothing">
+               <input type="checkbox" name="mimetype" value="text/x-rst"
+                    tal:attributes="checked python:here.getContentType('text') == 'text/x-rst'"/> <span>使用格式化文本</span>
+          </tal:block>
+        </h2>
+        <textarea style="width: 547px;" cols="40" id="post_body" name="body" rows="10"
+                  tal:content="context/getRawText"
+                  ></textarea>
+
+
+    <div style="margin-top: 10px;">
+      <h2><input type="checkbox" value="1" name="private"
+                 tal:attributes="checked python:view.review_state()=='private'"/>
+      <tal:i18n i18n:translate="make_message"> Make this message </tal:i18n><a class="link-plain" href="http://everydo.com/help/people#private" i18n:translate="private">private</a></h2>
+    </div>
+        </div>
+
+      <div class="extra">
+    <div id="AttachmentList"
+         tal:define="attachments context/getRelatedItems"
+         tal:condition="attachments">
+        <fieldset class="commentAttachments">
+          <legend i18n:translate="legend_attachments">Attachments</legend>
+          <ul class="visualNoMarker">
+            <li class="kssDeletionRegion" tal:repeat="attachment attachments">
+               <img  src="" height="16px" width="16px"
+                     tal:attributes="src attachment/getIcon" />
+               <a  tal:attributes="href attachment/absolute_url">
+                <span class="visualIconPadding"
+                      tal:content="attachment/pretty_title_or_id">
+                  Attachment title
+                </span>
+                <span tal:define="size attachment/getObjSize"
+                      tal:condition="size"
+                      tal:omit-tag="">
+                  (<span tal:replace="size">257 kB</span>)
+                </span>
+            </a>
+        <img tal:define="obj nocall:attachment"
+             tal:replace="structure provider:zopen.deletion" />
+            </li>
+          </ul>
+        </fieldset>
+    </div>
+
+    <metal:attach metal:define-macro="attach">
+    <div id="Attachments_link" class="showhide_link">
+      <p><a href="#" class="EVattachfile" i18n:translate="attach_files_to">Attach files to this message...</a></p>
+    </div>
+    <div id="Attachments" class="showhide hideme TGattachfile">
+
+      <h2><tal:i18n i18n:translate="attach_files">Attach files</tal:i18n> <span class="file_size_warning"  i18n:translate="choose_file">Choose a file less than
+      30MB in size.</span></h2>
+
+          <p><input type="file" name="upload.file:records" />
+     <tal:i18n i18n:translate="category"> Category: </tal:i18n>
+     <select tal:define="cat_context nocall:cat_context | nocall:context/aq_parent/aq_parent/files;
+                         name string:upload.category:records;"
+             tal:replace="structure provider:zopen.categoryselection"/>
+             <a href="#" class="admin" style="display: none"
+                 i18n:domain="zopen.basecamp" i18n:translate="delete"
+                  onclick="javascript:
+                      p = this.parentNode;
+                      p.parentNode.removeChild(p);
+                      return false;"
+                      > Delete </a>
+          </p>
+          <p>
+            <a href="#" class="admin"
+               onclick="javascript:
+                   node = this.parentNode;
+                   do {
+                       if (node && node.tagName.toUpperCase() == 'DIV')
+                           break;
+                   } while (node = node.parentNode);
+                   p1 = node.getElementsByTagName('p')[0];
+                   var newp = p1.cloneNode(true);
+                   anchor = newp.getElementsByTagName('a')[0];
+                   anchor.style.display = 'inline';
+                   inputs = newp.getElementsByTagName('input');
+                   for (var i = 0; i < inputs.length; ++i)
+                       inputs[i].value = inputs[i].defaultValue;
+                   p = this.parentNode;
+                   p.parentNode.insertBefore(newp, p);
+                   return false;"
+               ><tal:i18n i18n:translate="another_file">Add another file</tal:i18n></a>
+          </p>
+          <br />
+
+    </div>
+    </metal:attach>
+    </div>
+
+    <div class="extra"
+         tal:define="selected context/getRelatedMilestoneUIDs"
+         tal:condition="nothing"
+         tal:on-error="string:"
+         >
+<div class="showhide_link" id="RelatedMilestone_link"
+     tal:condition="selected">
+  <p id="without_milestone">
+    <a onclick="javascript:
+       getElementById('RelatedMilestone').style.display='block';
+       this.style.display='none'; 
+       return false;" href="#"><tal:i18n i18n:translate="associate_milestone">Associate this message with a milestone</tal:i18n></a>
+  </p>
+</div>
+<div style="display: none;" id="RelatedMilestone" class="showhide"
+     tal:attributes="style python:not selected and 'display none' or ''">
+  <h2 i18n:translate="associate_milestone">Associate this message with a milestone</h2>
+  <p class="discreet" i18n:translate="select_milestone">A link to this message will appear below the milestone you select.</p>
+  <p>
+
+    <select name="milestone" 
+            tal:content="structure provider:zopen.milestoneselection" 
+            />
+
+  </p>
+  <p>
+    <input type="checkbox" value="1" name="completes_milestone" id="completes_milestone"/>
+    <tal:i18n i18n:translate="complete_milestone">Completes this milestone</tal:i18n>
+  </p>
+  <br />
+</div>
+</div>
+
+    <div class="extra" tal:on-error="string:">
+    <h2 i18n:translate="notify_email">Notify people of this message via email</h2>
+       <div class="notifypersons" id="NotifyBlock" tal:content="structure provider:zopen.multipersonselection" />
+    </div>
+
+           <div class="action toggleArea" style="margin-top: 15px;">
+               <p class="TGtoggle">
+                   <input type="submit" class="EVtoggle" i18n:attributes="value save_change;" value="Save changes"/>
+                   <span i18n:translate="or">or</span>
+                   <a class="admin" tal:attributes="href view/messages_url;" i18n:translate="cancel">Cancel</a>
+               </p>
+               <input type="submit" disabled="disabled" i18n:attributes="value wait_save_changes"
+                      class="TGtoggle hideme" value="Saving changes..." />
+
+               <img alt="Indicator" class="TGtoggle hideme"
+                    tal:attributes="src string:/++resource++indicator.gif"
+                    style="vertical-align: middle;" height="5" width="21"
+                    i18n:attributes="alt indicator;"
+                 />
+
+
+            </div>
+    </form>
+
+</div>
+
+<div metal:fill-slot="portlets_two_slot"
+     tal:condition="nothing">
+
+    <div class="col">
+        <h1 i18n:translate="formatting_codes">Simple formatting codes</h1>
+    <p  i18n:translate="format_your_text">You can use simple, easy-to-write codes to format your text.</p>
+
+    <p i18n:translate="see_the_results">Type the codes in your text and you will see the results after clicking Save.</p>
+
+    <p i18n:translate="some_examples">Here are some examples:</p>
+
+    <div class="markdownexamples">
+        <p>*bold* → <strong>bold</strong><br/>
+        _italic_ → <em>italic</em></p>
+    </div>
+
+    <p><tal:i18n i18n:translate="check_the">Check the</tal:i18n>
+      <a onclick="msgs.formatGuide.toggle(); return false;" id="formatting_guide_link" href="#" bc:active_class="showing">
+         i18n:translate="formatting_guide">formatting guide</a>
+        <tal:i18n i18n:translate="make_lists">to easily make lists, headers, and more.</tal:i18n></p>
+
+      </div>
+</div>
+
+</body>
+</html>

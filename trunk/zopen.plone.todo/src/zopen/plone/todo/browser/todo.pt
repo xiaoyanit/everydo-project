@@ -1,0 +1,81 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.todo">
+
+<metal:noborder fill-slot="top_slot"
+    tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+
+  <link href="#" type="text/css" rel="stylesheet" media="screen"
+        tal:attributes="href string:$portal_url/++resource++todo.css?34223332" />
+  <link href="#" type="text/css" rel="kinetic-stylesheet" 
+        tal:attributes="href string:$portal_url/++resource++todo.kss?34223332" />
+
+</metal:css>
+
+
+<metal:js fill-slot="javascript_head_slot">
+
+  <script src="++resource++prototype.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++prototype.js?34223332"></script>
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/effects.js"
+          tal:attributes="src string:$portal_url/++resource++effects.js?34223332"></script>
+
+  <script src="++resource++dragdrop.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++dragdrop.js?34223332"></script>
+  <script src="++resource++todo.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++todo.js?34223332"></script>
+
+</metal:js>
+
+<div metal:fill-slot="main">
+                                                          
+  <div class="ContextHeader">
+     <h1><tal:block i18n:translate="todo_here">here is a todo list</tal:block> 
+       (<a class="back" href=""
+           tal:attributes="href string:$here_url/.."><tal:block i18n:translate="all_todo">all the todo lists</tal:block></a>)
+     </h1>
+  </div>
+
+   <input type="hidden" name="aaa" id="canmoveitems"
+          tal:attributes="value python:view.canMoveItems() and 1 or 0" />
+
+  <div id="fulllists"
+       tal:define="listinfo python:[context, view.getActiveItems(), view.getCompletedItems()];
+                   review_state view/review_state;
+                   todo_cats view/getTodoCategories;
+                   today python:modules['DateTime'].DateTime(); 
+                   showfulllist python:1;">
+
+    <tal:block metal:use-macro="here/@@macros_todo/macros/todolist" />
+
+  </div>
+
+</div>
+
+<div metal:fill-slot="portlets_two_slot"
+     tal:condition="not: view/isStandaloneTodo">
+        <form>
+           <p>
+           <tal:block i18n:translate="assigned_todo">Show to-dos assigned to:</tal:block> 
+           <br />
+           <select tal:define="selected request/getResponsibleParty | nothing;"
+                   tal:attributes="onchange string:window.location.href='$here_url' + '?getResponsibleParty=' + options[this.selectedIndex].value">
+               <option value="" i18n:translate="all_responsibles">Anyone</option> 
+               <option tal:replace="structure provider:zopen.xpersonselection"/>
+           </select>
+           </p>
+        </form>
+        <div class="todo-export" style="color:#666;">
+             <a class="admin" href="#"
+                tal:define="csv_url nocall:context/@@csvURL;"
+                tal:attributes="href csv_url;"
+                i18n:translate="export">Export</a>
+                <tal:i18n i18n:translate="to_csv">to-do list to csv</tal:i18n>
+        </div>
+</div>
+
+</html>
+

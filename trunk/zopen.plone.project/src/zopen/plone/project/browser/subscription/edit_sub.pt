@@ -1,0 +1,16 @@
+<form id="editNotified" class="showhide GeditNotified"
+      i18n:domain="zopen.project" 
+      metal:define-macro="edit_sub">
+   <p i18n:translate="modify_subscriptions">Modify subscriptions</p>
+
+   <div class="notify" id="NotifyBlock"
+        tal:content="structure provider:zopen.multipersonselection" />
+  
+   <p><label><input type="checkbox" name="notified" /><span style="font-weight:normal;" i18n:translate="now_nofity_members">Invitation these members to view the contents by E-mail now.</span></label></p>
+   <p class="submit">
+       <input type="submit" i18n:attributes="value save_change;" value="Save change" />
+       <span i18n:translate="or">or</span> 
+       <a class="admin" href="#" i18n:translate="cancel">Cancel</a>
+   </p>
+</form>
+

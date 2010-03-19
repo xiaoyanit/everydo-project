@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="zopen.basecamp">
+
+<metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+
+
+<metal:block fill-slot="style_slot">
+
+
+<link href="#"
+      tal:attributes="href string:$portal_url/++resource++permissionsetting.kss?34223332"
+      type="text/css" rel="kinetic-stylesheet"/>
+<link href="#"
+      tal:attributes="href string:$portal_url/++resource++team-list.kss?34223332"
+      type="text/css" rel="kinetic-stylesheet" />
+
+<style type="text/css">
+.beauty table{border:1px solid #DDDDDD;border-width:1px 0 0 1px;margin:2px 0 2px 0;text-align:center;border-collapse:collapse;}
+.beauty td, .beauty th{border:1px solid #DDDDDD;border-width:0 1px 1px 0;margin:2px 0 2px 0;text-align:left;}
+.beauty th{text-align:center;font-weight:600;font-size:12px;background-color:#F4F4F4;}
+</style>
+</metal:block>
+
+
+<metal:js fill-slot="javascript_head_slot">
+
+  <script src="++resource++prototype.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++prototype.js?34223332"></script>
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/effects.js"
+          tal:attributes="src string:$portal_url/++resource++effects.js?34223332"></script>
+
+</metal:js>
+<body>
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/site-settings">site</metal:block>
+</div>
+
+
+<div metal:fill-slot="main">
+
+<tal:define tal:define="context nocall:context/templates/project/default/teams;
+                        here nocall:context;
+                        view nocall:context/@@permission_setting;
+                        here_url context/absolute_url;">
+
+    <p>设置新建项目的默认权限设置，包括项目分组信息。 <strong>请勿随意调整，避免破坏系统默认权限策略。</strong></p>
+
+    <metal:block metal:use-macro="context/@@permission_setting/privilege_settting">site</metal:block>
+</tal:define>
+
+</div>
+
+<div metal:fill-slot="portlets_two_slot">
+<tal:define tal:define="context nocall:context/templates/project/default/teams;
+                        here nocall:context;
+                        view nocall:context/@@permission_setting;
+                        here_url context/absolute_url;">
+    <div tal:replace="structure provider:zopen.teamlist" />
+</tal:define>
+</div>
+
+
+  </body>
+</html>

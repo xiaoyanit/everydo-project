@@ -1,0 +1,126 @@
+<html metal:use-macro="context/main_template/macros/master"
+
+      i18n:domain="zopen.todo">
+
+<metal:noborder fill-slot="top_slot"
+    tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+  <link href="#" type="text/css" rel="kinetic-stylesheet" 
+        tal:attributes="href string:$portal_url/++resource++todoreport.kss?34223332" />
+<style type="text/css">
+
+/*-------------------------------------------------
+TODO RESPONSIBILITIES
+-------------------------------------------------*/
+.todo_list {
+  padding:5px 60px 10px 23px;
+}
+
+h2.date {
+  font-size:14px;
+  margin:5pt 0pt 10px -18px;
+  padding-bottom:3px;
+  text-transform:uppercase;
+}
+
+h2.date span {
+  border-bottom:1px solid #CCCCCC;
+  color:#333;
+  padding:2px 4px 2px 12px;
+}
+
+h2.date span.Today {
+  background-color:#FFF000;
+  border-bottom:medium none;
+  color:#000000;
+}
+
+h2.date span.late {
+  background-color:#FFCCCC;
+  color:#CC0000;
+  font-weight:bold;
+  border-bottom:medium none;
+}
+
+.todo_list {
+  font-size: 12px;
+}
+
+.todo_in { 
+  color: #76797C !important;
+}  
+
+.todo_in a { 
+  color: #76797C !important;
+}  
+
+.todo_in a:hover {
+  background-color: #76797C !important;
+  color: #FFF !important; 
+} 
+
+img.opentodo {
+  margin:0pt 5px;
+}
+</style>
+</metal:css>
+
+<metal:js fill-slot="javascript_head_slot">
+
+  <script src="++resource++prototype.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++prototype.js?34223332"></script>
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/effects.js"
+          tal:attributes="src string:$portal_url/++resource++effects.js?34223332"></script>
+</metal:js>
+
+<div metal:fill-slot="main"
+      tal:define="responsiblePartyId request/getResponsibleParty | nothing;
+                  dummy python:responsiblePartyId or request.set('getResponsibleParty','ALL');
+                  responsiblePartyId request/getResponsibleParty;
+                  ">
+  <div class="ContextHeader">
+
+   <h1>
+    <tal:i18n i18n:translate="list_complete_time">To-Do list by complete-time</tal:i18n>
+        (<a class="back" href=""
+            tal:attributes="href string:$here_url/@@todo_list?getResponsibleParty=$responsiblePartyId"
+            i18n:translate="back">Back</a>)</h1>
+
+  </div> 
+
+   <metal:block metal:use-macro="context/@@todos_report_time/macros/items_macros">
+             use macro items_macros (...)
+   </metal:block>
+
+</div>
+
+    <div metal:fill-slot="portlets_two_slot"
+      tal:define="responsiblePartyId request/getResponsibleParty | nothing;
+                  responsiblePartyId python:responsiblePartyId or 'ALL'">
+        <form>
+           <p>
+           <tal:block i18n:translate="assigned_todo">Show to-dos assigned to:</tal:block> 
+           <br />
+           <select tal:define="selected responsiblePartyId"
+              tal:attributes="onchange string:window.location.href='$here_url/todo_time' + '?getResponsibleParty=' + options[this.selectedIndex].value">
+             <option value="ALL" i18n:translate="all_responsibles">Anyone</option>
+             <option tal:replace="structure provider:zopen.xpersonselection"/>
+           </select>
+           </p>
+        </form>
+
+     <p>
+        <tal:i18n i18n:translate="select_view_mode">Select the view mode: </tal:i18n><br />
+       <select name="todoRepotView"
+             tal:attributes="onchange string:window.location.href='$here_url/@@' + options[this.selectedIndex].value + '?getResponsibleParty=$responsiblePartyId'">
+        <option value="todo_list"  i18n:translate="to_do_list">To-do list</option>
+        <option value="todo_time" selected="selected" i18n:translate="todo_complete_time">To-do complete-time</option>
+     </select>
+     </p>
+
+    </div>
+
+</html>

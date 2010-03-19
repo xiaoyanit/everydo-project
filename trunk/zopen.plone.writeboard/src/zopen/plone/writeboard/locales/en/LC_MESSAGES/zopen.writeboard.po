@@ -1,0 +1,229 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-25 01:47+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.writeboard\n"
+
+#. Default: "Added files"
+#: browser/version_diff.pt
+msgid "added_files"
+msgstr ""
+
+#. Default: "Go back to the main writeboards."
+#: browser/writeboard_view.pt
+msgid "back_main_writeboards"
+msgstr ""
+
+#. Default: "last modified"
+#: browser/writeboards_listing.pt
+msgid "box_last_modified"
+msgstr ""
+
+#. Default: "Cancel"
+#: browser/writeboards_listing.pt
+msgid "cancel"
+msgstr ""
+
+#. Default: "cancel"
+#: browser/writeboards_listing.pt
+msgid "cancel_creater"
+msgstr ""
+
+#. Default: "Category:"
+#: browser/writeboards_listing.pt
+msgid "category"
+msgstr ""
+
+#. Default: "Changes from version ${id2} to version ${id1}"
+#: browser/version_diff.pt
+msgid "changes_from_version"
+msgstr ""
+
+#. Default: "Changes since version ${id2}"
+#: browser/version_diff.pt
+msgid "changes_since_version"
+msgstr ""
+
+#. Default: "Choice of two versions ${compare}"
+#: browser/writeboard_view.pt
+msgid "choice_of_versions"
+msgstr ""
+
+#. Default: "Close"
+#: browser/writeboards_listing.pt
+msgid "close"
+msgstr ""
+
+#. Default: "Compare"
+#: browser/writeboard_view.pt
+msgid "compare"
+msgstr ""
+
+#. Default: "Create a new writeboard"
+#: browser/writeboards_listing.pt
+msgid "create_new_writeboard"
+msgstr ""
+
+#. Default: "Enter a title for a new writeboard"
+#: browser/writeboards_listing.pt
+msgid "enter_title"
+msgstr ""
+
+#. Default: "(Example: \"Home page text\" or \"Business letter draft\")"
+#: browser/writeboards_listing.pt
+msgid "example_title"
+msgstr ""
+
+#. Default: "Field Changed"
+#: browser/version_diff.pt
+msgid "field_changed"
+msgstr ""
+
+#. Default: "Historical versions"
+#: browser/writeboard_view.pt
+msgid "historical_versions"
+msgstr ""
+
+#. Default: "by ${author}"
+#: browser/writeboards_listing.pt
+msgid "label_by_author"
+msgstr ""
+
+#. Default: "Make this writeboard"
+#: browser/writeboards_listing.pt
+msgid "make_writeboard"
+msgstr ""
+
+#. Default: "New writeboard"
+#: browser/writeboards_listing.pt
+msgid "new_writeboard"
+msgstr ""
+
+#. Default: "Create a new writeboard"
+#: browser/writeboards_listing.pt
+msgid "new_writebord"
+msgstr ""
+
+#. Default: "No changes"
+#: browser/version_diff.pt
+msgid "no_changes"
+msgstr ""
+
+#. Default: "Not writeboard yet."
+#: browser/writeboards_listing.pt
+msgid "no_results"
+msgstr ""
+
+#. Default: "This document have no text yet. Clik here to edit this document."
+#: browser/writeboard_view.pt
+msgid "no_text_yet"
+msgstr ""
+
+#. Default: "None"
+#: browser/version_diff.pt
+msgid "none"
+msgstr ""
+
+#. Default: "or"
+#: browser/writeboards_listing.pt
+msgid "or"
+msgstr ""
+
+#. Default: "Yes, other companies in this project may view this writeboard"
+#: browser/writeboards_listing.pt
+msgid "other_companies_in"
+msgstr ""
+
+#. Default: "Privacy"
+#: browser/writeboards_listing.pt
+msgid "privacy"
+msgstr ""
+
+#. Default: "Privacy options for \" ${item_title} \""
+#: browser/writeboards_listing.pt
+msgid "privacy_options"
+msgstr ""
+
+#. Default: "private"
+#: browser/writeboards_listing.pt
+msgid "private"
+msgstr ""
+
+#. Default: "Save"
+#: browser/edit_field_wrapper.pt
+msgid "save"
+msgstr ""
+
+#. Default: "Save as new version"
+#: browser/edit_field_wrapper.pt
+msgid "save_new_version"
+msgstr ""
+
+#. Default: "Show code differences"
+#: browser/version_diff.pt
+msgid "show_code_differences"
+msgstr ""
+
+#. Default: "Show side by side"
+#: browser/version_diff.pt
+msgid "show_side_by"
+msgstr ""
+
+#. Default: "Show visual differences"
+#: browser/version_diff.pt
+msgid "show_visual_differences"
+msgstr ""
+
+#. Default: "Optional: Writeboard discription:"
+#: browser/writeboards_listing.pt
+msgid "writeboard_discription"
+msgstr ""
+
+#. Default: "Writeboard title"
+#: browser/writeboards_listing.pt
+msgid "writeboard_title"
+msgstr ""
+
+#: browser/writeboard_view.pt
+msgid "version_comment"
+msgstr ""
+
+#: browser/writeboard_view.pt
+msgid "edit_document"
+msgstr ""
+
+#: browser/writeboard_view.pt
+msgid "edit_title"
+msgstr ""
+
+#: browser/writeboard_view.pt
+msgid "optional_description"
+msgstr ""
+
+#: browser/writeboard_view.pt
+msgid "save_change"
+msgstr ""
+
+#: browser/writeboard_view.pt
+msgid "edit_html"
+msgstr ""
+
+#. Default: "Modified success."
+msgid "modified_success"
+msgstr ""
+
+msgid "Info"
+msgstr ""

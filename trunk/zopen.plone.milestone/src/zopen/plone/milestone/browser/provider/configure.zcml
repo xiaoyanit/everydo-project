@@ -1,0 +1,11 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <adapter factory=".milestones.MilestonesProvider"
+           name="zopen.milestones"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <adapter factory=".selection.MilestoneSelectionProvider"
+           name="zopen.milestoneselection"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+</configure>

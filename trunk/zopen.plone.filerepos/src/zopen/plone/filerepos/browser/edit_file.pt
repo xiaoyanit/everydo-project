@@ -1,0 +1,84 @@
+<div class="showhidewrapper" id="shw-xxx">
+<form metal:define-macro="uploadfile"
+      class="showhide fileForm"
+      action="edit_file" method="post" enctype="multipart/form-data"
+      tal:define="category_id options/category;
+                  fileViewUrl options/fileViewUrl;"
+      tal:attributes="action string:${context/absolute_url}/@@edit_file;"
+      i18n:domain="zopen.filerepos" >
+    <input type="hidden" name="fileViewUrl" tal:attributes="value fileViewUrl" />
+    <h2><tal:block i18n:translate="select_file_replace">Select a file to replace</tal:block>
+        “<span tal:replace="context/pretty_title_or_id" />”
+    </h2>
+
+    <table class="upload_layout">
+    <tr>
+       <td class="choose_file">
+          <input type="file" name="file" />
+       </td>
+       <td class="meta">
+
+          <p>
+             <span i18n:translate="category">Category: </span>
+             <select tal:define="category category_id;
+                                 cat_context python:context.aq_inner.aq_parent.aq_parent"
+                     tal:replace="structure
+                         provider:zopen.categoryselection" />
+          </p>
+
+          <span i18n:translate="optional_description">Optional description:</span><br />
+          <input type="text" class="bigInput" size="33px"
+                 name="description"
+                 tal:attributes="value context/Description"
+                 />
+
+          <p tal:condition="nothing">
+             <input type="checkbox"
+                    name="mark_private"
+                    tal:define="private options/private"
+                    tal:attributes="checked private"
+                    />
+             <span i18n:translate="file_private">Make this file</span>
+             <a class="link-plain" i18n:translate="Private" href="http://docs.everydo.com/project/faq/01general.rst/view.html">Private</a>
+          </p>
+
+       </td>
+     </tr>
+
+     <tr>
+     <td colspan="2">
+     <span class="upload_limit" i18n:translate="upload_limit_file">you may not upload files larger than 30 metabyates.</span>
+     </td></tr>
+    </table>
+
+    <h3 i18n:translate="notify_email">Notify people via email</h3>
+    <div class="extra"
+         tal:content="structure provider:zopen.multipersonselection"
+         />
+
+    <div class="action toggleArea">
+               <p class="TGtoggle">
+                   <input type="submit" i18n:attributes="value upload_replace" class="EVtoggle" value="Upload and replace" />
+                   <span i18n:translate="or">or</span>
+                   <a class="admin EVitemCancel" href="#" i18n:translate="cancel">Cancel</a>
+               </p>
+               <input type="submit" disabled="disabled" i18n:attributes="value please_wait_change"
+                      class="TGtoggle hideme" value="Change files, please wait..." />
+
+               <img alt="Indicator" class="TGtoggle hideme"
+                    tal:attributes="src string:/++resource++indicator.gif"
+                    style="vertical-align: middle;" height="5" width="21"
+                    i18n:attributes="alt indicator;"
+                 />
+
+     </div>
+
+</form>
+
+<select metal:define-macro="edit_category"
+        tal:define="category options/category;
+                    cat_context python:context.aq_inner.aq_parent.aq_parent;
+                    can_define_category python:False;"
+        tal:replace="structure provider:zopen.categoryselection" />
+
+</div>

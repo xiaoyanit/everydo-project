@@ -1,0 +1,1203 @@
+/* zrt-cssregistry: base_properties */
+
+/* html 元素定制 */
+
+h1, h2 {
+    border-bottom: borderWidth borderStyle globalBorderColor;
+    font-weight: normal;
+}
+
+/* 链接默认为蓝色，并在访问过后恢复蓝色。 */
+a:link { color:linkColor }
+a:visited { color:linkVisitedColor; }
+a:active { color:linkActiveColor; }
+
+h1 a:link,
+h2 a:link,
+h3 a:link,
+h4 a:link,
+h5 a:link,
+h6 a:link {
+    color: fontColor;
+    text-decoration: none;
+}
+h1 a:visited,
+h2 a:visited,
+h3 a:visited,
+h4 a:visited,
+h5 a:visited,
+h6 a:visited {
+    color: fontColor;
+    text-decoration: none;
+}
+/* html 元素定制到此为止 */
+
+/* 链接 */
+
+/* 编辑链接 */
+a.edit {
+    color: blue;
+    text-decoration: underline;
+}
+
+/* 干净链接 */
+a.clean,
+a.clean:link,
+a.clean:visited {
+    text-decoration: none;
+}
+a.clean:hover {
+    text-decoration: underline;
+}
+
+/* 灰色链接 */
+a.discreet,
+a.discreet:link,
+a.discreet:visited {
+    color: discreetColor;
+    text-decoration: underline;
+}
+a.discreet:hover {
+    background: #0033CC;
+    color: white;
+    text-decoration: none;
+}
+
+/* 重要操作链接 */
+.admin,
+a.admin {
+    color: adminColor !important;
+    border: 0;
+    font-size: fontSmallSize !important;
+    font-weight: normal !important;
+    text-decoration: underline;
+}
+/* 在h1,h2中的管理员操作链接 */
+h1 .admin,
+h2 .admin {
+    color: Purple !important;
+    text-decoration: underline;
+}
+
+/* 链接到此为止 */
+
+/* 导航栏 */
+
+/* 右侧导航栏 */
+div.RightNav {
+    background-color: transparent;
+    font-size: fontBaseSize;
+    margin-bottom: 1em;
+}
+div.RightNav p {
+    margin: 0;
+    padding: 0;
+}
+div.RightNav ul {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2em;
+    list-style-type: none;
+}
+div.RightNav ul li {
+    margin-bottom: 0;
+    background: edoBodyColor;
+    margin: 0.25em 0;
+    padding: 0;
+    zoom: 1;
+}
+div.RightNav ul li div {
+    text-decoration: underline;
+    padding-left: 5px;
+}
+div.RightNav ul li b {
+    background: edoBodyColor;
+}
+div.RightNav ul li a:link,
+div.RightNav ul li a:visited {
+    background: edoBodyColor;
+    color: blue;
+    display: block;
+    padding: 0;
+    font-weight: bold;
+}
+div.RightNav ul li a:hover,
+div.RightNav ul li a:hover div,
+div.RightNav ul li a:hover b b,
+div.RightNav ul li.selected a,
+div.RightNav ul li.selected a div,
+div.RightNav ul li.selected a b b,
+div.RightNav ul li a.selected,
+div.RightNav ul li a.selected div,
+div.RightNav ul li a.selected b b {
+    background: backgroundColor;
+    color: black;
+    display: block;
+    text-decoration: none;
+}
+
+/* 对象操作导航栏 */
+p.doMore {
+    margin: 0;
+    padding: 0.5em 0.75em;
+}
+p.doMore a {
+    text-decoration: none;
+}
+
+/* 分页选择器导航栏 */
+.listingBar {
+    background-color: globalBackgroundColor;
+    border-color: globalBorderColor;
+    border-style: borderStyle;
+    border-width: borderWidth;
+    padding: 0em 1em;
+    text-align: center;
+    text-transform: textTransform;
+    vertical-align: top;
+    margin: 1em 0em;
+    font-size: 94%;
+    clear: both;
+}
+.listingBar span.previous,
+.listingPrevious {
+    text-align: left;
+    float: left;
+    margin-right: 1em;
+}
+.listingBar span.next,
+.listingNext {
+    text-align: right;
+    float: right;
+    margin-left: 1em;
+}
+.listingBar img {
+    vertical-align: middle;
+}
+.listingBar a {
+    text-decoration: none;
+}
+
+/* 导航栏到此为止 */
+
+/* 定制表单 */
+
+/* showhide表单 */
+.showhide {
+    background: #efefef;
+    padding: 1em;
+    margin: 0 0 20px 0;
+}
+.showhide h1 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+.showhide p {
+    margin: 10px 0 2px;
+    color: #000;
+    font-weight: normal;
+}
+.showhide table {
+    margin-top: 8px;
+    width: 100%;
+}
+.showhide label {
+    font-size: 13px;
+    font-weight:normal; 
+}
+.showhide td,
+.showhide th {
+    font-weight:normal;
+    border: 2px solid #EFEFEF;
+    border-width: 2px 0;
+}
+.showhide th {
+    width:7em;
+    text-align:right;
+    white-space:nowrap;
+    vertical-align:top;
+}
+.showhide .field {
+    padding: 5px 0;
+}
+.showhide .formHelp {
+	color:discreetColor;
+	font-size:95%;
+	font-weight:normal;
+}
+.showhide .submit {
+    border-top: 1px solid #ddd;
+    font-size: fontBaseSize;
+    padding: 8px;
+}
+#sub_m .showhide .submit {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* showhideform表单 */
+.showhideform .showhide {
+    margin: 0;
+}
+.showhideform table {
+    width: 100%;
+}
+
+/* portlet form */
+.portlet input[type=text] {
+    width: 8em;
+}
+.portlet table th {
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: right;
+}
+
+/* 表单到此为止 */
+
+/* 表格 */
+
+/* gradual表格 */
+table.gradual th {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000; 
+    background: #e9e9e9;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #fff;
+    text-align: left;
+    padding: 5px;
+}
+table.gradual th a:link,
+table.gradual th a:visited {
+    color: #000;
+    text-decoration: none; 
+    font-size: 14px; 
+}
+table.gradual td {
+    padding: 3px 5px;
+    font-size: 12px;
+}
+table.gradual td.expander {width: 100%;}
+table.gradual td.author {text-align:right;white-space:nowrap;}
+table.gradual td.action {width:40px;text-align:left;color:#999;white-space:nowrap;}
+table.gradual td.date {width:90px;text-align:left;font-size:10px;color:#666;white-space:nowrap;}
+table.gradual tr.row1 td {background:#f1f1f1;}
+table.gradual tr.row2 td {background:#f4f4f4;}
+table.gradual tr.row3 td {background:#f6f6f6;}
+table.gradual tr.row4 td {background:#fcfcfc;}
+
+/* cleanListin表格 */
+table.cleanListing {
+	border-collapse:collapse;
+	margin-bottom:20px;
+    width: 100%;
+}
+table.cleanListing th {
+	background:#E9E9E9 none repeat scroll 0%;
+	border-bottom:1px solid #999999;
+	border-top:1px solid #FFFFFF;
+	color:#000000;
+	font-size:fontBaseSize;
+	padding:5px;
+	font-weight:normal;
+	text-align:left;
+	text-transform:none;
+    white-space:nowrap;
+}
+table.cleanListing th a {
+	color:#000000;
+	font-size:fontBaseSize;
+	text-decoration:none;
+}
+table.cleanListing td {
+	border-bottom:1px solid #DDDDDD;
+	font-size:fontBaseSize;
+	padding:4px 10px 4px 3px;
+}
+table.cleanListing tr.shade td {
+	background:#F0F0F0 none repeat scroll 0%;
+}
+table.cleanListing th.date {
+	padding-left:14px;
+}
+table.cleanListing td.action {
+	color:#999999;
+	text-align:center;
+}
+table.cleanListing td.action img {
+	vertical-align:middle;
+}
+table.cleanListing td.action a.image {
+	margin-left:3px;
+}
+table.cleanListing td.hours {
+	font-weight:bold;
+	text-align:center;
+}
+table.cleanListing td.desc {
+	font-size:12px;
+	line-height:16px;
+	white-space:normal;
+}
+
+/* cleanVertical表格 */
+table.cleanVertical {
+    border-top:2px solid #DCDCDC;
+    border-bottom:2px solid #DCDCDC;
+    border-collapse: collapse;
+}
+table.cleanVertical th {
+    background:#EFEFEF none repeat scroll 0% 50%;
+    border-bottom:1px solid #DDDDDD;
+    font-weight:bolder;
+    padding:8px;
+    vertical-align:top;
+}
+table.cleanVertical td {
+    border-bottom:1px solid #DDDDDD;
+}
+
+/* 列表表格-适用于水平和垂直 */
+table.listing {
+    border-collapse: collapse;
+    border-left: borderWidth borderStyle globalBorderColor;
+    border-bottom: borderWidth borderStyle globalBorderColor;
+    font-size: fontBaseSize;
+    margin: 1em 0em 1em 0em;
+    width: 100%;
+}
+table.listing th {
+    background: globalBackgroundColor;
+    border-top: borderWidth borderStyle globalBorderColor;
+    border-bottom: borderWidth borderStyle globalBorderColor;
+    border-right: borderWidth borderStyle globalBorderColor;
+    font-weight: normal;
+    padding: 0.25em 0.5em;
+    text-transform: textTransform;
+}
+table.listing .top {
+    border-left: borderWidth borderStyle backgroundColor;
+    border-top: borderWidth borderStyle backgroundColor ! important;
+    border-right: borderWidth borderStyle backgroundColor ! important;
+    text-align: right ! important;
+    padding: 0em 0em 1em 0em;
+}
+table.listing .listingCheckbox {
+    text-align: center;
+}
+table.listing td,
+.stx table td {
+    border-right: borderWidth borderStyle globalBorderColor;
+    padding: 0.25em 0.5em;
+}
+table.listing a {
+    text-decoration: none;
+}
+table.listing a:hover {
+    text-decoration: underline;
+}
+table.listing img {
+    vertical-align: middle;
+}
+table.listing td a label,
+.stx table td a label {
+    cursor: pointer;
+}
+
+/* Vertical addition class */
+table.vertical {
+    background-color: backgroundColor;
+}
+table.vertical th {
+    padding: 0.5em;
+}
+table.vertical td {
+    border-top: borderWidth borderStyle globalBorderColor;
+    padding: 0.5em;
+}
+
+/* grid addition class */
+table.grid td {
+    border: borderWidth borderStyle globalBorderColor;
+    padding: 0.5em;
+}
+
+/* plain table class with light gray borders */
+table.plain,
+table.plain td,
+table.plain th {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    border-collapse: collapse;
+}
+
+/* 表格到此为止 */
+
+/* 下拉菜单 */
+
+.actionMenu {
+   position: relative;
+   margin: 0;
+   padding: 0;
+}
+.actionMenu .actionMenuHeader {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+.actionMenu .actionMenuHeader a.getMenuLink {
+    margin: 0;
+    padding: 0;
+}
+.actionMenu .actionMenuContent {
+    color: tabFontColor;
+    position: absolute;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    z-index: 5;
+}
+.actionMenu .actionMenuContent ul {
+    background: backgroundColor;
+    border: 1px solid tabBorderColor;
+    border-width: 1px;
+    display: block;
+    padding: 4px;
+    margin: 0;
+}
+.actionMenu .actionMenuContent ul ul {
+    border-style: none;
+}
+.actionMenu .actionMenuContent li {
+    background-color: transparent;
+    border: 0;
+    display: inline;
+    float: none !important;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+    font-style: normal;
+    font-weight: bold;
+    white-space: nowrap;
+    padding-left: 0;
+}
+.actionMenu .actionMenuContent li a:link,
+.actionMenu .actionMenuContent li a:visited {
+    background: backgroundColor;
+    color: #666;
+    display: block;
+    font-weight: normal;  
+    line-height: 20px;
+    padding: 0 10px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.actionMenu .actionMenuContent li a:hover {
+    background: tabBackgroundColor;
+    color: backgroundColor; 
+}
+.deactivated .actionMenuContent {
+   display: none;
+}
+
+/* 下拉菜单到此为止 */
+
+/* 按钮 */
+
+/* 一般的编辑按钮 */
+span.edit {
+    color: blue;
+    font-size: fontSmallSize;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+/* 顶部导航按钮 */
+.topNavTabs {
+    background-color: transparent;
+    white-space: nowrap;
+    list-style-image: none;
+    list-style-type: none;
+    margin: 1px 0 0 0;
+    height: auto;
+    line-height: normal;
+}
+.topNavTabs li {
+    display: inline;
+    color: backgroundColor;
+    float: left;
+}
+.topNavTabs li a:link,
+.topNavTabs li a:visited {
+    background-color: transparent;
+    border: 1px solid backgroundColor;
+    color: backgroundColor;
+    height: auto;
+    padding: 0.25em;
+    border: 0;
+    text-decoration: underline;
+    text-transform: textTransform;
+}
+.topNavTabs li a:hover,
+.topNavTabs li.selected a {
+    background: tabSelectedFontColor;
+    text-decoration: none;
+}
+
+/* 标签按钮 */
+.tagbtn {
+    white-space: normal;
+    margin-top: 2px;
+    margin-left: 2px;
+    padding: 3px 5px 2px;
+    border-bottom: 1px solid #AAFFAA;
+    border-right: 1px solid #AAFFAA;
+}
+.ract {
+    background-color: #EEFFEE;
+    border-bottom: 1px solid #AAFFAA;
+    border-right: 1px solid #AAFFAA;
+    color: #BBBBBB;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 2px;
+    padding: 3px 3px 2px;
+    text-align: center;
+    text-decoration: none;
+}
+.gract { 
+    color: #060; 
+    text-decoration: none; 
+    font-size: 12px; 
+    text-align: center;
+    border-right: 1px solid #AAFFAA;
+    border-bottom: 1px solid #AAFFAA;
+    background-color: #EEFFEE; 
+    padding: 3px 3px 2px 3px;
+    margin-top: 2px;
+    margin-left: 2px;
+    cursor: pointer;
+    white-space: normal;
+ }
+.gract:hover {
+    color: #FFFFFF; 
+    font-size: 12px;
+    border-right: 1px solid #33FF33;
+    border-bottom: 1px solid #33FF33; 
+    background-color: #55FF55; 
+    padding: 3px 3px 2px 3px;
+    margin-top: 2px; 
+}
+
+/* 各种操作按钮 */
+/* 默认基础 */
+.buttonbase,
+.buttonwhite {
+    color: black;
+    display: inline-block;
+    float: left;
+    font-family: sans-serif;
+    font-size: 13px;
+    height: 24px;
+    margin-left: 2px;
+    overflow: hidden;
+    padding-right: 12px;
+    text-decoration: none !important;
+}
+.buttonbase .buttoncontent,
+.buttonwhite .buttoncontent {
+    color: black;
+    display: block;
+    line-height: 20px;
+    padding: 1px 1px 3px 8px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+/* 一般按钮 */
+.buttonbase {
+    background: transparent url('/@@/img/button_base.gif') no-repeat scroll right top;
+    padding-right: 7px;
+}
+.buttonbase .buttoncontent {
+    background: transparent url('/@@/img/button_base.gif') no-repeat scroll 0 0;
+}
+.folderdefault,
+.modifydefault,
+.visibledefault,
+.buttonwhite {
+    background: transparent url('/@@/img/button_white.gif') no-repeat scroll right top;
+}
+.folderdefault .buttoncontent,
+.modifydefault .buttoncontent,
+.visibledefault .buttoncontent,
+.buttonwhite .buttoncontent {
+    background: transparent url('/@@/img/button_white.gif') no-repeat scroll 0 0;
+}
+.buttonblue .buttoncontent {
+    color: blue;
+}
+.admin .buttoncontent {
+    color: red;
+}
+/* 受控 */
+.foldercontrol {
+    background: transparent url('/@@/img/button_brown.gif') no-repeat scroll right top;
+}
+.foldercontrol .buttoncontent {
+    background: transparent url('/@@/img/button_brown.gif') no-repeat scroll 0 0;
+    color: white;
+}
+/* 保密 */
+.visibledefault {
+    padding-right: 14px;
+    background: transparent url('/@@/img/button_white.gif') no-repeat scroll right top;
+}
+.visibledefault .buttoncontent {
+    background: transparent url('/@@/img/button_white.gif') no-repeat scroll 0 0;
+}
+.visibleprivate {
+    padding-right: 14px;
+    background: transparent url('/@@/img/button_red.gif') no-repeat scroll right top;
+}
+.visibleprivate .buttoncontent {
+    background: transparent url('/@@/img/button_red.gif') no-repeat scroll 0 0;
+    color: white;
+}
+.visiblectrldefault {
+    padding-right: 14px;
+    background: transparent url('/@@/img/button_white.gif') no-repeat scroll right top;
+}
+.visiblectrldefault .buttoncontent {
+    background: transparent url('/@@/img/button_white.gif') no-repeat scroll 0 0;
+}
+.visiblectrlprivate {
+    padding-right: 14px;
+    background: transparent url('/@@/img/button_red.gif') no-repeat scroll right top;
+}
+.visiblectrlprivate .buttoncontent {
+    background: transparent url('/@@/img/button_red.gif') no-repeat scroll 0 0;
+    color: white;
+}
+/* 共享/公开 */
+.shareshared {
+    padding-right: 12px;
+    background: transparent url('/@@/img/button_green.gif') no-repeat scroll right top;
+}
+.shareshared .buttoncontent {
+    background: transparent url('/@@/img/button_green.gif') no-repeat scroll 0 0;
+    color: white;
+}
+/* 待审 */
+.modifypending,
+.worklogreviewdraft,
+.budgetreviewdraft,
+.feereviewdraft {
+    background: transparent url('/@@/img/button_yellow.gif') no-repeat scroll right top;
+}
+.modifypending .buttoncontent,
+.worklogreviewdraft .buttoncontent,
+.budgetreviewdraft .buttoncontent,
+.feereviewdraft .buttoncontent {
+    background: transparent url('/@@/img/button_yellow.gif') no-repeat scroll 0 0;
+}
+/* 存档/发布 */
+.modifyarchived {
+    background: transparent url('/@@/img/button_blue.gif') no-repeat scroll right top;
+}
+.modifyarchived .buttoncontent {
+    background: transparent url('/@@/img/button_blue.gif') no-repeat scroll 0 0;
+    color: white;
+}
+
+/* 用于创建内容的按钮(在右侧) */
+div.RightNav .create_stuff {
+    background: transparent url('/@@/img/nav_sidebar_additem_1.gif') no-repeat;
+    cursor: pointer;
+}
+div.RightNav .create_ajax_stuff {
+    background: transparent url('/@@/img/nav_sidebar_additem_3.gif') no-repeat;
+    font-weight: normal !important;
+}
+div.RightNav .create_ajax_stuff,
+div.RightNav .create_stuff,
+div.RightNav .create_stuff:link,
+div.RightNav .create_stuff:visited {
+    color: fontColor;
+    font-size: 15px;
+    font-weight: bold; 
+    padding: 6px 0 6px 2.25em;
+    display: block;
+    text-decoration: none;
+}
+div.RightNav .create_stuff:hover {
+    background: transparent url('/@@/img/nav_sidebar_additem_2.gif') no-repeat;
+}
+
+/* 按钮到此为止 */
+
+/* 圆角 */
+
+/* 第一种圆角 */
+.xtop, .xbottom {display:block; background:transparent; font-size:1px;}
+.xb1, .xb2, .xb3, .xb4 {display:block; overflow:hidden;}
+.xb1, .xb2, .xb3 {height:1px;}
+.xb2, .xb3, .xb4 {background: backgroundColor; border-left:1px solid contentCornerColor; border-right:1px solid contentCornerColor;}
+.xb1 {margin:0 5px; background:contentCornerColor;}
+.xb2 {margin:0 3px; border-width:0 2px;}
+.xb3 {margin:0 2px;}
+.xb4 {height:2px; margin:0 1px;}
+
+/* 第二种圆角 */
+.itemxtop, .itemxbottom {display:block; background:transparent; font-size: 1px;}
+.itemxb1, .itemxb2, .itemxb3, .itemxb4 {display:block; overflow:hidden;}
+.itemxb1, .itemxb2, .itemxb3 {height:1px;}
+.itemxb2, .itemxb3, .itemxb4 {background:#CBDBEE; border-left:1px solid #E9E9E9; border-right:1px solid #E9E9E9;}
+.itemxb1 {margin:0 5px; background:#E9E9E9;}
+.itemxb2 {margin:0 3px; border-width:0 2px;}
+.itemxb3 {margin:0 2px;}
+.itemxb4 {height:2px; margin:0 1px;}
+
+/* 小圆角 */
+.t1 { font-size: 1px; height: 1px; line-height: 1px; margin: 0 2px; }
+.t2 { font-size: 1px; height: 1px; line-height: 1px; margin: 0 1px; }
+
+/* 顶部下方内容导航按钮的圆角 */
+#portal-globalnav li b .itemxb1 {margin: 0 5px;}
+#portal-globalnav li b .itemxb2 {margin: 0 3px;}
+#portal-globalnav li b .itemxb3 {margin: 0 2px;}
+#portal-globalnav li b .itemxb4 {margin: 0 1px;}
+
+/* 中间内容区域上方功能条的圆角 */
+#above-content-bar .itemxb1,
+#above-content-bar .itemxb2,
+#above-content-bar .itemxb3,
+#above-content-bar .itemxb4 { background: globalBackgroundColor !important; }
+
+/* 面板中的圆角 */
+.portlet b.xtop { background: edoBodyColor; }
+.portlet b.xb1 { background: globalBorderColor; }
+.portlet b.xb2,
+.portlet b.xb3,
+.portlet b.xb4 { background: globalBackgroundColor !important; }
+.portlet b.xb2,
+.portlet b.xb3,
+.portlet b.xb4 {
+    border-width: 0 borderWidth;
+    border-style: borderStyle;
+    border-color: globalBorderColor;
+}
+
+/* 右侧导航圆角 */
+div.RightNav .itemxb1,
+div.RightNav .itemxb2,
+div.RightNav .itemxb3,
+div.RightNav .itemxb4 { background: edoBodyColor; margin-left: 0; padding-left: 0; border-left:0;
+}
+
+/* 帮助页面的圆角 */
+.ContextHelp .xb2,
+.ContextHelp .xb3,
+.ContextHelp .xb4 { background: #EDF3FE; }
+
+/* 表单中的小圆角 */
+.showhideform .t1,
+.showhideform .t2 { background: #EFEFEF none repeat scroll 0 0; }
+
+/* 圆角到此为止 */
+
+/* 其他 */
+
+/* 工作流状态 */
+span.WorkflowState {
+    font-size: 12px;
+    font-weight: normal;
+    padding: 1px 3px;
+}
+span.visible_private {
+    background: #D00;
+    color: #FFF;
+}
+span.modify_pending {
+    background: #FFF000;
+    color: #000;
+}
+
+/* 时间线 */
+div.dateSplitter {
+	font-size: 12px;
+	margin:5pt 0pt 10px -13px;
+	padding-bottom:3px;
+	text-transform:uppercase;
+}
+div.dateSplitter span {
+	border-bottom:1px solid #CCCCCC;
+	color:#666666;
+	padding:2px 4px 2px 24px;
+}
+div.dateSplitter span.today {
+	background-color:#FFF000;
+	border-bottom:medium none;
+	color:#000000;
+}
+
+/* item 列表 */
+div.itemIcon {
+    float: left;
+    width: 32px;
+    position: relative; /* force layout */
+}
+div.itemIcon img {
+    width: 32px;
+    height: 25px;
+}
+div.itemInfo {
+    border-bottom:1px dashed #CCCCCC;
+    margin-left: 40px;
+    padding-bottom:3px;
+}
+div.itemInfo h1 {
+    margin:5px 0 8px;
+    border-bottom:none;
+    color: #000;
+}
+div.itemInfo h1 a.title {
+    font-size: fontLargeSize;
+    font-weight: bold;
+}
+div.itemInfo h1 a.discreet,
+div.itemInfo p a.discreet {
+    color: discreetColor;
+}
+div.itemInfo h1 a.discreet:hover,
+div.itemInfo p a.discreet:hover {
+    background: #0033CC;
+    color: white;
+    text-decoration: none;
+}
+div.itemInfo p.byline {
+	color:#666666;
+	font-family:verdana;
+	font-size:12px;
+	font-weight:normal;
+	line-height:14px;
+	margin:0pt 0pt 5px;
+	padding:0pt;
+	text-align:left;
+}
+div.itemInfo span.dash {
+    color: #999;
+}
+
+/* 对象类型 */
+span.event_type span.Milestone {
+    background-color: #5F6E43;
+    white-space: nowrap;
+}
+span.event_type span.TodoItem {
+    background-color: #C87800;
+    white-space: nowrap;
+}
+span.event_type span.Message {
+    background-color: #334E7D;
+    white-space: nowrap;
+}
+span.event_type span.Document {
+    background-color: #24A89E;
+    white-space: nowrap;
+}
+span.event_type span.File,span.event_type span.Image {
+    background-color: #7A4A77;
+    white-space: nowrap;
+}
+span.event_type span.Comment,
+span.event_type span.DiscussionItem,
+span.event_type span.ChatLog {
+    background-color: #6492AC;
+    white-space: nowrap;
+}
+.event_type span {
+    background-color: gray;
+    color: #FFFFFF;
+    font-weight: normal;
+    padding: 1px 3px;
+}
+
+/* 操作状态提示信息 */
+div#kss-spinner {
+    font-size: fontSmallSize;
+    background-color: #ffffe3;
+    border: 1px solid #996;
+    padding: 5px;
+}
+dl.portalMessage {
+    font-size: fontSmallSize;
+    background-color: #ffffe3;
+    border: 1px solid #996;
+}
+dl.portalMessage a {
+    color: black;
+    border: none;
+    text-decoration: underline;
+}
+dl.portalMessage dt {
+    background-color: #996;
+    font-weight: bold;
+    float: left;
+    margin: 0 0.5em 0 0;
+    padding: 0.5em 0.75em;
+    color: White;
+    line-height: 1.25em;
+}
+dl.portalMessage dd {
+    padding: 0.5em 0.5em;
+    margin: 0;
+    line-height: 1.25em;
+}
+dl.warning { border-color: #d80; }
+dl.warning dt { background-color: #d80; }
+dl.warning dd { background-color: #fd7; }
+dl.error { border-color: #d00; }
+dl.error dt { background-color: #d00; }
+dl.error dd { background-color: #fd7; }
+
+/* 表单中的帮助文字内容 */
+.formHelp {
+    font-size: 90%;
+    color: discreetColor;
+    margin: 0 0 0.2em 0;
+}
+.formHelp:hover {
+    color: fontColor;
+    cursor: default;
+}
+
+/* 对象详细内容的分块显示 */
+.content_block {
+    margin: 5px 0 15px;
+    padding-left: 6px;
+    border-left: 8px solid #CBDBEE;
+}
+
+/* 纯css三角形 with IE hack */
+/* 向右三角形 */
+.rightwardDelta {
+    display: inline-block;
+    border: 5px solid transparent;
+    border-left: 5px solid black;
+    font-size: 1px;
+    height: 0;
+    line-height: 1px;
+    margin-left: 2px;
+    margin-right: -4px;
+    width: 0;
+    +border: 5px solid #EDF3FE;
+    +border-left: 5px solid black;
+    +margin-right: 0;
+}
+/* 向下三角形 */
+.downwardDelta {
+    display: inline-block;
+    border: 5px solid transparent;
+    border-top: 5px solid black;
+    font-size: 1px;
+    height: 0;
+    line-height: 1px;
+    margin-right: -2px;
+    margin-bottom: -3px;
+    width: 0;
+    +border: 5px solid #EDF3FE;
+    +border-top: 5px solid black;
+    +margin-right: 2px;
+}
+/* 向上三角形 */
+.upwardDelta {
+    display: inline-block;
+    border: 5px solid transparent;
+    border-bottom: 5px solid black;
+    font-size: 1px;
+    width: 0;
+    height: 0;
+    line-height: 1px;
+    margin-bottom: 1px;
+    +border: 6px solid #EDF3FE;
+    +border-bottom: 6px solid black;
+    +margin-bottom: 3px;
+    +margin-right: 2px;
+}
+
+/* 正文内容 */
+/* Only h5/h6 headlines in the content area should have the discreet color */
+#content h5,
+#content h6 {
+    color: discreetColor;
+}
+#content a:target {
+    background-color: #fd7 !important;
+}
+#content .field {
+    background: backgroundColor;
+    margin: 0;
+    padding: 0;
+}
+#content .field ul {
+    background: backgroundColor;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+/* Protocol-specific links */
+#content .link-plain {
+    background-image: none !important;
+}
+#content .link-plain {
+    padding: 0 !important;
+}
+
+/* documentContent */
+.documentContent {
+    font-size: fontBaseSize;
+    padding: 1em 1em 2em 1em;
+    background: backgroundColor;
+}
+.documentContent ul {
+    list-style-type: square;
+    margin: 0.5em 0 0 1.5em;
+}
+.documentContent ol {
+    margin: 0.5em 0 0 2.5em;
+}
+/* 奇偶数行 */
+.even { background-color: evenRowBackgroundColor; }
+.odd { background-color: white; }
+
+/* 重要class */
+.hidden { display: none !important; }
+.nowrap { white-space: nowrap !important; }
+.delimage { cursor: pointer; }
+.notify { border: borderWidth borderStyle notifyBorderColor; }
+
+.discreet {
+    color: discreetColor;
+    font-size: fontSmallSize;
+    font-weight: normal;
+}
+
+/* z3c.form 中的行距 */
+form.rowlike div.row {
+    margin: 0.5em 0;
+}
+
+/* 其他到此为止 */
+
+/* 杂项 */
+/* XXX */
+
+/* 右侧的人员选择组件 */
+#portal-column-two div.PopMemberSelect {
+    right: 0;
+}
+
+/* XXX */
+.documentDescription {
+    /* The summary text describing the document */
+    font-weight: bold;
+    display: block;
+    margin: 0em 0em 0.5em 0em;
+    line-height: 1.5em;
+}
+
+/* 特殊列表样式 */
+ul.discreet {
+    list-style-image: none;
+    list-style-type: disc;
+}
+
+/* 表单中进行编辑的区域 */
+.field {
+    top: 0;
+    left: 0;
+    margin: 0 1em 1em 0;
+    zoom: 1;
+}
+.field .field {
+    margin: 0;
+}
+.fieldRequired {
+    background: url('/@@/img/required.gif') center left no-repeat;
+    padding: 0 0 0 8px;
+    color: backgroundColor;
+}
+div.error {
+    /* Class for error indication in forms */
+    background-color: #fdc;
+    border: 1px solid #d00;
+    padding: 0.5em;
+    margin: 0 0 1em 0;
+    width: 95%;
+}
+.error .fieldRequired {
+    color: #d00;
+}
+
+/* 上方按钮 */
+.edoTabItem {
+    margin: 0px 2px;
+}
+.edoTabItem b.xb1,
+.edoTabItem b.xb2,
+.edoTabItem b.xb3,
+.edoTabItem b.xb4,
+.edoTabContent,
+.edoTabPage {
+    background-color: #C3D9FF;
+}
+.edoTabContent{
+    padding: 0 0.5em 0.5em;
+    text-align: center;
+}
+#above-content-bar b.itemxbottom b.itemxb1,
+#above-content-bar b.itemxbottom b.itemxb2,
+#above-content-bar b.itemxbottom b.itemxb3,
+#above-content-bar b.itemxbottom b.itemxb4 {
+    background-color: #C3D9FF !important;
+}
+#above-content-bar .contentbar_content {
+    padding-bottom: 0px;
+}
+
+/* portlet 中的导航树 */
+.portletItem ul.navTreeLevel0 { margin: 0 }
+
+/* 杂项到此为止 */
+
+/* 未知 */
+
+dl.GeditNotified dd {
+    margin-bottom: 0pt !important;
+}
+
+td.date span.Today, span.itemtext span.Today {
+    background-color:#FFF000;
+    color:#000000;
+    padding:1px 3px;
+}
+
+.context,
+.formControls .actionButtons .button {
+    background: transparent url('/@@/img/linkTransparent.gif') 9px 1px no-repeat;
+    color: fontColor;
+    cursor: pointer;
+    font-size: fontSmallSize;
+    padding: 1px 1px 1px 15px;
+    text-transform: textTransform;
+    border: borderWidth solid globalBorderColor;
+}
+
+tr.selected {
+    background-color: #ffa;
+}
+

@@ -1,0 +1,35 @@
+<html>
+<head>
+<script type="text/javascript" src="/++resource++plonechat.js?34223332">
+</script>
+</head>
+<body tal:define="file nocall:options/file">
+<ul id="new"><li><a tal:attributes="href file/absolute_url_path"
+       tal:content="file/Title"></a></li></ul>
+<span id="send"
+      tal:condition="python:file.getPortalTypeName()=='Image'">[{sys}]<a target="_blank" tal:attributes="href string:${file/absolute_url_path}"><img tal:attributes="src string:${file/absolute_url_path}/image_preview; title file/Title; alt file/Title; " /></a></span>
+<span id="send"
+      tal:condition="python:file.getPortalTypeName()=='File'">[{sys}]<img tal:attributes="src string:/${file/getIcon}" width="32" height="32"/><a target="_blank" tal:attributes="href file/absolute_url_path"
+      tal:content="file/Title"/></span>
+<script type="text/javascript"><!--
+var kukit = window.parent.kukit;
+var ndocument = window.parent.document;
+ndocument.getElementById('file-uploader').value = '';
+node = ndocument.getElementById('submit-progress-bar');
+kukit.dom.setAttribute(node, 'class', 'submit TGsubmitupload hideme');
+
+//parentNode = ndocument.getElementById('filelist');
+//content = document.getElementById('new');
+//content = kukit.dom.forceToDom(content.innerHTML);
+//var toNode = parentNode.firstChild;
+//if (toNode == null) {
+//    kukit.dom.appendChildren(content.childNodes, parentNode);
+//} else {
+//    kukit.dom.insertBefore(content, parentNode, toNode);
+//}
+
+sendNewMessage1('../insertNewMessage', document.getElementById('send').innerHTML)
+
+--></script>
+</body>
+</html>

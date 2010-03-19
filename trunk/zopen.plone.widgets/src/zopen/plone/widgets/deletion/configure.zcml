@@ -1,0 +1,43 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:five="http://namespaces.zope.org/five"
+  >
+
+  <browser:resource
+      name="deletion.kss"
+      file="deletion.kss"
+      />
+  <browser:resource
+      name="deletion.js"
+      file="deletion.js"
+      />
+  <!--browser:collectorItem
+    collector="zopen.js"
+    item="deletion.js"
+    weight="3"
+    /-->
+
+  <adapter factory=".view.DeletionIconProvider"
+           name="zopen.deletion"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <!-- XXX permission to renamed to a delete permission -->
+
+  <browser:page
+      for="*"
+      name="kss_obj_delete"
+      class=".kssview.KssView"
+      attribute="kss_obj_delete"
+      permission="zope2.DeleteObjects"
+      />
+
+  <browser:resource
+     name="indicator.gif"
+     file="indicator.gif" />
+
+  <browser:resource
+     name="trash.gif"
+     file="trash.gif" />
+
+</configure>

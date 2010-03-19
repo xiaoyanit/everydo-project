@@ -1,0 +1,34 @@
+Metadata-Version: 1.0
+Name: zopen.kssaddons
+Version: 0.1.1dev
+Summary: operation center core for everydo over HTTP
+Home-page: http://epk.zopen.cn/pypi/zopen.zopenaddons
+Author: Chen Qiong
+Author-email: zope-dev@zope.org
+License: Private
+Description: 1、表单提交时候隐藏提交按钮
+        
+        使用方法：
+        (1) 保持基本结构：
+        &lt;div class="submitField"&gt;
+        &lt;p class="submit"&gt;
+        &lt;input class="submit_button" type="submit" /&gt;
+        &lt;/p&gt;
+        &lt;p class="submit_waiting hidden"&gt;&lt;img src="/@@/img/waiting.gif" /&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        
+        
+        
+        1、放在一个 HTML 元素块里(.submitField)，使其操作不影响其他元素。
+        --2008,12,30
+        
+Keywords: zope3 z3c rpc  server client
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Natural Language :: Chinese
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Framework :: Zope3

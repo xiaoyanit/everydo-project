@@ -1,0 +1,52 @@
+form.set_project_tags input[type=submit]:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass;
+   toggleClass-kssSelector: css('.submit');
+   toggleClass-value: hideme;
+   action-server: addTag currentForm();
+}
+
+a.TGtags:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass;
+   toggleClass-kssSelector: css('.EVtags');
+   toggleClass-value: hideme;
+
+   action-server:settingTags;
+
+   action-client: focus;
+   focus-kssSelector: css('#add_tags');
+}
+
+a.EVtags:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass;
+   toggleClass-kssSelector: css('.TGtags');
+   toggleClass-value: hideme;
+}
+
+.tag_for:click {
+   evt-click-preventdefault: true;
+
+   action-server: tagForProjects;
+   tagForProjects-tag: nodeContent();
+}
+
+.close_tag_for:click {
+   evt-click-preventdefault: true;
+
+   action-client: deleteNode;
+   deleteNode-kssSelector: parentnode('.tag_for_projects');
+}
+
+.kssDeleteTag .delimage:click {
+
+   action-server: delTag;
+   delTag-tag: kssAttr(tag, True);
+   
+   action-client: deleteNode;
+   deleteNode-kssSelector: parentnode('.kssDeleteTag');
+}

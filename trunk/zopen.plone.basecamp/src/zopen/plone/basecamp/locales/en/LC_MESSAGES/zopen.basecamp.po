@@ -1,0 +1,679 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.basecamp 1.0\n"
+"POT-Creation-Date: 2007-07-17 09:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.basecamp\n"
+
+msgid "Completed"
+msgstr ""
+
+msgid "Created"
+msgstr ""
+
+msgid "Change"
+msgstr ""
+
+msgid "change_color"
+msgstr ""
+
+msgid "czug_project_site"
+msgstr ""
+
+#. Default: "In the following several colors, choose the one to suit your company, as a new website appearance dominant hue."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "Choose_suit_color"
+msgstr ""
+
+#. Default: "Delete this project"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "Delete_this_project"
+msgstr ""
+
+msgid "Modified"
+msgstr ""
+
+msgid "Responsible"
+msgstr ""
+
+#. Default: "Account"
+#: browser/prefs_site_permissions.pt
+#: browser/prefs_site_companies.pt
+msgid "account"
+msgstr ""
+
+#. Default: "基本信息"
+#: browser/prefs_site_settings.pt
+msgid "base_property"
+msgstr ""
+
+#. Default: "No problem. Check the well-stocked help section, the screenshot tour, the lively customer forums, or find FAQs and more at the official Everything Basecamp support site."
+#: browser/firstproject.pt
+msgid "check_stocked"
+msgstr "No problem. Check the well-stocked help section, <a href=\"http://everydo.com/tour\">the screenshot tour</a>, <a href=\"http://everydo.com/forum\">the lively customer forums</a>, or find <a href=\"http://everydo.com/help\">FAQs</a> and more at the official Everything Basecamp support site."
+
+#. Default: "Click to play the video"
+msgid "click_video"
+msgstr ""
+
+#. Default: "Create accounts for your co-workers, clients, collaborators, etc."
+#: browser/firstproject.pt
+msgid "create_accounts_for"
+msgstr ""
+
+#. Default: "Create the first milestone for this project above"
+msgid "create_first_milestone"
+msgstr ""
+
+#. Default: "Create your first project"
+#: browser/firstproject.pt
+msgid "create_first_project"
+msgstr ""
+
+#. Default: "Create the first to-do list for this project"
+msgid "create_first_todo"
+msgstr ""
+
+#. Default: "Create the first writeboard for this project"
+msgid "create_first_writeboard"
+msgstr ""
+
+#. Default: "Create logins for other people"
+#: browser/firstproject.pt
+msgid "create_logins_for"
+msgstr ""
+
+#. Default: "Keep track of what's due, when it's due, and who's responsible for doing it."
+msgid "create_milestone_for"
+msgstr ""
+
+#. Default: "Make lists, add items, and check them off. Get things done with to-do lists."
+msgid "create_todo_for"
+msgstr ""
+
+#. Default: "Writeboards make collaborative writing simple."
+msgid "create_writeboard_for"
+msgstr ""
+
+#. Default: "Customize your site"
+#: browser/firstproject.pt
+msgid "customize_your_site"
+msgstr ""
+
+#. Default: "删除网站标识图片"
+#: browser/prefs_site_settings.pt
+msgid "delete_site_logo"
+msgstr ""
+
+#. Default: "Deleting a project ${immediately} all the messages, milestones, and to-do lists associated with this project. ${no_undo} so make sure you're absolutely sure you want to delete this project."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "deleting_a_project"
+msgstr ""
+
+#. Default: "You can do any of the above at any time."
+#: browser/firstproject.pt
+msgid "do_any_above"
+msgstr ""
+
+#. Default: "Enter the first time log entry for this project above"
+msgid "enter_first_timetrack"
+msgstr ""
+
+#. Default: "It's easy: Just enter a date, person, time spent, and a description of what was done."
+msgid "enter_timetrack_for"
+msgstr ""
+
+#. Default: "Files tour page"
+msgid "file_tour_page"
+msgstr ""
+
+#. Default: "Or first you can..."
+#: browser/firstproject.pt
+msgid "first_you_can"
+msgstr ""
+
+#. Default: "immediately and permanently deletes"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "immedately_deletes"
+msgstr ""
+
+#. Default: "Latert activity"
+#: browser/dashboard.pt
+msgid "latert_activity"
+msgstr ""
+
+#. Default: "Learn about file sharing: Watch a video demo below"
+msgid "learn_about_file"
+msgstr ""
+
+#. Default: "You can watch this video or view a screenshot any time from the ${for}"
+msgid "learn_about_for"
+msgstr ""
+
+#. Default: "Learn about messages: Watch a video demo below"
+msgid "learn_about_message"
+msgstr ""
+
+#. Default: "Learn about milestones: Watch a video demo below"
+msgid "learn_about_milestone"
+msgstr ""
+
+#. Default: "Learn about time tracking: Watch a video demo below"
+msgid "learn_about_timetrack"
+msgstr ""
+
+#. Default: "Learn about to-do lists: Watch a video demo below"
+msgid "learn_about_todo"
+msgstr ""
+
+#. Default: "Learn about writeboards: Watch a video demo below"
+msgid "learn_about_writeboard"
+msgstr ""
+
+#. Default: "是否放置于一个白框中？"
+#: browser/prefs_site_settings.pt
+msgid "logo_put"
+msgstr ""
+
+#. Default: "Message tour page"
+msgid "message_tour_page"
+msgstr ""
+
+#. Default: "Miletone tour page"
+msgid "miletone_tour_page"
+msgstr ""
+
+#. Default: "There hasn't been any activity in your project yet. After you begin posting messages, comments, milestones or to-do's, you'll see a log of recent activity on this page that looks like the example below:"
+#: browser/dashboard.pt
+msgid "no_activity_project"
+msgstr ""
+
+#. Default: "If you can't find your answer there you can always email us at: support@everydo.com. We do our best to get back to you within a few hours."
+#: browser/firstproject.pt
+msgid "no_answer_email"
+msgstr ""
+
+#. Default: "NOTE:"
+#: browser/firstproject.pt
+msgid "note"
+msgstr ""
+
+#. Default: "Other"
+#: browser/prefs_site_permissions.pt
+#: browser/prefs_site_companies.pt
+msgid "other"
+msgstr ""
+
+#. Default: "People"
+#: browser/prefs_site_permissions.pt
+#: browser/prefs_site_companies.pt
+msgid "people"
+msgstr ""
+
+#. Default: "Permissions"
+#: browser/prefs_site_permissions.pt
+msgid "permissions"
+msgstr ""
+
+#. Default: "Post the first message for this project"
+msgid "post_first_message"
+msgstr ""
+
+#. Default: "Post messages, share project updates, ask questions, communicate."
+msgid "post_message_for"
+msgstr ""
+
+#. Default: "posted"
+#: browser/dashboard.pt
+msgid "posted"
+msgstr ""
+
+#. Default: "Project property"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "project_property"
+msgstr ""
+
+#. Default: "Setting global color"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "setting_global_color"
+msgstr ""
+
+#. Default: "Setting project property here."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "project_property_formhelp"
+msgstr ""
+
+#. Default: "Project template"
+#: browser/prefs_site_permissions.pt
+#: browser/prefs_site_companies.pt
+msgid "project_template"
+msgstr ""
+
+#. Default: "Questions? Need help?"
+#: browser/firstproject.pt
+msgid "questions_help"
+msgstr ""
+
+#. Default: "网站标识图片"
+#: browser/prefs_site_settings.pt
+msgid "site_logo"
+msgstr ""
+
+#. Default: "您的网站标识图片将会出现在登录页面上， 和网站首页上，和所有的消息页面上。 为取得更好的显示效果，建议您使用不超过200像素宽的图片； 超过200像素宽的图片将会按比例缩小成这个宽度。"
+#: browser/prefs_site_settings.pt
+msgid "site_logo_formhelp"
+msgstr ""
+
+#. Default: "网站设置"
+#: browser/prefs_site_settings.pt
+msgid "site_setting"
+msgstr ""
+
+#. Default: "Submit"
+#: browser/prefs_site_settings.pt
+msgid "submit"
+msgstr ""
+
+#. Default: "提交图片"
+#: browser/prefs_site_settings.pt
+msgid "submit_logo"
+msgstr ""
+
+#. Default: "并代替当前这一个图片"
+#: browser/prefs_site_settings.pt
+msgid "submit_logo_formhelp"
+msgstr ""
+
+#. Default: "There is no Undo"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "there_no_undo"
+msgstr ""
+
+#. Default: "time tour page"
+msgid "time_tour_page"
+msgstr ""
+
+msgid "today"
+msgstr ""
+
+#. Default: "To-do tour page"
+msgid "todo_tour_page"
+msgstr ""
+
+#. Default: "Yes, I understand — delete this project"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "understand_delete_project"
+msgstr ""
+
+#. Default: "It takes just a few seconds and you'll be up and running"
+#: browser/firstproject.pt
+msgid "up_add_running"
+msgstr ""
+
+#. Default: "Upload, download, and share files related to this project."
+msgid "upload_file_for"
+msgstr ""
+
+#. Default: "Upload the first file for this project"
+msgid "upload_first_file"
+msgstr ""
+
+#. Default: "Upload your logo, and customize your site theme. "
+#: browser/firstproject.pt
+msgid "upload_logo_change_color"
+msgstr ""
+
+#. Default: "Views"
+#: browser/prefs_site_permissions.pt
+msgid "view"
+msgstr ""
+
+#. Default: "Watch a quick Getting Started with Basecamp video"
+#: browser/firstproject.pt
+msgid "watch_video"
+msgstr ""
+
+#. Default: "Or, watch the demo"
+#: browser/firstproject.pt
+msgid "watch_demo"
+msgstr ""
+
+#. Default: "Welcome to your EveryDo"
+#: browser/firstproject.pt
+msgid "welcome_everydo"
+msgstr ""
+
+#. Default: "Writeboard tour page"
+msgid "writeboard_tour_page"
+msgstr ""
+
+msgid "yesterday"
+msgstr ""
+
+#. Default: "您的网站名称"
+#: browser/prefs_site_settings.pt
+msgid "your_site_name"
+msgstr ""
+
+#. Default: "每个页面上方都会显示的站点名称"
+#: browser/prefs_site_settings.pt
+msgid "your_site_name_formhelp"
+msgstr ""
+
+msgid "Password is invalid"
+msgstr ""
+
+#. Default: ""
+#: skins/basecamp_site/global_sections.pt
+msgid "list_of_projects"
+msgstr ""
+
+#. Default: "Dashboard"
+#: skins/basecamp_site/global_sections.pt
+msgid "dashboard"
+msgstr ""
+
+#. Default: "View all to-dos for a specific person across all their projects."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_all_todos"
+msgstr ""
+
+#. Default: "To-Dos"
+#: skins/basecamp_site/global_sections.pt
+msgid "to_dos"
+msgstr ""
+
+#. Default: "View all milestones for a specific person across all their projects."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_all_milestones"
+msgstr ""
+
+#. Default: "Milestones"
+#: skins/basecamp_site/global_sections.pt
+msgid "milestones"
+msgstr ""
+
+#. Default: "View progress of all projects."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_progress"
+msgstr ""
+
+#. Default: "Progress"
+#: skins/basecamp_site/global_sections.pt
+msgid "progress"
+msgstr ""
+
+#. Default: "View time track of all projects."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_time_track"
+msgstr ""
+
+#. Default: "Time"
+#: skins/basecamp_site/global_sections.pt
+msgid "time"
+msgstr ""
+
+#. Default: "View current project integrated information."
+#: skins/basecamp_site/global_sections.pt
+msgid "view_integreated_information"
+msgstr ""
+
+#. Default: "Overview"
+#: skins/basecamp_site/global_sections.pt
+msgid "overview"
+msgstr ""
+
+#. Default: "Post project message, and notified by email."
+#: skins/basecamp_site/global_sections.pt
+msgid "post_message"
+msgstr ""
+
+#. Default: "Messages"
+#: skins/basecamp_site/global_sections.pt
+msgid "messages"
+msgstr ""
+
+#. Default: "Todo list of project."
+#: skins/basecamp_site/global_sections.pt
+msgid "todo_list_project"
+msgstr ""
+
+#. Default: "To-Do"
+#: skins/basecamp_site/global_sections.pt
+msgid "to_do_list"
+msgstr ""
+
+#. Default: "Phases of the project."
+#: skins/basecamp_site/global_sections.pt
+msgid "phases_project"
+msgstr ""
+
+#. Default: "On-line cooperation compilation documents."
+#: skins/basecamp_site/global_sections.pt
+msgid "online_document"
+msgstr ""
+
+#. Default: "Writeboards"
+#: skins/basecamp_site/global_sections.pt
+msgid "writeboards"
+msgstr ""
+
+#. Default: "Records workload statistics hours."
+#: skins/basecamp_site/global_sections.pt
+msgid "time_track_log"
+msgstr ""
+
+#. Default: "Time"
+#: skins/basecamp_site/global_sections.pt
+msgid "timetrack"
+msgstr ""
+
+#. Default: "On-line chat and discussion area."
+#: skins/basecamp_site/global_sections.pt
+msgid "online_chat"
+msgstr ""
+
+#. Default: "Chat"
+#: skins/basecamp_site/global_sections.pt
+msgid "chat"
+msgstr ""
+
+#. Default: "Storage ench kind of project file by categories."
+#: skins/basecamp_site/global_sections.pt
+msgid "files_storage"
+msgstr ""
+
+#. Default: "Files"
+#: skins/basecamp_site/global_sections.pt
+msgid "files"
+msgstr ""
+
+#. Default: "Privacy"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_privacy"
+msgstr ""
+
+#. Default: "Terms"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_terms"
+msgstr ""
+
+#. Default: "Forum"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_forum"
+msgstr ""
+
+#. Default: "Roadmap"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_roadmap"
+msgstr ""
+
+#. Default: "Online support"
+#: skins/basecamp_site/main_template.pt
+msgid "footer_online_support"
+msgstr ""
+
+#. Default: "Project team management and security management."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "setting_team_security"
+msgstr ""
+
+#. Default: "People & Permissions"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "project_team"
+msgstr ""
+
+#. Default: "Setting project property, project state, and delete project."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "show_project_setting"
+msgstr ""
+
+#. Default: "Project settings"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "project_settings"
+msgstr ""
+
+#. Default: "Add/modify contact information for everyone in your system."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "all_people_setting"
+msgstr ""
+
+#. Default: "All people"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "all_people"
+msgstr ""
+
+#. Default: "Name/logo, global color, and so on."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "site_settings_title"
+msgstr ""
+
+#. Default: "Sittings"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "site_settings"
+msgstr ""
+
+#. Default: "Upgrade, degrade, payment, and logout."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "account_settings"
+msgstr ""
+
+#. Default: "Account service"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "account_service"
+msgstr ""
+
+#. Default: "My info"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "my_info"
+msgstr ""
+
+#. Default: "Review and edit accout information."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "edit_my_info"
+msgstr ""
+
+#. Default: "Logout"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "log_out"
+msgstr ""
+
+#. Default: "Logout and clear cookie off your machine."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "log_out_clear"
+msgstr ""
+
+#. Default: "Help"
+#: skins/basecamp_site/global_siteactions.pt
+msgid "site_help"
+msgstr ""
+
+#. Default: "Help & answer question."
+#: skins/basecamp_site/global_siteactions.pt
+msgid "site_help_title"
+msgstr ""
+
+#. Default: "Choose a project"
+#: skins/basecamp_site/global_pathbar.pt
+msgid "choose_a_project"
+msgstr ""
+
+#. Default: "Dashboard"
+#: skins/basecamp_site/global_pathbar.pt
+msgid "pathbar_dashboard"
+msgstr ""
+
+#. Default: "Dashboard"
+#: skins/basecamp_site/global_pathbar.pt
+msgid "pathbar_dashboard_title"
+msgstr ""
+
+#. Default: "Setting default language"
+#: browser/prefs_site_settings.pt
+msgid "setting_default_language"
+msgstr ""
+
+#. Default: "Choose a language as the default language of your website"
+#: browser/prefs_site_settings.pt
+msgid "default_language_helpform"
+msgstr ""
+
+#. Default: "Simplified Chinese"
+#: browser/prefs_site_settings.pt
+msgid "lang_code_zh"
+msgstr ""
+
+#. Default: "English"
+#: browser/prefs_site_settings.pt
+msgid "lang_code_en"
+msgstr ""
+
+#. Default: "Simplified Chinese"
+#: browser/prefs_site_settings.pt
+msgid "switch_zh"
+msgstr "简体中文版"
+
+#. Default: "Simplified Chinese"
+#: browser/prefs_site_settings.pt
+msgid "switch_zh_tw"
+msgstr "繁体中文版"
+
+#. Default: "English"
+#: browser/prefs_site_settings.pt
+msgid "switch_en"
+msgstr ""
+
+#. Default: "Default message categories"
+#: browser/prefs_site_settings.pt
+msgid "setting_message_category"
+msgstr ""
+
+#: browser/prefs_site_settings.pt
+msgid "setting_message_category_helpform"
+msgstr ""
+
+#. Default: "Default file categories"
+#: browser/prefs_site_settings.pt
+msgid "setting_file_category"
+msgstr ""
+
+#: browser/prefs_site_settings.pt
+msgid "setting_message_category_helpform"
+msgstr ""
+
+#. Default: "Password reset request"
+#: ./skins/PasswordReset/mail_password_template.pt:7
+msgid "mailtemplate_subject_resetpasswordrequest"
+msgstr ""

@@ -1,0 +1,84 @@
+<configure xmlns="http://namespaces.zope.org/browser"
+           i18n_domain="zopen.plone.org">
+
+  <resource name="time-tour.gif"
+            file="resource/time-tour.gif" />
+
+  <resource name="timelog.gif"
+            file="resource/timelog.gif" />
+
+  <resource name="timetracker.css"
+            file="resource/timetracker.css" />
+
+  <resource name="timetracker.kss"
+            file="resource/timetracker.kss" />
+
+  <pages
+      for="zopen.plone.timetracker.interfaces.ITimeTrackerContent"
+      class=".timetracker.TimeTrackerView"
+      permission="zopen.timetracker.TimeReport"
+      >
+    <page
+      name="timetracker_view"
+      template="timetracker.pt"
+      />
+    <page 
+      name="time-export.csv"
+      attribute="csv"
+      />
+  </pages>
+
+  <pages
+      for="*"
+      class=".timetracker.TimeTrackerView"
+      permission="zopen.timetracker.TimeReport"
+      >
+    <page
+      name="time_report"
+      template="timereport.pt"
+      />
+    <page 
+      name="time-report.csv"
+      attribute="csvreport"
+      />
+  </pages>
+
+  <page
+      for="zopen.plone.timetracker.interfaces.ITimeTrackerContent"
+      class=".timetracker.TimeTrackerKssView"
+      name="add_time_log"
+      attribute="add_time_log"
+      permission="zopen.timetracker.AddTimeLog"
+      />
+
+  <page for="zopen.plone.timetracker.interfaces.ITimeLogContent"
+        class=".timetracker.TimeTrackerView"
+        permission="zope2.View"
+        name="gotoRelated"
+        attribute="gotoRelated"
+        />
+
+  <pages
+      for="zopen.plone.timetracker.interfaces.ITimeLogContent"
+      class=".timetracker.TimeTrackerKssView"
+      permission="cmf.ModifyPortalContent"
+      >
+    <page
+        name="edit_time_log"
+        attribute="edit_time_log"
+        />
+    <page
+        name="save_time_log"
+        attribute="save_time_log"
+        />
+  </pages>
+
+  <page
+      for="zopen.plone.timetracker.interfaces.ITimeLogContent"
+      name="kss_obj_delete"
+      class=".timetracker.TimeTrackerKssView"
+      attribute="delete_time_log"
+      permission="zope2.DeleteObjects"
+      />
+
+</configure>

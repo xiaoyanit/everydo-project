@@ -1,0 +1,199 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-21 13:17+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.milestone\n"
+
+#. Default: "Apr"
+#: browser/milestones.pt
+msgid "Apr"
+msgstr ""
+
+#. Default: "Aug"
+#: browser/milestones.pt
+msgid "Aug"
+msgstr ""
+
+#. Default: "Dec"
+#: browser/milestones.pt
+msgid "Dec"
+msgstr ""
+
+#. Default: "Feb"
+#: browser/milestones.pt
+msgid "Feb"
+msgstr ""
+
+#. Default: "F"
+#: browser/milestones.pt
+msgid "Fri"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+#. Default: "Jan"
+#: browser/milestones.pt
+msgid "Jan"
+msgstr ""
+
+#. Default: "Jul"
+#: browser/milestones.pt
+msgid "Jul"
+msgstr ""
+
+#. Default: "Jun"
+#: browser/milestones.pt
+msgid "Jun"
+msgstr ""
+
+#. Default: "Mar"
+#: browser/milestones.pt
+msgid "Mar"
+msgstr ""
+
+#. Default: "May"
+#: browser/milestones.pt
+msgid "May"
+msgstr ""
+
+#. Default: "M"
+#: browser/milestones.pt
+msgid "Mon"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+#. Default: "Nov"
+#: browser/milestones.pt
+msgid "Nov"
+msgstr ""
+
+#. Default: "Oct"
+#: browser/milestones.pt
+msgid "Oct"
+msgstr ""
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "Sat"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+#. Default: "Sep"
+#: browser/milestones.pt
+msgid "Sep"
+msgstr ""
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "Sun"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+#. Default: "Th"
+#: browser/milestones.pt
+msgid "Thu"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+#. Default: "Tu"
+#: browser/milestones.pt
+msgid "Tue"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+#. Default: "W"
+#: browser/milestones.pt
+msgid "Wed"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+#: browser/milestones.pt
+msgid "fri"
+msgstr ""
+
+#: browser/milestones.pt
+msgid "mon"
+msgstr ""
+
+#: browser/milestones.pt
+msgid "sat"
+msgstr ""
+
+#: browser/milestones.pt
+msgid "sun"
+msgstr ""
+
+#. Default: "Th"
+#: browser/milestones.pt
+msgid "thu"
+msgstr ""
+#. Default: "Tu"
+#: browser/milestones.pt
+msgid "tue"
+msgstr ""
+
+#. Default: "week"
+#: browser/milestones.pt
+msgid "week"
+msgstr ""
+
+#. Default: "W"
+#: browser/milestones.pt
+msgid "wes"
+msgstr ""
+
+msgid "TODAY"
+msgstr ""
+
+msgid "late_state"
+msgstr ""
+
+msgid "active_state"
+msgstr ""
+
+msgid "completed_state"
+msgstr ""
+
+msgid "complete"
+msgstr ""
+
+msgid "activate"
+msgstr ""
+
+msgid "report"
+msgstr ""
+
+msgid "Please input title."
+msgstr ""
+
+msgid "No deadline."
+msgstr ""
+
+msgid "${deadline} was error, please input valid deadline."
+msgstr ""

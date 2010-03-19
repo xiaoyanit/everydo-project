@@ -1,0 +1,403 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.project">
+<head>
+<metal:noborder fill-slot="top_slot"
+    tal:define="dummy python:request.set('showright', 1)" />
+ <metal:fill fill-slot="style_slot">
+ <link  rel="stylesheet" media="screen" 
+       type="text/css" href="#" tal:attributes="href string:$portal_url/++resource++project.css?34223332" />
+ <link href=""
+         tal:attributes="href string:$portal_url/++resource++project.kss?34223332"
+         type="text/css" rel="kinetic-stylesheet" />
+
+<style type="text/css">
+.progressBar {border: 1px solid #76797C; background-color: lightyellow; width: 160px; }
+.progressBar .innerBar{background-color: #5F6E43; font-size: 6px;}
+</style>
+</metal:fill>
+</head> 
+ <div metal:fill-slot="main"
+        tal:define="results view/getTimelinedResults;
+                    getProjectsProgress nocall:context/@@getProjectsProgress;
+                    projectid context/getId;
+                    progress python:getProjectsProgress([projectid]).get(projectid, 0);
+                    global last_date nothing;
+                    group_by string:modified;
+                    Batch python:modules['Products.CMFPlone'].Batch;
+                    b_size python:30;b_start python:0;b_start request/b_start | b_start; 
+                    ">
+                                                          
+    <div class="SectionHeader">
+       <h1 i18n:translate="project_overview">Project Overview</h1>
+
+       <h3 tal:define="
+           canAddMsg python:not context.messages.getExcludeFromNav() and checkPermission('zopen.messageboard: Add Message', context.messages);
+           canAddTodo python:not context.todos.getExcludeFromNav() and checkPermission('zopen.todo: Add list', context.todos);
+           canAddMilestone python:not context.milestones.getExcludeFromNav() and checkPermission('zopen.milestone: Add milestone', context.milestones);
+           canAddFile python:not context.files.getExcludeFromNav() and checkPermission('ATContentTypes: Add File', context.files);
+           canAddWriteboard python:not context.writeboards.getExcludeFromNav() and checkPermission('ATContentTypes: Add Document', context.writeboards);
+                        ">
+
+       <a href="" class="admin" 
+          tal:attributes="href string:$here_url/messages/@@add_message"  
+          tal:condition="canAddMsg"
+          i18n:translate="add_message">Add message</a> 
+       <span tal:condition="python:canAddMsg and (canAddTodo or canAddMilestone or canAddFile or canAddWriteboard)">|</span>
+       <a href="" class="admin" 
+          tal:attributes="href string:$here_url/todos" 
+          tal:condition="canAddTodo"
+          i18n:translate="add_todo">Add to-do list</a> 
+       <span tal:condition="python:canAddTodo and (canAddMilestone or canAddFile or canAddWriteboard)">|</span>
+       <a href="" class="admin" 
+          tal:attributes="href string:$here_url/milestones" 
+          tal:condition="canAddMilestone"
+          i18n:translate="add_milestones">Add milestone</a>
+       <span tal:condition="python:canAddMilestone and (canAddFile or canAddWriteboard)">|</span>
+       <a href="" class="admin"
+          tal:attributes="href string:$here_url/files" 
+          tal:condition="canAddFile"
+          i18n:translate="add_file">Add file</a>
+       <span tal:condition="python:canAddFile and canAddWriteboard">|</span>
+       <a href="" class="admin"
+          tal:condition="canAddWriteboard"
+          tal:attributes="href string:$here_url/writeboards" 
+          i18n:translate="add_writeboards">Add writeBoard</a>
+       </h3>
+    </div>
+
+
+    <p tal:content="structure context/Description"
+       tal:condition="context/Description"> description </p>
+
+    <table tal:condition="progress" style="width: 100%">
+           <tr><td style="text-align:right; width: 50%">
+                <tal:i18n i18n:translate="project_progress">Project current progress: </tal:i18n> 
+                <strong tal:condition="progress" tal:content="string:$progress% "/>
+               </td>
+               <td><div class="progressBar"><div class="innerBar" tal:attributes="style string:width: $progress%">&nbsp;</div></div>
+               </td>
+           </tr></table>
+
+  <tal:block replace="structure provider:zopen.milestones" />
+
+  <h2 class="subheader">
+
+        <i18n:block i18n:translate="what_fresh"> What's fresh? </i18n:block>
+  </h2>
+
+  <div tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);
+                     basecamp_view context/@@basecamp_view;"
+       tal:condition="results">
+
+   <table class="latest today_list" cellspacing="0" style="table-layout:fixed;">
+    <col style="width:7em;"/>
+    <col/>
+    <col style="width:14%"/>
+    <col style="width:6em"/>
+    <col style="width:12%"/>
+    <tbody>
+
+    <tal:rep tal:repeat="brain batch">
+
+        <tal:define tal:define="item_datetime python:getattr(brain, group_by);
+                                item_date python:basecamp_view.getExactTime(item_datetime);
+                                is_new_day python:item_date != last_date;
+                                global last_date item_date;
+
+                           item_type brain/portal_type;
+                           item_time brain/ModificationDate;
+                           item_state brain/review_state;
+                           dashboard_view nocall:context/@@basecamp_dashboard;
+                           item_person python:dashboard_view.getResponsiblePartyTitle(brain)">
+
+   <tr class="date" tal:condition="is_new_day">
+     <td colspan="5">
+       <h2 class="date">
+             <span tal:attributes="class python:item_date=='Today' and 'Today' or ''"
+                   i18n:domain="zopen.basecamp"
+                   i18n:translate=""
+                   tal:content="item_date" > 2005-12-12</span></h2>
+     </td>
+   </tr>
+
+     <tr>
+           <td class="icon" style="width:6em">
+                <span class="event_type"
+                      tal:define="item_type_nospace python:str(item_type).replace(' ', '')">
+                    <span tal:attributes="class string:$item_type_nospace dash-state-$item_state-icon"
+                          i18n:translate=""  tal:content="python:item_type=='Discussion Item' and 'Comment' or item_type">Message </span>
+                    </span>
+            </td>
+                         
+            <td class="Title">
+
+                <div style="overflow:hidden;white-space:nowrap;">
+                     <span tal:attributes="class string:dash-state-$item_state-title">
+                     <a href=""
+                        tal:attributes="href brain/bc_url">
+                        <span tal:define="cc brain/pretty_title_or_id;
+                                          utitle python:unicode(cc)"
+                              tal:replace="python: utitle[:36] + (len(utitle) &gt; 30 and '...' or '') "/></a></span>
+
+
+                    <span class="discreet" tal:condition="python:item_type == 'Milestone' and brain.getHours != 100 and brain.getHours" 
+                          tal:content="string:[${brain/getHours}%]"/>
+                    <span class="pending_bug"
+                          tal:define="pending python:item_state.endswith('pending') and 'pending';
+                                      published python:item_state.endswith('published') and 'published';
+                                      state python:pending or published;"
+                          tal:condition="python: item_type!='Discussion Item' and state"
+                          tal:attributes="class string:${state}_bug"
+                          i18n:domain="zopen.filerepos" i18n:translate=""
+                          tal:content="state">Private</span>
+
+                    <span class="discreet" tal:define="udesc python:unicode(brain.Description)" 
+                          tal:condition="udesc"
+                          tal:content="python:udesc[:80] + (len(udesc) &gt; 80 and '...' or '')"/>
+                  </div>
+              </td>
+              <td class="person" style="width:10%;white-space:nowrap;">
+                  <span tal:content="item_person" />
+              </td>  
+              <td class="action" width="4%" style="text-align:left;white-space:nowrap;">
+                  <span class="discreet" 
+                        i18n:domain="zopen.basecamp" i18n:translate=""
+                        tal:content="python:basecamp_view.getActionName(brain)" />
+              </td>
+              <td class="time" style="text-align:center;width:10%;white-space:nowrap;">
+                  <span class="discreet"
+                        tal:define="time_format python:exists('is_other_list') and '%Y-%m-%d' or '%H:%M:%S'"
+                        tal:content="python:brain.modified.strftime(time_format)" />
+              </td>
+         </tr>
+       </tal:define>
+
+      </tal:rep>
+     
+
+   </tbody>
+  </table> 
+         <div metal:use-macro="here/batch_macros/macros/navigation" />
+  
+ </div>
+ <tal:block tal:condition="python:not results">
+ <div class="blankBar"
+      tal:define="showProjectSettings basecamp_view/showProjectSettings;"
+      tal:condition="showProjectSettings">
+          <div><span>添加项目成员、组建项目团队，立刻进入工作状态。 </span> </div>
+   <p style="padding:15px 0 8px;">
+          <a class="create_project"
+             tal:attributes="href string:$here_url/teams/@@prefs_project_team;
+                             style string:background:transparent url('${portal_url}/start_img/create_buttom2.png') no-repeat;;padding:12px 50px 8px 60px;;font-weight:bold;;color:#000;;white-space:normal;;text-align:center;;width:170px;;text-decoration:none;;border-style:none;;"
+             >
+              <span style="font-size:18px;color:#FFF;">添加项目成员</span></a>
+          </p>
+
+
+ </div>
+ <div class="blankOr">
+       <p i18n:translate="first_you_can" class="or_t">认识项目空间中的七种工具：</p>
+       <table style="margin:0pt auto; width:80%">
+         <tr>
+           <td>
+              <a class="image" href="messages/@@add_message"
+                onmouseover="javascript:document.getElementById('tr_0').style.display='none';
+                                    document.getElementById('tr_1').style.display='block'; "
+                onmouseout="javascript:document.getElementById('tr_0').style.display='block';
+                                    document.getElementById('tr_1').style.display='none'; "
+                 ><img tal:attributes="src string:${portal_url}/start_img/message.png" /></a>
+           </td>
+           <td>
+              <a class="image" href="todos"
+                onmouseover="javascript:document.getElementById('tr_0').style.display='none';
+                                    document.getElementById('tr_2').style.display='block'; "
+                onmouseout="javascript:document.getElementById('tr_0').style.display='block';
+                                    document.getElementById('tr_2').style.display='none'; ">
+              <img tal:attributes="src string:${portal_url}/start_img/task.png" /></a>
+           </td>
+           <td>
+              <a class="image" href="milestones"
+                onmouseover="javascript:document.getElementById('tr_0').style.display='none';
+                                    document.getElementById('tr_3').style.display='block'; "
+                onmouseout="javascript:document.getElementById('tr_0').style.display='block';
+                                    document.getElementById('tr_3').style.display='none'; ">
+              <img tal:attributes="src string:${portal_url}/start_img/milestone.png" /></a>
+           </td>
+           <td>
+              <a class="image" href="writeboards"
+                onmouseover="javascript:document.getElementById('tr_0').style.display='none';
+                                    document.getElementById('tr_4').style.display='block'; "
+                onmouseout="javascript:document.getElementById('tr_0').style.display='block';
+                                    document.getElementById('tr_4').style.display='none'; ">
+              <img tal:attributes="src string:${portal_url}/start_img/writeboard.png" /></a></td>
+           <td>
+              <a class="image" href="time"
+                onmouseover="javascript:document.getElementById('tr_0').style.display='none';
+                                    document.getElementById('tr_5').style.display='block'; "
+                onmouseout="javascript:document.getElementById('tr_0').style.display='block';
+                                    document.getElementById('tr_5').style.display='none'; ">
+              <img tal:attributes="src string:${portal_url}/start_img/timetracker.png" /></a></td>
+           <td>
+              <a class="image" href="chatroom"
+                onmouseover="javascript:document.getElementById('tr_0').style.display='none';
+                                    document.getElementById('tr_6').style.display='block'; "
+                onmouseout="javascript:document.getElementById('tr_0').style.display='block';
+                                    document.getElementById('tr_6').style.display='none'; ">
+              <img tal:attributes="src string:${portal_url}/start_img/chat.png" /></a></td>
+           <td>
+              <a class="image" href="files"
+                onmouseover="javascript:document.getElementById('tr_0').style.display='none';
+                                    document.getElementById('tr_7').style.display='block'; "
+                onmouseout="javascript:document.getElementById('tr_0').style.display='block';
+                                    document.getElementById('tr_7').style.display='none'; ">
+              <img tal:attributes="src string:${portal_url}/start_img/files.png" /></a></td>
+         </tr>
+         <tr>
+          <td colspan="7">
+           <p id="tr_0">每个项目有独立的工作空间。配备七种实用的项目协作和管理工具，相互关联、简单易用。<br />通过互联网，可将身处异地的项目参与人员紧密连接在一起，跟踪和快速推进项目，从而保证项目很好地完成。</p>
+           <p id="tr_1" style="display:none">使用消息板，可取代邮件，分类发布项目消息，比如项目公告、新闻、知识情报等；消息可让项目更有效的沟通和沉淀项目知识。</p>
+           <p id="tr_2" style="display:none">任务是提升项目执行力的利器，通过任务清单对任务分类组织，任务配合邮件通知，确保送达负责人；使用任务，让您的工作从此井然有序。</p>
+           <p id="tr_3"  style="display:none">使用里程碑，明确何时、由谁负责、需要达到什么目标。通过里程碑和项目进度，可清晰地了解到单个或多个项目的进展情况。</p> 
+           <p id="tr_4" style="display:none">写字板采用多种方便的编辑方式，用于多人在线协作写文档，比如合同，正式的发布的信息，也可以用于知识管理。</p>
+           <p id="tr_5"  style="display:none">工作日志用于记录项目组员每天的工作情况，在线提交，可与任务结合，可对工作日志进行各种角度的统计。</p>
+           <p id="tr_6"  style="display:none">讨论区让项目组员异地即时沟通，纯web的聊天室，不需要安装其他的软件，系统自动保存聊天记录，历史的聊天记录可存档。</p> 
+           <p id="tr_7" style="display:none">文件区让您的项目文件集中分类存储，文件支持多版本，且支持灵活的权限管理和审批工作流</p>
+
+          </td>
+       </table>
+  </div>
+
+      <div class="blankMore">
+         <table width="100%" style="padding:0 0 30px;">
+            <tr>
+              <td width="45%" style="border-right:1px dotted #CCCCCC;">
+                <p class="or_t">平台视频介绍</p>
+                <div style="text-align:center">
+                  <a class="image" target="_blank"  href="http://cache.everydo.com/demo/dash.htm"><img tal:attributes="src string:${portal_url}/start_img/play_view_o1.gif" /></a>
+                </div>
+              </td>
+              <td style="vertical-align: top; padding-left:20px">
+                <p class="or_t">平台使用帮助</p>
+                <ul>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/03project.rst">[常见问题]项目成员包括几个角色，可以自定义吗？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/03project.rst">[常见问题]项目完毕后，如何导出项目的数据？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/03project.rst">[常见问题]删除项目和项目存档有什么区别？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/03project.rst">[在线教程]了解项目七种工具，轻松管理好每个项目。</a></li>
+              </td>
+            </tr>
+         </table>
+      </div>
+
+ 
+ </tal:block>
+ </div>
+
+<div metal:fill-slot="portlets_two_slot"
+     tal:define="basecamp_view nocall:context/@@basecamp_view">
+
+    <div metal:use-macro="context/@@macro_basecamp/macros/companylogo" />
+
+    <tal:client tal:define="company context/getCompany;
+                            companyname python:company and company.getId()"
+                tal:condition="python:company and companyname != 'owner_company'">
+
+    <div metal:use-macro="context/@@macro_basecamp/macros/companylogo" />
+
+    </tal:client>
+
+    <div class="project_tags" 
+         i18n:domain="zopen.project"
+         tal:condition="python:showProjectSettings or subject"
+         tal:define="subject context/Subject;
+                     basecamp_view context/@@basecamp_view;
+                     showProjectSettings basecamp_view/showProjectSettings;
+                     ">
+
+     <img class="EVtags TGtags" 
+          tal:condition="python:showProjectSettings or subject"
+          tal:attributes="src string:${portal_url}/add_tag.gif" alt="" /> 
+
+     
+     <span id="current_project_tags" class="TGtags EVtags">
+      <tal:rep repeat="s subject">
+           <a href="#" class="tag_for"><span tal:replace="s" /></a>
+      </tal:rep>
+     </span>
+     <a class="admin EVtags TGtags" href="#" i18n:translate="add_tags" 
+        tal:condition="python:showProjectSettings and (not subject)">Add tags</a> 
+     <a class="admin EVtags TGtags" href="#" tal:condition="python:showProjectSettings and subject" i18n:translate="edit_tags">Edit tags</a> 
+      <div id="tag_for_projects"></div>
+
+   </div>
+
+
+    <h1 style="margin-top: 15px">
+      <tal:se tal:define="basecamp_view context/@@basecamp_view;
+                   showProjectSettings basecamp_view/showProjectSettings;"
+       tal:condition="showProjectSettings">
+        <a style="float:right" class="admin" href="teams/@@prefs_project_team" i18n:translate="add_person_project">Setting person</a></tal:se>
+     <span i18n:translate="people_project">People on this project</span></h1>
+    <tal:block tal:define="teamfolder_view nocall:context/teams/@@teamfolder_view;
+                           companies_and_people_list teamfolder_view/getCompanyPeopleTeamInfo;">
+        <tal:rep repeat="companies_and_people companies_and_people_list/values">
+        <tal:def define="company python:companies_and_people[0][0];
+                         people python:companies_and_people[1:];">
+           <h2 tal:content="company/pretty_title_or_id">company_title</h2>
+           <tal:rep-person repeat="person people">
+                <p style="margin-left:10px;"
+                     tal:define="person python:person[0];
+                        uid person/id;
+                        user python:context.acl_users.getUserById(uid);
+                        login_time python:
+                            user.getPropertysheet('mutable_properties').getProperty('login_time');
+                        DateTime python:modules['DateTime'].DateTime;
+                        no_login_yet python:login_time &lt; DateTime(2007,1,1);
+                        info_id string:person-info-${person/id};">
+
+                 <span tal:replace="person/pretty_title_or_id" />
+
+          <img class="EVexpand" 
+               tal:attributes="src string:${portal_url}/treeCollapsed.gif; 
+                               onclick string:document.getElementById('$info_id').style.display='inline';; this.style.display='none';; this.nextSibling.style.display='inline'" /><img class="EVcollaps TGexpand TGcollaps" style="display: none;"
+               tal:attributes="src string:${portal_url}/treeExpanded.gif; 
+                               onclick string:document.getElementById('$info_id').style.display='none';; this.style.display='none';; this.previousSibling.style.display='inline'"/>
+                 <br />
+                 <span class="discreet"
+                       id="person-info-person" style="display:none;"
+                       tal:attributes="id string:person-info-${person/id}"
+                       i18n:domain="zopen.org">
+                   <tal:email condition="person/email">
+                   E-Mail：
+                   <a  href="" title="Mail"
+                      tal:condition="person/email"
+                      tal:attributes="href string:mailto:${person/email}">
+                      <span tal:replace="person/email" />
+                   </a><br />
+                   </tal:email>
+                   <tal:phone define="phone python:person.phone or person.office" 
+                      tal:condition="phone">
+                      <tal:i18n i18n:translate="office_contact">Office #:</tal:i18n>
+                      <span tal:replace="phone" /><br />
+                   </tal:phone>
+                   <tal:mobile condition="person/mobilePhone">
+                      <tal:i18n i18n:translate="mobile_contact">Mobile #:</tal:i18n>
+                      <span tal:replace="person/mobilePhone" /><br />
+                   </tal:mobile>
+                 </span>
+                 <span class="discreet">
+                      <tal:cond condition="no_login_yet" i18n:translate="no_login_yet">
+                          No login yet
+                      </tal:cond>
+                      <tal:cond condition="not:no_login_yet" i18n:translate="last_login">
+                          Last Login: 
+                          <tal:block i18n:domain="zopen.basecamp" i18n:translate=""
+                                     tal:replace="python:basecamp_view.getExactTime(login_time)" i18n:name="login_time" /></tal:cond></span>
+           </p>
+          </tal:rep-person>
+        </tal:def>
+        </tal:rep>
+    </tal:block>
+
+</div>
+
+</html>

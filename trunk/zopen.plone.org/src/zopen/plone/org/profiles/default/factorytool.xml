@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_factory" meta_type="Plone Factory Tool">
+ <factorytypes>
+  <type portal_type="Team"/>
+  <type portal_type="TeamFolder"/>
+  <type portal_type="OrganizationUnit"/>
+  <type portal_type="Person"/>
+
+ </factorytypes>
+</object>

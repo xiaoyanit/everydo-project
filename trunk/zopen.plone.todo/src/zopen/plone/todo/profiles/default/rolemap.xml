@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="Administrator"/>
+    <role name="Owner"/>
+    <role name="Reader"/>
+    <role name="Editor"/>
+    <role name="Manager"/>
+    <role name="Responsor"/>
+  </roles>
+  <permissions>
+
+    <permission name="zopen.todo: Add list"
+                acquire="True">
+        <role name="Manager" />
+        <role name="Owner" />
+        <role name="Contributor" />
+        <role name="Administrator"/>
+    </permission>
+
+    <permission name="zopen.todo: Add item"
+                acquire="True">
+        <role name="Manager" />
+        <role name="Owner" />
+        <role name="Contributor" />
+        <role name="Administrator"/>
+    </permission>
+
+    <permission name="zopen.todo: Move lists"
+                acquire="True">
+        <role name="Manager" />
+        <role name="Owner" />
+        <role name="Editor" />
+        <role name="Reader" />
+        <role name="Administrator"/>
+    </permission>
+
+    <permission name="zopen.todo: Move items"
+                acquire="True">
+        <role name="Manager" />
+        <role name="Owner" />
+        <role name="Editor" />
+        <role name="Reader" />
+        <role name="Administrator"/>
+    </permission>
+
+    <permission name="zopen.todo: Report state"
+                acquire="True">
+        <role name="Manager" />
+        <role name="Owner" />
+        <role name="Editor" />
+        <role name="Responsor" />
+        <role name="Administrator"/>
+    </permission>
+
+  </permissions>
+</rolemap>

@@ -1,0 +1,2 @@
+<div tal:replace="structure provider:zopen.subscription">
+</div>

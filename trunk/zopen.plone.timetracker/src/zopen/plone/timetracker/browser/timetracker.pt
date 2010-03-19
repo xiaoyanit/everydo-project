@@ -1,0 +1,283 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<metal:css fill-slot="style_slot">
+
+   <link href=""
+         tal:attributes="href string:$portal_url/++resource++timetracker.css?34223332"
+         type="text/css" rel="stylesheet" media="screen"/>
+   <link href=""
+         tal:attributes="href string:$portal_url/++resource++timetracker.kss?34223332"
+         type="text/css" rel="kinetic-stylesheet" />
+
+</metal:css>
+
+<div metal:fill-slot="main"
+            tal:define="DateTime python:modules['DateTime'].DateTime;
+                        now python:DateTime();
+                        today python:DateTime(now.year(), now.month(), now.day());
+          Batch python:modules['Products.CMFPlone'].Batch;
+          b_size python:50;b_start python:0;b_start request/b_start | b_start; 
+          result view/calculateResults;
+          brains result/brains;
+          batch python:Batch(brains, b_size, int(b_start), orphan=1);"
+          i18n:domain="zopen.timetracker"
+            >
+
+    <div class="SectionHeader">
+    <h1 i18n:translate="time_tracking">Time tracking</h1>
+
+    <tal:cond condition="not:exists:request/form/responsibleParty">
+    <a href="#" class="admin EV-create-time-track-form TG-create-time-track-form" i18n:translate="create_a_report">Create a report</a>
+    <a href="#" class="donelink hideme EV-create-time-track-form TG-create-time-track-form" i18n:translate="cancel_report_creation">Cancel report creation</a>
+    </tal:cond>
+    <a href="#" class="donelink"
+       tal:condition="exists:request/form/responsibleParty"
+       tal:attributes="href string:$here_url"
+        i18n:translate="back_full_time">Back to the full time log</a>
+    </div>
+
+    <tal:def define="begin_date request/form/begin | python:today - 7;
+                     begin_date python:isinstance(begin_date, DateTime) and begin_date
+                                       or DateTime(begin_date.year, begin_date.month, begin_date.day);
+                     end_date request/form/end | today;
+                     end_date python:isinstance(end_date, DateTime) and end_date
+                                     or DateTime(end_date.year, end_date.month, end_date.day);
+                     ">
+    <h1 id="reporttitle" tal:condition="exists:request/form/responsibleParty">
+     <span tal:define="m_id request/form/responsibleParty;
+                       m_info python:m_id and mtool.getMemberInfo(m_id);"
+           tal:replace="python:m_info and m_info['fullname'] or m_id or default" >
+           <i18n:trans i18n:translate="all">All</i18n:trans>
+     </span>
+             <tal:i18n i18n:translate="hours_from">'s hours from</tal:i18n>
+     <span tal:replace="begin_date">Aug 21</span>
+     <tal:i18n i18n:translate="to"> to </tal:i18n>
+     <span tal:replace="end_date">today</span>
+     <span tal:condition="request/relateTo | nothing"
+           tal:content="string:[${view/getRelatedItemTitle}]"></span>
+     <span>(<a class="admin EV-edit-time-track-form TG-edit-time-track-form" href="#" i18n:translate="edit_report">Edit this report</a>
+     <a class="donelink hideme EV-edit-time-track-form TG-edit-time-track-form"
+     href="#" i18n:translate="cancel">Cancel</a>)</span>
+    </h1>
+    <form class="showhide hideme TG-create-time-track-form TG-edit-time-track-form">
+        <input type="hidden" name="relateTo"
+               tal:condition="request/relateTo | nothing"
+               tal:attributes="value request/relateTo" />
+
+        <tal:i18n i18n:translate="show">Show</tal:i18n> <select name="responsibleParty">
+                     <option value="" i18n:translate="all">All</option>
+                     <div tal:define="selected request/form/responsibleParty | nothing"
+                          tal:replace="structure provider:zopen.personselection" /></select>
+                           <tal:i18n i18n:translate="hours_from">'s hours from</tal:i18n>
+        <select name="begin.year:int:record">
+                <option tal:repeat="year python:range(today.year()-2, today.year()+1)"
+                        tal:content="year"
+                        tal:attributes="value year;
+                                        selected python:begin_date.year() == year;"
+                        /></select>
+        <select name="begin.month:int:record"
+                tal:define="month begin_date/month;"
+                tal:content="structure provider:zopen.month" />
+        <select name="begin.day:int:record">
+                <option tal:repeat="day python:range(1, 32)"
+                        tal:content="day"
+                        tal:attributes="value day;
+                                        selected python:begin_date.day() == day;"
+                        /></select>
+        <tal:i18n i18n:translate="to">to</tal:i18n>
+        <select name="end.year:int:record">
+                <option tal:repeat="year python:range(today.year()-2, today.year()+1)"
+                        tal:content="year"
+                        tal:attributes="value year;
+                                        selected python:end_date.year() == year;"
+                        /></select>
+        <select name="end.month:int:record"
+                tal:define="month end_date/month;"
+                tal:content="structure provider:zopen.month" />
+        <select name="end.day:int:record">
+                <option tal:repeat="day python:range(1, 32)"
+                        tal:content="day"
+                        tal:attributes="value day;
+                                        selected python:end_date.day() == day;"
+                        /></select>
+
+        <p class="submit">
+           <input class="context" type="submit" i18n:attributes="value create_report;" value="Create report" />
+            <tal:i18n i18n:translate="or">or</tal:i18n> 
+           <a class="admin EV-edit-time-track-form" href="#" i18n:translate="cancel">Cancel</a>
+        </p>
+
+    </form>
+    </tal:def>
+
+    <form>
+    <table class="TimeTrack">
+
+    <thead>
+    <tr>
+        <th class="date" i18n:translate="date">DATE</th>
+        <th i18n:translate="person">PERSON</th>
+        <th i18n:translate="hours">HOURS</th>
+        <th i18n:translate="description">DESCRIPTION</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody tal:condition="python:checkPermission('zopen.timetracker: Add Time Log', context)">
+
+    <tr class="AddTimeTrack" id="AddTimeTrack"
+        tal:condition="not:exists:request/form/responsibleParty"
+        >
+        <td class="date">
+            <select name="year:int">
+                <option tal:repeat="year python:range(today.year()-2, today.year()+1)"
+                        tal:content="year"
+                        tal:attributes="value year;
+                                        selected python:today.year() == year;"
+                        />
+            </select>
+            <select name="month:int"
+                    tal:define="month today/month"
+                    tal:content="structure provider:zopen.month" />
+            <select name="day:int">
+                    <option tal:repeat="day python:range(1,32)"
+                            tal:content="day"
+                            tal:attributes="value day;
+                                            selected python:day == today.day();"
+                            >day</option></select>
+        </td>
+
+        <td class="person">
+            <select name="responsibleParty" 
+                    tal:define="selected python:user.getId();"
+                    tal:content="structure provider:zopen.personselection" />
+        </td>
+        <td class="hours">
+            <input name="hours" size="5" />
+        </td>
+        <td class="desc">
+               <input name="title" size="50" />
+        </td>
+        <td class="action">
+           <span class="submit">
+            <input type="button" i18n:attributes="value add_to_log;" value="Add to log" 
+            tal:define="onclick_do string:document.getElementById('no_result').style.display='none';"
+            tal:attributes="onclick python:not brains and onclick_do or '';"/>
+           </span>
+           <span class="submit hideme">
+            <img alt="Indicator" 
+                tal:attributes="src string:$portal_url/++resource++indicator.gif"
+                style="vertical-align: middle;" height="5" width="21"
+                i18n:attributes="alt indicator;"
+                />
+           </span>
+       </td>
+    </tr>
+    </tbody>
+
+    <tbody>
+    <tal:items tal:repeat="item batch">
+    <tr class="kssDeletionRegion"
+        metal:define-macro="item"
+        tal:define="item nocall:item | options/item | nothing;
+                    obj item/getObject | nocall:item;
+                    item_url item/getURL | item/absolute_url"
+        tal:attributes="class
+                string:kssDeletionRegion kssattr-kssurl-${item/getId}/edit_time_log"
+        >
+        <td class="date">
+            <a href="#"
+               tal:content="item/Date"
+               tal:attributes="href string:$portal_url/@@time_report?date:date=${item/Date}"
+               >2005-12-01</a></td>
+        <td class="person">
+            <a href="#"
+               tal:define="m_id item/getResponsibleParty;
+                           m_info python:mtool.getMemberInfo(m_id);"
+               tal:content="python:m_info and m_info['fullname'] or m_id"
+               tal:attributes="href string:$portal_url/@@time_report?responsibleParty=${item/getResponsibleParty}"
+               >james</a></td>
+        <td class="hours" tal:content="item/getHours">1.5</td>
+        <td class="desc">
+            <div tal:condition="item/Description">
+               <span class="TodoItemIcon" i18n:domain="zopen.project" i18n:translate="TodoItem">Todo Item</span>
+               <a href=""
+                  tal:attributes="href string:$item_url/@@gotoRelated"
+                  tal:content="string:${item/Description}...">title
+               </a>
+            </div>
+            <span tal:content="item/Title" tal:condition="item/Title">asdfas asdf</span>
+            <span class="discreet" tal:define="c_id item/Creator;r_id item/getResponsibleParty" tal:condition="python:c_id!=r_id">
+                (<tal:i18n i18n:translate="create_by">Create by: </tal:i18n>
+                 <span tal:define="c_info python:mtool.getMemberInfo(c_id);" 
+                               tal:replace="python:c_info and c_info['fullname'] or c_id" />)
+            </span>
+        </td>
+        <td class="action" tal:define="canModify python:checkPermission('Modify portal content', obj)">
+            <a href="#" tal:condition="canModify" class="admin editlink" i18n:translate="edit">edit</a>
+            <img tal:attributes="src string:${portal_url}/++resource++trash.gif;
+                                 onclick string:delete_confirm(this,'','${obj/absolute_url}', document.getElementById('sum_hours').value)" 
+                 title="Delete" class="delimage"
+                 tal:condition="canModify"
+                 i18n:domain="zopen.basecamp"
+                 i18n:attributes="title delete;"/> 
+        </td>
+    </tr>
+    </tal:items>
+
+    </tbody>
+
+    <tfoot>
+     <tr class="total">
+        <td></td>
+        <td class="total" i18n:translate="total">TOTAL</td>
+        <td class="hours">
+            <input id="sum_hours" name="sum_hours" readonly="readonly" style="border: none;" size="6" tal:attributes="value result/hours" />
+        </td>
+        <td colspan="2" class="export"> 
+            <a href="#" 
+               tal:attributes="href result/csv_url"
+               class="admin" i18n:translate="export">Export</a>
+            <tal:i18n i18n:translate="to_csv"> this table to CSV </tal:i18n></td>
+     </tr>
+    </tfoot>
+
+    </table>
+    </form>
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+       <div class="TG-create-time-track-form" id="no_result" tal:condition="not:brains"
+                       i18n:domain="zopen.basecamp">
+          <div class="blankBar">
+            <h1 i18n:translate="learn_about_timetrack">Learn about time tracking: Watch a video demo below</h1>
+            <p i18n:domain="zopen.basecamp" i18n:translate="time_track_log"></p>
+          </div>
+
+      <div class="blankMore">
+         <table width="100%" style="padding:0 0 30px;">
+            <tr>
+              <td width="45%" style="vertical-align: top;border-right:1px dotted #CCCCCC;">
+                <p class="or_t">工作日志视频介绍</p>
+                <div style="text-align:center">
+                  <a class="image" target="_blank"  href="http://cache.everydo.com/demo/writeboard.htm"><img tal:attributes="src string:${portal_url}/start_img/play_view_o6.gif" /></a>
+                </div>
+              </td>
+              <td style="vertical-align: top; padding-left:20px">
+                <p class="or_t">工作日志使用帮助</p>
+                <ul>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/10time.rst">[常见问题]工作日志在项目中有什么作用？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/10time.rst">[常见问题]工作日志如何和与任务结合？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/10time.rst">[常见问题]如何查看项目成员在某段时间的工作日志？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/10time.rst">[常见问题]如何查看项目成员在多个项目的工作日志？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/10time.rst">[常见问题]导出为CSV文件是什么？</a></li>
+                  <li><a class="link-plain" target="_blank" href="http://docs.everydo.com/project/manual/08time.rst">[在线教程]工作日志功能介绍。</a></li>
+              </td>
+            </tr>
+         </table>
+      </div>
+      </div>
+   
+</div>
+
+</html>

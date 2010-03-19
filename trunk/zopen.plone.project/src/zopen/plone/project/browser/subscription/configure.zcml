@@ -1,0 +1,37 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           i18n_domain="zopen.plone.org">
+
+  <adapter factory=".providerview.SubscriptionProvider"
+           name="zopen.subscription"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <browser:resource
+      name="subscribe.kss"
+      file="subscribe.kss"
+      />
+
+  <browser:pages
+      for="*"
+      class=".kssview.SubKssView"
+      permission="zope2.View"
+      >
+    <browser:page
+        name="subscribeAuthenticatedMember"
+        attribute="subscribeAuthenticatedMember"
+        />
+    <browser:page
+        name="unsubscribeAuthenticatedMember"
+        attribute="unsubscribeAuthenticatedMember"
+        />
+    <browser:page
+        name="subscribeNotified"
+        attribute="subscribeNotified"
+        />
+    <browser:page
+        name="editSub"
+        attribute="editSub"
+        />
+  </browser:pages>
+
+</configure>

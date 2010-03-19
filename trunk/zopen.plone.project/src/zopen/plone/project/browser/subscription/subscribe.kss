@@ -1,0 +1,35 @@
+a#subscribe-self:click {
+    evt-click-preventdefault: true;
+
+    action-server: subscribeAuthenticatedMember;
+}
+
+a#unsubscribe-self:click {
+    evt-click-preventdefault: true;
+
+    action-server: unsubscribeAuthenticatedMember;
+}
+.TeditNotified:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.GeditNotified');
+   toggleClass-value: hideme;
+
+   action-server: editSub;
+}
+#editNotified a.admin:click {
+   evt-click-preventdefault: true;
+
+   action-client: deleteNode css('#editNotified');
+
+   action-client: toggleClass css('.GeditNotified');
+   toggleClass-value: hideme;
+}
+
+form#editNotified input[type="submit"]:click {
+   evt-click-preventdefault: true;
+  
+   action-client: deleteNode css('#editNotified');
+
+   action-server: subscribeNotified currentForm();
+}

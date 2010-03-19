@@ -1,0 +1,274 @@
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+/*-------------------------------------------------
+FILES (Feb 2005 by rjs)
+-------------------------------------------------*/
+.fileForm h2 span.upload_limit {
+  font-family: lucida grande, verdana, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  color: #777;
+}
+
+.fileForm p.upload_limit {
+  color: #777;
+  font-size: 11px;
+  margin-bottom: 0;
+}
+
+.fileForm table.upload_layout {
+  width: 99%;
+  margin-bottom: 8px;
+}
+
+.fileForm table.upload_layout td.choose_file {
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+.fileForm table.upload_layout td.choose_file input {
+  width: 95%;
+  margin-left: 5px;
+  font-size: 11px;
+}
+
+.fileForm table.upload_layout td.meta {
+  padding-left: 10px;
+  white-space: nowrap;
+}
+
+.fileForm table.upload_layout td.meta .smaller {
+  font-size: 11px;
+}
+
+.fileForm table.upload_layout td.meta select {
+  font-size: 11px;
+  width: 150px;
+}
+
+.fileForm table.upload_layout td.meta input.description {
+  font-size: 12px;
+  width: 95%;
+}
+
+.fileForm table.upload_layout td.meta p {
+  margin-bottom: 7px;
+}
+
+.fileForm table.upload_layout td hr {
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.fileForm table.upload_layout td p.add_another {
+  margin: 0 0 0 15px;
+}
+
+div.Post p {
+  margin-bottom: 3px;
+}
+
+div.Post a.message_title {
+  font-weight: normal;
+  color: #666;
+}
+
+div.Post a.message_title:hover {
+  color: #fff;
+}
+
+div.Post h3 a.image:hover {
+  background: none;
+}
+
+div.Post h3 a.image img {
+  vertical-align: bottom;
+}
+
+div.Post div.file_icon {
+  float: left;
+  width: 32px;
+  position: relative; /* force layout */
+}
+
+div.Post div.file_icon img {
+  width: 32px;
+  height: 32px;
+}
+
+div.Post div.file_info {
+  border-bottom:1px dashed #CCCCCC;
+  margin-left: 40px;
+  padding-bottom:3px;
+}
+
+div.Post div.file_info h1 {
+  margin:5px 0 8px;
+}
+
+div.Post div.file_info span.dash {
+  color: #999;
+}
+
+div.Post h1 {
+  padding-top: 0;
+}
+
+div.Right p.sort_by {
+  font-size: 12px;
+}
+
+div.edit_file {
+  background: #efefef;
+  border: 2px solid #ccc;
+  padding: 10px 10px 5px 10px;
+  margin-bottom: 30px;
+}
+
+div.edit_file label {
+  float: left;
+  width: 70px;
+  margin-right: 8px;
+  text-align: right;
+  padding-top: 2px;
+  color: #666;
+}
+
+div.edit_file div.file_icon {
+  float: left;
+  width: 32px;
+  position: relative; /* force layout */
+}
+
+div.edit_file div.file_info {
+  margin-left: 45px;
+}
+
+div.edit_file div.file_info label {
+  position: relative; /* force layout */
+}
+
+div.edit_file p {
+  margin: 0 0 3px 0;
+  font-size: 11px;
+}
+
+div.edit_file input.title {
+  width: 408px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+div.edit_file input.description {
+  font-size: 12px;
+  width: 330px;
+}
+
+div.edit_file select {
+  margin-right: 5px;
+}
+
+div.edit_file p.submit {
+  margin: 5px 0 5px 0;
+  padding: 5px 0 0 75px;
+  border-top: 1px solid #ddd;
+}
+
+div.edit_file p.submit img { /* spinner */
+  padding: 4px 0;
+}
+
+div.edit_file div.attached p.submit {
+  padding-left: 0;
+}
+
+/*-------------------------------------------------
+FILE VERSIONS
+-------------------------------------------------*/
+
+div.versions {
+    margin: 0 0 40px 0;
+    padding: 0 10px 0 0;
+}
+
+div.versions div.edit_file {
+  margin: 5px 0;
+}
+
+div.versions ul {
+    margin: 0;
+    padding: 0;
+}
+
+div.versions li {
+    font-size: 10px;
+    color: #666;
+    list-style: none;
+    margin-left: -40px;
+}
+
+div.versions li.new a {
+    font-size: 10px;
+    color: #333;
+    font-family: verdana;
+    list-style: none;
+}
+
+div.versions li h3 {
+  margin: 0; padding: 0;
+}
+
+div.versions li h3 span.number {
+  width: 32px;
+  display: block;
+  float: left;
+  margin-right: 5px;
+  text-align: right;
+}
+
+div.versions li h3 img,
+div.versions li h3 a.image img {
+  vertical-align: top;
+}
+
+div.versions li h3 a.image img {
+  margin-top: 4px;
+}
+
+div.versions li a.filename {
+    font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
+    font-size: 12px;
+    color: #000;
+  margin-left: -2px;
+}
+
+div.versions li a.filename:hover {
+  color: #fff;
+}
+
+div.versions li span.number {
+    /*margin-right: 5px;*/
+}
+
+div.file_image {
+   float:right;
+   height: 68px;
+   width: 68px;
+   text-align:center;
+   border:1px solid #CCCCCC;
+}
+div.file_image a:link,
+div.file_image a:visited,
+div.file_image a:hover{
+   background-color: #FFF;
+}
+
+.tileImage {
+   border: none;
+   margin: 3px;
+   float:none;
+}
+/* </dtml-with> */

@@ -1,0 +1,680 @@
+<div metal:define-macro="trackitem"
+     tal:define="item nocall:options/item;
+                 DateTime python:modules['DateTime'].DateTime;
+                 now python:DateTime();" 
+     class="trackitem showhide"
+     i18n:domain="zopen.timetracker">
+
+  <span class="item_title" tal:content="item/Title">title</span>
+
+    <div class="total"
+         tal:condition="options/hours">
+      <span i18n:translate="total">total</span>:
+      <strong tal:content="options/hours">23.0</strong> <span i18n:translate="hours">hours</span>
+      <span><a href=""
+               tal:attributes="href string:${context/absolute_url}/../../../time?relateTo=${context/UID}&amp;responsibleParty="
+               i18n:domain="zopen.todo" i18n:translate="view_item_log">View this item time log</a></span>
+    </div>
+ 
+  <div class="form trackitemmore" metal:define-macro="trackitemmore"
+       tal:define="DateTime python:modules['DateTime'].DateTime;
+                 now python:DateTime();"> 
+    <form class="trackform">
+      <table>
+        <tbody><tr>
+          <th i18n:translate="date">Date</th>
+          <td>
+
+<select name="year:int">
+   <option value="2005"
+        tal:repeat="year python:range(now.year()-1, now.year()+2)"
+        tal:content="year"
+        tal:attributes="value year;
+                        selected python:year == now.year()">2005</option>
+</select>
+
+<select name="month:int"
+        tal:define="month now/month;"
+        tal:content="structure provider:zopen.month" />
+
+<select name="day:int">
+   <option value="31"
+           tal:repeat="day python:range(1, 32)"
+           tal:content="day"
+           tal:attributes="value day;
+                           selected python:day == now.day()" >31</option>
+</select>
+
+               <span class="errmsgDate" style="margin-left:50px;"></span>       
+          </td>
+        </tr>
+        <tr>
+          <th i18n:translate="person">Person</th>
+          <td>
+            <select name="responsibleParty"
+                 tal:define="selected python:[user.getId()]"
+                 tal:content="structure provider:zopen.personselection" />
+          </td>
+        </tr>
+        <tr>
+          <th i18n:translate="hours">Hours</th>
+          <td>
+             <div class="field">
+                <div style="float:left;">
+                   <input type="text" class="hourInput" value="" size="4" name="hours"/> 
+                   <tal:i18n i18n:domain="zopen.todo" i18n:translate="eg_hour">(eg. 2.5, or 2:30)</tal:i18n>
+                </div>
+               <div class="errmsgHour" style="margin-left:200px;"></div>       
+             </div>
+          </td>
+        </tr>
+        <tr>
+          <th style="vertical-align:top;" i18n:translate="description">Notes</th>
+          <td>
+            <textarea rows="3" name="title" cols="35"></textarea>
+          </td>
+        </tr>
+      </tbody></table>
+            <p class="submit hideme">
+                <img alt="Indicator" class="spinner" src="/++resource++indicator.gif" style="vertical-align: middle;" height="5" width="21" />
+            </p>
+            <p class="submit">
+              <input type="submit" value="Add to log" name="commit"
+                     i18n:attributes="value add_to_log;"/>
+                     <span i18n:translate="or">or</span>
+              <a href="#" class="admin EVcanceltrackitem" i18n:translate="cancel">Cancel</a>
+            </p>
+    </form>
+  </div>
+</div>
+
+<div metal:define-macro="add_todolist"
+     tal:condition="view/canAddList"
+     tal:define="hideme hideme | string:hideme"
+     id="add_todolist" 
+     tal:attributes="class string:$hideme showhide TGnewlist"
+     i18n:domain="zopen.todo">
+
+    <form class="addlistform" method="post">
+
+      <div class="form_field"
+              tal:define="template_todolists nocall:portal/templates/todos/folderlistingFolderContents | python:[]">
+       <p>
+        <span class="label_field TGselett" i18n:translate="enter_title">First enter a title</span> 
+        <span class="label_field TGselett hideme" i18n:translate="choose_a_template">Choose a to-do list template</span> 
+        <span class="smallgray"
+           tal:condition="template_todolists">(<tal:block i18n:translate="or">or</tal:block>
+          <a onclick="return false;" href="#"><span class="TGselett" i18n:translate="choose_a_template">Choose a to-do list template</span><span class="TGselett hideme" i18n:translate="create_new_todolist">Create new to-do list</span></a>)
+        </span>
+       </p>
+        <select class="TGselett hideme" style="width:60%" name="template_id">
+           <option value="">--</option>
+          <tal:re repeat="todolist template_todolists">
+           <option tal:attributes="value todolist/getId;" tal:content="todolist/Title" />
+          </tal:re>
+        </select>
+        <input type="text" name="title" class="list_title TGclear TGselett"
+               autocomplete="false" width="60%"/>
+      </div>
+
+      <div class="form_field"  tal:condition="view/canTrack">
+        <p><input type="checkbox" name="tracked" value="1"/>
+           <tal:i18n i18n:translate="allow_report_timelog">Allow to report time log</tal:i18n>
+        </p>
+      </div>
+
+    <div class="form_field" tal:condition="not: view/isStandaloneTodo">
+       <p><span class="label_field" i18n:translate="list_description">Optional: List description:</span></p>
+       <textarea rows="6" name="description" class="TGclear"></textarea>
+    </div>
+  
+    <div class="form_field" tal:condition="not: view/isStandaloneTodo"
+         tal:on-error="string:">
+     <p><span class="label_field" i18n:translate="relate_milestone">Optional: Does this list relate to a milestone?</span></p>
+      <select name="milestone"
+              tal:content="structure provider:zopen.milestoneselection" />
+    </div>
+
+    <p tal:condition="python: not view.isStandaloneTodo()"><input type="checkbox" value="1" name="private" class="noborder" id="private"/>
+        <tal:block i18n:translate="make_list">Make this list</tal:block> 
+        <a class="link-plain" target="_blank" href="http://docs.everydo.com/project/faq/01general.rst" i18n:translate="private">private</a></p>
+  
+    <p class="submit hideme">
+       <img alt="Indicator" class="spinner" src="/++resource++indicator.gif" style="vertical-align: middle;" height="5" width="21" />
+    </p>
+
+    <p class="submit">
+      <tal:block i18n:translate="after_create_list">After you create this list, you can add as many items to it as you want.</tal:block><br />
+      <input type="submit" name="submit"  i18n:attributes="value create_todo;" value="Create this list"/> <span i18n:translate="or">or</span>
+      <a href="#" class="admin EVnewlist"><tal:block i18n:translate="cancel">Cancel</tal:block></a>
+    </p>
+  </form>
+
+</div>
+
+<div class="editlistformwrapper">
+<form class="showhide editlist" metal:define-macro="editlist"
+      tal:define="todolist nocall:options/todolist;
+                  isStandaloneTodo view/isStandaloneTodo;
+                  basecamp_view context/@@basecamp_view | nothing;
+                  review_state options/review_state;
+                  is_template options/is_template;"
+      tal:attributes="class string:showhide editlist kssattr-listid-${todolist/getId}"
+      method="post" 
+      i18n:domain="zopen.todo">
+
+     <input type="text" name="title" class="list_title TGclear" 
+            autocomplete="false" tal:attributes="value todolist/Title"
+            size="40"/>
+
+    <tal:temp condition="not: is_template">
+     <p tal:condition="view/canTrack"><input type="checkbox" name="tracked" value="1"
+               tal:attributes="checked todolist/getTracked"/>
+           <tal:i18n i18n:translate="allow_report_timelog">Allow to report time log</tal:i18n>
+     </p>
+    </tal:temp>
+
+    <div id="new_list_description">
+       <p><tal:block i18n:translate="list_description">Optional: List description:</tal:block><br/>
+       <textarea rows="6" name="description" class="TGclear"
+                 tal:content="todolist/Description"></textarea></p>
+    </div>
+  
+   <tal:temp condition="not: is_template">
+    <p tal:condition="not: view/isStandaloneTodo"
+       tal:on-error="string:"><tal:block i18n:translate="relate_milestone">Optional: Does this list relate to a milestone?</tal:block><br/>
+      <select name="milestone"
+              tal:define="selected todolist/getRelatedMilestoneUIDs"
+              tal:content="structure provider:zopen.milestoneselection" />
+    </p>
+
+     <p tal:condition="python: not view.isStandaloneTodo()">
+        <input type="checkbox" value="1" name="private" class="noborder"
+               tal:attributes="checked python:review_state == 'private'"/> 
+        <tal:block i18n:translate="make_list"> Make this list </tal:block> <a target="_blank" href="http://docs.everydo.com/project/faq/01general.rst" i18n:translate="private">private</a>
+     </p>
+    </tal:temp>
+    <p class="submit">
+      <input type="submit" name="submit" i18n:attributes="value save_list;"
+             value="Save this list"/> <span i18n:translate="or">or</span>
+      <a href="#" class="admin EVeditlist" i18n:translate="cancel">Cancel</a>
+    </p>
+        <p class="submit hideme">
+           <img alt="Indicator" class="spinner" src="/++resource++indicator.gif" style="vertical-align: middle;" height="5" width="21" />
+        </p>
+</form>
+</div>
+
+<div metal:define-macro="additem"
+     class="TGadditem hideme showhide"
+     tal:define="isAdding isAdding | nothing;
+                 is_template options/is_template | python: False"
+     tal:attributes="class python:isAdding and 'TGadditem showhide' or 'TGadditem hideme showhide'"
+     i18n:domain="zopen.todo">
+
+     <form method="post" class="additemform" action="">
+
+        <p><tal:block i18n:translate="enter_todo_item">Enter a to-do item</tal:block><br/>
+           <textarea rows="3" name="title" tal:condition="not: view/isStandaloneTodo"
+             class="new_item_title"></textarea>
+           <input name="title" autocomplete="false" class="new_item_title" tal:condition="view/isStandaloneTodo" />
+        </p>
+
+      <tal:tem condition="not: is_template">
+        <tal:block tal:condition="not: view/isStandaloneTodo">
+        <p class="iefix"><tal:i18n i18n:translate="whos_reponsible">Who's responsible?</tal:i18n><br />
+
+        <select name="responsibleParty"
+                onchange="javascript:
+                if (this.options[this.selectedIndex].value != '' &&
+                    this.options[this.selectedIndex -1].value != '' ) {
+                    this.nextSibling.nextSibling.style.display = 'inline'
+                } else {
+                    this.nextSibling.nextSibling.style.display = 'none'
+                } 
+                ">
+                <option  value=""><tal:i18n i18n:translate="anyone">Anyone</tal:i18n></option>
+                <option tal:replace="structure provider:zopen.xpersonselection"/>
+        </select>
+        <span style="display: none;">
+           <input type="checkbox" checked="checked" class="noborder" value="1" name="notify"/><tal:block i18n:translate="notify_by_email"> Notify by email?</tal:block>
+        </span>
+        </p>
+        </tal:block>
+
+        <tal:nothing condition="nothing">
+        <p class="iefix" i18n:translate="todo_category">Category</p>
+        <select name="subject">
+          <option tal:define="todo_cats todo_cats | view/getTodoCategories" 
+                  tal:repeat="cat todo_cats" 
+                  tal:attributes="value cat"
+                  tal:content="python:todo_cats[cat]" value="task">任务</option>
+        </select>
+        </tal:nothing>
+
+        <tal:block tal:condition="not: view/isStandaloneTodo">
+        <p class="iefix" i18n:translate="when_is_due">When's it due?</p>
+        <select name="endDate" class="endDate"
+           onchange="this.nextSibling.style.display = this.options[this.selectedIndex].value == 'exact' && 'block' || 'none'">
+          <option value="later" i18n:translate="due_undefined">Undefined</option>
+          <option value="today" i18n:translate="due_today">Today</option>
+          <option value="tomorrow" i18n:translate="due_tomorrow">Tomorrow</option>
+          <option value="thisweek" i18n:translate="due_thisweek">This week</option>
+          <option value="nextweek" i18n:translate="due_nextweek">Next week</option>
+          <option value="exact" i18n:translate="due_exact">Designate an exact date...</option>
+        </select><div style="display:none"
+        tal:define="today today | python:modules['DateTime'].DateTime(); "><select name="year"><option tal:repeat="year python:range(today.year()-1,today.year() + 3)" 
+                                    tal:attributes="value year;
+                                                    selected python:year == today.year()" tal:content="year"/></select>年
+        <select name="month"><option tal:repeat="mon python:range(1,13)" 
+                                    tal:attributes="value mon;
+                                                    selected python:mon == today.month()" tal:content="mon"/></select>月
+        <select name="day"><option tal:repeat="day python:range(1,32)" 
+                                   tal:attributes="value day;
+                                                   selected python:day == today.day()" tal:content="day"/></select>日
+        <span class="errmsg"> </span>
+        </div>
+        </tal:block>
+
+        <tal:nothing tal:condition="nothing">
+        <p tal:condition="not: view/isStandaloneTodo">
+        <input type="checkbox" name="createmilestone"/>
+         <tal:i18n i18n:translate="create_milestone_sometime">Create a milestone at the same time</tal:i18n>
+        </p>
+        </tal:nothing>
+
+       </tal:tem>
+        <p class="submit">
+          <input type="submit" name="submit" i18n:attributes="value add_item;"  value="Add this item" /> <span i18n:translate="or">or</span>
+          <a href="#" class="admin EVadditem"><tal:block i18n:translate="done_adding_items">I'm done adding items</tal:block></a>
+        </p>
+
+        <p class="submit hideme">
+           <img alt="Indicator" class="spinner" src="/++resource++indicator.gif" style="vertical-align: middle;" height="5" width="21" />
+        </p>
+    </form>
+</div>
+
+<form metal:define-macro="edititem"
+      tal:define="item nocall:options/item;
+                  is_template options/is_template;"
+      method="post" class="showhide edititem" action="@@add_todoitem"
+      i18n:domain="zopen.todo">
+
+      <textarea rows="3" name="title"
+                tal:content="item/Title"
+                class="edit_item_title"></textarea>
+
+    <tal:temp condition="not:is_template">
+      <tal:block tal:condition="not:view/isStandaloneTodo"
+         tal:define="selected python:[item.getResponsibleParty()]">
+      <p class="iefix"><tal:i18n i18n:translate="whos_reponsible">Who's responsible?</tal:i18n><br />
+      <select name="responsibleParty"
+                onchange="javascript:
+                if (this.options[this.selectedIndex].value != '' &&
+                    this.options[this.selectedIndex -1].value != '' ) {
+                    this.nextSibling.style.display = 'inline'
+                } else {
+                    this.nextSibling.style.display = 'none'
+                }">
+              <option value=""><tal:i18n i18n:translate="anyone">Anyone</tal:i18n></option>
+              <option tal:replace="structure provider:zopen.xpersonselection"/>
+      </select><span tal:attributes="style python:not selected and 'display: none' or '';">
+            <input type="checkbox" class="noborder" tal:attributes="checked not:selected" name="notify"/><tal:block i18n:translate="notify_by_email"> Notify by email?</tal:block>
+      </span>
+      </p>
+      </tal:block>
+
+        <tal:nothing condition="nothing">
+        <p class="iefix" i18n:translate="todo_category">Category</p>
+        <select name="subject">
+          <option tal:define="todo_cats todo_cats | view/getTodoCategories" 
+                  tal:repeat="cat todo_cats" 
+                  tal:attributes="value cat;
+                                  selected python:cat in item.Subject()"
+                  tal:content="python:todo_cats[cat]" value="task">任务</option>
+        </select>
+        </tal:nothing>
+
+        <tal:block tal:condition="not:view/isStandaloneTodo">
+        <p class="iefix" i18n:translate="when_is_due">When's it due?</p>
+        <select name="endDate" 
+           onchange="this.nextSibling.style.display = this.options[this.selectedIndex].value == 'exact' && 'block' || 'none'">
+          <option value="later"
+                  tal:attributes="selected not:item/end" i18n:translate="due_undefined">Undefined</option>
+          <option value="today" i18n:translate="due_today">Today</option>
+          <option value="tomorrow" i18n:translate="due_tomorrow">Tomorrow</option>
+          <option value="thisweek" i18n:translate="due_thisweek">This week</option>
+          <option value="nextweek" i18n:translate="due_nextweek">Next week</option>
+          <option value="exact" selected="selected"
+                  tal:attributes="selected item/end" i18n:translate="due_exact">Designate an exact date...</option>
+        </select><div tal:define="today today | python:modules['DateTime'].DateTime(); 
+                          end item/end"
+                      tal:attributes="style python:not item.end() and 'display: none' or ''">
+        <select name="year"><option tal:repeat="year python:range(min(end and end.year() or today.year(), today.year())-1,today.year() + 3)" 
+                                    tal:attributes="value year;
+                                                    selected python:year == (end and end.year() or today.year())" tal:content="year"/></select>年
+        <select name="month"><option value="">-</option><option tal:repeat="mon python:range(1,13)" 
+                                    tal:attributes="value mon;
+                                                    selected python:mon == (end and end.month() or today.month())" tal:content="mon"/></select>月
+        <select name="day"><option value="">-</option><option tal:repeat="day python:range(1,32)" 
+                                   tal:attributes="value day;
+                                                   selected python:day == (end and end.day() or today.day())" tal:content="day"/></select>日
+        <span class="errmsg"> </span>
+        </div>
+        </tal:block>
+
+        <tal:nothing tal:condition="nothing">
+        <p tal:condition="not: view/isStandaloneTodo">
+        <input type="checkbox" name="createmilestone"/>  
+         <tal:i18n i18n:translate="create_milestone_sometime">Create a milestone at the same time</tal:i18n>
+        </p>
+        </tal:nothing>
+
+    </tal:temp>
+
+      <p class="submit">
+         <input type="submit" name="submit" i18n:attributes="value save_item;" value="Save this item" /> <span i18n:translate="or">or</span>
+         <a href="#" class="admin EVcanceledititem"><tal:block i18n:translate="cancel">Cancel</tal:block></a>
+      </p>
+
+        <p class="submit hideme">
+           <img alt="Indicator" class="spinner" src="/++resource++indicator.gif" style="vertical-align: middle;" height="5" width="21" />
+        </p>
+</form>
+
+<div metal:define-macro="activeitems"
+     class="activetodos"
+     tal:attributes="id string:active_${todolist/getId}"
+     i18n:domain="zopen.todo">
+
+     <tal:block tal:repeat="item items">
+         <div metal:define-macro="active"
+              tal:define="item nocall: options/item | nocall:item;
+                          item_url item/getURL | item/absolute_url;
+                          item_id item/getId;
+                          obj python:hasattr(item, 'getObject') and getattr(todolist, item_id) or item;
+                          canReportState python:checkPermission('zopen.todo: Report state', obj);
+                          is_template options/is_template | python: False;"
+              class="kssDeletionRegion"
+              tal:attributes="id string:item_$item_id;
+                              class string:kssDeletionRegion kssattr-itemid-$item_id;
+                              onmouseover string:this.firstChild.style.display='block';;document.getElementById('view_more_$item_id').style.display='inline';
+                              onmouseout string:this.firstChild.style.display='none';;document.getElementById('view_more_$item_id').style.display='none';
+                              "
+              ><div class="nubbin">
+                 <div class="wrapper TGedititem TGcomplete">
+                   <ul>
+                     <li>
+                        <img class="delimage" src="/++resource++trash.gif" title="Delete"
+                             i18n:attributes="title delete;"
+                             tal:condition="python:checkPermission('Delete objects', obj)"
+                             onclick="delete_todoitem(this)" />
+                     </li>
+                     <li>
+                        <a href="#" class="admin edititem"
+                           tal:condition="python:checkPermission('Modify portal content', obj)"
+                           i18n:translate="edit">
+                           Edit
+                        </a>
+                     </li>
+                     <li>
+                       <img src="/++resource++drag_handle.gif" title="Order"
+                         tal:condition="view/canMoveItems"
+                         class="handle"
+                         i18n:attributes="title order;"
+                         />
+                     </li>
+
+                  </ul>
+                </div>
+              </div>
+
+             <div class="visiblecontent">
+              <img alt="Indicator" class="spinner TGcomplete hideme TGedititem"
+                   src="/++resource++indicator.gif"
+                   style="vertical-align: middle;" height="5"
+                   width="21" />
+              <img src="/++resource++opentodo.gif" 
+                   class="opentodo" tal:condition="not: canReportState" />
+
+             <tal:block condition="is_template">
+              <img src="/++resource++opentodo.gif" class="opentodo" />
+             </tal:block>
+             <tal:block condition="not: is_template">
+              <input type="checkbox" tal:condition="canReportState"
+                     class="noborder TGcomplete EVcomplete TGedititem"
+                     /></tal:block>&nbsp;<div class="itemcontent">
+
+              <span class="itemtext">
+
+              <img src="/++resource++clock-off.gif" class="timetracker"
+                   tal:define="tracked tracked | obj/getTracked"
+                   tal:condition="python:tracked and view.canTrack()"
+                   tal:attributes="src python:obj.getRawRelatedItems() and '/++resource++clock-on.gif' or '/++resource++clock-off.gif'"/>
+             
+                  <span class="todocat"
+                        tal:define="todo_cats todo_cats | view/getTodoCategories" 
+                        tal:repeat="subj obj/Subject"
+                        tal:content="python:todo_cats[subj]" />
+                 <span class="discreet" 
+                       style="font-weight: bold"
+                       tal:define="basecamp_view basecamp_view | context/@@basecamp_view;
+                                   end obj/end;
+                                   end_status python:end and basecamp_view.getExactTime(end, extract=2);
+                                   end_time python:end and basecamp_view.getExactTime(end, extract=1);"
+                       tal:condition="end"
+                       tal:attributes="class python:end_status!=None and end_status or ''" 
+                       i18n:domain="zopen.basecamp" i18n:translate=""
+                       tal:content="end_time"/>
+                   <span tal:condition="obj/end"> - </span>
+                  <strong tal:define="responsor obj/getResponsibleParty;"
+                          tal:condition="responsor"
+                          tal:content="obj/getResponsiblePartyTitle">
+                  </strong>
+
+                  <span tal:replace="structure obj/richTitle">
+                 item title
+                 </span>
+                </span>
+
+                <div class="edititemwrapper"><!-- --></div>
+                 <div class="todo_view_more"
+                      tal:attributes="id string:view_more_$item_id;">
+                    <a tal:condition="not: is_template"
+                    href="" tal:attributes="href string:${obj/absolute_url}/@@todoitem_view;" i18n:translate="more">more...</a>
+                 </div>
+              </div>
+             </div>
+
+
+         </div>
+     </tal:block>
+
+</div>
+
+
+<div metal:define-macro="completeditems"
+     class="completedtodos"
+     tal:define="showfulllist showfulllist | nothing;
+                 showfulllist python:showfulllist or view.isStandaloneTodo();
+                 completed_len python:len(items);"
+     tal:attributes="id string:completed_${todolist/getId}"
+     i18n:domain="zopen.todo">
+
+     <tal:items tal:repeat="item python:showfulllist and items or [item for item in items[:3] if item is not None]">
+         <div metal:define-macro="completed"
+              tal:define="item nocall: options/item | nocall:item;
+                          item_url item/getURL | item/absolute_url;
+                          item_id item/getId;
+                          obj python:hasattr(item, 'getObject') and getattr(todolist, item_id) or item;
+                          canReportState python:checkPermission('zopen.todo: Report state', obj)"
+              class="kssDeletionRegion"
+              tal:attributes="id string:item_$item_id;
+                              class string:kssDeletionRegion kssattr-itemid-$item_id;
+                              onmouseover string:document.getElementById('view_more_$item_id').style.display='inline';
+                              onmouseout string:document.getElementById('view_more_$item_id').style.display='none';
+                              ">
+
+                 <img alt="Indicator" class="spinner TGactivate TGedititem hideme"
+                      src="/++resource++indicator.gif"
+                      style="vertical-align: middle;" height="5" width="21"/>
+
+                 <input type="checkbox" checked="checked"
+                        tal:condition="canReportState"
+                        tal:attributes="class string:TGactivate EVactivate TGedititem noborder"
+                        /><img class="closetodo" src="/++resource++closetodo.gif" tal:condition="not: canReportState"/><span tal:replace="structure provider:zopen.deletion"/>
+                 <div class="itemcontent">
+                 <span class="itemtext">
+                 <img src="/++resource++clock-off.gif" class="timetracker"
+                      tal:define="tracked tracked | obj/getTracked"
+                      tal:condition="python: tracked and view.canTrack()"
+                      tal:attributes="src python:obj.getRawRelatedItems() and '/++resource++clock-on.gif' or '/++resource++clock-off.gif'"/>
+
+                   <span tal:replace="python:toLocalizedTime(obj.ModificationDate(), long_format=0)" /> - 
+                     <strong tal:define="responsor obj/getResponsibleParty"
+                             tal:condition="responsor"
+                             tal:content="string:${obj/getResponsiblePartyTitle}:">
+                     </strong>
+
+                   <span tal:replace="structure obj/richTitle">
+                   item title
+                   </span>
+                 </span>
+                 <div class="edititemwrapper"><!-- --></div>
+                 <div class="todo_view_more"
+                      tal:attributes="id string:view_more_$item_id;">
+                    <a href="" tal:attributes="href string:${obj/absolute_url}/@@todoitem_view;" i18n:translate="more">more...</a>
+                 </div>
+                 </div>
+         </div>
+     </tal:items>
+
+     <div class="viewallcomplete" tal:condition="python:not showfulllist and completed_len &gt; 3">
+         <a tal:attributes="href todolist/getURL | todolist/absolute_url"  i18n:translate="view_all_items">View all 
+            <span tal:replace="completed_len" i18n:name="len_item">8</span> completed items</a>
+     </div>
+</div>
+
+
+<div metal:define-macro="todolist"
+         tal:define="todolist nocall:options/todolist | python:listinfo[0];
+                     list_url todolist/getURL | todolist/absolute_url;
+                     list_id todolist/getId;
+                     list_title todolist/Title;
+                     list_description todolist/Description;
+                     activeitems options/activeitems | python:listinfo[1];
+                     completeditems options/completeditems | python:listinfo[2]; 
+                     review_state review_state | options/review_state | todolist/review_state;
+                     isAdding options/isAdding | nothing;
+                     todolist todolist/getObject | nocall:todolist;
+                     tracked todolist/getTracked | nothing;
+                     is_template options/is_template | python: False;"
+         class="todolist"
+         tal:attributes="id string:list_$list_id;
+                         class string:todolist state-$review_state kssattr-listid-$list_id"
+         i18n:domain="zopen.todo">
+
+      <div class="listtitle" 
+           onmouseover="this.firstChild.style.display='block'"
+           onmouseout="this.firstChild.style.display='none'"><div class="nubbin"><div class="wrapper TGeditlist TGOrderLists">
+          <ul>
+          <li>
+          <img class="delimage" src="/++resource++trash.gif" title="Delete"
+                 i18n:attributes="title delete;"
+                 tal:condition="python:checkPermission('Delete objects', todolist)"
+             tal:attributes="class string:delimage kssattr-delBaseUrl-${todolist/getId} kssattr-delSelector-.todolist"
+             onclick="delete_confirm(this)"
+          />
+          </li>
+          <li>
+             <a class="admin editlist" href="#"
+                tal:condition="python:checkPermission('Modify portal content', todolist)"
+                i18n:translate="edit">Edit</a>
+          </li>
+          </ul>
+        </div>
+        </div>
+        <h2>
+
+          <img alt="Indicator" class="spinner hideme TGeditlist"
+               src="/++resource++indicator.gif"
+               style="vertical-align: middle;" height="5"
+               width="21" />
+
+          <img src="/++resource++drag_handle.gif" title="Order" class="handle TGorderlists hideme" 
+               i18n:attributes="title order;"/>
+
+          <span style="text-decoration:underline;" tal:condition="is_template" tal:content="list_title">title</span>
+
+          <a href="" 
+             tal:omit-tag="view/isStandaloneTodo"
+               tal:attributes="href list_url;"
+               tal:condition="not: is_template"
+               tal:content="list_title">title</a>
+           <span class="private_bug" tal:condition="python:review_state=='private'" i18n:translate="Private">Private</span>
+        </h2>
+        </div>
+
+        <p class="listdesc TGorderlists" tal:condition="list_description" tal:content="list_description">description</p>
+
+        <div class="TGorderlists">
+          <tal:active tal:define="items activeitems;">
+             <tal:block metal:use-macro="here/@@macros_todo/macros/activeitems" />
+          </tal:active>
+
+          <div class="additemlink" tal:condition="python:checkPermission('zopen.todo: Add item', todolist)">
+            <a class="admin EVadditem TGadditem" href="#"
+              tal:attributes="class python:isAdding and 'hideme admin EVadditem TGadditem' or 'admin EVadditem TGadditem'"
+              ><tal:block i18n:translate="add_an_item">Add an item</tal:block></a>
+            <tal:block metal:use-macro="here/@@macros_todo/macros/additem" />
+          </div>
+
+          <tal:active tal:define="items completeditems;">
+            <tal:block metal:use-macro="here/@@macros_todo/macros/completeditems" />
+          </tal:active>
+        </div>
+
+</div>
+<table class="milestone_table" metal:define-macro="milestones" cellspacing="0"
+       style="border-top:1px solid #CCCCCC; width:100%"
+       tal:define="milestones options/milestones;">
+        <tr tal:condition="not:milestones"><td colspan="2">没有负责的里程碑</td></tr>
+        <tr tal:repeat="milestone milestones"
+            tal:condition="milestones">
+          <tal:block tal:define="basecamp_view context/basecamp_view;
+                     today basecamp_view/today;
+                     end milestone/end;
+                     state milestone/review_state;">
+ 
+            <td style="background:#EEEEEE none repeat scroll 0% 0%;text-align:right; padding:3px;width:35%"
+                i18n:domain="zopen.milestone">
+             <span tal:condition="python:end<today" style="color:red;font-weight:bold">
+              <span tal:replace="python:int(today - end)" /><tal:i18n i18n:translate="days_ago"> days ago </tal:i18n>
+              <span class="light">
+               (<span i18n:translate="" tal:replace="end/Day" />, <span tal:replace="end" />)
+              </span>
+             </span>
+             <span tal:condition="python:end>today">
+                <span class="light"><span i18n:translate="" tal:content="end/Day" />,</span>
+                <span tal:replace="end" />
+                (<span tal:replace="python:int(end - today)" /> <tal:i18n  i18n:translate="days">days away</tal:i18n>)
+              </span>
+             <span tal:condition="python:end==today">
+                 <span class="Today" style="font-weight:bold;" i18n:translate="today">Today</span>
+             </span>
+       </td>
+       <td style="padding:3px;">
+        <a href="" 
+           tal:define="project python:milestone.getObject().getProject();
+                       company python:project.getCompany;
+                       company_name python:company and company.Title() or 'No Company!!';"
+           tal:attributes="href string:${milestone/getURL}/..">
+               [<span tal:replace="company" />|<span tal:replace="project/Title" />] <span tal:replace="milestone/Title"/>
+        </a>
+       </td>
+     </tal:block>
+    </tr>
+   </table>
+
+

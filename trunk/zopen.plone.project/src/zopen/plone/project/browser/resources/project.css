@@ -1,0 +1,280 @@
+
+/*-------------------------------------------------
+DASHBOARD / PROJECTS PAGE
+-------------------------------------------------*/
+.DashTabs {
+	background-color: #333;
+	text-align: left;
+	padding: 5px 0 0 0;
+}
+
+.DashTabs ul#Tabs {
+	margin: 0px;
+	padding-left: 20px;
+}
+
+h2.dashheader {
+	color: #666;
+	font-size: 12px;
+	font-weight: normal;
+}
+table.latemilestones,
+table.review_lists{
+	border:1px solid #CCCCCC;
+	margin-bottom:10px;
+	width:100%;
+}
+
+table.latemilestones th,
+table.review_lists th{
+	background:#E9E9E9 none repeat scroll 0%;
+	color:#000000;
+	font-size:13px;
+	font-weight:bold;
+	padding:3px;
+}
+
+
+table.latemilestones ul li strong {
+	color: #c00;
+}
+
+table.latemilestones ul,
+table.review_lists ul{
+	margin: 0pt;
+	padding: 0 5px;
+}
+
+table.latemilestones ul li,
+table.review_lists ul li{
+	list-style-type: none;
+	list-style-image: none;
+	margin-bottom: 0.2em;
+	font-size: 12px;
+}
+
+table.latemilestones a:hover{color:#FFF;}
+
+table.latemilestones li a,
+table.review_lists li a{
+	border-style:none;
+}
+
+
+
+/*-------------------------------------------------
+DASHCAL
+-------------------------------------------------*/
+
+table.Dashcal {
+	margin-bottom: 15px;
+	background: #e1e0e0;
+	width: 90%;
+	/* box model hack */
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	width: 100%;
+	}
+
+table.Dashcal th {
+	color: #666;
+	background: none;
+	padding: 3px;
+	font-size: 12px;
+	text-align: left;
+}
+
+table.Dashcal td {
+	background: #f0f0f0;
+	padding: 3px;
+	color: #ccc;
+	font-size: 12px;
+	vertical-align: top;
+}
+
+table.Dashcal td.with {
+	background: #fff;
+	color: #333;
+	border: 1px solid #000;
+	font-weight: bold;
+}
+
+table.Dashcal td.today {
+	background: #ffc;
+	color: #000;
+	border: 2px solid #fc6;
+}
+
+table.Dashcal ul {
+    list-style-image:none;
+    padding: 0;
+	margin: 3px 0 0 0;
+}
+
+
+table.Dashcal li {
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 11px;
+	padding: 3px 0 0 0;
+	margin-right:-30px;
+	margin-bottom: 5px;
+    list-style-type:none;
+}
+
+table.Dashcal a:hover{color:#FFF;}
+
+/*-------------------------------------------------
+PROJECT LOG
+-------------------------------------------------*/
+
+table.latest {
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+table.latest h2.date {
+   margin-bottom: 0pt;
+}
+
+table.latest .date td {
+    border-style:none;
+}
+table.latest td {
+	font-size: 13px;
+	padding: 3px 5px;
+	color: #000;
+	vertical-align: top;
+    border-bottom:1px solid #DEE7EC;
+}
+
+table.latest td.person {
+       text-align:right;
+       white-space:nowrap;
+}
+
+table.latest td.icon {
+	padding: 5px 10px 0 10px;
+	font-size: 12px;
+	width: 80px;
+	color: #333;
+	text-align: right;
+}
+
+table.latest tr.shade td {
+	background: #e5e5e5;
+}
+
+table.latest span.prep {
+	font-size: 12px;
+	color: #999;
+}
+
+table.latest td.title span.late, table.latest td.title span.ontime {
+	color: #c00;
+	font-size: 12px;
+	padding: 1px 2px;
+	font-family: verdana;
+	font-weight: bold;
+}
+
+table.latest td.title span.ontime {
+	color: #390;
+}
+
+table.latest p {
+	font-size: 12px;
+	color: #666;
+	margin: 4px 0 2px 0;
+	line-height: 12px;
+}
+
+table.latest td blockquote {
+	margin: 0;
+	padding: 0;
+	color: #333;
+}
+
+table.latest p.excerpt {
+	color: #666;
+	margin: 3px 0 3px 0px;
+}
+
+table.latest p.responsible {
+	color: #666;
+}
+
+table.latest td.title span.list, table.latest td.title span.list a {
+	font-size: 12px;
+	color: #999;
+}
+
+div.indent {
+  padding-bottom: 15px;
+}
+
+/*----------------------
+Project meu
+-----------------------*/
+div.indent a.create_project:hover {
+  background: transparent;
+}
+
+div.indent h2 {
+  margin: 10px 0pt 3px !important;
+  font-size: 13px !important; 
+}
+
+div.indent a {
+  border-bottom:medium none;
+  display:block;
+  font-size:13px;
+  font-weight:normal;
+  margin:2px 0pt;
+  padding:1px 1px 1px 8px;
+}
+
+div.indent p a {
+  display: inline;
+  padding: 0pt;
+}
+
+
+.gract {
+  background-color:#EEFFEE;
+  border-bottom:1px solid #AAFFAA;
+  border-right:1px solid #AAFFAA;
+  color:#006600;
+  cursor:pointer;
+  font-size:12px;
+  margin-top:2px;
+  padding:3px 3px 2px;
+  text-align:center;
+  text-decoration:none;
+}
+
+#tag_for_projects {
+   padding-top:10px;
+}
+.tag_for_projects {
+   border:2px solid #CCCCCC;
+   padding:5px 10px 10px;
+   background:#EFEFEF none repeat scroll 0%;
+}
+
+.tag_for_projects .event_type{
+   display:block;
+   margin:3px 0pt;
+}
+.tag_for_projects .event_type span{
+   margin-right:5px;
+}
+
+#current_project_tags a {
+   color: #666;
+}
+#current_project_tags a:hover {
+    color: #fff !important;
+    background-color: #666;
+}
+

@@ -1,0 +1,308 @@
+.handle {
+    cursor:move;
+}
+
+.todocat {
+    color: white;
+    background-color: black;
+    padding: 1px 3px;
+}
+
+#fulllists .todolist {
+    margin: 0pt 0pt 20px;
+}
+
+#fulllists h2{
+    font-size: 16px;
+    margin: 5px 0 5px 0;
+    padding: 0 0 0 7px;
+}
+
+.notebody {
+    margin-left: 1em;
+}
+
+#fulllists h2 a, 
+#fulllists h2 a:hover {
+    background:transparent none repeat scroll 0%;
+    text-decoration:underline;
+    color:#000000;
+}
+
+#fulllists .listdesc{
+    margin: 7px 0pt 7px 10px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+#fulllists .kssDeletionRegion{
+    margin-top: 0pt;
+    margin-bottom: 0px;
+    border: 0px;
+}
+
+/*
+**  设置漂浮的item工具条
+*/
+
+#pagetitle,
+#fulllists div.listtitle {
+    margin-left: -40px;
+    z-index: 0;
+    padding-top:5px;
+}
+#fulllists .activetodos .kssDeletionRegion{
+    margin-left: -40px;
+    z-index: 0;
+}
+
+#pagetitle h1,
+#fulllists div.listtitle h2{
+    margin-left: 40px;
+}
+
+#fulllists .activetodos .visiblecontent {
+    margin-left: 55px;
+}
+
+#fulllists div.visiblecontent{
+    position:relative;
+    line-height:18px;
+}
+
+/* 正确显示item编辑表单 */
+.activetodos div.itemcontent{
+    margin: -17px 0 0 20px;
+}
+
+.completedtodos div.itemcontent{
+    margin: -17px 0 0 35px;
+}
+
+img.opentodo,
+img.closetodo {
+    margin: 0 5px 0 5px;
+}
+
+#pagetitle div.nubbin,
+div.listtitle div.nubbin,
+div.activetodos div.nubbin {
+		  position: relative;
+		  width: 0pt;
+                  display: none;
+	  }
+
+#pagetitle div.nubbin li a,
+div.listtitle div.nubbin li a,
+div.activetodos div.nubbin li a {
+		  color: #FF0000;
+		  font-size: 11px !important;
+		  text-decoration: underline;
+	  }
+
+#pagetitle div.nubbin div.wrapper,
+div.listtitle div.nubbin div.wrapper,
+div.activetodos div.nubbin div.wrapper {
+		  position: absolute;
+		  width: 60px;
+		  left: 0pt;
+	  }
+#pagetitle div.nubbin div.wrapper {
+    width: 80px;
+    margin-top: 5px;
+}
+
+#pagetitle div.nubbin div.wrapper ul,
+div.listtitle div.nubbin div.wrapper ul,
+div.activetodos div.nubbin div.wrapper ul{
+		  margin: 0pt;
+		  padding: 0pt;
+	  }
+
+#pagetitle div.nubbin div.wrapper li,
+div.listtitle div.nubbin div.wrapper li,
+div.activetodos div.nubbin div.wrapper li {
+		  list-style-type: none;
+                  list-style-image: none;
+		  float: left;
+		  margin: 0pt 4px 0pt 0pt;
+	  }
+
+#fulllists .completedtodos{
+    margin: 11px 0 0 -2px;
+}
+
+
+#fulllists .completedtodos .viewallcomplete,
+#fulllists .completedtodos .kssDeletionRegion{
+    height:0.1%;
+    margin-left: -18px;
+    margin-bottom:2px;
+    padding-left: 35px;
+}
+
+.completedtodos .viewallcomplete{
+    font-size:11px;
+    line-height:18px;
+    margin: 3px 0pt 8px 36px;
+    padding-left: 20px;
+}
+
+.viewallcomplete a,
+.viewallcomplete a:link,
+.viewallcomplete a:visited {
+    color:#999999;
+}
+
+#fulllists .kssDeletionRegion span{
+    font-size: 12px;
+    line-height: 18px;
+    font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif;
+}
+
+#fulllists .additemlink {
+    background: #EFEFEF none repeat scroll 0%;
+    margin: 6px 0pt 0pt 34px;
+    padding: 5px;
+}
+
+
+#fulllists .completedtodos .itemtext{
+    color:#999999;
+    font-size:12px;
+    line-height:18px;
+}
+
+#add_todolist h2 {
+    margin: 0 0 3px 0;
+    padding: 0;
+    font-size: 12px;
+    border: none;
+}
+
+input.biginput,
+input.new_item_title,
+input.list_title {
+   font-size: 16px;
+   font-weight: bold;
+   width: 400px;
+}
+
+#add_todolist textarea,
+#fulllists textarea {
+    width: 85%;
+    font-size: 12px;
+}
+
+#fulllists .showhide {
+    border: none;
+}
+
+#fulllist span.private_bug {
+    vertical-align:middle;
+}
+
+span.private_bug {
+    background:#DD0000 none repeat scroll 0%;
+    color:#FFFFFF;
+    font-size:11px;
+    font-weight:normal;
+    padding:1px 3px; 
+}
+
+img.timetracker,
+#fulllists img.editimage {
+    cursor: pointer;
+}
+
+div.active_lists h2,
+div.completed_lists h2 {
+  font-size: 13px !important;
+}
+
+div.active_lists ul,
+div.completed_lists ul {
+  margin-left:0pt;
+}
+
+div.active_lists ul li,
+div.completed_lists ul li {
+  margin:0pt;
+  padding-bottom:3px;
+  line-height:1em;
+}
+
+div.active_lists li a,
+div.completed_lists li a {
+border-bottom:medium none;
+  line-height:1em;
+  display:block;
+  font-size:12px;
+  font-weight:normal;
+  margin:2px;
+  padding:2px 1px 2px 8px;
+}
+	
+
+div.trackitem {
+    border: solid green !important;
+    padding: 0pt;
+}
+
+div.trackitem span.item_title {
+   display:block;
+   padding:8px;
+   background: #FFF;
+}
+
+div.trackitem div.total {
+   background:#D2E9D2 none repeat scroll 0%;
+   padding:10px;
+}
+
+div.trackitem div.form {
+   margin: 10px 10px 10px;
+}
+
+.trackform table td {
+   padding: 3px 10px;
+}
+
+.noborder {
+  margin-right:4px;
+}
+
+.late {
+    color: #CC0000;
+    font-weight: bold;
+    background-color: #FFCCCC;
+    padding: 1px 3px;
+}
+
+div.edititemwrapper {
+  display: inline;
+}
+
+div.error, span.error {
+  background-color:#FFDDCC;
+  border:1px solid #DD0000;
+  margin:0pt;
+  padding:0.5em;
+}
+
+.todo_view_more {
+ display:none;
+ z-index:9;
+ position:absolute;
+}
+
+.todo_view_more a {
+  color: #666;
+  font-size:12px;
+  text-decoration:underline;
+}
+
+.todo_view_more a:hover {
+  color: #fff !important;
+  background-color: #666;
+}

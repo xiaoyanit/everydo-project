@@ -1,0 +1,116 @@
+<div class="Comments" i18n:domain="zopen.widgets">
+
+  <h2 id="comments_count" i18n:translate="count_comment"> 
+      <span tal:content="view/count" i18n:name="count">1</span> comment so far </h2>
+
+    <tal:comments tal:repeat="comment view/comments">
+
+    <div metal:define-macro="post"
+         tal:define="comment nocall: options/comment | comment;
+                     basecamp_view context/@@basecamp_view;"
+         class="Post kssDeletionRegion"
+         tal:attributes="id comment/getId">
+
+      <div style="float: right">
+           <span tal:define="obj nocall:comment"
+                 tal:replace="structure provider:zopen.deletion"/>
+      </div>
+
+      <h3>
+        <img width="9" height="9" 
+             src="/++resource++comment_icon.gif" alt=""/>
+        <span tal:replace="comment/ModificationDate">21 March 18:00</span> | 
+        <strong i18n:translate="creator_said">
+         <span tal:define="creator comment/Creator"
+               tal:replace="python:basecamp_view.getMemberName(creator)"
+               i18n:name="creator">张 炳凯</span> said…</strong>
+      </h3>
+
+     <table class="commentTa">
+       <td tal:define="creator comment/Creator;
+                         portal_url here/portal_url;
+                         has_photo python:basecamp_view.hasPhoto(creator)"
+             >
+        <div class="commentPortrait">
+             <img class="portraitPhoto"
+                  src="/defaultUser.gif"
+                  alt="" 
+                  border="0" 
+                  tal:condition="not: has_photo"/>
+             <img class="portraitPhoto"
+                  src="/defaultUser.gif"
+                  alt="" 
+                  border="0" 
+                  tal:condition="has_photo"
+                  tal:attributes="src string:$portal_url/@@basecamp_view/getPhoto?username=$creator;" />
+        </div>
+        </td>
+        <td tal:content="structure comment/CookedBody | comment/getText">aasda</td>
+     </table>
+
+ 
+    <div class="visualClear"><!-- --></div>
+    <tal:attach tal:condition="view/attachable">
+    <tal:attachments tal:define="attachments comment/getCommentAttaches;
+                                 checkPermission nocall: checkPermission | nocall:context/portal_membership/checkPermission;
+                                 files python:attachments[1];
+                                 images python:attachments[0]">
+        <metal:block metal:use-macro="here/@@message_view/macros/attachments-images">
+                 use macro attachments-images (...)
+        </metal:block>
+        <metal:block metal:use-macro="here/@@message_view/macros/attachments-attachments">
+                 use macro attachments-attachment (...)
+        </metal:block>
+    </tal:attachments>
+    </tal:attach>
+
+    </div>
+    </tal:comments>
+
+    <div id="your_comment"
+         tal:condition="view/canPost">
+
+      <form method="post" id="real_comment_form" enctype="multipart/form-data" 
+            tal:attributes="action string:${context/absolute_url}/@@submitComment">
+
+      <div class="Post">
+
+        <h3><img width="9" height="9" alt="" 
+                 src="/++resource++comment_icon.gif"/>
+            <strong i18n:translate="creator_said"><span tal:replace="view/myname" i18n:name="creator">潘 俊勇</span> said…</strong></h3>
+
+        <p style="margin-right:20px;"><textarea class="EVaddcomment" style="margin: 5px 10px;width:80% height: 30px"
+           name="text" id="commentBody"></textarea></p>
+
+  <div class="extra TGaddcomment hideme" tal:condition="python: view.attachable">
+
+    <metal:attach metal:use-macro="context/@@edit_message/macros/attach" />
+
+  </div>
+
+      <div class="TGaddcomment hideme">
+        <span class="waitIndicator hideme">
+           <img src="/++resource++indicator.gif" alt="Please wait"/>
+        </span>
+        <span class="TGsubmitattach hideme">
+           <img src="/++resource++progress_bar.gif" alt="Please wait"/>
+        </span>
+        <input type="submit"
+               id="kssSubmitComment"
+               class="TGattachfile waitIndicator"
+               i18n:attributes="value post_this_comment;"  
+               value="Post this Comment"
+               />
+        <input type="submit"
+               id="kssSubmitCommentAttach"
+               class="TGattachfile hideme TGsubmitattach"
+               i18n:attributes="value post_this_comment;"  
+               value="Post this Comment"
+               />
+      </div>
+
+    </div>
+    </form>
+  </div>
+
+</div>

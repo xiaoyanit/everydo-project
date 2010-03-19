@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <permission name="Add PloneChat objects" acquire="True">
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Administrator"/>
+    </permission>
+    <permission name="Edit PloneChats" acquire="True">
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Administrator"/>
+    </permission>
+    <permission name="Moderate PloneChats" acquire="True">
+      <role name="Manager"/>
+      <role name="Reviewer"/>
+      <role name="Administrator"/>
+    </permission>
+    <permission name="Chat moderatedly"
+        acquire="True">
+        <role name="Editor"/>
+        <role name="Manager"/>
+        <role name="Owner"/>
+        <role name="Reader"/>
+        <role name="Administrator"/>
+        <role name="Member"/>
+    </permission>
+    <permission name="Chat unmoderatedly"
+        acquire="True">
+        <role name="Editor"/>
+        <role name="Manager"/>
+        <role name="Member"/>
+        <role name="Owner"/>
+        <role name="Reader"/>
+        <role name="Administrator"/>
+    </permission>
+  </permissions>
+</rolemap>

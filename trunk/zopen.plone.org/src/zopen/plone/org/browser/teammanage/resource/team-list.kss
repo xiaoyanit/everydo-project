@@ -1,0 +1,77 @@
+.EVcatDone:click{
+    evt-click-preventdefault: true;
+
+    action-client: removeClass css('.TGcatDoneS');
+    removeClass-value: hideme;
+
+    action-client: addClass css('.TGcatDoneH');
+    addClass-value: hideme;
+}
+
+.EVcatEdit:click{
+    evt-click-preventdefault: true;
+
+    action-client: removeClass css('.TGcatEditS');
+    removeClass-value: hideme;
+
+    action-client: addClass css('.TGcatEditH');
+    addClass-value: hideme;
+}
+
+.operations .admin:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGcatRename');
+   toggleClass-value: hideme;
+
+   action-client: focus parentnodecss('.kssDeletionRegion|.category_input');
+}
+
+.TGcatRename .EVrename:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.kssDeletionRegion|.TGcatRename');
+   toggleClass-value: hideme;
+}
+
+form.TGcatRename input[type=submit]:click {
+   evt-click-preventdefault: true;
+
+   action-server: listRenameTeam currentForm();
+   listRenameTeam-kssUrl: kssAttrJoin('*teamurl', '/@@listRenameTeam');
+   listRenameTeam-is_template_setting: kssAttr(is_template_setting, True);
+
+   action-client: toggleClass;
+   toggleClass-kssSelector: parentnodecss('.kssDeletionRegion|.submit_rename');
+   toggleClass-value: hideme;
+}
+
+#add_new_team-teams .category_link:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGaddTeam-teams');
+   toggleClass-value: hideme;
+
+   action-client: focus css('#new_team_input-teams');
+}
+
+form.TGaddTeam-teams input[type=submit]:click {
+   evt-click-preventdefault: true;
+
+   action-server: listCreateTeam currentForm();
+   listCreateTeam-kssUrl: kssAttrJoin('*teamurl', '/@@listCreateTeam');
+   listCreateTeam-is_template_setting: kssAttr(is_template_setting, True);
+
+   action-client: toggleClass css('.TGaddTeam-teams');
+   toggleClass-value: hideme;
+   
+   action-client: removeClass css('.submit_add');
+   removeClass-value: hideme;
+}
+
+.TGaddTeam-teams .EVrename:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGaddTeam-teams');
+   toggleClass-value: hideme;
+}

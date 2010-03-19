@@ -1,0 +1,172 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-04-27 04:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.timetracker\n"
+
+#. Default: "Add to log"
+#: browser/timetracker.pt
+msgid "add_to_log"
+msgstr ""
+
+#. Default: "All"
+#: browser/timetracker.pt
+msgid "all"
+msgstr ""
+
+#. Default: "Back to the full time log"
+#: browser/timetracker.pt
+msgid "back_full_time"
+msgstr ""
+
+#. Default: "Cancel"
+#: browser/edit_timelog.pt
+#: browser/timetracker.pt
+msgid "cancel"
+msgstr ""
+
+#. Default: "Cancel report creation"
+#: browser/timetracker.pt
+msgid "cancel_report_creation"
+msgstr ""
+
+#. Default: "Create a report"
+#: browser/timetracker.pt
+msgid "create_a_report"
+msgstr ""
+
+#. Default: "Create report"
+#: browser/timetracker.pt
+msgid "create_report"
+msgstr ""
+
+#. Default: "DATE"
+#: browser/timetracker.pt
+msgid "date"
+msgstr ""
+
+#. Default: "DESCRIPTION"
+#: browser/timetracker.pt
+msgid "description"
+msgstr ""
+
+#. Default: "edit"
+#: browser/timetracker.pt
+msgid "edit"
+msgstr ""
+
+#. Default: "Edit this report"
+#: browser/timetracker.pt
+msgid "edit_report"
+msgstr ""
+
+#. Default: "Export"
+#: browser/timetracker.pt
+msgid "export"
+msgstr ""
+
+#. Default: "HOURS"
+#: browser/timetracker.pt
+msgid "hours"
+msgstr ""
+
+#. Default: "'s hours from"
+#: browser/timetracker.pt
+msgid "hours_from"
+msgstr ""
+
+#. Default: "or"
+#: browser/edit_timelog.pt
+#: browser/timetracker.pt
+msgid "or"
+msgstr ""
+
+#. Default: "PERSON"
+#: browser/timetracker.pt
+msgid "person"
+msgstr ""
+
+#. Default: "Save"
+#: browser/edit_timelog.pt
+msgid "save"
+msgstr ""
+
+#. Default: "Show"
+#: browser/timetracker.pt
+msgid "show"
+msgstr ""
+
+#. Default: "Time tracking"
+#: browser/timetracker.pt
+msgid "time_tracking"
+msgstr ""
+
+#. Default: "Time tracking report"
+#: browser/time_repot.pt
+msgid "time_tracking_report"
+msgstr ""
+
+#. Default: "to"
+#: browser/timetracker.pt
+msgid "to"
+msgstr ""
+
+#. Default: "this table to CSV"
+#: browser/timetracker.pt
+msgid "to_csv"
+msgstr ""
+
+#. Default: "TOTAL"
+#: browser/timetracker.pt
+msgid "total"
+msgstr ""
+
+#. Default: "Create by:"
+#: browser/timetracker.pt
+msgid "create_by"
+msgstr ""
+
+#. Default: "No result yet."
+#: browser/timereport.pt
+msgid "no_result"
+msgstr ""
+
+msgid "error"
+msgstr ""
+
+#. Default: "The date ${time} is invalib,please correct."
+msgid "va_time_error"
+msgstr ""
+
+#. Default: "Need time;"
+msgid "va_time_need"
+msgstr ""
+
+#. Default: "Time is invalib, please correct;"
+msgid "va_time_invalib"
+msgstr ""
+
+#. Default: "Need desciption;"
+msgid "va_description_need"
+msgstr ""
+
+#. Default: "DATE,PERSON,HOURS,DESCRIPTION"
+msgid "out_title"
+msgstr ""
+
+#. Default: ",TOTAL,${hours}"
+msgid "out_total"
+msgstr ""

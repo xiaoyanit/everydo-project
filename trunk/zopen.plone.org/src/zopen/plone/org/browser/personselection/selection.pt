@@ -1,0 +1,7 @@
+<tal:companies tal:define="selected_person python:view.selected"
+               tal:repeat="p view/getMembers">
+      <option value="1200252"
+              tal:attributes="selected python:view.selected and p.getId() in view.selected;
+                              value p/getId"
+              tal:content="p/pretty_title_or_id">Me (潘 俊勇)</option>
+</tal:companies>

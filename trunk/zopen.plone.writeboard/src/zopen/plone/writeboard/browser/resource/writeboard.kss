@@ -1,0 +1,83 @@
+.inlineForm input[name="kss-save-version"]:click {
+    evt-click-preventdefault: true;
+
+    action-server: saveNewVersion currentForm();
+    saveNewVersion-fieldname: kssAttr('atfieldname', true);
+    saveNewVersion-macro: kssAttr('macro', true);
+    saveNewVersion-templateId: kssAttr('templateId', true);
+    saveNewVersion-comment: currentFormVar('comment');
+}
+
+
+#compare-revisions a.EV-display-version:click {
+    evt-click-preventdefault: true;
+
+    action-client: removeClass parentnodecss('div#compare-revisions|a.selected');
+    removeClass-value: selected;
+
+    action-client: addClass;
+    addClass-value: selected;
+
+    action-client: setStyle css('#body-wrapper');
+    setStyle-name: 'background';
+    setStyle-value: '#DEE7EC';
+
+    action-server: displayVersion;
+    displayVersion-version_id: kssAttr('version_id', true);
+}
+
+#compare-revisions form input[type="submit"]:click {
+    evt-click-preventdefault: true;
+
+    action-server: displayDiff currentForm();
+
+    action-client: removeClass css('#compare-legend');
+    removeClass-value: hideme;
+   
+    action-client: addClass css('#body-wrapper');
+    addClass-value: 'inline-diff';
+}
+
+.EVeditcategory:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('.TGeditcategory');
+    toggleClass-value: hideme;
+}
+
+#editBody:click {
+    evt-click-preventdefault: true;
+
+    action-server: replaceField;
+    replaceField-fieldname: 'text';
+    replaceField-macro: 'text-field-view';
+    replaceField-templateId: 'writeboard_view';
+    replaceField-edit: true;
+    action-client: log;
+}
+
+#editProperty input.submitInput:click {
+    evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.GeditProperty');
+   toggleClass-value: hideme;
+
+   action-server: editProperty currentForm();
+}
+
+.TeditProperty:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('.GeditProperty');
+    toggleClass-value: hideme;
+}
+
+.inlineForm:timeout {
+    evt-timeout-delay: 300000;
+
+    action-client: toggleClass css('.TimeToView');
+    toggleClass-value: hideme;
+  
+    action-server: TimeToSave currentForm();
+    TimeToSave-fieldname: kssAttr('atfieldname', true);
+}

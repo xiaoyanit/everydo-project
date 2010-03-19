@@ -1,0 +1,1739 @@
+/*
+** Plone style sheet - Public-facing Elements
+**
+** Style sheet documentation can be found at http://plone.org/documentation
+**
+** You should preferrably use ploneCustom.css to add your own CSS classes and to
+** customize your portal, as these are the base fundaments of Plone, and will
+** change and be refined in newer versions. Keeping your changes in
+** ploneCustom.css will make it easier to upgrade.
+**
+** Feel free to use whole or parts of this for your own designs, but give credit
+** where credit is due.
+**
+*/
+
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+/* Padding for the columns */
+
+#portal-column-one .visualPadding {
+    padding: 2em 0em 1em 2em;
+}
+#portal-column-two .visualPadding {
+    padding: 2em 2em 1em 0em;
+}
+
+/* Content area */
+h1  {
+    border-bottom: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    font-weight: bold;
+}
+h3, h4, h5, h6 {
+    border-bottom: none;
+    font-weight: bold;
+}
+
+.documentFirstHeading {
+    margin-top: 0;
+}
+
+.documentContent {
+    font-size: 110%;
+    padding: 1em 1.5em 2em 1em;
+    background: white;
+}
+.documentContent ul {
+    list-style-image: url(&dtml-portal_url;/bullet.gif);
+    list-style-type: square;
+    margin: 0.5em 0 0 1.5em;
+}
+.documentContent ol {
+    margin: 0.5em 0 0 2.5em;
+}
+
+/* Links with differently colored link underlines - only for content */
+.documentContent p a {
+    text-decoration: none;
+    border-bottom: 1px #cccccc solid;
+}
+.documentContent p a:visited {
+    color: &dtml-linkVisitedColor;;
+    background-color: transparent;
+}
+.documentContent p a:active {
+    color: &dtml-linkActiveColor;;
+    background-color: #0033CC;
+}
+.documentContent li a {
+    text-decoration: none;
+    bockground-color: #0033CC;
+    border-bottom: 1px #cccccc solid;
+}
+.documentContent li a:visited {
+    color: &dtml-linkVisitedColor;;
+}
+.documentContent li a:active {
+    color: &dtml-linkActiveColor;;
+    bockground-color: #0033CC;
+}
+.documentContent li a:hover {
+    color: &dtml-linkActiveColor;;
+}
+.documentContent dd a {
+    text-decoration: none;
+    border-bottom: 1px #cccccc solid;
+}
+.documentContent dd a:visited {
+    color: &dtml-linkVisitedColor;;
+    background-color: transparent;
+}
+.documentContent dd a:active {
+    color: &dtml-linkActiveColor;;
+    background-color: transparent;
+}
+/* End links */
+
+/* Code to work around IE's lacking support of sub-elements of the input element */
+.noborder,
+.documentEditable * .noborder {
+    border: none;
+    margin: 0;
+    background: none;
+    background-color: transparent;
+}
+/* End edit form elements */
+
+#visual-portal-wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+/* Logo properties */
+#portal-logo img {
+    border: 0;
+    padding: 0;
+    margin: 1em 0em 1em 2em;
+}
+
+/* The skin switcher at the top, only shows up if you have multiple skins available */
+#portal-skinswitcher {
+}
+#portal-skinswitcher a {
+    display: block;
+    float: left;
+}
+
+
+/* LiveSearch styles */
+.LSRes {
+    font-family:  <dtml-var fontFamily>;
+    visibility: visible;
+    color: &dtml-globalFontColor;;
+    background-color: &dtml-backgroundColor;;
+    vertical-align: middle;
+    display:block;
+    list-style-image: none;
+    list-style-type: none;
+    text-align: left;
+    min-width: 16.5em;
+    text-transform: none;
+    margin-left: 0;
+    line-height: 1.1em;
+}
+#LSHighlight,
+.LSHighlight {
+    background-color: &dtml-globalBackgroundColor;;
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    color: &dtml-globalFontColor;;
+}
+.LSRow {
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor;;
+    white-space: normal;
+    padding:0;
+    margin: 0;
+    list-style-image: none;
+    list-style-type: none;
+}
+.LSRow a {
+    text-decoration: none;
+    font-weight:bold;
+    white-space:nowrap
+}
+.LSDescr {
+    color: &dtml-discreetColor;;
+    text-transform: &dtml-textTransform;;
+    padding-left:2.1em;
+    margin-top:-0.1em;
+}
+.LSResult {
+    position: relative;
+    display: block;
+    text-align: right;
+    padding-top: 5px;
+    margin: 0;
+    left: 3px;
+    z-index: 3;
+}
+.LSShadow {
+    position: relative;
+    text-align: right;
+}
+.livesearchContainer {
+    background-color: &dtml-backgroundColor;;
+    margin-top: 0;
+    padding: 0 !important;
+    position: absolute;
+    right: 0px;
+    /* Currently exposes a rendering bug in Mozilla */
+    top: 0;
+    white-space: normal;
+    font-family:  <dtml-var fontFamily>;
+    visibility: visible;
+    text-align: left;
+    color: &dtml-globalFontColor;;
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    width: 30em;
+    text-transform: none;
+}
+* html .livesearchContainer {
+    padding: &dtml-borderWidth; !important;
+    padding-top: 0 !important;
+    background-color: &dtml-globalBorderColor;;
+    border: 0;
+}
+#livesearchLegend {
+    line-height: 1em;
+    margin-top: -2em;
+    margin-left: -0.1em;
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-bottom: 0;
+}
+* html #livesearchLegend {
+    margin-top: -1.9em;
+    margin-left: -8px;
+    position: relative;
+}
+
+/* Workaround for Internet Explorer's broken z-index implementation */
+.LSIEFix {
+    background-color: &dtml-backgroundColor;;
+    padding: 0.5em !important;
+    z-index: 20;
+}
+.LSBox {
+    clear: left;
+    float: left;
+    padding-right: 1px;
+    display:block;
+}
+#LSNothingFound {
+    text-align: center;
+    padding: 2px;
+}
+.LSBox label {
+    font-weight: normal;
+}
+
+/* Only h5/h6 headlines in the content area should have the discreet color */
+#content h5,
+#content h6 {
+    color: &dtml-discreetColor;;
+}
+.documentActions {
+    margin: 1em 0;
+    padding: 0;
+    text-align: right;
+    border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+.documentActions ul {
+    margin: 0;
+    padding: 0 0.5;
+    display: block;
+    margin-top: -0.9em;
+    list-style-type: none;
+    list-style-image: none;
+}
+.documentActions li {
+    display: inline;
+    font-size: &dtml-fontSmallSize;;
+    margin: 0 0.5em;
+    padding: 0 0.25em;
+    background-color: &dtml-backgroundColor;;
+}
+.documentActions a {
+    border: none !important;
+    text-decoration: none;
+}
+
+/* Status messages */
+
+dl.portalMessage {
+    font-size: &dtml-fontSmallSize;;
+}
+dl.portalMessage a {
+    color: black;
+    border: none;
+    text-decoration: underline;
+}
+dl.portalMessage dt {
+    background-color: #996; 
+    border: 1px solid #996;
+    font-weight: bold;
+    float: left;
+    margin: 0 0.5em 0 0;
+    padding: 0.5em 0.75em;
+    color: White;
+    line-height: 1em;
+}
+dl.portalMessage dd {
+    background-color: #ffffe3;
+    border: 1px solid #996;
+    padding: 0.5em 0.5em; 
+    margin: 0;
+    line-height: 1em;
+}
+dl.warning dt {
+    background-color: #d80; 
+    border: 1px solid #d80;
+}
+dl.error dt {
+    background-color: #d00; 
+    border-color: #d00;
+}
+dl.warning dd {
+    background-color: #fd7; 
+    border-color: #d80;
+}
+dl.error dd {
+    background-color: #fdc; 
+    border-color:  #d00;
+}
+
+.documentDescription {
+    /* The summary text describing the document */
+    font-weight: bold;
+    display: block;
+    margin: 0em 0em 0.5em 0em;
+    line-height: 1.5em;
+}
+.documentByLine {
+    font-size: &dtml-fontSmallSize;;
+    font-weight: normal;
+    color: &dtml-discreetColor;;
+    margin: 0em 0em 0.5em 0em;
+}
+.discussion {
+    margin-top: 1em;
+}
+.even {
+    background-color: &dtml-evenRowBackgroundColor;;
+}
+.odd {
+    background-color: &dtml-oddRowBackgroundColor;;
+}
+.visualHighlight {
+    background-color: &dtml-evenRowBackgroundColor;;
+}
+.discreet {
+    color: &dtml-discreetColor;;
+    font-size: &dtml-fontSmallSize;;
+    font-weight: normal;
+}
+.pullquote {
+    padding: 0 1em 0 1em;
+    margin: 0 0 1em 1em;
+    font-weight: bold;
+    color: #CC9933;
+    float: right;
+    width: 35%;
+    clear: right;
+    background-color: &dtml-backgroundColor;;
+}
+.callout {
+    font-weight: bold;
+    color: #CC9933;
+    padding: 0px 1em;
+}
+.notify,
+.documentEditable * .notify {
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-notifyBorderColor;;
+}
+.card {
+    background-color: &dtml-globalBackgroundColor;;
+    border-color: &dtml-globalBorderColor;;
+    border-width: &dtml-borderWidth;;
+    border-style: &dtml-borderStyle;;
+    float: left;
+    margin: 1em;
+    text-align: center;
+    width: 110px;
+    padding: 1em 0;
+}
+.card a {
+    text-decoration: none;
+}
+.portrait {
+    background-color: &dtml-globalBackgroundColor;;
+    border-color: &dtml-globalBorderColor;;
+    border-width: &dtml-borderWidth;;
+    border-style: &dtml-borderStyle;;
+    font-size: &dtml-fontSmallSize;;
+    margin: 0.5em;
+    padding: 1em 0 0.5em 0;
+    text-align: center;
+    width: 100px;
+}
+.portraitPhoto {
+    border: 1px solid black;
+}
+
+/* The table used for listings - horizontal and vertical variants */
+.listing,
+.stx table {
+    /* The default table for document listings. Contains name, document types, modification times etc in a file-browser-like fashion */
+    border-collapse: collapse;
+    border-left: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-bottom: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    font-size: &dtml-fontSmallSize;;
+    margin: 1em 0em 1em 0em;
+}
+.listing th,
+.stx table th {
+    background: &dtml-globalBackgroundColor;;
+    border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-bottom: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-right: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    font-weight: normal;
+    padding: 0.25em 1em;
+    text-transform: &dtml-textTransform;;
+}
+.listing .top {
+    border-left: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor;;
+    border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor; ! important;
+    border-right: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor; ! important;
+    text-align: right ! important;
+    padding: 0em 0em 1em 0em;
+}
+.listing .listingCheckbox {
+    text-align: center;
+}
+.listing td,
+.stx table td {
+    border-right: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    padding: 0.25em 1em;
+}
+.listing a {
+    text-decoration: none;
+}
+.listing a:hover {
+    text-decoration: underline;
+}
+.listing img {
+    vertical-align: middle;
+}
+.listing td a label,
+.stx table td a label {
+    cursor: pointer;
+}
+
+/* Vertical addition class */
+.vertical {
+    background-color: &dtml-backgroundColor;;	
+}
+.vertical th {
+    padding: 0.5em;
+}
+.vertical td {
+    border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    padding: 0.5em;
+}
+
+/* Batch selector */
+.listingBar {
+    background-color: &dtml-globalBackgroundColor;;
+    border-color: &dtml-globalBorderColor;;
+    border-style: &dtml-borderStyle;;
+    border-width: &dtml-borderWidth;;
+    padding: 0em 1em;
+    text-align: center;
+    text-transform: &dtml-textTransform;;
+    vertical-align: top;
+    margin: 1em 0em;
+    font-size: 94%;
+    clear: both;
+}
+.listingBar span.previous,
+.listingPrevious {
+    text-align: left;
+    float: left;
+    margin-right: 1em;
+}
+.listingBar span.next,
+.listingNext {
+    text-align: right;
+    float: right;
+    margin-left: 1em;
+}
+.listingBar img {
+    vertical-align: middle;
+}
+.listingBar a {
+    text-decoration: none;
+}
+.tileItem {
+    border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    padding-top: 0.5em;
+    margin-top: 0.5em;
+}
+.tileHeadline {
+    border: none;
+    font-size: 110%;
+    font-weight: bold;
+}
+.tileHeadline a {
+    text-decoration: none;
+}
+.tileBody {
+    margin-bottom: 0.5em;
+}
+.tileImage {
+    float: right;
+    margin: 0 0 0.5em 0.5em;
+    border: 1px solid black;
+}
+.eventDetails {
+    float: right;
+    width: 20em;
+    clear: right;
+}
+
+/* Useful deviations from regular style on elements */
+
+/* List classes without markers */
+ul.visualNoMarker,
+ol.visualNoMarker {
+    list-style-type: none;
+    list-style-image: none;
+    margin: 0.5em 0 0 0;
+    line-height: 1em;
+}
+
+textarea.proportional {
+    font: 100% <dtml-var fontFamily>;
+}
+.productCredits {
+    text-align: right;
+    font-size: &dtml-fontSmallSize;;
+    clear: both;
+    font-weight: normal;
+    color: &dtml-discreetColor;;
+}
+
+.feedButton {
+    display: block; 
+    float: right; 
+    margin-top: 1px;
+}
+.poweredBy {
+    display: block;
+    clear: both;
+    font-size: &dtml-fontSmallSize;;
+    font-weight: normal;
+    color: &dtml-discreetColor;;
+    text-align: right;
+}
+
+/* Album view classes */
+.photoAlbumEntry {
+    float: left;
+    height: 185px;
+    width: 143px;
+    margin: 0em;
+    padding: 0px 6px 0px 9px;
+    text-align: center;
+    background-image: url('&dtml-portal_url;/polaroid-single.png');
+    background-repeat: no-repeat;
+}
+.photoAlbumEntry img {
+    border: 1px solid #ccc;
+    display: block;
+    margin: 0 auto;
+}
+.photoAlbumEntryWrapper {
+    /*display: block;*/
+    height: 130px;
+    width: 128px;
+    margin-bottom: 7px;
+}
+.photoAlbumEntry a {
+    display: block;
+    text-decoration: none;
+    font-size: &dtml-fontSmallSize;;
+    height: 169px;
+    width: 130px;
+    margin: 16px auto 0px;
+}
+.photoAlbumFolder {
+    background-image: url('&dtml-portal_url;/polaroid-multi.png');
+    background-repeat: no-repeat;
+}
+.photoAlbumEntryTitle {
+    color: &dtml-discreetColor;;
+    display: block;
+    overflow: hidden;
+    width: 128px;
+    height: 3.6em;
+}
+
+/* Link types */
+.link-plain {
+    background-image: none;
+    padding: 0;
+}
+.link-parent {
+    display: block;
+    background: transparent url(&dtml-portal_url;/arrowUp.gif) 4px 5px no-repeat;
+    padding: 1px 0px 10px 16px;
+    font-size: &dtml-fontSmallSize;;
+    text-decoration: none;
+}
+.link-user {
+    background: transparent url(&dtml-portal_url;/user.gif) 0 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+.link-external {
+    background: transparent url(&dtml-portal_url;/link_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+.link-https {
+    background: transparent url(&dtml-portal_url;/lock_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+.link-mailto {
+    background: transparent url(&dtml-portal_url;/mail_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+.link-news {
+    background: transparent url(&dtml-portal_url;/topic_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+.link-ftp {
+    background: transparent url(&dtml-portal_url;/file_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+.link-irc {
+    background: transparent url(&dtml-portal_url;/discussionitem_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+.link-callto {
+    background: transparent url(&dtml-portal_url;/phone_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+.link-webcal {
+    background: transparent url(&dtml-portal_url;/event_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+.link-feed {
+    background: transparent url(&dtml-portal_url;/rss.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 18px;
+}
+.link-comment {
+    background: transparent url(&dtml-portal_url;/discussionitem_icon.gif) center left no-repeat;
+    padding: 1px 0px 1px 16px !important; /* value:  */
+}
+.link-anchor {
+    color: &dtml-discreetColor;;
+    text-decoration: none;
+    font-weight: normal;
+}
+.link-presentation {
+    font-size: 90%;
+    text-align: center;
+}
+
+/* For ghosted elements */
+.visualGhosted {
+    opacity: 0.2;
+    -moz-opacity: 0.2;
+    -khtml-opacity: 0.2;
+}
+
+/* Fullscreen */
+body.fullscreen #portal-logo,
+body.fullscreen #portal-siteactions {
+    display: none;
+}
+body.fullscreen #portal-globalnav {
+    margin-top: 4em;
+}
+body.fullscreen #portal-searchbox {
+    margin: 0.5em 2em 0 0.5em;
+    padding: 0;
+    position: relative;
+    z-index: 3;
+}
+
+/* Padding for the columns */
+#portal-column-one .visualPadding {
+    padding: 2em 0em 1em 2em;
+}
+#portal-column-two .visualPadding {
+    padding: 2em 2em 1em 0em;
+}
+
+/* Kupu image alignment classes */
+.image-left {
+   float: left;
+   clear: both;
+   margin: 0.5em 1em 0.5em 0;
+   border: 1px solid Black;
+}
+.image-inline {
+   float: none;
+}
+.image-right {
+   float: right;
+   clear: both;
+   margin: 0.5em;
+   border: 1px solid Black;
+}
+
+/* Dashboard */
+#dashboard {
+    width: 68em;
+}
+
+#dashboard-portlets1,
+#dashboard-portlets2,
+#dashboard-portlets3
+{
+    float:left;
+    width:16em;
+    padding:0.7em 1.3em 0 0;
+}
+
+#dashboard-portlets4 {
+    float:left;
+    width:16em;
+    padding-top:0.7em;
+}
+
+#dashboard-portlets1 a,
+#dashboard-portlets2 a,
+#dashboard-portlets3 a,
+#dashboard-portlets4 a {
+    border-bottom:medium none;
+}
+
+#dashboard-portlets1 dl.portlet,
+#dashboard-portlets2 dl.portlet,
+#dashboard-portlets3 dl.portlet,
+#dashboard-portlets4 dl.portlet {
+    margin-bottom:1.5em;
+}
+
+div.managedPortlet.portlet {
+    border-bottom:none;
+}
+#dashboard select {
+    width:100%;
+}
+
+.portletAssignments {
+    margin-top:1.5em;
+}
+
+#dashboard-portlets1 div.managedPortlet a,
+#dashboard-portlets2 div.managedPortlet a,
+#dashboard-portlets3 div.managedPortlet a,
+#dashboard-portlets4 div.managedPortlet a {
+    text-decoration: none;
+    color: &dtml-globalFontColor;;
+    border-bottom:1px solid &dtml-globalFontColor;;
+}
+
+#dashboard-portlets1 div.managedPortlet span a,
+#dashboard-portlets2 div.managedPortlet span a,
+#dashboard-portlets3 div.managedPortlet span a,
+#dashboard-portlets4 div.managedPortlet span a{
+    border-bottom:none;
+}
+
+#dashboard-actions {
+    float:right;
+}
+
+#dashboard-actions ul {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;    
+    margin-top:0;
+}
+
+#dashboard-actions ul li {
+    display:inline;
+    padding-left:0.7em;
+}
+
+#dashboard-actions ul li.portalUser {
+    background:transparent url(&dtml-portal_url;/user.gif) no-repeat scroll left center;
+    padding-left:18px;
+}
+
+/* manage portlets */
+
+.section div {
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+}
+
+/*** CUSTOM ***/
+
+#region-content {
+    background: #fff url(&dtml-portal_url;/right-bg.gif) right repeat-y;
+}
+
+#content .bottom {
+  background: url("&dtml-portal_url;/bottom-bg.gif") top right no-repeat;
+  font-size: 8px;
+}
+
+table#portal-columns {
+  width: 100%;
+  min-width: 750px;
+  border-collapse: collapse;
+}
+
+#portal-column-two {
+    min-width: 200px;
+    padding: 0 0 0 9px;
+}
+
+#portal-column-content,
+#portal-column-two {
+  vertical-align: top;
+  padding: 0;
+}
+
+#portal-column-content {
+  width: 70%;
+}
+
+#portal-column-two {
+  width: 30%;
+}
+
+#content {
+    margin: 0;
+    padding: 1em 1em 0 2.5em;
+    text-align: left;
+    width: 70%;
+    float: left;
+    }
+
+#portal-column-two {
+    margin: 0px 0 0 0;
+    padding: 0;
+    text-align: left;
+    /*position: absolute;*/
+    float: left;
+    width: 30%;
+    }
+
+#content,
+#portal-column-two  {
+  width: auto;
+  float: none;
+}
+
+/* righ col
+*/
+
+
+#portal-column-two h1, 
+#portal-column-two h1.late {
+  background-color:#EDF3FE;
+  border-bottom:1px solid #DCDCDC;
+  color:#333333;
+  font-size:13px;
+  margin:0pt 0pt 5px;
+  padding:6px 8px;
+}
+
+#portal-column-two h2, 
+#portal-column-two h2.border {
+    font-family: "Lucida Grande", arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    margin: 20px 0 3px 0;
+    padding: 0;
+    border: none;
+}
+
+#portal-column-two ul li{
+   list-style-type:none;
+}
+
+/*----------------------------------------------
+Basecamp site style
+------------------------------------------------*/
+
+
+/*-------------------------------------------------
+STRUCTURE
+-------------------------------------------------*/
+
+#Footer {
+    clear: left;
+    font-size: 12px;
+    color: #666;
+    margin: 4px 0 20px 20px;
+    text-align: left;
+    padding-bottom: 15px;
+}
+
+#Footer a:link, #Footer a:visited {
+    color: #666;
+}
+
+#Footer a:hover {
+    color: #fff;
+    background: #666;
+}
+
+
+/*-------------------------------------------------
+SECTION HEADER
+-------------------------------------------------*/
+
+.SectionHeader {
+  text-align:center;
+  padding-top: 0px;
+    margin: 0 0 30px 0;
+}
+
+
+span.SectionDescription {
+    font-weight: normal;
+    color: #666;
+}
+
+.SectionHeader h1 {
+    padding-bottom: 2px;
+    border-bottom: 1px solid #666;
+    margin: 0;
+    font-size: 16px;
+    color: #000;
+}
+
+.ContextHeader {
+  text-align: center;
+  margin: 0 0 15px 0;
+}
+
+.ContextHeader h1 {
+  margin: 0;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #666;
+    font-size: 14px;
+    color: #000;
+}
+
+.ContextHeader h1 span.private {
+  color: #fff;
+    background: #BC0000;
+  font-weight: normal;
+  padding: 0 3px;
+}
+
+.ContextHeader h1 a {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.SectionHeader h3,
+.ContextHeader h3 {
+    font-family: verdana;
+    padding: 2px 0 0 0;
+    margin: 0;
+    font-size: 13px;
+    font-weight: normal;
+    color: #666;
+}
+
+.SectionHeader h3 img {
+  vertical-align: middle;
+}
+
+
+.SectionHeader div.ActionButton {
+    background: #fff;
+    border-top: none;
+    float: right;
+    padding: 3px 0 0 0;
+    margin: 0;
+}
+
+.SectionHeader div.ActionButton {
+    font-size: 10px;
+}
+
+
+a.selected {
+   color: &dtml-linkActiveColor; !important; 
+   background-color:&dtml-linkColor;;
+}
+
+a.admin,
+a.admin:link, 
+a.admin:visited {
+       color: #f00 !important;
+       font-family: verdana;
+       font-size: &dtml-fontSmallSize;;
+       font-weight: normal;
+       background: transparent;
+    text-decoration:underline;
+}
+
+a.admin:hover { 
+       color: #fff !important; 
+       background: #f00 !important; 
+}
+
+a.adminfull:link, a.adminfull:visited {
+    color:#f00 !important;
+    font-weight:bold;
+    text-decoration:underline;
+       background: transparent;
+}
+
+a.adminfull:hover { 
+       color: #fff !important; 
+       background: #f00; 
+}
+
+a.donelink:link, a.donelink:visited,
+a.back:link, a.back:visited{
+   background:#FFCC33;
+   color:#000;
+   font-size:12px;
+   padding:0pt 2px;
+   text-decoration:underline;
+}
+
+a.donelink:hover,a.back:hover {
+   background:#FFCC33 none repeat scroll 0%;
+   color:#000 !important;
+   font-size:12px;
+   padding:0pt 2px;
+}
+
+
+.hideme{
+   display: none !important;
+}
+
+
+img.delimage{
+   cursor: pointer;
+}
+
+div.favorites a{
+   display: block;
+   text-decoration: none;
+   padding: 4px 0pt 4px 0pt;
+}
+
+div.favorites a.selected {
+   color: #fff; 
+   background-color: #30c; 
+   text-decoration: none;
+}
+
+/* state
+*/
+.Post h1 span.private_bug {
+   vertical-align:middle;
+}
+span.private_bug {
+   background:#DD0000 none repeat scroll 0%;
+   color:#FFFFFF;
+   font-size:12px;
+   font-weight:normal;
+   padding:1px 3px;
+}
+
+.Post h1 span.pending_bug {
+   vertical-align:middle;
+}
+span.pending_bug {
+   background:#FFF000 none repeat scroll 0%;
+   color:#000;
+   font-size:12px;
+   font-weight:normal;
+   padding:1px 3px;
+}
+
+.Post h1 span.published_bug {
+   vertical-align:middle;
+}
+span.published_bug {
+   background: #6699ff none repeat scroll 0%;
+   color:#fff;
+   font-size:12px;
+   font-weight:normal;
+   padding:1px 3px;
+}
+/*  showhide
+*/
+
+.showhide {
+    background: #efefef;
+    padding: 10px 10px 1px 10px;
+    margin: 0 0 20px 0;
+    border: 2px solid #ccc;
+}
+
+.showhide h2 {
+    margin: 0;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+}
+
+.showhide p {
+    margin: 10px 0 2px;
+    color: #000;
+    font-weight: normal;
+}
+
+.showhide h3 {
+   font-size: 12px;
+   margin: 0 0 8px 0;
+}
+
+.showhide .form_field {
+   margin-bottom: 10px;
+}
+
+.showhide .label_field {
+   font-size: 13px;
+}
+
+input#form_title {
+   font-size: 18px;
+   font-weight: bold;
+}
+.showhide .extra {
+    border-left: 6px solid #ddd;
+    padding: 0pt 0pt 0pt 5px;
+    margin: 8px 0pt 8px 10px;
+}
+
+.showhide .submit {
+  margin: 5px 0 5px 0;
+  border-top: 1px solid #ddd;
+  font-size: &dtml-fontSmallSize;;
+}
+
+input.bigInput {
+   font-size: 18px !important;
+   font-weight: bold;
+}
+
+/* logo*/
+
+div.LogoBox {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+div.LogoBox img.displayed-in-whitebox {
+  background:#FFFFFF none repeat scroll 0%;
+  padding:10px;
+}
+
+#portal-column-two .LogoBox {
+  text-align:left;
+}
+
+body.isAnon #visual-portal-wrapper{
+   margin: 60px auto 20px;
+   width: 550px;
+}
+
+body.isAnon table#portal-columns {
+   min-width: 1px; 
+}
+
+body.isAnon #region-content{
+   background:#FFFFFF none repeat scroll 0%;
+   border:10px solid #CCCCCC;
+   padding:15px 20px 10px;
+   text-align:left;
+}
+
+div.settingsnav {
+   clear:both;
+   color:#999999;
+   font-size:12px;
+   text-align:center;
+   margin:0px 0pt 20px;
+}
+
+div.settingsnav strong {
+   color:#000000;
+}
+h2.subheader { 
+   border-bottom:1px solid #000000;
+   color:#000000;
+   font-size:12px;
+   margin:15px 0pt 5px;
+   padding:0pt 0pt 2px;
+   }
+
+
+
+/*-------------------------------------------------
+BASIC FORM
+-------------------------------------------------*/
+
+#basic_form {
+  font-family: verdana, sans-serif;
+}
+
+#basic_form p.blockintro {
+	color: #666;
+	font-size: 12px;
+  line-height: 14px;
+  margin: 0;
+}
+
+#basic_form dl {}
+
+#basic_form dt {
+  width: 80px;
+  margin: 4px 8px 0 0; padding: 0;
+  text-align: right;
+  white-space: nowrap;
+  float: left;
+  clear: left;
+  position: relative;
+}
+
+#basic_form dd {
+  margin: 0 0 5px 0px;
+  font-size: 12px;
+}
+
+.addacompany #basic_form dt,
+.editcompany #basic_form dt { width: 120px; }
+.editcompany #basic_form dt { width: 120px; }
+.newprojectnewclient #basic_form dt { width: 120px; }
+.newprojectnewclient #basic_form dt.newcompanyname { margin-top: 0;}
+.newprojectnewclient #basic_form dd.newcompanyname {
+   font-size: 12px;
+   margin-bottom: 10px;
+ }
+
+ .appearance #basic_form dt { width: 150px; }
+
+.file_upload_settings #basic_form dt { width: 90px; }
+.file_upload_settings #basic_form dd { margin-left: 98px; }
+.file_upload_settings #basic_form dl#protocol dt { width: 20px; margin: 0; }
+.file_upload_settings #basic_form dl#protocol dd { margin: 0 18px 10px 28px; }
+.file_upload_settings #basic_form dl#hostaddress dt { width: 40px; }
+.file_upload_settings #basic_form dl#hostaddress dd { margin-left: 0; }
+.file_upload_settings_verification #basic_form div.block {
+	font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
+  padding: 8px 5px;
+  margin-bottom: 0;
+}
+
+.chat_settings #basic_form dl#campfire_account dt { width: 170px; }
+.chat_settings #basic_form dl#campfire_account dd { margin-left: 170px; }
+
+.chat_settings div.SectionHeader {
+  margin-bottom: 10px;
+}
+
+#basic_form dt.required {
+  font-weight: bold;
+}
+
+#basic_form dd input {
+  vertical-align: middle;
+}
+
+#basic_form table {}
+
+#basic_form table td {
+	font-size: 12px;
+}
+
+#basic_form table th {
+  font-size: 12px;
+	font-weight: normal;
+	text-align: right;
+}
+
+#basic_form table th.required {
+  font-weight: bold;
+}
+
+#basic_form div.block {
+	color: #333;
+	background: #f0f0f0;
+	margin: 3px 0 25px 0;
+	padding: 5px;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+#basic_form div.block input {
+  font-size: 12px;
+}
+
+#basic_form h2 {
+	font-size: 14px;
+	color: #333;
+	margin-bottom: 10px;
+	padding: 0;
+	margin: 0 0 5px 0;
+}
+
+#basic_form div.action, div.action {
+    border-top:1px dashed #CCCCCC;
+    padding:15px 0pt 15px 30px;
+    text-align:left;
+}
+
+.pick_chat_room div.action { color: #999; }
+
+#basic_form div p {
+  margin: 0;
+}
+
+#basic_form div#currentlogo {
+  background: #e5e5e5;
+  padding: 10px;
+  margin: 3px 0 0 0;
+}
+
+#basic_form div#currentlogo td {
+  vertical-align: middle;
+}
+
+#basic_form div#currentlogo div#LogoBox {
+  margin-bottom: 0;
+}
+
+#basic_form div#currentlogo td p {
+  margin: 0 0 3px 0;
+}
+
+#basic_form div#upload {
+  padding-left: 10px;
+}
+
+#basic_form div#upload p {
+  margin: 0 0 5px 0;
+}
+
+/*-------------------------------------
+Basic form merged Plone form
+----------------------------------*/
+
+   
+h2.date {
+  font-size: 12px;
+  padding-bottom: 3px;
+  margin:5pt 0pt 10px -13px;
+  text-transform:uppercase;
+}
+
+h2.date span {
+  border-bottom: 1px solid #CCC;
+  color:#666;
+  padding:2px 4px 2px 24px;
+}
+
+h2.date span.Today {
+  background-color:#FFF000;
+  border-bottom:medium none;
+  color:#000000;
+}
+
+td.date span.Today, span.itemtext span.Today {
+   background-color:#FFF000;
+   color:#000000;
+   font-size:12px;
+   padding:1px 3px;
+}
+
+/*-------------------------------------------------
+INDIVIDUAL POSTS
+-------------------------------------------------*/
+
+.Post p {
+    padding: 0;
+    margin: 3px 0 10px 0;
+    line-height: 1.4em;
+}
+
+.Post h1 {
+   border-bottom:0pt none;
+    padding-top: 5px;
+    color: #000;
+}
+
+.Post h1 a {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.Post h1 a:hover {
+    background: #fff;
+    color: #000;
+    text-decoration: underline;
+}   
+
+.Post h2.subhead {
+    padding: 0;
+    margin: 15px 0 0 0;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 12px;
+}
+
+.Post h3 /* the post details, formerly p.whenwho */ {
+    padding: 0 0 0 0;
+    margin: 0 0 5px 0;
+    color: #666; /* #393; */
+    font-family: verdana;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 14px;
+    text-align: left;
+}
+
+.Post h3 a {
+    color: #666;
+    text-decoration:underline;
+}
+
+.Post h3 a:hover {
+    color: #fff !important;
+    background-color: #666;
+}
+
+.Post h3 a.admin:hover {
+   background-color: Red !important;
+}
+
+.Post h3 span.pipe {
+  color: #999;
+}
+
+.Post h3 a.commentlink:link {
+    font-weight: bold;
+    color: #000;
+}
+
+.Post h3 a.commentlink:hover {
+    color: #fff;
+    background: #333;
+}
+
+.Post ol, .Post ul {
+    margin: 3px 0 10px 0;
+    padding: 0;
+}
+
+.Post li {
+    font-size: 14px;
+    line-height: 1.4em;
+}
+.Post ul li {
+    list-style-type: square;
+}
+
+.Post table {
+    background: #dcdcdc;
+}
+
+.Post td {
+    background: #fff;
+    padding: 5px;
+}
+
+legend {
+  background:transparent none no-repeat scroll 0% !important;
+}
+
+a.image:link,
+a.image:visited,
+a.image:hover {
+   background:transparent;
+}
+
+
+/*-----------------------------
+blankBar
+-----------------------------*/
+
+div.blankBar {
+	padding: 10px;
+	background-color: #ffc;
+	text-align: center;
+	margin-bottom: 20px;
+    border-top: 1px solid #ffcc00;
+    border-bottom: 1px solid #ffcc00;
+}
+
+div.blankExample {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+
+div.blankBar h1, div.blankExample h1 {
+    border-bottom: none; 
+	font-size: 20px;
+	margin: 0 0 5px 0;
+}
+
+div.blankBar h1 a:hover {
+	text-decoration: none;
+}
+
+div.blankExample h1 {
+    border-bottom: none;
+	font-size: 16px;
+	margin: 0 0 2px 0;
+}
+
+div.blankBar p {
+	margin: 0;
+}
+
+div.blankExample p {
+	margin: 0 0 15px 0;
+}
+
+.blankOr {
+margin:0pt 0pt 15px;
+padding:0pt;
+}
+
+.or_c {border-right:1px dotted #CCCCCC;padding-right:8px;}
+.or_c_s {border-style:none;}
+.or_c img {float:left;padding-top:10px;}
+.or_c div {padding-left:60px}
+.or_c p {margin-bottom:5px;}
+
+.or_t {font-weight:bold}
+.or_c .or_a {text-align:right; padding:10px 5px 0 0;}
+
+.blankMore { border-top:1px solid #CCCCCC; padding-top:15px;}
+.blankMore ul {list-style-image: url(start_img/help_img.png);}
+.blankMore li {margin-bottom:1em;}
+
+/*-------------------
+Content Types
+--------------------*/
+.event_type span {
+  color:#FFFFFF;
+  font-weight:normal;
+  padding:1px 3px;
+  background-color: gray;
+}
+
+.latest span {
+   line-height: 1.5em;
+}
+
+span.event_type span.dash-state-private-icon {
+  background-color:#FF0000 !important;
+}
+
+span.event_type span.dash-state-completed-icon {
+  background: transparent url("check.gif") no-repeat scroll 0pt 0pt;
+  padding-left: 16px;
+  
+}
+
+.dash-state-completed-title {
+text-decoration:line-through;
+  color:#76797C;
+}
+.dash-state-completed-title a{
+  color:#76797C;
+  text-decoration:none;
+}
+span.event_type span.Milestone {
+  background-color: #5F6E43;
+  white-space: nowrap;
+}
+
+span.event_type span.TodoItem {
+  background-color: #C87800;
+  white-space: nowrap;
+}
+
+span.event_type span.Message {
+  background-color: #334E7D;
+  white-space: nowrap;
+}
+
+span.event_type span.Document {
+  background-color: #24A89E;
+  white-space: nowrap;
+}
+
+span.event_type span.File,span.event_type span.Image {
+  background-color: #7A4A77;
+  white-space: nowrap;
+}
+
+span.event_type span.Comment,
+span.event_type span.DiscussionItem,
+span.event_type span.ChatLog {
+  background-color: #6492AC;
+  white-space: nowrap;
+}
+
+.insert { background-color: #aaffaa }
+.delete { background-color: #ff8888 }
+
+/* for kupu */
+.inlineForm .overflow label{
+display: block;
+}
+
+div.kupuoverride {
+   display: none;
+}
+
+#body-wrapper h2 {
+   font-weight: normal;
+   border-bottom: 1px solid #8CACBB;
+}
+
+.kupu-html h2 {
+   font-weight: normal;
+   border-bottom: 1px solid #8CACBB;
+}
+
+/* Fix for IE float bug */
+* html h1,
+* html h2,
+* html h3,
+* html .SectionHeader,
+* html #body-wrapper,
+* html .listdesc {
+   height: 0.1%;
+   }
+.iefix {
+   height: 1%;
+   }
+
+#content-header {
+background: #EDF3FE url(right-bg.gif) repeat-y scroll right center;
+padding-top:0px;
+padding-bottom:0px;
+}
+#siteMenuActions {
+background:#EDF3FE none repeat scroll 0%;
+}
+
+div.HeaderNav {
+ background:#EDF3FE none repeat scroll 0%;
+ border-bottom:1px solid #C6DFF9;
+ clear:left;
+ margin:0pt -0.9em 0pt -1em;
+ padding:1em 2px 2px 15px;
+}
+
+div.HeaderNav ul {
+  line-height:normal;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+  white-space:nowrap;
+  padding-top:4px;
+  margin:0pt;
+}
+
+div.HeaderNav ul li {
+  display: inline;
+  padding: 5px 10px 2px;
+}
+
+div.HeaderNav li a {
+   height:auto;
+   margin-right:0pt;
+   text-decoration:underline;
+   text-transform:none;
+   border-style:none;
+}
+
+div.HeaderNav li a:visited {
+    color:#06c;
+}
+div.HeaderNav li.selected {
+   background-color:#FFF;
+   color: #000;
+   border-color:#C6DFF9 rgb(198, 223, 249) rgb(255, 255, 255);
+   border-style:solid;
+   border-width:1px;
+   font-weight:bold;
+   padding:5px 10px 2px;
+}
+div.HeaderNav li a:hover {
+  color:#000;
+  background-color:transparent;
+}
+ 
+#front-page-content {
+  padding-top:0.5em;
+}
+
+h2#reporttitle {
+  font-size:16px;
+}
+
+.inline-diff {
+  background-color:#DEE7EC;
+  border:1px solid #8CACBB;
+  color:Black;
+  font-size:100%;
+  padding:1em;
+}
+
+.wclist h1 {
+   background:#EDF3FE none repeat scroll 0% 50%;
+   border-bottom:1px solid #C6DFF9;
+   padding:3px 5px;font-size:16px;
+}
+
+.wclist .file_info h1 {
+  background: transparent;
+  margin: 5px 0pt !important;
+  border-style:none;
+  }
+
+.wclist .file_info a {
+  text-decoration:underline;
+  }
+
+.wclist .Post {
+  padding-left:30px;
+}
+/* </dtml-with> */
+

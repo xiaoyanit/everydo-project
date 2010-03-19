@@ -1,0 +1,141 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="zopen.messages">
+
+   <metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+
+
+<metal:css fill-slot="style_slot">
+   <link href="#" type="text/css" rel="stylesheet" media="screen"
+         tal:attributes="href string:$portal_url/++resource++message.css?34223332" />
+   <link href="#" type="text/css" rel="stylesheet" media="screen"
+         tal:attributes="href string:$portal_url/++resource++comments.css?34223332" />
+
+    <link type="text/css" rel="kinetic-stylesheet"
+          tal:attributes="href string:$portal_url/++resource++subscribe.kss?34223332"
+          />
+
+    <link type="text/css" rel="kinetic-stylesheet"
+          tal:attributes="href string:$portal_url/++resource++comments.kss?34223332"
+          />
+</metal:css>
+
+<body>
+
+  <div metal:fill-slot="main"
+       tal:define="canEdit python:checkPermission('Modify portal content', context)">
+
+    <div class="ContextHeader">
+      <h1 i18n:translate="message_in_category"> This is Message in
+                  <a tal:define="category view/categoryInfo"
+                                 tal:attributes="href category/url"
+                                 tal:content="category/title"
+                                 i18n:name="category_title">category</a></h1>
+    </div>
+
+    <div class=""
+         tal:attributes="class string:state-${view/review_state}">
+
+        <div class="SectionHeader">
+          <h1 style="border: medium none;"
+            tal:content="here/Title">Conversation title
+          </h1>
+          <h3>
+           <tal:block i18n:translate="create_by"
+                    tal:define="currentContributor python:context.Contributors() and context.Contributors()[0] or context.Creator()">
+            <span style="color: rgb(51, 51, 51);" i18n:name="creator">
+                  <strong tal:content="python:basecamp_view.getMemberName(currentContributor)">benky
+                  </strong>
+            </span>
+
+            posted
+            <span i18n:name="modified" tal:content="context/ModificationDate"/>
+           </tal:block>
+
+           <tal:cond condition="canEdit">
+                   | 
+                   <a href="#"
+                      class="admin"
+                      tal:attributes="href string:$here_url/edit_message"
+                      i18n:translate="edit">edit</a>
+         </tal:cond>
+         <span tal:define="project_url python:basecamp_view.getCurrentProject().absolute_url();"
+              tal:condition="python:checkPermission('Delete objects', context)"
+              tal:attributes="class string:kssattr-delSelector-redirect2${project_url}/messages kssattr-kssurl-$here_url;">
+           | <span tal:define="obj nocall:context;show_mode string:text;"
+                                     tal:replace="structure provider:zopen.deletion"/>
+         </span>
+          </h3>
+        </div>
+
+        <div class="Post">
+
+           <p tal:replace="structure context/getText"/>
+
+          <!-- Navigation -->
+        </div>
+
+    </div>
+
+   <tal:attachments tal:define="attachments context/getAttachedImagesAndFiles;
+                                files python:attachments[1];
+                                images python:attachments[0]">
+     <metal:block metal:define-macro="attachments-images" tal:condition="images">
+         <tal:rep repeat="attachment images">
+          <div class="photoAlbumEntry" tal:condition="python:checkPermission('View', attachment)">
+                <tal:block tal:define="url python:attachment.absolute_url(); ">
+                  <a tal:attributes="href string:$url/@@file_view;
+                                     title attachment/pretty_title_or_id">
+                   <span class="photoAlbumEntryWrapper">
+                   <img src="" alt="" 
+                        tal:attributes="src string:$url/image_thumb;
+                                        title python:attachment.pretty_title_or_id();" />
+                   </span></a>
+                </tal:block>
+          </div>
+          <ul tal:condition="python:not checkPermission('View', attachment)"><li style="color:red;">您没有权限查看这个附件</li></ul>
+         </tal:rep> 
+          <div class="visualClear"><!-- --></div>
+      </metal:block>
+      <metal:block metal:define-macro="attachments-attachments" tal:condition="files">
+      <ul class="commentAttachments visualNoMarker">
+        <tal:rep repeat="attachment files">
+         <li class="kssDeletionRegion" tal:condition="python:checkPermission('View', attachment)"
+                       tal:attributes="class string:InnerDeletionRegion kssattr-delSelector-.InnerDeletionRegion kssattr-kssurl-${attachment/absolute_url}">
+           <img src="" height="16px" width="16px"
+                 tal:attributes="src string:/${attachment/getIcon}" />
+           <a tal:attributes="href string:${attachment/absolute_url}/@@file_view">
+            <span class="visualIconPadding"
+                  tal:content="attachment/pretty_title_or_id">
+              Attachment title
+            </span>
+            <span tal:define="size attachment/getObjSize"
+                  tal:condition="size"
+                  tal:omit-tag="">
+              (<span tal:replace="size">257 kB</span>)</span></a>
+          <a href="" tal:attributes="href attachment/absolute_url" i18n:domain="zopen.filerepos" i18n:translate="download">Download</a>
+          <span tal:define="obj nocall:attachment;show_mode string:img;"
+              tal:condition="python:checkPermission('Delete objects',attachment)">
+              <tal:rep replace="structure provider:zopen.deletion" />
+          </span>
+        </li>
+      <ul tal:condition="python:not checkPermission('View', attachment)"><li style="color:red;">您没有权限查看这个附件</li></ul>
+       </tal:rep>
+      </ul>
+    </metal:block>
+   </tal:attachments>
+
+    <div tal:replace="structure provider:zopen.comments" />
+
+  </div>
+
+<div metal:fill-slot="portlets_two_slot"
+     tal:replace="structure provider:zopen.subscription"
+     tal:on-error="string:"
+     />
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"
+    metal:use-macro="context/main_template/macros/master"
+    i18n:domain="zopen.writeboard">
+
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('showright', 1)" />
+<div metal:fill-slot="base">
+    <base href="" tal:attributes="href current_page_url" />
+</div>
+<tal:block metal:fill-slot="style_slot">
+    <link rel="stylesheet" type="text/css" href="compare.css"
+          tal:attributes="href string:${portal_url}/compare.css"/>
+</tal:block>
+
+<body>
+  <div metal:fill-slot="main">
+    <div class="SectionHeader">
+         <h1 class="documentFirstHeading"
+             tal:content="context/pretty_title_or_id" />
+    </div>
+
+    <metal:def 
+       metal:define-macro="main"
+       tal:define="versions python:[request[key] for key in request.keys() if key.startswith('version_')];
+                   versions python:versions or [options[key] for key in options.keys() if key.startswith('version_')];
+                   id1 python:versions[0];
+                   id2 python:versions[1];
+                   diffs python:context.getVersionDiff(id1, id2);
+                   base_page_url string:${request/ACTUAL_URL}?version_id1=${id1}&amp;version_id2=${id2}">
+
+
+    <div>
+    <div metal:use-macro="context/diff_legend/macros/diff_legend" />
+    <h3 class="diff-head" tal:condition="python:id1=='current'">
+       <tal:i18n i18n:translate="changes_since_version"> Changes since version  <span i18n:name="id2" tal:replace="id2" /> </tal:i18n></h3>
+    <h3 class="diff-head" tal:condition="python:id1!='current'">
+       <tal:i18n i18n:translate="changes_from_version">
+            Changes from version
+	    <span i18n:name="id2" tal:replace="string:${id2}" />
+            to version 
+	    <span i18n:name="id1" tal:replace="string:${id1}" /> </tal:i18n></h3>
+     
+    <form id="diffs"
+          action="#"
+          tal:condition="not:diffs/same" tal:repeat="d diffs/getDiffs">
+      <em tal:condition="diffs/same" i18n:translate="no_changes">No changes</em>
+      <div class="field"
+           tal:condition="not:d/same">
+            <p tal:content="structure d/inline_diff">[html diff]</p>
+      </div>
+    </form>
+    </div>
+
+    </metal:def>
+  </div>
+
+  <metal:right metal:fill-slot="portlets_two_slot">
+    <div metal:use-macro="context/@@writeboard_view/macros/revisions" />
+  </metal:right>
+
+</body>
+</html>

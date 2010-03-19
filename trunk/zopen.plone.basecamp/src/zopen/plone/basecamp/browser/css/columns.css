@@ -1,0 +1,41 @@
+
+    /* zrt-cssregistry: base_properties */
+
+/* <dtml-with base_properties (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())" (not this either :) */
+
+#portal-columns {
+    background: transparent;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+#portal-column-one {
+    vertical-align: top;
+    width: columnOneWidth;
+    border-collapse: collapse;
+    padding: 0;
+}
+#portal-column-content {
+    vertical-align: top;
+    border-collapse: collapse;
+    padding: 1em;
+    margin: 0;
+}
+#portal-column-two {
+    vertical-align: top;
+    width: columnTwoWidth;
+    border-collapse: collapse;
+    padding: 0;
+}
+
+/* Padding for the columns */
+#portal-column-one .visualPadding {
+    padding: 1em 0em 1em 1em;
+}
+#portal-column-two .visualPadding {
+    padding: 2em 1em 1em 0em;
+}
+
+/* </dtml-with */
+    

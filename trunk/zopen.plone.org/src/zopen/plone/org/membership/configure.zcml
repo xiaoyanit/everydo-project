@@ -1,0 +1,11 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:five="http://namespaces.zope.org/five">
+
+    <adapter factory=".team.Team" />
+    <adapter factory=".team.Group" />
+
+    <adapter factory=".teamfolder.Group" />
+
+</configure>

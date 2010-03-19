@@ -1,0 +1,81 @@
+# zopen.chat translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.chat 1.0\n"
+"POT-Creation-Date: 2007-04-26 10:40+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.chat\n"
+"X-Is-Fallback-For: zh-cn\n"
+
+#. Default: "delete all"
+#: browser/chatroom_view.pt
+msgid "delete_all"
+msgstr "全部清除"
+
+#. Default: "discuss log"
+#: browser/chatroom_view.pt
+msgid "discuss_log"
+msgstr "讨论记录"
+
+#. Default: "full view"
+#: browser/chatroom_view.pt
+msgid "full_view"
+msgstr "完整查看"
+
+#. Default: "who's here?"
+#: browser/chatroom_view.pt
+msgid "who_here"
+msgstr "谁在这里？"
+
+#. Default: "Send message"
+#. browser/chatroorm_view.pt
+msgid "send_message"
+msgstr "发送消息"
+
+#. browser/chatroorm_view.pt
+msgid "label_cannot_post"
+msgstr "您没有权限发送消息。"
+
+#. browser/chatroorm_view.pt
+msgid "open_a_new_conversation"
+msgstr "<span style=\"font-size:13px\">开启新会话</span>"
+
+#. browser/chatroorm_view.pt
+msgid "archiving_conversation"
+msgstr "全部存档会话..."
+
+#. Default: "Edit"
+#. browser/chatroorm_view.pt
+msgid "edit"
+msgstr "编辑"
+
+#. browser/chatroorm_view.pt
+msgid "discussion_topic"
+msgstr "讨论主题"
+
+#. browser/chatroorm_view.pt
+msgid "private"
+msgstr "保密"
+
+#. browser/chatroorm_view.pt
+msgid "or"
+msgstr "或"
+
+#. browser/chatroorm_view.pt
+msgid "cancel"
+msgstr "取消"
+
+#. browser/chatroorm_view.pt
+msgid "save"
+msgstr "保存"
+

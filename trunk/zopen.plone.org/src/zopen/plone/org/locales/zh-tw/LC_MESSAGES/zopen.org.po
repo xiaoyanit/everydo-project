@@ -1,0 +1,533 @@
+# zopen.org translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.org 1.0\n"
+"POT-Creation-Date: 2007-06-22 07:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh-tw\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.org\n"
+"X-Is-Fallback-For: zh-hk zh-mo zh-sg\n"
+
+#. Default: "Add"
+#: browser/team.pt
+msgid "add"
+msgstr "添加"
+
+#. Default: "Add a company to this group"
+#: browser/team.pt
+msgid "add_a_company"
+msgstr "添加一個公司到這個項目"
+
+#. Default: "Add company"
+#: browser/team.pt
+msgid "add_company"
+msgstr "添加一個公司"
+
+#. Default: "Add the first person"
+#: browser/team.pt
+msgid "add_first_person"
+msgstr "添加第一個人員"
+
+#. Default: "Add a new company"
+#: browser/organizationunit.pt
+msgid "add_new_company"
+msgstr "添加一個新的公司"
+
+#. Default: "Add a new person:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "add_new_person"
+msgstr "添加一個新的人員"
+
+#. Default: "Add person"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "add_person"
+msgstr "添加人員"
+
+#. Default: "Add person to"
+#: browser/team.pt
+msgid "add_person_to"
+msgstr "添加一個人員到"
+
+#. Default: "Add the first person"
+#: browser/organizationunit.pt
+msgid "add_the_first"
+msgstr "添加第一個人員"
+
+#. Default: "After you add a company you'll choose the people from that company you want to add to the group."
+#: browser/team.pt
+msgid "after_add_company"
+msgstr "添加公司後，可從這家公司中選擇人員加入到這個項目。"
+
+#. Default: "After you add a company you'll be able to add people to that company."
+#: browser/organizationunit.pt
+msgid "after_add_people"
+msgstr "在您添加了一個公司後可在公司里添加人員。"
+
+#. Default: "All of"
+#: browser/personselection/multiselection.pt
+msgid "all_of"
+msgstr "全選"
+
+#. Default: "Cancel"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "cancel"
+msgstr "取消"
+
+#. Default: "Choose an existing company"
+#: browser/team.pt
+msgid "choose_existing_company"
+msgstr "選擇一個現有公司"
+
+msgid "choose_existing_person"
+msgstr "選擇一個現有的人員"
+
+#. Default: "Which company do you want to add to the group?"
+#: browser/team.pt
+msgid "company_add_group"
+msgstr "你想添加哪個公司的人員到這個項目中？"
+
+#. Default: "this company from this group"
+#: browser/team.pt
+msgid "company_group"
+msgstr "這個項目中的這家公司"
+
+#. Default: "Every company and person in your system"
+#: browser/organizationunit.pt
+msgid "company_person_system"
+msgstr "系統中的所有公司和人員"
+
+#. Default: "Create and add company"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "create_add_company"
+msgstr "創建并添加一個公司"
+
+#. Default: "Create and add person"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "create_add_person"
+msgstr "創建斌并添加一名人員"
+
+#. Default: "Edit"
+#: browser/organizationunit.pt
+#: browser/team.pt
+#: browser/teammange/list.pt
+msgid "edit"
+msgstr "編輯"
+
+#. Default: "Email:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "email"
+msgstr "郵件地址："
+
+#. Default: "Create a new company"
+#: browser/team.pt
+msgid "create_a_new_company"
+msgstr "創建一個新的公司"
+
+#. Default: "Enter a new company name"
+#: browser/organizationunit.pt
+msgid "enter_new_company_name"
+msgstr "輸入一個新的公司名稱"
+
+# Default "error"
+msgid "error"
+msgstr "錯誤"
+
+# Default "A user with id $username already exists in the portal"
+msgid "exisits_in_portal"
+msgstr "站點中已有此ID的用戶"
+
+#. Default: "from this company to the group"
+#: browser/team.pt
+msgid "from_company_group"
+msgstr "從這家公司到這個項目"
+
+#. Default: "from this group"
+#: browser/team.pt
+msgid "from_group"
+msgstr "從這個項目"
+
+#. Default: "Full Name:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "full_name"
+msgstr "姓名："
+
+# Default "illegal member id"
+msgid "illegal_member_id"
+msgstr "出錯的登錄用戶名"
+
+#. Default: "or"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "or"
+msgstr "或"
+
+# Default "Organization Unit"
+msgid "organization_unit"
+msgstr "公司"
+
+# Default "Organization unit can contain persons"
+msgid "organization_unit_description"
+msgstr "公司里可包含人員"
+
+#. Default: "Password:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "password"
+msgstr "初始密碼："
+
+# Default "Person"
+msgid "person"
+msgstr "人員"
+
+# Default "Person in a Organization unit"
+msgid "person_description"
+msgstr "公司里的人員"
+
+#. Default: "Remove"
+#: browser/team.pt
+msgid "remove"
+msgstr "移去"
+
+#. Default: "(then you can add people to that company)"
+#: browser/organizationunit.pt
+msgid "then_add_people_that"
+msgstr "（然後，您可以添加人員到這家公司里）"
+
+#. Default: "(then you can add people in the company)"
+#: browser/team.pt
+msgid "then_add_people_the"
+msgstr "（然後，您可以從這家公司中添加人員）"
+
+#. Default: "this company"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "this_company"
+msgstr "這家公司"
+
+#. Default: "to"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "to"
+msgstr "到"
+
+#. Default: "to this company"
+#: browser/organizationunit.pt
+msgid "to_this_company"
+msgstr "到這家公司"
+
+#. Default: "username:"
+#: browser/organizationunit.pt
+#: browser/team.pt
+msgid "username"
+msgstr "登錄用戶名："
+
+msgid "office_contact"
+msgstr "聯繫電話："
+
+msgid "mobile_contact"
+msgstr "移動電話："
+
+msgid "label_company_name"
+msgstr "公司名稱"
+
+msgid "description_company_name"
+msgstr "您公司名稱"
+
+msgid "label_company_address"
+msgstr "公司地址"
+
+msgid "description_company_address"
+msgstr "您公司的詳細地址"
+
+msgid "label_company_optional_address"
+msgstr "可選地址"
+
+msgid "description_company_optional_address"
+msgstr "你的公司的另一個地址（如果有的話）"
+
+msgid "label_company_city"
+msgstr "城市"
+
+msgid "description_company_city"
+msgstr "你公司所在的城市"
+
+msgid "label_company_province"
+msgstr "省"
+
+msgid "description_company_province"
+msgstr "您公司所在的省"
+
+msgid "label_company_zip"
+msgstr "郵編"
+
+msgid "description_company_zip"
+msgstr "您公司所在地的郵政編碼"
+
+msgid "label_company_website"
+msgstr "網站地址"
+
+msgid "description_company_website"
+msgstr "你公司的網站地址"
+
+msgid "label_company_office"
+msgstr "辦公室電話"
+
+msgid "description_company_office"
+msgstr "您公司的辦公室電話號碼"
+
+msgid "label_company_fax"
+msgstr "傳真機號碼"
+
+msgid "description_company_fax"
+msgstr "您公司的傳真機號碼"
+
+msgid "description_company_logo"
+msgstr "您公司的Logo"
+
+msgid "label_company_logo_in"
+msgstr "是否將Logo置於一個白框中"
+
+msgid "label_user_name"
+msgstr "登錄用戶名"
+
+msgid "description_user_name"
+msgstr "登錄網站的時候，使用此名字登錄。一旦創建用戶，登錄用戶名不可修改。"
+
+msgid "label_user_password"
+msgstr "登錄密碼"
+
+msgid "description_user_password"
+msgstr "設置這個人員的密碼（如果不想改變密碼請將此處留空）"
+
+msgid "label_user_confirm_password"
+msgstr "確認密碼"
+
+msgid "description_user_confirm_password"
+msgstr "請重新輸入密碼（如果不想改變密碼請將此處留空）"
+
+msgid "label_user_email"
+msgstr "Email地址"
+
+msgid "description_user_email"
+msgstr "輸入電子郵件地址"
+
+msgid "label_user_telephone"
+msgstr "電話號碼"
+
+msgid "description_user_telephone"
+msgstr "輸入電話號碼"
+
+msgid "label_user_fullname"
+msgstr "全名"
+
+msgid "description_user_fullname"
+msgstr "輸入全名"
+
+msgid "label_user_duty"
+msgstr "職務"
+
+msgid "description_user_duty"
+msgstr "輸入您的職務"
+
+msgid "label_user_mobile"
+msgstr "移動電話"
+
+msgid "description_user_mobile"
+msgstr "輸入您的移動電話號碼"
+
+msgid "label_user_office"
+msgstr "辦公電話"
+
+msgid "description_user_office"
+msgstr "輸入您的辦公電話"
+
+msgid "label_user_fax"
+msgstr "傳真機號碼"
+
+msgid "description_user_fax"
+msgstr "輸入您的傳真機號碼"
+
+msgid "label_user_location"
+msgstr "所在位置"
+
+msgid "description_user_location"
+msgstr "輸入此人所在的城市或國家"
+
+msgid "label_user_portrait"
+msgstr "個人頭像"
+
+msgid "description_user_portrait"
+msgstr "可以在此處存放一張小照片"
+
+msgid "mail_subject"
+msgstr "[${project_title}] 您的帳號已經創建"
+
+#. Default: "${companyname} create a account for you.  your account information is:\n Username: ${username}\n Password: ${password}\n\nPlease visit the following address and Login:\n${portal_url}\n\nThen visit the site top right corner "My Info", amend your password in time."
+msgid "mail_body"
+msgstr "${companyname}已經為您創建了一個帳號。您的帳號信息是: \n\n 用戶名: ${username}\n 密碼: ${password} \n\n可訪問下面的地址登錄:\n${portal_url}\n\n登錄後，請到站點右上方“我的資料”處，及時修改自己的密碼。"
+
+msgid "label_description"
+msgstr "簡短描述"
+
+msgid "help_description"
+msgstr "一個簡單的描述"
+
+#: browser/teammanage/list.pt
+msgid "add_another_team"
+msgstr "新增一個項目組"
+
+#: browser/teammanagelist.pt
+msgid "all_teams"
+msgstr "全部項目組"
+
+
+#: browser/teammanage/list.pt
+msgid "teams"
+msgstr "項目組"
+
+#. Default: "Done"
+#: browser/teammanage/list.pt
+msgid "done"
+msgstr "完成"
+
+#. Default: "Rename"
+#: browser/teammanage/list.pt
+msgid "rename"
+msgstr "改名"
+
+#. Default: "save"
+#: browser/teammanage/list.pt
+msgid "save"
+msgstr "保存"
+
+msgid "please_enter_team_title."
+msgstr "請輸入項目組名稱。"
+
+msgid "modified success."
+msgstr "更改成功。"
+
+msgid "team_${title}_was_added."
+msgstr "${title}的項目組已添加。"
+
+msgid "team_${title}_was_existed."
+msgstr "${title}的項目組已存在。"
+
+#. Default: "add team"
+#: browser/team.pt
+msgid "add_team"
+msgstr "為此人增加一個項目組"
+
+
+#. Default: "delete this person from the team"
+msgid "delete_team"
+msgstr "從這個項目組中刪除此人"
+
+
+#: browser/teammange/kssview.py
+msgid "Info"
+msgstr "信息"
+
+#: browser/teammange/kssview.py
+msgid "Deleted."
+msgstr "已刪除。"
+
+
+
+#: browser/team.pt
+msgid "add_to_team"
+msgstr "加入項目組："
+
+
+#: browser/teammange/list.pt
+msgid "team_name"
+msgstr "組名："
+
+
+#: browser/teammange/list.pt
+msgid "description"
+msgstr "簡單說明："
+
+#: browser/teammange/list.pt
+msgid "edit_team"
+msgstr "編輯"
+
+msgid "inhibit_login"
+msgstr "禁止，禁止登錄"
+
+msgid "notify_by_email"
+msgstr "發送帳號通知郵件"
+
+msgid "existing_people"
+msgstr "現有人員："
+
+msgid "all_people"
+msgstr "所有人員："
+
+msgid "remove_out_project"
+msgstr "從項目中 <a href=\"#\" class=\"admin EVdeletePersoniiii EVremoveperson\">移去</a>"
+
+#. View
+#: brower/permissionsetting.pt
+msgid "view"
+msgstr "查看"
+
+#. View private content
+#: brower/permissionsetting.pt
+msgid "view_private"
+msgstr "查看保密內容"
+
+#. Modify 
+#: brower/permissionsetting.pt
+msgid "modify"
+msgstr "修改"
+
+#. Review content 
+#: brower/permissionsetting.pt
+msgid "review_content"
+msgstr "審核內容"
+
+#: brower/permissionsetting.pt
+msgid "tabs_categories"
+msgstr "欄目和分類"
+
+#: brower/permissionsetting.pt
+msgid "acquire_permission"
+msgstr "獲取上一層權限"
+
+#: brower/permissionsetting.pt
+msgid "permission"
+msgstr "權限項"
+
+#.Here you can view and modify the permission settings of all the project tabs and categories, that is who, where, and what permission should be allocated. In right side of this page, can be define project group. The project content stored similar tree, in order to simplify settings, can be the lower deck acquire the upper folder permission settings.
+#: brower/permissionsetting.pt
+msgid "permission_formhelp"
+msgstr "在這裡，可以查看和修改整個項目各個欄目的權限設置，即誰、在哪裡、應該分配什麽權限。在本頁的右邊列，可以根據需要定義項目組。項目內容是樹狀存儲的，為簡化設置，可讓下層的內容獲得上層文件夾上分配權限。"
+
+#. Here you can view the permission settings, but not to modify. only buy advanced servier can be customize.
+msgid "cancustom_permission"
+msgstr "在這裡，您可以查看權限設置，但無法修改定制。只有在購買“增強”以上級別的服務，才能進行定制"
+
+msgid "tras_permission"
+msgstr "<strong>獲得上級權限:</strong> 選中複選框<input type=\"checkbox\" checked='checked' disabled=\"disabled\"/>，將自動獲得上層文件夾上分配的權限；去除此選項後，上策文件夾上的權限設置將在該條目上失效，可單獨為該條目設置權限。<a href=\"#\" onclick=\"return false\" class=\"EVtoggle TGtoggle\">查看示例...</a>"
+
+msgid "in_group_permission"
+msgstr "設置項目組權限..."
+
+msgid "allow_create_projects"
+msgstr "允許創建項目"

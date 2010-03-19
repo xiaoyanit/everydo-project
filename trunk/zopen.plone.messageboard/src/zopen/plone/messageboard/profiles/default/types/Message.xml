@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<object name="Message"
+   meta_type="Factory-based Type Information">
+ <property name="title">Message</property>
+ <property name="description">Message</property>
+ <property name="content_icon">++resource++message.gif</property>
+ <property name="content_meta_type">Message</property>
+ <property name="product">zopen.plone.messageboard</property>
+ <property name="factory">addMessage</property>
+ <property name="immediate_view">base_edit</property>
+ <property name="global_allow">True</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+    <element value="Comment"/>
+ </property>
+ <property name="allow_discussion">True</property>
+ <alias from="(Default)" to="@@message_view"/>
+ <alias from="edit" to="base_edit"/>
+ <alias from="sharing" to="@@sharing"/>
+ <alias from="view" to="@@message_view"/>
+ <action title="View" action_id="view" category="object" condition_expr=""
+    url_expr="string:${folder_url}/" visible="True">
+  <permission value="View"/>
+ </action>
+ <action title="Edit" action_id="edit" category="object" condition_expr=""
+    url_expr="string:${object_url}/edit" visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Sharing" action_id="local_roles" category="object"
+    condition_expr="" url_expr="string:${object_url}/sharing" visible="True">
+  <permission value="Manage properties"/>
+ </action>
+ <action title="State" action_id="content_status_history"
+    category="object_tabs"
+    condition_expr="python:object and portal.portal_workflow.getTransitionsFor(object, object.getParentNode())"
+    url_expr="string:$object_url/content_status_history" visible="False">
+  <permission value="View"/>
+ </action>
+</object>

@@ -1,0 +1,24 @@
+<select name="category" class="categorySelect" 
+    i18n:domain="zopen.widgets"
+    tal:define="view_category request/form/category | view/category;
+                haveNew python:True;"
+    tal:attributes="name python:view.name or 'category';
+                    onchange string:javascript:
+        if (this.options[this.selectedIndex].value == '__new__') {
+            title = prompt('请输入新的分类名:', '');;
+            if (title && title != 'null')
+                kssServerAction(this,  '${view/actionbaseurl}' + 'selectionCreateCategory',
+                        {title:title});;
+            else
+                this.selectedIndex = 0;;
+        }
+    "> 
+    <option tal:repeat="category view/categories"
+            tal:content="category/title"
+            tal:attributes="value category/id;
+                            selected python:view_category == category['id'];
+            ">category title</option>
+
+    <option tal:condition="view/can_define_category" value="__new__" i18n:translate="add_new_category"> -- add a new category -- </option>
+
+</select>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="Anonymous"/>
+    <role name="Authenticated"/>
+    <role name="Manager"/>
+    <role name="Administrator"/>
+    <role name="Member"/>
+    <role name="Owner"/>
+    <role name="Reviewer"/>
+    <role name="Reader" />
+    <role name="Editor" />
+  </roles>
+  <permissions>
+    <permission name="zopen.messageboard: Add Message"
+        acquire="True">
+        <role name="Editor"/>
+        <role name="Owner"/>
+        <role name="Contributor"/>
+        <role name="Administrator"/> 
+    </permission>
+    <permission name="zopen.messageboard: Add Comment"
+        acquire="True">
+        <role name="Editor"/>
+        <role name="Owner"/>
+        <role name="Contributor"/>
+        <role name="Member"/>
+        <role name="Reader"/>
+        <role name="Administrator"/> 
+    </permission>
+
+  </permissions>
+</rolemap>

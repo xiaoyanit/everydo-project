@@ -1,0 +1,36 @@
+<div id="subscription" i18n:domain="zopen.project">
+<h1 i18n:translate="comment_notification">Comment Notification</h1>
+
+<div id="sub_m"></div>
+<p class="GeditNotified" tal:condition="view/hasSubscriptionForAuthenticatedMember"
+    i18n:translate="notification_caption">The following people will receive email notifications when new comments are posted.</p>
+
+
+<p class="GeditNotified" tal:condition="not:view/hasSubscriptionForAuthenticatedMember">
+   <span style="background-color: yellow;" i18n:translate="not_notified">
+   You aren't currently being notified when new comments are posted.</span>
+   <span style="font-weight: bold;" i18n:translate="automatically_notified">If you post a comment you'll automatically be notified when others post comments.</span>
+    <tal:i18n i18n:translate="not_comment_subscribe">
+        If you'd rather not comment, but want to be notified, then
+         <tal:i18n i18n:name="subscribe">
+          <a href="#" id="subscribe-self" i18n:translate="subscribe_message">subscribe to this message.</a></tal:i18n></tal:i18n></p>
+
+<p class="GeditNotified" tal:condition="view/canModify" i18n:translate="modify_subscriptions_more">You can <a href="#" class="admin TeditNotified">modify subscriptions</a>, and invitation members to view the contents by E-mail</p>
+
+<dl class="GeditNotified" tal:define="subers view/getSubscribedMembers"
+    tal:condition="subers">
+    <tal:rep repeat="objs subers/values">
+    <tal:def define="company python:objs[0];
+                     people python:objs[1:];
+                    ">
+    <dt tal:content="company/pretty_title_or_id" />
+    <dd><div class="sub-line" tal:repeat="p people">
+          <span i18n:translate="" tal:replace="p/pretty_title_or_id" />
+            <tal:cond condition="python:
+                        view.hasSubscriptionForAuthenticatedMember()
+                        and p.id == user.getId()">(<a
+            href="#" id="unsubscribe-self" i18n:translate="remove">remove</a>)</tal:cond></div></dd>
+    </tal:def>
+    </tal:rep>
+</dl>
+</div>

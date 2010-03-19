@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      tal:attributes="lang language|default;
+                      xml:lang language|default;"
+      tal:define="portal_url here/portal_url;
+                  here_url here/absolute_url;
+                  mtool python:here.portal_membership;
+                  member python:test(here.portal_membership.isAnonymousUser(),'',here.portal_membership.getAuthenticatedMember().getId());
+                  cssclass python:member and member.replace('.', '_') or None;
+                  charset python:here.portal_properties.site_properties.getProperty('default_charset')">
+
+<head>
+
+    <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)" />
+
+    <style type="text/css" 
+           media="screen" 
+           tal:content="structure string:<!-- @import url($portal_url/plone.css); -->"></style>
+
+
+<script type="text/javascript"
+        tal:attributes="src string:$portal_url/plonechat.js">
+</script>
+
+</head>
+<body tal:define="files context/getRelatedItems;
+                  dummy python:files.reverse()"
+      i18n:domain="plonechat">
+
+      <ul id="filelist">
+         <li tal:repeat="file files">
+             <a href=""
+                tal:attributes="href file/absolute_url"
+                tal:content="file/Title">title</a>
+         </li>
+     </ul>
+
+  <p tal:condition="not:files"
+     i18n:translate="">No files</p>
+
+
+</body>
+</html>
+

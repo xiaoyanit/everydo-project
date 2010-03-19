@@ -1,0 +1,18 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           i18n_domain="frs-at">
+
+  <subscriber for="OFS.interfaces.IZopeObject
+              zope.app.container.interfaces.IObjectRemovedEvent"
+              handler=".tramline.notifyFRSToRemove" />
+
+  <subscriber for="OFS.interfaces.IZopeObject
+              zope.app.container.interfaces.IObjectMovedEvent"
+              handler=".tramline.notifyFRSToMove" />
+			  
+  <subscriber for="OFS.interfaces.IZopeObject
+              Products.CMFCore.interfaces.IActionSucceededEvent"
+              handler=".files.notifyAboutReview" />
+
+</configure>

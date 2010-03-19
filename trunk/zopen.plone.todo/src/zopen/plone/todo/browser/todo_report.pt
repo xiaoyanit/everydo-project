@@ -1,0 +1,245 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.todo">
+
+ <metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:css fill-slot="style_slot">
+
+  <link href="#" type="text/css"  rel="stylesheet" media="screen" 
+        tal:attributes="href string:$portal_url/++resource++project.css?34223332" />
+  <link href="#" type="text/css" rel="kinetic-stylesheet" 
+        tal:attributes="href string:$portal_url/++resource++todoreport.kss?34223332" />
+<style type="text/css">
+
+/*-------------------------------------------------
+TODO RESPONSIBILITIES
+-------------------------------------------------*/
+
+table.todolist { 
+  border: medium none;
+  margin: 0pt;
+  width: 100%;
+} 
+
+table.todolist td { 
+  vertical-align: top; 
+  font-size: 12px; 
+  padding: 2px 3px; 
+} 
+
+
+
+table.todolist td.todolisttitle { 
+  text-align: right; 
+  padding-right: 5px; 
+  width: 30%; 
+  background: #eee; 
+} 
+
+table.todolist tr.firstofgroup td { 
+  border-top: 1px solid #ccc; 
+} 
+
+div.todo_list h2.todo {
+  font-size: 16px;
+  margin-left: 7px;
+}
+
+div.todo_list h2.todo a:link,div.todo_list h2.todo a:visited {
+  color: #000 !important;
+  padding:1px;
+  text-decoration:underline;
+}
+
+div.todo_list h2.todo a:hover {
+  color: #fff !important;
+  text-decoration:none;
+}
+
+.todo_list {
+  padding:5px 60px 10px 23px;
+}
+
+.late {
+    color: #CC0000;
+    font-weight: bold;
+    background-color: #FFCCCC;
+    padding: 1px 3px;
+}
+.Today {
+  background-color:#FFF000;
+  color:#000000;
+  padding:1px 3px;
+}
+
+img.opentodo {
+  margin: 0pt 5px;
+}
+
+.review_in {
+  color:#76797C !important;
+}
+.review_in a {
+  color:#76797C !important;
+}
+
+#review_files {
+ padding: 5px 60px 10px 23px;
+}
+
+.todo_view_more {
+ display:none;
+ z-index:9;
+ position:absolute;
+}
+
+.todo_view_more a {
+  color: #666;
+  font-size:12px;
+  text-decoration:underline;
+}
+
+.todo_view_more a:hover {
+  color: #fff !important;
+  background-color: #666;
+}
+
+</style>
+</metal:css>
+
+<metal:js fill-slot="javascript_head_slot">
+
+  <script src="++resource++prototype.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++prototype.js?34223332"></script>
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/effects.js"
+          tal:attributes="src string:$portal_url/++resource++effects.js?34223332"></script>
+</metal:js>
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/site-actions">site</metal:block>
+</div>
+
+<div metal:fill-slot="main" id="front-page-content"
+     tal:define="responsible view/getResponsibleInfo;
+                 responsibleName responsible/title;
+                 responsibleId responsible/id;
+                 today python:modules['DateTime'].DateTime();
+                 allitems python:view.getAllItems(responsibleId);
+                 ">
+
+    <p style="text-align:center">
+     <span i18n:translate="show_assigned_to">Show items assigned to:
+     <select name="responsibleParty"
+             i18n:name="someone"
+             tal:attributes="onchange string:window.location.href='$portal_url/@@todos_report' + '?getResponsibleParty=' + options[this.selectedIndex].value">
+        <option value="" i18n:translate="anyone">Anyone</option> 
+        <option tal:repeat="resp view/getAvaResponsibles"
+                tal:attributes="value python:resp[0];
+                                selected python:resp[0] == responsibleId;"
+                tal:content="python:resp[1]">company</option>
+     </select>
+     </span>
+     <span style="padding:0pt 5px;">
+        <tal:i18n i18n:translate="select_view_mode">Select the view mode: </tal:i18n>
+        <select name="todoRepotView"
+             tal:attributes="onchange string:window.location.href='$portal_url/@@' + options[this.selectedIndex].value + '?getResponsibleParty=$responsibleId'">
+        <option value="todos_report" selected="selected" i18n:translate="according_project">According by project</option>
+        <option value="todos_report_time" i18n:translate="according_complete_time">According by complete-time</option>
+     </select>
+     </span>
+    </p>
+
+  <div class="todo_list"
+       tal:define="person python:responsibleName and responsibleName or 'Anyone';"
+       tal:condition="responsibleId">
+    <a style="float:right" class="HViewMilestone CMilestone hideme"
+       i18n:domain="zopen.milestone" i18n:translate="show_close">Close</a>
+    <h2 class="HViewMilestone GViewMilestone hideme todo" i18n:translate="my_milestones">
+        The milestones responsibled by <span i18n:name="person" tal:replace="person" /></h2>
+    <a style="float:right" href="" 
+       tal:attributes="class string:GViewMilestone HViewMilestone kssattr-getResponsibleParty-${responsibleId}" i18n:translate="show_my_milestones">
+        Show the milestones responsibled by <span i18n:name="person" tal:replace="responsibleName" /></a>
+    <div class="milestone_table_here"></div>
+  </div>
+
+
+  <div tal:condition="not: allitems">
+       
+       <span i18n:translate="no_todos">There are no to-dos assigned to
+          <i18n:name i18n:name="responsible_name" tal:content="responsibleName">zopen</i18n:name>.</span>
+
+       <span i18n:translate="choose_another">Choose another person with the pulldown.</span>
+
+  </div>
+
+  <div class="todo_list" tal:repeat="projectid allitems">
+
+    <h2 class="todo">
+      <a href="#" tal:define="project python:view.getProjectInfo(projectid)"
+         tal:attributes="href project/url"
+         tal:content="string:${project/company} － ${project/title}"></a>
+    </h2>
+
+    <table class="todolist" cellspacing="0">
+       <tal:lists tal:repeat="listid python:allitems[projectid]">
+       <tr tal:define="todolist python:view.getListInfo(projectid, listid)"
+           tal:attributes="class string:firstofgroup kssattr-listurl-${todolist/url}">
+
+         <td class="todolisttitle" width="25%"> 
+             <a tal:attributes="href todolist/url"
+                tal:content="todolist/title">title </a>
+         </td>
+         <td>
+            <div tal:repeat="item python:allitems[projectid][listid]"
+                 class="kssDeletionRegion"
+                 tal:attributes="onmouseover string:document.getElementById('view_more_${item/getId}').style.display='inline';
+                              onmouseout string:document.getElementById('view_more_${item/getId}').style.display='none';">
+             <tal:block define="obj python:item.getObject();
+                                canReportState python:checkPermission('zopen.todo: Report state', obj)">
+
+              <img alt="Indicator" class="spinner TGcomplete hideme"
+                   src="/++resource++indicator.gif"
+                   style="vertical-align: middle;" height="5" width="21"/>
+
+              <img src="/++resource++opentodo.gif"
+                   class="opentodo" tal:condition="not: canReportState" />
+              <input type="checkbox" tal:condition="canReportState" 
+                     tal:attributes="class string:EVcomplete TGcomplete kssattr-itemid-${item/getId}" />
+
+              <span style="font-weight: bold"
+                    tal:define="end item/end;
+                                basecamp_view context/@@basecamp_view | nothing;
+                                end_status python:end and basecamp_view.getExactTime(end, extract=2);
+                                end_time python:end and basecamp_view.getExactTime(end, extract=1);"
+                    tal:condition="end"
+                    tal:attributes="class python:end_status!=None and end_status or ''"
+                    i18n:domain="zopen.basecamp" i18n:translate=""
+                    tal:content="end_time" />
+               <span tal:condition="item/end"> - </span>
+
+              <span tal:content="structure python:view.getRichTitle(item.Title)" />
+              <div class="todo_view_more"
+                      tal:attributes="id string:view_more_${item/getId};">
+                    <a href="" tal:attributes="href string:${obj/absolute_url}/@@todoitem_view;" i18n:translate="more">more...</a>
+              </div>
+
+             </tal:block>
+            </div>
+         </td>
+       </tr>
+       </tal:lists>
+    </table>
+
+  </div>
+</div>
+
+    <div metal:fill-slot="portlets_two_slot">
+        <div metal:use-macro="context/@@macro_basecamp/macros/companylogo" />
+        <div metal:use-macro="context/@@project_list/macros/projects" />
+    </div>
+
+</html>
+

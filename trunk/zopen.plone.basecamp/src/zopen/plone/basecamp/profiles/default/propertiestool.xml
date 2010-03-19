@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="site_properties" meta_type="Plone Property Sheet">
+  <property name="default_language" type="string">zh</property>
+  <property name="auth_cookie_length" type="int">14</property>
+
+  <property name="verify_login_name" type="boolean">True</property>
+  <property name="many_users" type="boolean">True</property>
+  <property name="enable_livesearch" type="boolean">False</property>
+
+  <property name="enable_link_integrity_checks" type="boolean">False</property>
+  <property name="icon_visibility" type="string">enabled</property>
+  
+ </object>
+</object>

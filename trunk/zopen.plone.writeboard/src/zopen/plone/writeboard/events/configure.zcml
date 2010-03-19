@@ -1,0 +1,11 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five"
+           xmlns:i18n="http://namespaces.zope.org/i18n">
+
+  <subscriber for="Products.Archetypes.interfaces._base.IBaseObject
+			  Products.Archetypes.event.ObjectEditedEvent"
+              handler=".writeboard.notifySetContributors" />
+
+  <subscriber handler=".writeboard.notifyRegionReload" />
+
+</configure>

@@ -1,0 +1,365 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-28 08:41+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.project\n"
+
+#. Default: "Delete this project"
+#: browser/prefs_project_settings.pt
+msgid "Delete_this_project"
+msgstr ""
+
+#. Default: "活动"
+#: browser/prefs_project_settings.pt
+msgid "active"
+msgstr ""
+
+#. Default: "有全部功能的项目."
+#: browser/prefs_project_settings.pt
+msgid "active_formhelp"
+msgstr ""
+
+#. Default: "Can I add companyies and people to projects later?"
+#: browser/create_project_form.pt
+msgid "add_companyies_people"
+msgstr ""
+
+#. Default: "Add file"
+#: browser/dashboard.pt
+msgid "add_file"
+msgstr ""
+
+#. Default: "Add message"
+#: browser/dashboard.pt
+msgid "add_message"
+msgstr ""
+
+#. Default: "Add milestone"
+#: browser/dashboard.pt
+msgid "add_milestones"
+msgstr ""
+
+#. Default: "Add to-do list"
+#: browser/dashboard.pt
+msgid "add_todo"
+msgstr ""
+
+#. Default: "Add writeBoard"
+#: browser/dashboard.pt
+msgid "add_writeboards"
+msgstr ""
+
+#. Default: "存档"
+#: browser/prefs_project_settings.pt
+msgid "archived"
+msgstr ""
+
+#. Default: "这个项目被冻结了：它能够被查看，但是无法编辑。存档的项目不会在计入你的活动项目总数。"
+#: browser/prefs_project_settings.pt
+msgid "archived_formhelp"
+msgstr ""
+
+#. Default: "Archived projects"
+#: browser/archived_project_list.pt
+msgid "archived_project"
+msgstr ""
+
+#. Default: "If you post a comment you'll automatically be notified when others post comments."
+#: browser/subscription/sub.pt
+msgid "automatically_notified"
+msgstr ""
+
+#. Default: "Before Yesterday"
+#: browser/dashboard.pt
+msgid "before_yesterday"
+msgstr ""
+
+#. Default: "Cancel"
+#: browser/create_project_form.pt
+#: browser/prefs_project_settings.pt
+msgid "cancel"
+msgstr ""
+
+#. Default: "更改项目状态"
+#: browser/prefs_project_settings.pt
+msgid "change_project_stauts"
+msgstr ""
+
+#. Default: "Comment Notification"
+#: browser/subscription/sub.pt
+msgid "comment_notification"
+msgstr ""
+
+#. Default: "Give a client or another company access to this project?"
+#: browser/create_project_form.pt
+msgid "company_project"
+msgstr ""
+
+#: browser/project_list.pt
+msgid "create_new_project"
+msgstr ""
+
+#. Default: "Create this project"
+#: browser/create_project_form.pt
+msgid "create_this_project"
+msgstr ""
+
+#. Default: "Deleting a project ${immediately} all the messages, milestones, and to-do lists associated with this project. ${no_undo} so make sure you're absolutely sure you want to delete this project."
+#: browser/prefs_project_settings.pt
+msgid "deleting_a_project"
+msgstr ""
+
+#. Default: "You can also do this later so don't worry about it if you aren't sure."
+#: browser/create_project_form.pt
+msgid "do_it_later"
+msgstr ""
+
+#. Default: "-or- enter a new company name:"
+#: browser/create_project_form.pt
+msgid "enter_new_company"
+msgstr ""
+
+#. Default: "Post a message, add a to-do, schedule a milestone. Get started!"
+#: browser/dashboard.pt
+msgid "get_started"
+msgstr ""
+
+#. Default: "give another client or company access to this project"
+#: browser/create_project_form.pt
+msgid "give_client_project"
+msgstr ""
+
+#. Default: "immediately and permanently deletes"
+#: browser/prefs_project_settings.pt
+msgid "immedately_deletes"
+msgstr ""
+
+#. Default: "Indicator"
+#: browser/create_project_form.pt
+msgid "indicator"
+msgstr ""
+
+#. Default: "Last Login: ${login_time}"
+#: browser/dashboard.pt
+msgid "last_login"
+msgstr ""
+
+#. Default: "create a new project"
+#: browser/create_project_form.pt
+msgid "new_project"
+msgstr ""
+
+#. Default: "New project FAQ"
+#: browser/create_project_form.pt
+msgid "new_project_faq"
+msgstr ""
+
+#. Default: "No activity today"
+#: browser/dashboard.pt
+msgid "no_activity_today"
+msgstr ""
+
+#. Default: "No activity yesterday"
+#: browser/dashboard.pt
+msgid "no_activity_yesterday"
+msgstr ""
+
+#. Default: "No activity yet"
+#: browser/dashboard.pt
+msgid "no_activity_yet"
+msgstr ""
+
+#. Default: "No login yet"
+#: browser/dashboard.pt
+msgid "no_login_yet"
+msgstr ""
+
+#. Default: "If you'd rather not comment, but want to be notified, then ${subscribe}"
+#: browser/subscription/sub.pt
+msgid "not_comment_subscribe"
+msgstr ""
+
+#. Default: "You aren't currently being notified when new comments are posted."
+#: browser/subscription/sub.pt
+msgid "not_notified"
+msgstr ""
+
+#. Default: "The following people will receive email notifications when new comments are posted."
+#: browser/subscription/sub.pt
+msgid "notification_caption"
+msgstr ""
+
+#. Default: "Onhold projects"
+#: browser/project_list.pt
+msgid "onhold_project"
+msgstr ""
+
+#. Default: "People on this project"
+#: browser/dashboard.pt
+msgid "people_project"
+msgstr ""
+
+#. Default: "Create project needs one or two minutes, please wait..."
+#: browser/create_project_form.pt
+msgid "please_wait"
+msgstr ""
+
+#. Default: "创建一个显示在项目概览页面的声明。可使用它来描述项目，或发布一个特别的声明等。"
+#: browser/prefs_project_settings.pt
+msgid "project_annouce_formhelp"
+msgstr ""
+
+#. Default: "选择一个和此项目主要相关的公司，这个公司将在首页项目清单中显示。公司的名字将在每个项目的页面上方，以及其他必要的地方显示。这个公司的标识图片(logo)将在项目首页、消息页面上方，以及项目其他必要的地方显示。"
+#: browser/prefs_project_settings.pt
+msgid "project_client_formhelp"
+msgstr ""
+
+#. Default: "相关的公司或客户"
+#: browser/prefs_project_settings.pt
+msgid "project_company_client"
+msgstr ""
+
+#. Default: "Project name:"
+#: browser/create_project_form.pt
+#: browser/prefs_project_settings.pt
+msgid "project_name"
+msgstr ""
+
+#. Default: "项目名称将在项目的每个页面上方显示。"
+#: browser/prefs_project_settings.pt
+msgid "project_name_formhelp"
+msgstr ""
+
+#. Default: "Project Overview"
+#: browser/dashboard.pt
+msgid "project_overview"
+msgstr ""
+
+#. Default: "项目概览页面的声明"
+#: browser/prefs_project_settings.pt
+msgid "project_overview_announce"
+msgstr ""
+
+#. Default: "Project settings"
+#: browser/prefs_project_settings.pt
+msgid "project_property"
+msgstr ""
+
+#. Default: "选择一个新的项目状态"
+#: browser/prefs_project_settings.pt
+msgid "project_stauts_formhelp"
+msgstr ""
+
+#. Default: "remove"
+#: browser/subscription/sub.pt
+msgid "remove"
+msgstr ""
+
+#. Default: "保存"
+#: browser/prefs_project_settings.pt
+msgid "save"
+msgstr ""
+
+#. Default: "Can specify who can see which projects?"
+#: browser/create_project_form.pt
+msgid "see_which_projects"
+msgstr ""
+
+#. Default: "If you'd like, you can ${yes_add}."
+#: browser/create_project_form.pt
+msgid "select_company"
+msgstr ""
+
+#. Default: "select an existing company:"
+#: browser/create_project_form.pt
+msgid "select_existing_company"
+msgstr ""
+
+#. Default: "(\"Home page redesign\" or \"Marketing ideas\", etc.)"
+#: browser/create_project_form.pt
+msgid "shopping_cart"
+msgstr ""
+
+#. Default: "subscribe to this message."
+#: browser/subscription/sub.pt
+msgid "subscribe_message"
+msgstr ""
+
+#. Default: "There is no Undo"
+#: browser/prefs_project_settings.pt
+msgid "there_no_undo"
+msgstr ""
+
+#. Default: "Today"
+#: browser/dashboard.pt
+msgid "today"
+msgstr ""
+
+#. Default: "Overview tour page."
+#: browser/dashboard.pt
+msgid "tour_page"
+msgstr ""
+
+#. Default: "Yes, I understand — delete this project"
+#: browser/prefs_project_settings.pt
+msgid "understand_delete_project"
+msgstr ""
+
+#. Default: "Learn about the overview: Watch a video demo below"
+#: browser/dashboard.pt
+msgid "watch_video_demo"
+msgstr ""
+
+#. Default: "You can watch this video or view a screenshot any time from the ${tour}"
+#: browser/dashboard.pt
+msgid "watch_video_tour"
+msgstr ""
+
+#. Default: "Welcome! Get started by clicking a tab above."
+#: browser/dashboard.pt
+msgid "welcome_start"
+msgstr ""
+
+#. Default: "What's fresh?"
+#: browser/dashboard.pt
+msgid "what_fresh"
+msgstr ""
+
+#. Default: "Yes. You can add as many companies and people to a project as you'd like. Once you've created the project, go into the project and click the People tab."
+#: browser/create_project_form.pt
+msgid "yes_add_companyies"
+msgstr ""
+
+#. Default: "Yes. Once you've created the project, go into the project and click the \"Permissions\" link (it will be in th eupper right corner) to specify who can see the project."
+#: browser/create_project_form.pt
+msgid "yes_see_which"
+msgstr ""
+
+#. Default: "Yesterday"
+#: browser/dashboard.pt
+msgid "yesterday"
+msgstr ""
+
+#. Default: "Your archived projects"
+#: browser/project_list.pt
+msgid "your_archived_project"
+msgstr ""
+
+#. Default: "Your projects"
+#: browser/project_list.pt
+msgid "your_project"
+msgstr ""
+

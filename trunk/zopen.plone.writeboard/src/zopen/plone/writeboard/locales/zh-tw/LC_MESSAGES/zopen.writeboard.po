@@ -1,0 +1,295 @@
+# zopen.writeboard translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.writeboard 1.0\n"
+"POT-Creation-Date: 2007-05-25 01:47+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh-tw\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.writeboard\n"
+"X-Is-Fallback-For: zh-hk zh-mo zh-sg\n"
+
+#. Default: "Added files"
+#: browser/version_diff.pt
+msgid "added_files"
+msgstr "添加文件"
+
+#. Default: "Go back to the main writeboards."
+#: browser/writeboard_view.pt
+msgid "back_main_writeboards"
+msgstr "返回到寫字板主頁"
+
+#. Default: "last modified"
+#: browser/writeboards_listing.pt
+msgid "box_last_modified"
+msgstr "最近的修改"
+
+#. Default: "Cancel"
+#: browser/writeboards_listing.pt
+msgid "cancel"
+msgstr "取消"
+
+#. Default: "cancel"
+#: browser/writeboards_listing.pt
+msgid "cancel_creater"
+msgstr "取消"
+
+#. Default: "Category:"
+#: browser/writeboards_listing.pt
+msgid "category"
+msgstr "分類:"
+
+#. Default: "Changes from version ${id2} to version ${id1}"
+#: browser/version_diff.pt
+msgid "changes_from_version"
+msgstr "從版本${id2}到版本${id1}的變化"
+
+#. Default: "Changes since version ${id2}"
+#: browser/version_diff.pt
+msgid "changes_since_version"
+msgstr "從版本${id2}的變化"
+
+#. Default: "Choice of two versions ${compare}"
+#: browser/writeboard_view.pt
+msgid "choice_of_versions"
+msgstr "選擇兩個版本進行${compare}"
+
+#. Default: "Close"
+#: browser/writeboards_listing.pt
+msgid "close"
+msgstr "關閉"
+
+#. Default: "Compare"
+#: browser/writeboard_view.pt
+msgid "compare"
+msgstr "比較"
+
+#. Default: "Create a new writeboard"
+#: browser/writeboards_listing.pt
+msgid "create_new_writeboard"
+msgstr "新建寫字板"
+
+#. Default: "Enter a title for a new writeboard"
+#: browser/writeboards_listing.pt
+msgid "enter_title"
+msgstr "輸入寫字板的標題"
+
+#. Default: "(Example: \"Home page text\" or \"Business letter draft\")"
+#: browser/writeboards_listing.pt
+msgid "example_title"
+msgstr "（比如：“首頁文本”或“商務信函草案”）"
+
+#. Default: "Field Changed"
+#: browser/version_diff.pt
+msgid "field_changed"
+msgstr "字段更改"
+
+#. Default: "Historical versions"
+#: browser/writeboard_view.pt
+msgid "historical_versions"
+msgstr "歷史版本"
+
+#. Default: "by ${author}"
+#: browser/writeboards_listing.pt
+msgid "label_by_author"
+msgstr "提交人：${author}"
+
+#. Default: "Make this writeboard"
+#: browser/writeboards_listing.pt
+msgid "make_writeboard"
+msgstr "使這個寫字板"
+
+#. Default: "New writeboard"
+#: browser/writeboards_listing.pt
+msgid "new_writeboard"
+msgstr "新的寫字板"
+
+#. Default: "Create a new writeboard"
+#: browser/writeboards_listing.pt
+msgid "new_writebord"
+msgstr "新建一個寫字板"
+
+#. Default: "No changes"
+#: browser/version_diff.pt
+msgid "no_changes"
+msgstr "沒有改變"
+
+#. Default: "Not writeboard yet."
+#: browser/writeboards_listing.pt
+msgid "no_results"
+msgstr "當前沒有寫字板。"
+
+#. Default: "This document have no text yet. Clik here to edit this document."
+#: browser/writeboard_view.pt
+msgid "no_text_yet"
+msgstr "<strong>此寫字板目前為空，雙擊這裡開始編輯</strong>"
+
+#. Default: "None"
+#: browser/version_diff.pt
+msgid "none"
+msgstr "沒有"
+
+#. Default: "or"
+#: browser/writeboards_listing.pt
+msgid "or"
+msgstr "或"
+
+#. Default: "Yes, other companies in this project may view this writeboard"
+#: browser/writeboards_listing.pt
+msgid "other_companies_in"
+msgstr "項目中其它的公司可看到這個寫字板"
+
+#. Default: "Privacy"
+#: browser/writeboards_listing.pt
+msgid "privacy"
+msgstr "保密選項"
+
+#. Default: "Privacy options for \" ${item_title} \""
+#: browser/writeboards_listing.pt
+msgid "privacy_options"
+msgstr "\" ${item_title} \" 的保密選項"
+
+#. Default: "private"
+#: browser/writeboards_listing.pt
+msgid "private"
+msgstr "保密"
+
+#. Default: "Save"
+#: browser/edit_field_wrapper.pt
+msgid "save"
+msgstr "保存"
+
+#. Default: "Save as new version"
+#: browser/edit_field_wrapper.pt
+msgid "save_new_version"
+msgstr "保存為新版本"
+
+#. Default: "Show code differences"
+#: browser/version_diff.pt
+msgid "show_code_differences"
+msgstr "顯示代碼的不同"
+
+#. Default: "Show side by side"
+#: browser/version_diff.pt
+msgid "show_side_by"
+msgstr "并排顯示"
+
+#. Default: "Show visual differences"
+#: browser/version_diff.pt
+msgid "show_visual_differences"
+msgstr "最終顯示上的不同"
+
+#. Default: "Optional: Writeboard discription:"
+#: browser/writeboards_listing.pt
+msgid "writeboard_discription"
+msgstr "簡單說明（可選的）："
+
+#. Default: "Writeboard title"
+#: browser/writeboards_listing.pt
+msgid "writeboard_title"
+msgstr "寫字板標題："
+
+#. Default: "Plain text"
+#: browser/writeboard_listing.pt
+msgid "plain_text"
+msgstr "純文本格式"
+
+#. Default: "Plain text"
+#: browser/writeboard_listing.pt
+msgid "comparison_figure"
+msgstr "比較圖例"
+
+#. Default: "Plain text"
+#: browser/writeboard_listing.pt
+msgid "green"
+msgstr "綠色"
+
+#. Default: "Plain text"
+#: browser/writeboard_listing.pt
+msgid "red"
+msgstr "紅色"
+
+#: browser/writeboard_listing.pt
+msgid "increase_in_text"
+msgstr "表示增加的文字"
+
+#: browser/writeboard_listing.pt
+msgid "deletion_in_text"
+msgstr "表示刪除的文字"
+
+#: browser/writeboard_listing.pt
+msgid "no_change_text"
+msgstr "其它的是沒變的文字"
+
+#: browser/writeboard_view.pt
+msgid "version_comment"
+msgstr "版本說明"
+
+#: browser/writeboard_view.pt
+msgid "edit_document"
+msgstr "編輯文檔"
+
+#: browser/writeboard_view.pt
+msgid "edit_title"
+msgstr "標題："
+
+#: browser/writeboard_view.pt
+msgid "optional_description"
+msgstr "簡單說明："
+
+#: browser/writeboard_view.pt
+msgid "save_change"
+msgstr "保存更改"
+
+#: browser/writeboard_view.pt
+msgid "edit_html"
+msgstr "雙擊文檔正文區域，或點擊 <a id=\"editBody\" class=\"admin\" href=\"#\">這裡</a>，開始編輯文檔。<br />您也可以 <a class=\"admin TeditProperty\" href=\"#\">調整文檔的屬性</a>。"
+
+msgid "edit_html_candel"
+msgstr "雙擊文檔正文區域，或點擊 <a id=\"editBody\" class=\"admin\" href=\"#\">這裡</a>，開始編輯文檔。<br />您也可以 <a class=\"admin TeditProperty\" href=\"#\">調整文檔的屬性</a>，"
+
+#. Default: "Modified success."
+msgid "modified_success"
+msgstr "更改成功"
+
+msgid "Info"
+msgstr "信息"
+
+msgid "property_del"
+msgstr "或${del}這篇文檔。"
+
+msgid "edit"
+msgstr "編輯"
+
+msgid "file_by_line"
+msgstr "$author 提交於 $modified，大小為 $size"
+
+#. Default: "Select the view mode: "
+msgid "select_view_mode"
+msgstr "切換查看方式："
+
+msgid "select_viewlet"
+msgstr "切換視圖"
+
+msgid "lastest_viewlet"
+msgstr "最近更新視圖"
+
+msgid "category_viewlet"
+msgstr "分類視圖"
+
+msgid "about_writeboard_info"
+msgstr "<p>寫字板用於多人在線協作寫文檔，比如合同，正式的發布的信息，也可以用於只是管理。</p> <p>寫字板可采用多種方便的編輯方式，擁有類似於Office的Web富文本編輯器，支持圖文混排；支持多版本，版本間可差異對比；支持評注討論，評注可訂閱。 </p>"
+
+msgid "about_writeboard"
+msgstr "關於寫字板"
+
+msgid "auto_save"
+msgstr "自動保存成功！"

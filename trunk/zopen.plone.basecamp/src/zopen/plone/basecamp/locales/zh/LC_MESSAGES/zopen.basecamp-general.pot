@@ -1,0 +1,189 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-28 09:38+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.basecamp\n"
+
+#. Default: "Account"
+#: browser/prefs_site_permissions.pt
+msgid "account"
+msgstr ""
+
+#. Default: "Change colors"
+#: browser/firstproject.pt
+msgid "change_colors"
+msgstr ""
+
+#. Default: "No problem. Check the well-stocked help section, the screenshot tour, the lively customer forums, or find FAQs and more at the official Everything Basecamp support site."
+#: browser/firstproject.pt
+msgid "check_stocked"
+msgstr ""
+
+#. Default: "Create accounts for your co-workers, clients, collaborators, etc."
+#: browser/firstproject.pt
+msgid "create_accounts_for"
+msgstr ""
+
+#. Default: "Create your first project"
+#: browser/firstproject.pt
+msgid "create_first_project"
+msgstr ""
+
+#. Default: "Create logins for other people"
+#: browser/firstproject.pt
+msgid "create_logins_for"
+msgstr ""
+
+#. Default: "Customize Basecamp's colors to better suit your brand."
+#: browser/firstproject.pt
+msgid "customize_colors"
+msgstr ""
+
+#. Default: "Delete this logo"
+#: browser/prefs_site_settings.pt
+msgid "delete_site_logo"
+msgstr ""
+
+#. Default: "You can do any of the above at any time."
+#: browser/firstproject.pt
+msgid "do_any_above"
+msgstr ""
+
+#. Default: "Or first you can..."
+#: browser/firstproject.pt
+msgid "first_you_can"
+msgstr ""
+
+#. Default: "Latert activity"
+#: browser/dashboard.pt
+msgid "latert_activity"
+msgstr ""
+
+#. Default: "Your logo will appear on the login page and on the dashboard."
+#: browser/firstproject.pt
+msgid "logo_appear"
+msgstr ""
+
+#. Default: "Put the logo in a white box?"
+#: browser/prefs_site_settings.pt
+msgid "logo_put"
+msgstr ""
+
+#. Default: "There hasn't been any activity in your project yet. After you begin posting messages, comments, milestones or to-do's, you'll see a log of recent activity on this page that looks like the example below:"
+#: browser/dashboard.pt
+msgid "no_activity_project"
+msgstr ""
+
+#. Default: "If you can't find your answer there you can always email us at: support@basecampHQ.com. We do our best to get back to you within a few hours."
+#: browser/firstproject.pt
+msgid "no_answer_email"
+msgstr ""
+
+#. Default: "NOTE:"
+#: browser/firstproject.pt
+msgid "note"
+msgstr ""
+
+#. Default: "Other"
+#: browser/prefs_site_permissions.pt
+msgid "other"
+msgstr ""
+
+#. Default: "People"
+#: browser/prefs_site_permissions.pt
+msgid "people"
+msgstr ""
+
+#. Default: "Permissions"
+#: browser/prefs_site_permissions.pt
+msgid "permissions"
+msgstr ""
+
+#. Default: "Project template"
+#: browser/prefs_site_permissions.pt
+msgid "project_template"
+msgstr ""
+
+#. Default: "Questions? Need help?"
+#: browser/firstproject.pt
+msgid "questions_help"
+msgstr ""
+
+#. Default: "Site logo"
+#: browser/prefs_site_settings.pt
+msgid "site_logo"
+msgstr ""
+
+#. Default: "Your site logo appears on the login screen, the Dashboard, and the All Messages page. The logo suggest more than 200 pixels wide,it will be proportionately reduced when exceed."
+#: browser/prefs_site_settings.pt
+msgid "site_logo_formhelp"
+msgstr ""
+
+#. Default: "Site setting"
+#: browser/prefs_site_settings.pt
+msgid "site_setting"
+msgstr ""
+
+#. Default: "Submit"
+#: browser/prefs_site_settings.pt
+msgid "submit"
+msgstr ""
+
+#. Default: "Upload logo"
+#: browser/prefs_site_settings.pt
+msgid "submit_logo"
+msgstr ""
+
+#. Default: "and replace the current one"
+#: browser/prefs_site_settings.pt
+msgid "submit_logo_formhelp"
+msgstr ""
+
+#. Default: "It takes just a few seconds and you'll be up and running"
+#: browser/firstproject.pt
+msgid "up_add_running"
+msgstr ""
+
+#. Default: "Upload your logo"
+#: browser/firstproject.pt
+msgid "upload_logo"
+msgstr ""
+
+#. Default: "Views"
+#: browser/prefs_site_permissions.pt
+msgid "view"
+msgstr ""
+
+#. Default: "Watch a quick Getting Started with Basecamp video"
+#: browser/firstproject.pt
+msgid "watch_video"
+msgstr ""
+
+#. Default: "Welcome to your EveryDo"
+#: browser/firstproject.pt
+msgid "welcome_everydo"
+msgstr ""
+
+#. Default: "Your EveryDo site name"
+#: browser/prefs_site_settings.pt
+msgid "your_site_name"
+msgstr ""
+
+#. Default: "The EveryDo Site name appears at the top of every page."
+#: browser/prefs_site_settings.pt
+msgid "your_site_name_formhelp"
+msgstr ""
+

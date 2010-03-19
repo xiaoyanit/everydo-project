@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="zopen.basecamp">
+
+<metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+<body>
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/site-settings">site</metal:block>
+</div>
+
+<div metal:fill-slot="main">
+
+        <h1>导出项目数据</h1>
+        <div id="basic_form">
+
+            <p>系统提供了项目数据导出的功能，您可按照如下的方法操作：</p>
+            
+          <div class="field">
+            <ol>
+            <li class="block"><form action="/@@export2frs">导出所选项目:
+            
+        <select name="projectid" style="vertical-align:middle;" 
+                tal:define="projects context/@@projectview/getActiveProjects;">
+            <optgroup tal:repeat="projectinfo projects/items"
+                      tal:attributes="label python:projectinfo[0]">
+                <option tal:repeat="project python:projectinfo[1]" 
+                        tal:attributes="value project/getId;" 
+                        tal:content="string:${project/Title} (${project/getId})" />
+            </optgroup>
+        </select>
+
+            <input type="submit" value="导出"/></form></li> 
+            <li class="block">
+            <form action="@@setexportpwd">
+            通过webdav下载， 访问用户名是<strong>export</strong>，预先需要设置下载密码:
+                <input name="password" type="password" value=""/>
+                <input type="submit" value="设置" />
+            </form>
+            
+            </li>
+            <li class="block">如果您使用IE浏览器，可直接点击访问此地址，进入webdav文件夹：
+                <a target="_blank" style="behavior: url(#default#AnchorClick);"
+                   tal:define="subdomain python:'.'.join(context.getPhysicalPath()[1:]);
+                               subdomain python:subdomain.replace('_', '')" 
+                   tal:attributes="href string:http://$subdomain.export.everydo.com/projects;
+                                   folder string:http://$subdomain.export.everydo.com/projects;"
+                   tal:content="string:http://$subdomain.export.everydo.com/projects"> http://58080.export.everydo.com/projects </a>
+                   <p></p>
+
+                   <a href="#"
+                      onclick="document.getElementById('png_view').style.display='block';;this.style.display='none';;return false;">>>>查看使用截图</a>
+                   <div id="png_view" style="padding-top:20px;display:none;"><label>使用截图：</label>
+                      <ol>
+                        <li>打开浏览器：<br /><img src="/++resource++export-01.png" /></li>
+                        <li>使用Web文件夹打开：<br /><img src="/++resource++export-02.png" /></li>
+                        <li>输入设置的用户名、密码：<br /><img src="/++resource++export-03.png" /></li>
+                        <li>从Web文件夹导出文件：<br /><img src="/++resource++export-04.png" /></li>
+                    </div>
+            </li>
+            </ol>
+            </div>
+          </div>
+    </div>
+    <div metal:fill-slot="portlets_two_slot">
+          <div class="col">
+             <h1>关于导出数据</h1>
+              <p>导出的数据是开放式格式，文件导出来的是原文件，您可定期导出数据备份。</p>
+
+
+          </div>
+    </div>
+
+</body>
+</html>

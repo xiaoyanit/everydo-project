@@ -1,0 +1,199 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-18 09:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.basecamp\n"
+
+#. Default: "Delete this project"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "Delete_this_project"
+msgstr ""
+
+#. Default: "Deleting a project ${immediately} all the messages, milestones, and to-do lists associated with this project. ${no_undo} so make sure you're absolutely sure you want to delete this project."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "deleting_a_project"
+msgstr ""
+
+#. Default: "immediately and permanently deletes"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "immedately_deletes"
+msgstr ""
+
+#. Default: "Other"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "other"
+msgstr ""
+
+#. Default: "People"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "people"
+msgstr ""
+
+#. Default: "Project property"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "project_property"
+msgstr ""
+
+#. Default: "Setting project property here."
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "project_property_formhelp"
+msgstr ""
+
+#. Default: "There is no Undo"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "there_no_undo"
+msgstr ""
+
+#. Default: "Yes, I understand — delete this project"
+#: skins/basecamp_site/prefs_project_settings.cpt
+msgid "understand_delete_project"
+msgstr ""
+
+#. Default: "Click to play the video"
+msgid "click_video"
+msgstr ""
+
+#. Default: "Upload the first file for this project"
+msgid "upload_first_file"
+msgstr ""
+
+#. Default: "Upload, download, and share files related to this project."
+msgid "upload_file_for"
+msgstr ""
+
+#. Default: "Learn about file sharing: Watch a video demo below"
+msgid "learn_about_file"
+msgstr ""
+
+#. Default: "You can watch this video or view a screenshot any time from the ${for}"
+msgid "learn_about_for"
+msgstr ""
+
+#. Default: "Files tour page"
+msgid "file_tour_page"
+msgstr ""
+
+#. Default: "Enter the first time log entry for this project above"
+msgid "enter_first_timetrack"
+msgstr ""
+
+#. Default: "It's easy: Just enter a date, person, time spent, and a description of what was done."
+msgid "enter_timetrack_for"
+msgstr ""
+
+#. Default: "Learn about time tracking: Watch a video demo below"
+msgid "learn_about_timetrack"
+msgstr ""
+
+
+#. Default: "time tour page"
+msgid "time_tour_page"
+msgstr ""
+
+#. Default: "Create the first milestone for this project above"
+msgid "create_first_milestone"
+msgstr ""
+
+#. Default: "Keep track of what's due, when it's due, and who's responsible for doing it."
+msgid "create_milestone_for"
+msgstr ""
+
+#. Default: "Learn about milestones: Watch a video demo below"
+msgid "learn_about_milestone"
+msgstr ""
+
+
+#. Default: "Miletone tour page"
+msgid "miletone_tour_page"
+msgstr ""
+
+#. Default: "Create the first writeboard for this project"
+msgid "create_first_writeboard"
+msgstr ""
+
+#. Default: "Writeboards make collaborative writing simple."
+msgid "create_writeboard_for"
+msgstr ""
+
+#. Default: "Learn about writeboards: Watch a video demo below"
+msgid "learn_about_writeboard"
+msgstr ""
+
+#. Default: "Writeboard tour page"
+msgid "writeboard_tour_page"
+msgstr ""
+
+#. Default: "Create the first to-do list for this project"
+msgid "create_first_todo"
+msgstr ""
+
+#. Default: "Make lists, add items, and check them off. Get things done with to-do lists."
+msgid "create_todo_for"
+msgstr ""
+
+#. Default: "Learn about to-do lists: Watch a video demo below"
+msgid "learn_about_todo"
+msgstr ""
+
+#. Default: "To-do tour page"
+msgid "todo_tour_page"
+msgstr ""
+
+#. Default: "Post the first message for this project"
+msgid "post_first_message"
+msgstr ""
+
+#. Default: "Post messages, share project updates, ask questions, communicate."
+msgid "post_message_for"
+msgstr ""
+
+#. Default: "Learn about messages: Watch a video demo below"
+msgid "learn_about_message"
+msgstr ""
+
+#. Default: "Message tour page"
+msgid "message_tour_page"
+msgstr ""
+
+msgid "Completed"
+msgstr ""
+
+msgid "Created"
+msgstr ""
+
+msgid "Modified"
+msgstr ""
+
+msgid "Responsible"
+msgstr ""
+
+msgid "today"
+msgstr ""
+
+msgid "yesterday"
+msgstr ""
+
+msgid "tomorrow"
+msgstr ""
+
+msgid "this week"
+msgstr ""
+
+msgid "next week"
+msgstr ""
+
+msgid "Password is invalid"
+msgstr ""

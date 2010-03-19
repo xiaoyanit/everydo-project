@@ -1,0 +1,149 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-05-28 06:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zopen.widgets\n"
+
+#. Default: "Add another category"
+#: ./category/list.pt
+msgid "add_another_category"
+msgstr ""
+
+#. Default: "-- add a new category --"
+#: ./category/selection.pt
+msgid "add_new_category"
+msgstr ""
+
+#. Default: "all"
+#: ./uploader/upload.pt
+msgid "all"
+msgstr ""
+
+#. Default: "All Messages"
+#: ./category/list.pt
+msgid "all_messages"
+msgstr ""
+
+#. Default: "Attach files"
+#: ./comments/comments.pt
+msgid "attach_files"
+msgstr ""
+
+#. Default: "Attach files to this comment"
+#: ./comments/comments.pt
+msgid "attach_files_to_comment"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./uploader/upload.pt
+msgid "cancel"
+msgstr ""
+
+#. Default: "Categories"
+#: ./category/list.pt
+msgid "categories"
+msgstr ""
+
+#. Default: "Choose a file less than 10MB in size."
+#: ./uploader/upload.pt
+msgid "choose_file_less"
+msgstr ""
+
+#. Default: "${count} comment so far"
+#: ./comments/comments.pt
+msgid "count_comment"
+msgstr ""
+
+#. Default: "${creator} said…"
+#: ./comments/comments.pt
+msgid "creator_said"
+msgstr ""
+
+#. Default: "Done"
+#: ./category/list.pt
+msgid "done"
+msgstr ""
+
+#. Default: "Edit"
+#: ./category/list.pt
+msgid "edit"
+msgstr ""
+
+#. Default: "or"
+#: ./uploader/upload.pt
+msgid "or"
+msgstr ""
+
+#. Default: "Post this Comment"
+#: ./comments/comments.pt
+msgid "post_this_comment"
+msgstr ""
+
+#. Default: "Rename"
+#: ./category/list.pt
+msgid "rename"
+msgstr ""
+
+
+#. Default: "Upload"
+#: ./uploader/upload.pt
+msgid "upload"
+msgstr ""
+
+#. Default: "upload a file"
+#: ./uploader/upload.pt
+msgid "upload_a_file"
+msgstr ""
+
+#. Default: "${month} 月"
+#: ./datetime/month.pt
+msgid "which_month"
+msgstr ""
+
+msgid "Info"
+msgstr ""
+
+msgid "Deleted."
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "please enter category title."
+msgstr ""
+
+msgid "modified success."
+msgstr ""
+
+msgid "category ${title} was added."
+msgstr ""
+
+msgid "category ${title} was existed."
+msgstr ""
+
+msgid "save"
+msgstr ""
+
+msgid "delete"
+msgstr ""
+
+#. Default: "This comment contains ${len_attachments} attachment(s): \n "
+msgid "attachments_msg"
+msgstr ""
+
+#. Default: "${project_name} of the ${company_name} have a new comment posted. DO NOT REPLY TO THIS EMAIL. To comment on this message, visit:\n${msg_url}\n\n${user_name} <${user_email}> said:\n-----------------------------------------------------\n${msg_body}\n\n${attachments}\n\n--\nDO NOT REPLY TO THIS EMAIL.\nTo comment on this message, visit:\n${msg_url}"
+msgid "mail_body"
+msgstr ""

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="factorytool" version="20060711-01"
+              handler="Products.CMFPlone.exportimport.factorytool.importFactoryTool"
+              title="Portal Factory Tool">
+  <dependency step="typeinfo"/>
+  Import type registration for the portal factory tool.
+ </import-step>
+ <import-step id="rolemap" version="20040523-01"
+              handler="Products.GenericSetup.rolemap.importRolemap"
+              title="Role / Permission Map">
+    Import custom roles and non-default role-permission mappings.
+ </import-step>
+ <import-step id="typeinfo" version="20040630-01"
+              handler="Products.CMFCore.exportimport.typeinfo.importTypesTool"
+              title="Types Tool">
+    Import types tool's type information objects.
+ </import-step>
+ <import-step id="workflow" version="20040630-01"
+              handler="Products.CMFCore.exportimport.workflow.importWorkflowTool"
+              title="Workflow Tool">
+  <dependency step="typeinfo"/>
+    Import workflow tool's workflow definitions and supporting scripts.
+ </import-step>
+</import-steps>

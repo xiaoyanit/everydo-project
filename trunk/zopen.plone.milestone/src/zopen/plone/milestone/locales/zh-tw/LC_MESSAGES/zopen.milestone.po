@@ -1,0 +1,592 @@
+# zopen.milestone translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.milestone 1.0\n"
+"POT-Creation-Date: 2007-06-22 03:11+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh-tw\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.milestone\n"
+"X-Is-Fallback-For: zh-hk zh-mo zh-sg\n"
+
+#. Default: "Apr"
+#: browser/milestones.pt
+msgid "Apr"
+msgstr "4月"
+
+#. Default: "Aug"
+#: browser/milestones.pt
+msgid "Aug"
+msgstr "8月"
+
+#. Default: "Dec"
+#: browser/milestones.pt
+msgid "Dec"
+msgstr "12月"
+
+#. Default: "Feb"
+#: browser/milestones.pt
+msgid "Feb"
+msgstr "2月"
+
+#. Default: "F"
+#: browser/milestones.pt
+msgid "Fri"
+msgstr "五"
+
+msgid "Friday"
+msgstr "星期五"
+
+#. Default: "Jan"
+#: browser/milestones.pt
+msgid "Jan"
+msgstr "1月"
+
+#. Default: "Jul"
+#: browser/milestones.pt
+msgid "Jul"
+msgstr "7月"
+
+#. Default: "Jun"
+#: browser/milestones.pt
+msgid "Jun"
+msgstr "6月"
+
+#. Default: "Mar"
+#: browser/milestones.pt
+msgid "Mar"
+msgstr "3月"
+
+#. Default: "May"
+#: browser/milestones.pt
+msgid "May"
+msgstr "5月"
+
+#. Default: "M"
+#: browser/milestones.pt
+msgid "Mon"
+msgstr "一"
+
+msgid "Monday"
+msgstr "星期一"
+
+#. Default: "Nov"
+#: browser/milestones.pt
+msgid "Nov"
+msgstr "11月"
+
+#. Default: "Oct"
+#: browser/milestones.pt
+msgid "Oct"
+msgstr "10月"
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "Sat"
+msgstr "六"
+
+msgid "Saturday"
+msgstr "星期六"
+
+#. Default: "Sep"
+#: browser/milestones.pt
+msgid "Sep"
+msgstr "9月"
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "Sun"
+msgstr "日"
+
+msgid "Sunday"
+msgstr "星期日"
+
+msgid "TODAY"
+msgstr "今天"
+
+#. Default: "Th"
+#: browser/milestones.pt
+msgid "Thu"
+msgstr "四"
+
+msgid "Thursday"
+msgstr "星期四"
+
+#. Default: "Tu"
+#: browser/milestones.pt
+msgid "Tue"
+msgstr "二"
+
+msgid "Tuesday"
+msgstr "星期二"
+
+#. Default: "W"
+#: browser/milestones.pt
+msgid "Wed"
+msgstr "三"
+
+msgid "Wednesday"
+msgstr "星期三"
+
+#. Default: "Add up to 10 new milestones"
+#: browser/batch_add.pt
+msgid "add_few_milestones"
+msgstr "添加10個里程碑"
+
+msgid "all_responsibles"
+msgstr "所有人"
+
+#. Default: "All upcoming"
+#: browser/milestones.pt
+msgid "all_upcoming"
+msgstr "所有即將到來的"
+
+#. Default: "Anyone"
+#: browser/milestonereport.pt
+msgid "anyone"
+msgstr "任何人"
+
+#. Default: "Cancel"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "cancel"
+msgstr "取消"
+
+#. Default: "Cancel and go back"
+#: browser/batch_add.pt
+#: browser/milestones.pt
+msgid "cancel_back"
+msgstr "取消并返回"
+
+#. Default: "Completed"
+#: browser/milestones.pt
+msgid "completed"
+msgstr "完成的"
+
+#. Default: "Create these milestones"
+#: browser/batch_add.pt
+msgid "create_these_milestones"
+msgstr "創建這些里程碑"
+
+#. Default: "Create this milestone"
+#: browser/milestones.pt
+msgid "create_this_milestone"
+msgstr "創建這個里程碑"
+
+#. Default: "Date due"
+#: browser/batch_add.pt
+msgid "date_due"
+msgstr "到期日期"
+
+#. Default: "Date due"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "date_due_filed"
+msgstr "到期日期："
+
+#. Default: "days away"
+#: browser/milestones.pt
+msgid "days"
+msgstr "天以後"
+
+#. Default: "days ago"
+#: browser/milestones.pt
+msgid "days_ago"
+msgstr "天以前"
+
+#. Default: "${today_end} days late"
+#: ./milestones/milestones.pt
+msgid "days_late"
+msgstr "滯後${today_end}天"
+
+#. Default: "Due in the next 14 days"
+#: browser/milestones.pt
+msgid "due_days"
+msgstr "在未來兩周內"
+
+#. Default: "Due in the next 14 days"
+#: ./milestones/milestones.pt
+msgid "due_next_days"
+msgstr "在未來兩周內"
+
+#. Default: "Edit"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "edit"
+msgstr "編輯"
+
+#. Default: "F"
+#: browser/milestones.pt
+msgid "fri"
+msgstr "五"
+
+#. Default: "Indicator"
+#: browser/milestones.pt
+msgid "indicator"
+msgstr "指示"
+
+#. Default: "Keep shifted milestones to business days only"
+#: browser/edit.pt
+msgid "keep_shifted_milestones"
+msgstr "確保平移後的里程碑位於工作日內"
+
+#. Default: "Late"
+#: browser/milestones.pt
+msgid "late"
+msgstr "滯後的"
+
+#. Default: "Late Milestones"
+#: ./milestones/milestones.pt
+msgid "late_milestones"
+msgstr "滯後的里程碑"
+
+#. Default: "Milestone title"
+#: browser/batch_add.pt
+msgid "milestone_title"
+msgstr "里程碑標題"
+
+#. Default: "Milestones"
+#: browser/milestones.pt
+msgid "milestones"
+msgstr "計劃和進度"
+
+#. Default: "Milestones on your own calendar"
+#: browser/milestones.pt
+msgid "milestones_on_calendar"
+msgstr "位於您的日曆表上的里程碑"
+
+#. Default: "M"
+#: browser/milestones.pt
+msgid "mon"
+msgstr "一"
+
+#. Default: "(ex: Moving this deadline out 5 days will move all future milestones by 5 days as well. Selecting 'Keep Shifted dates to business days only' will move milestones that land on a weekend forward to Monday.)"
+#: browser/edit.pt
+msgid "moving_deading_out"
+msgstr "(舉例：將這個里程碑移動5天，所有此後的里程碑也將移動五天。選中“確保平移後的里程碑位於工作日內”後，會將里程碑從周末移到下周一。)"
+
+#. Default: "New milestone"
+#: browser/milestones.pt
+msgid "new_milestone"
+msgstr "創建新里程碑"
+
+#. Default: "milestones over the next 3 months"
+#: browser/milestonereport.pt
+msgid "next_3_months_milestones"
+msgstr "未來三個月中的里程碑"
+
+#. Default: "No milestones"
+#: browser/milestones.pt
+msgid "no_milestones"
+msgstr "沒有里程碑"
+
+#. Default: "Notify by email"
+#: browser/milestones.pt
+msgid "notify_mail"
+msgstr "發送通知郵件"
+
+#. Default: "or"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "or"
+msgstr "或"
+
+#. Default: "(Original date:"
+#: browser/edit.pt
+msgid "original_date"
+msgstr "（原始的日期："
+
+#. Default: "Party responsible"
+#: browser/batch_add.pt
+msgid "party_responsible"
+msgstr "負責人"
+
+#. Default: "Party Responsible:"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "party_responsible_n"
+msgstr "負責人："
+
+#. Default: "Moving, please wait..."
+#: browser/milestones.pt
+msgid "please_wait"
+msgstr "正在移動，請稍等..."
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "sat"
+msgstr "六"
+
+#. Default: "Save changes"
+#: browser/edit.pt
+msgid "save_changes"
+msgstr "保存更改"
+
+#. Default: "Send email reminder now & 48-hours before this milestone is due"
+#: browser/milestones.pt
+msgid "send_email_reminder"
+msgstr "現在和里程碑到來前的48小時發送郵件提醒"
+
+#. Default: "Send reminder"
+#: browser/batch_add.pt
+#: browser/edit.pt
+msgid "send_reminder"
+msgstr "發送提醒"
+
+#. Default: "Show items assigned to: ${someone}"
+#: browser/milestonereport.pt
+msgid "show_assigned_to"
+msgstr "顯示 ${someone}"
+
+#. Default: "Shift subsequent milestones the same number of days"
+#: browser/edit.pt
+msgid "subsequent_milestones"
+msgstr "將此後的里程碑都平移相同的天數"
+
+#. Default: "Subscribe to iCalendar"
+#: browser/milestones.pt
+msgid "subsribe_to_icalendar"
+msgstr "訂閱到日曆中"
+
+#. Default: "If you use ${apple}, ${mozilla}, or any other program that fully supports the iCalendar standard, you can subscribe to your Milestones in iCalendar format. This will allow you to view your project milestones in your own desktop computer calendar. Please read this ${security} before subscribing."
+#: browser/milestones.pt
+msgid "subsrible_icalendar_more"
+msgstr "如果您使用 ${apple}, ${mozilla}, 或者其他的程序，這些都充分地支持標準的日曆，您可以訂閱您的里程碑到日曆格式中。這將允許您查看您的項目里程碑在您電腦的日曆上。請在訂閱之前閱讀 ${security}。"
+
+#. Default: "S"
+#: browser/milestones.pt
+msgid "sun"
+msgstr "日"
+
+#. Default: "Th"
+#: browser/milestones.pt
+msgid "thu"
+msgstr "四"
+
+#. Default: "Title:"
+#: browser/edit.pt
+#: browser/milestones.pt
+msgid "title"
+msgstr "標題："
+
+#. Default: "Today is"
+#: browser/milestones.pt
+msgid "today_is"
+msgstr "今天是"
+
+#. Default: "Toggle past months"
+#: browser/milestones.pt
+msgid "toggle_past_months"
+msgstr "顯示/隱藏過去的月份"
+
+#. Default: "Tu"
+#: browser/milestones.pt
+msgid "tue"
+msgstr "二"
+
+#. Default: "up to 10 at once"
+#: browser/milestones.pt
+msgid "up_many_once"
+msgstr "批量創建10個"
+
+#. Default: "Upcoming"
+#: browser/milestones.pt
+msgid "upcoming"
+msgstr "即將到來的"
+
+#. Default: "week"
+#: browser/milestones.pt
+msgid "week"
+msgstr "周"
+
+#. Default: "W"
+#: browser/milestones.pt
+msgid "wes"
+msgstr "三"
+
+msgid "late_state"
+msgstr "滯後"
+
+msgid "active_state"
+msgstr "待辦"
+
+msgid "completed_state"
+msgstr "完成"
+
+msgid "complete"
+msgstr "完成"
+
+msgid "activate"
+msgstr "激活"
+
+msgid "report"
+msgstr "報告"
+
+msgid "${deadline} was error, please changed."
+msgstr "到期日期${deadline}有誤，請更正。"
+
+msgid "${milestone} did not create. ${deadline} was error, please changed."
+msgstr "${milestone} 里程碑創建失敗。到期日期${deadline}有誤，請重新創建。"
+
+#. Default: "[$project_title] Milestone assigned to you"
+msgid "mail_subject"
+msgstr "[$project_title] 有里程碑分配給你"
+
+msgid "mail_subject2"
+msgstr "[$project_title] 里程碑將在48小時內過期"
+
+#. Default: "--------------------------------------------------------------\nCompany: ${company_name}\nProject: ${project_name}\n--------------------------------------------------------------\n\nYou have just been assigned the following milestone by ${user_name} <${user_email}>:\n\n${milestone_title}\nDue on ${milestone_end_date}\n\n--\nTo view this milestone, visit:\n${milestones_url}"
+msgid "mail_body"
+msgstr "--------------------------------------------------------------\n組織: ${company_name}\n項目: ${project_name}\n--------------------------------------------------------------\n\n${user_name} <${user_email}> 剛剛分配了一個里程碑給你：\n\n${milestone_title}\n截止時間為： ${milestone_end_date}\n\n--\n請不要回覆此郵件。\n您可在查看項目的里程碑區域:\n${milestones_url}" 
+
+
+msgid "mail_body2"
+msgstr "--------------------------------------------------------------\n組織: ${company_name}\n項目: ${project_name}\n--------------------------------------------------------------\n\n${user_name} <${user_email}> 分配給你的一個里程碑將於48小時後過期：\n\n${milestone_title}\n截止時間為： ${milestone_end_date}\n\n--\n請不要回覆此郵件。\n您可在查看項目的里程碑區域:\n${milestones_url}" 
+
+#. Default: "${len_history}, Just now, <span style=\"color:blue\">I</span> <span style=\"color: green\">reported:</span>: ${action_comment}<br />"
+msgid "progress_newline"
+msgstr "${len_history}, 剛才，<span style=\"color:blue\">我</span> <span style=\"color: green\">報告</span>: ${action_comment}<br />" 
+
+#. Default: "Progress: ${progress}% ${comment}"
+msgid "new_progress"
+msgstr "進度：${progress}% ${comment}"
+
+#. Default: "TITLE,COMPLETE-TIME,RESPONSIBLE,STATE,PROGRESS,DISCRIPTION"
+msgid "out_title"
+msgstr "名稱,完成時間,負責人,狀態,進度,說明"
+
+#. Default: "Active"
+msgid "state_active"
+msgstr "待辦"
+
+#. Default: "Completed"
+msgid "state_completed"
+msgstr "完成"
+
+#. Default: "Late"
+msgid "state_late"
+msgstr "滯後"
+
+#. Default: "(Late ${delaydays} days) ${description}"
+msgid "milestone_description"
+msgstr "（滯後${delaydays}天）${description}"
+
+#. Default: "Progress"
+#: browser/milestones.pt
+msgid "current_progress"
+msgstr "進度："
+
+#. Default: "Detailed progress"
+#: browser/milestones.pt
+msgid "detailed_progress"
+msgstr "進展情況..."
+
+#. Default: "Detailed progress"
+#: browser/milestones.pt
+msgid "show_close"
+msgstr "關閉"
+
+#. Default: "Created the milestone."
+#: browser/milestones.pt
+msgid "progress_created_milestone"
+msgstr "創建里程碑."
+
+#. Default: "progress report"
+#: browser/milestones.pt
+msgid "progress_report"
+msgstr "進度報告"
+
+#. Default: "Has completed: "
+#: browser/milestones.pt
+msgid "has_completed"
+msgstr "已經完成了："
+
+#. Default: "Add comment: "
+#: browser/milestones.pt
+msgid "add_comment"
+msgstr "補充說明："
+
+#. Default: "Submit"
+#: browser/milestones.pt
+msgid "value_submit"
+msgstr "提交"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "list_all_progress"
+msgstr "全部項目進展一覽表"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "completion_of_milestones"
+msgstr "全部項目進展一覽表，顯示各個活動項目的里程碑完成情況"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "progress_title"
+msgstr "標題"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "progress_complete_time"
+msgstr "完成時間"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "progress_responsible"
+msgstr "負責人"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "progress_state"
+msgstr "狀態"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "progress_progress"
+msgstr "進度"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "progress_discription"
+msgstr "說明"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "late_delaydays"
+msgstr "(滯後${delaydays}天)"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "export"
+msgstr "導出"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "to_csv"
+msgstr "所有項目進度為CSV文件"
+
+#. Default: ""
+#: browser/progresstable.pt
+msgid "no_progress"
+msgstr "現在您查看不到任何活動項目的進展情況。如果您參與的項目中存在里程碑信息，其進展情況會在這裡顯示出來。"
+
+msgid "milestones_header"
+msgstr "里程碑"
+
+msgid "about_milestones"
+msgstr "關於里程碑"
+
+msgid "about_milestones_info"
+msgstr "<p>里程碑可理解为項目計劃，明确何時、由谁負責、需要達到什麼目標。通過里程碑和項目進度，可清晰地了解到單個或多個項目的進展情況。</p><p>>>><a target=\"_blank\" href=\"http://cache.everydo.com/demo/milestone.htm\">觀看視頻介紹</a> 或 <a target=\"_blank\" href=\"http://docs.everydo.com/@@book.html?book=everydo&chapter=manual-410274\">瀏覽在線文檔</a></p>"
+
+msgid "milestones_on_car"
+msgstr "里程碑所在日曆"

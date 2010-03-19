@@ -1,0 +1,50 @@
+<configure
+  xmlns="http://namespaces.zope.org/browser"
+  xmlns:five="http://namespaces.zope.org/five"
+  >
+
+  <page
+      for="*"
+      name="uploadFile"
+      class=".chatroom.ChatView"
+      attribute="uploadFile"
+      permission="zope2.View"
+      />
+
+  <page
+      for="*"
+      name="saveChatSetting"
+      class=".kssview.KssView"
+      attribute="saveChatSetting"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <page
+      for="*"
+      name="chatroom_view"
+      template="chatroom_view.pt"
+      class=".chatroom.ChatView"
+      permission="zope2.View"
+      />
+
+  <resource
+      name="chat.kss"
+      file="resource/chat.kss" />
+
+  <resource
+      name="newsession.gif"
+      file="resource/newsession.gif" />
+
+  <resource
+      name="plonechat.js"
+      file="resource/plonechat.js" />
+
+  <resource
+      name="plonechat.css"
+      file="resource/plonechat.css" />
+
+  <resource
+      name="chat.gif"
+      file="resource/chat.gif" />
+
+</configure>

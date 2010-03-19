@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="zopen.basecamp">
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<metal:baseslot fill-slot="base">
+</metal:baseslot>
+
+             
+<metal:block fill-slot="style_slot">
+<metal:style use-macro="context/@@teamfolder_view/macros/style"/>
+</metal:block>
+
+<metal:block fill-slot="javascript_head_slot">
+<metal:js use-macro="context/@@teamfolder_view/macros/js" />
+</metal:block>
+
+<body>
+
+<div metal:fill-slot="content">
+
+    <div id="content" class="documentEditable">
+
+            <h5 class="hiddenStructure" i18n:translate="view">Views</h5>
+
+            <ul class="contentViews">
+
+              <li>
+                <a tal:attributes="href string:$portal_url/companies/@@prefs_site_companies" i18n:translate="people">People</a>
+              </li>
+
+              <li>
+              <a href=""
+                  tal:attributes="href string:$portal_url/prefs_site_account" i18n:translate="account">Account</a> 
+              </li>
+
+              <li class="selected">
+                <a href=""
+                   tal:attributes="href
+                   string:$portal_url/teams/@@prefs_site_permissions" i18n:translate="permissions">Permissions</a>
+              </li>
+              <li>
+                <a href="" tal:attributes="href
+                    string:$portal_url/prefs_site_project_template" i18n:translate="project_template">Project template</a>
+              </li>
+
+              <li>
+                <a href=""
+                   tal:attributes="href
+                   string:$portal_url/prefs_site_settings" i18n:translate="other">Other</a>
+              </li>
+            </ul>
+
+            <div class="contentActions">
+              &nbsp;
+            </div>
+
+            <div class="documentContent" id="region-content">
+                <a name="documentContent"></a>
+
+      <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+        Portal status message
+      </div>
+
+      <div class="configlet">
+
+          <metal:main use-macro="context/@@teamfolder_view/macros/main"/>
+
+      </div>
+    </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
+

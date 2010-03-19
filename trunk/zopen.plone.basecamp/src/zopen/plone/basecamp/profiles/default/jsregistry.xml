@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+
+<javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression=""
+    id="++resource++kss.js" inline="False"/>
+
+<javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression=""
+    id="++resource++category-rename.js" inline="False"/>
+
+<javascript cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression=""
+    id="++resource++deletion.js" inline="False"/>
+
+</object>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<import-steps>
+
+ <import-step id="test-final" version="20070306-01"
+              handler="zopen.plone.basecamp.setuphandlers.importTestContent"
+              title="basecamp Content Import">
+   <dependency step="content"/>
+ </import-step>
+
+ <import-step id="content" version="20050927-01"
+     handler="Products.CMFCore.exportimport.content.importSiteStructure"
+     title="Content">
+     Import the site's structure and content.
+ </import-step>
+
+</import-steps>

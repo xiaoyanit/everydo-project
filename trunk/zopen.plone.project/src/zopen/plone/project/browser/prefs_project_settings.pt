@@ -1,0 +1,185 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="zopen.project">
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('showright',1)" />
+
+<body>
+
+<div metal:fill-slot="main"
+     tal:define="projectstate context/@@basecamp_view/getCurrentProjectState;">
+
+     <div class="SectionHeader">
+          <h1 i18n:translate="project_property">Project settings</h1>
+     </div>
+
+     <form action="prefs_project_settings" 
+           tal:attributes="action string:$here_url/@@prefs_project_settings"
+           class="enableAutoFocus basic_form" enctype="multipart/form-data" method="post">
+
+        <input name="form.submitted" type="hidden" value="1"/>
+
+        <div class="field">
+        <label i18n:translate="project_name"> Project name </label>
+        <div class="formHelp" i18n:translate="project_name_formhelp">
+           The project name appears at the top of every page.
+        </div>
+        <div class="block">
+          <input type="text"  class="firstToFocus" name="title"
+                 style="font-size: 18px; font-weight: bold; width: 50%"
+                 tal:attributes="value context/Title"/>
+        </div>
+       </div>
+      
+      <div class="field">
+        <label i18n:translate="project_overview_announce">Overview page announcement</label>
+        <div class="formHelp"  i18n:translate="project_annouce_formhelp">
+          Create an announcement that appears at the top of this project's Overview page. You can use this to describe the project, to make a special announcement, etc. (Basic HTML tags are OK.)
+        </div>
+
+        <div class="block">
+          <textarea cols="40" name="description" rows="5"
+                    tal:content="context/Description"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label i18n:translate="start_page">Start page</label>
+        <div class="formHelp" i18n:translate="start_page_formhelp">
+            This is the first page people see when they view this project.
+        </div>
+        <div class="block">
+         <select name="startPage"
+                 tal:define="layout context/getLayout">
+          <option value="@@dashboard"
+                  i18n:translate="project_overview">Project overview</option>
+          <option value="@@goto_messages"
+                  tal:attributes="selected python:layout=='@@goto_messages'"
+                  i18n:translate="Message">Message</option>
+          <option value="@@goto_todos"
+                  tal:attributes="selected python:layout=='@@goto_todos'" 
+                  i18n:translate="TodoList">Todo List</option>
+          <option value="@@goto_milestones"
+                  tal:attributes="selected python:layout=='@@goto_milestones'"
+                  i18n:translate="Milestone">Milestone</option>
+         </select>
+       </div>
+      </div>
+
+      <div metal:define-macro="switch-tabs" class="field">
+         <label i18n:translate="project_functions"> Project tabs </label>
+         <p class="discreet" i18n:translate="desc_project_functions"> Select project space features. This will hide the unselected tabs.</p>
+         <div class="block" i18n:domain="zopen.basecamp">
+             <input type="checkbox" name="features:list" value="messages"
+                    tal:attributes="checked not:context/messages/getExcludeFromNav"
+                    checked="checked"/> <span i18n:translate="messages">Messages</span>
+             <input type="checkbox" name="features:list" value="todos"
+                    tal:attributes="checked not:context/todos/getExcludeFromNav"
+                    checked="checked"/> <span i18n:translate="to_do_list">To-Do</span>
+             <input type="checkbox" name="features:list" value="milestones"
+                    tal:attributes="checked not:context/milestones/getExcludeFromNav"
+                    checked="checked"/> <span i18n:translate="milestones"> Milestones </span>
+             <input type="checkbox" name="features:list" value="writeboards"
+                    tal:attributes="checked not:context/writeboards/getExcludeFromNav"
+                    checked="checked"/> <span i18n:translate="writeboards">Writeboards</span>
+             <input type="checkbox" name="features:list" value="time"
+                    tal:attributes="checked not:context/time/getExcludeFromNav"
+                    /> <span i18n:translate="timetrack">Time</span>
+             <input type="checkbox" name="features:list" value="chatroom"
+                    tal:attributes="checked not:context/chatroom/getExcludeFromNav|nothing"
+                    checked="checked"/><span i18n:translate="chat">Chat</span>
+
+             <input type="checkbox" name="features:list" value="files"
+                    tal:attributes="checked not:context/files/getExcludeFromNav"
+                    checked="checked"/> <span i18n:translate="files">Files</span>
+         </div>
+      </div>
+
+      <div class="field">
+        <label i18n:translate="project_company_client">Select the primary company for this project</label>
+        <div class="formHelp" i18n:translate="project_client_formhelp">
+        Select the company you want this project to be associated with in the "Your Projects" list on the Dashboard. The company name will also be displayed at the top of each project page and elsewhere where necessary. Finally, the company logo will appear at the top of the All Messages page for this project.
+        </div>
+        
+        <div class="block">
+           <select name="company" tal:define="cur_company_uid view/getCompanyUID">
+                <option tal:repeat="company view/getAvailableCompanies"
+                        tal:attributes="value python:company[0];
+                                        selected python:company[0] == cur_company_uid"
+                        tal:content="python:company[1]">zopen</option>
+           </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label i18n:translate="change_project_stauts">Change project state</label>
+        <div class="formHelp" i18n:translate="project_stauts_formhelp">Select a new state for project.</div>
+        <div class="block">
+          <input type="radio" value="active" id="projectState_1"
+                 name="projectState" class="noborder"
+                 tal:attributes="checked python: projectstate=='active'" />
+          <label for="projectState_1" i18n:translate="active">Active</label>     <tal:i18n i18n:translate="active_formhelp">Have the full functionality of the project.</tal:i18n>
+          <br/>
+
+          <input type="radio" value="archived" id="projectState_2"
+                 name="projectState" class="noborder"
+                 tal:attributes="checked python: projectstate=='archived'" />
+          <label for="projectState_2" i18n:translate="archived">Archived</label> —  <tal:i18n i18n:translate="archived_formhelp">This project is frozen: it can be viewed but not edited.  Archive projects don't count against your active project total.</tal:i18n>
+        </div>
+       </div>
+
+        <p class="submit">
+          <input type="submit" i18n:attributes="value save;" value="Save" name="submit"/>
+          <span i18n:domain="zopen.todo" i18n:translate="or">or</span>
+          <a class="admin" 
+                 tal:attributes="href context/absolute_url"  i18n:translate="cancel">Cancel</a>
+        </p>
+
+      </form>
+
+</div>
+
+<div metal:fill-slot="portlets_two_slot">
+
+
+    <h1 i18n:translate="Delete_this_project">Delete this project</h1>
+    <form method="post" 
+          tal:attributes="action string:$here_url/@@delete_project">
+      <p i18n:translate="deleting_a_project">
+          Deleting a project <tal:i18n i18n:name="immediately"> <strong i18n:translate="immedately_deletes">immediately and permanently deletes</strong></tal:i18n> all the messages, milestones, and to-do lists associated with this project.<tal:i18n i18n:name="no_undo"> <strong i18n:translate="there_no_undo">There is no Undo</strong></tal:i18n> so make sure you're absolutely sure you want to delete this project. </p>
+
+
+         <div id="current_password" style="display:none;padding-top:10px;">
+            <label i18n:translate="for_security_password">For security, please input your password: </label>
+            <br />
+            <input type="password" value="" name="currentPassword" />
+            <br />
+
+            <input class="standalonei" id="submit_delete" 
+              tabindex=""
+              type="submit"
+              name="form.button.Modify"
+              i18n:attributes="value project_deleted"
+              value="Deleted!" />
+         </div>
+
+       <p>
+         <a href="#" style="font-size:13px;"
+           class="admin" id="click_delete" 
+           onclick="javascript:document.getElementById('current_password').style.display='block';document.getElementById('click_delete').style.display='none';return false" i18n:translate="understand_delete_project"> Yes, I understand — delete this project</a>
+
+       </p>
+    </form>
+
+
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="zopen.project">
+
+<metal:baseslot fill-slot="base">
+</metal:baseslot>
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('showright',0)" />
+
+<metal:block fill-slot="style_slot">
+<link href="#"
+      tal:attributes="href string:$portal_url/++resource++category.css?34223332"
+      type="text/css" rel="stylesheet" media="screen"/>
+<link href="#"
+      tal:attributes="href string:$portal_url/++resource++team-list.kss?34223332"
+      type="text/css" rel="kinetic-stylesheet" />
+       <metal:style use-macro="context/@@teamfolder_view/macros/style"/>
+</metal:block>
+
+
+<metal:js fill-slot="javascript_head_slot">
+
+  <script src="++resource++prototype.js" type="text/javascript"
+          tal:attributes="src string:$portal_url/++resource++prototype.js?34223332"></script>
+
+  <script type="text/javascript"
+          src="http://wiki.script.aculo.us/javascripts/effects.js"
+          tal:attributes="src string:$portal_url/++resource++effects.js?34223332"></script>
+
+</metal:js>
+
+<body>
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/permission-settings">site</metal:block>
+</div>
+<div metal:fill-slot="main">
+
+    <metal:main use-macro="context/@@teamfolder_view/macros/main"/>
+
+    <div tal:define="teams python:context.contentValues()">  
+        <span tal:repeat="team teams">
+        <tal:condition tal:condition="team/Description">
+        <strong tal:content="python:basecamp_view.getGroupName(team.getId())"></strong>:<span tal:content="team/Description" />;
+        </tal:condition>
+        </span>
+        (<a href="@@permission_setting" i18n:domain="zopen.org" i18n:translate="in_group_permission">Project group permission setting...</a>)
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+.EVclickCheckbox:click {
+	action-client: toggleClass;
+	toggleClass-kssSelector: parentnodecss('.clickItem|.TGcomplete');
+	toggleClass-value: hideme;
+
+	
+	action-server: updateInherit;
+	updateInherit-status: currentFormVar();
+	updateInherit-subpath: kssAttr('subpath', true);
+	updateInherit-kssUrl: kssAttrJoin('*baseurl', '/@@updateInherit')
+}
+
+.EVaddPrivilege:click {
+	action-client: toggleClass;
+	toggleClass-kssSelector: samenode('');
+	toggleClass-value: hideme;
+
+	action-server: getTeamsOrUsers;
+	getTeamsOrUsers-kssUrl: kssAttrJoin('*baseurl', '/@@getTeamsOrUsers')
+}
+
+
+.privilegeItem .selectarea:blur {
+    action-client: toggleClass;
+    toggleClass-kssSelector: parentnodecss('.privilegeItem|.EVaddPrivilege');
+    toggleClass-value: hideme;
+
+    action-client: deleteNode;
+    deleteNode-kssSelector: samenode('');
+}
+
+.privilegeItem .selectarea:change {
+    action-server: addPrivilege;
+    addPrivilege-subpath: kssAttr('subpath', true);
+    addPrivilege-role: kssAttr('role', true);
+    addPrivilege-value: currentFormVar();
+    addPrivilege-kssUrl: kssAttrJoin('*baseurl', '/@@addPrivilege');
+}
+
+.EVdeletePrivilege:click {
+	action-server: deletePrivilege;
+	deletePrivilege-subpath: kssAttr('subpath', true);
+	deletePrivilege-role: kssAttr('role', true);
+	deletePrivilege-value: kssAttr('delvalue');
+	deletePrivilege-kssUrl: kssAttrJoin('*baseurl', '/@@deletePrivilege')
+}
+
+.messages .toggleImage:click {
+	action-client: toggleClass;
+	toggleClass-kssSelector: css('.messageschildren');
+	toggleClass-value: hideme;
+}
+
+.files .toggleImage:click {
+	action-client: toggleClass;
+	toggleClass-kssSelector: css('.fileschildren');
+	toggleClass-value: hideme;
+}
+
+.TGfaq a:click {
+        evt-click-preventdefault: true;
+	action-client: toggleClass;
+	toggleClass-kssSelector: css('.TGfaq');
+	toggleClass-value: hideme;
+}

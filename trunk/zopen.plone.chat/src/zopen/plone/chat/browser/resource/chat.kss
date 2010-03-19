@@ -1,0 +1,28 @@
+a.EVuploadfile:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGuploadfile');
+   toggleClass-value: hideme;
+}
+
+
+.EVsubmitupload:click{
+   action-client: toggleClass css('.TGsubmitupload');
+   toggleClass-value: hideme;
+}
+
+.EVedit:click{
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.TGedit');
+   toggleClass-value: hideme;
+}
+
+#edit-chat input.submitInput:click{
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('#chat-topic .submit');
+   toggleClass-value: hideme;
+
+   action-server: saveChatSetting currentForm();
+}

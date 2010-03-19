@@ -1,0 +1,116 @@
+<configure xmlns="http://namespaces.zope.org/browser"
+           xmlns:zope="http://namespaces.zope.org/zope"
+           i18n_domain="zopen.plone.org">
+
+  <zope:include package=".provider"/>
+
+  <page for="*"
+        class=".progresstable.ProgressTable"
+	name="progress_table"
+	template="progresstable.pt"
+        permission="cmf.SetOwnPassword"
+	/>
+
+  <page for="*"
+        class=".progresstable.ProgressTable"
+	name="getProjectsProgress"
+        attribute="getProjectsProgress"
+	permission="zope2.View"
+	/>
+
+  <page for="*"
+        class=".milestonereport.MilestoneReport"
+	name="milestones_report"
+	template="milestonereport.pt"
+        permission="cmf.SetOwnPassword"
+	/>
+
+  <page for="..interfaces.IMilestoneFolderContent"
+        class=".milestones.MilestonesView"
+	name="milestones_view"
+	template="milestones.pt"
+	permission="zope2.View"
+	/>
+
+  <page for="..interfaces.IMilestoneContent"
+        class=".milestones.MilestonesView"
+	permission="zopen.milestone.ReportState"
+	name="toggleState"
+	attribute="toggleState"
+	/>
+
+  <page for="..interfaces.IMilestoneContent"
+        class=".milestones.MilestonesView"
+	permission="cmf.ModifyPortalContent"
+	name="save_milestone"
+	attribute="save_milestone"
+	/>
+
+  <page for="..interfaces.IMilestoneContent"
+        class=".milestones.KssView"
+	name="edit_milestone"
+	attribute="edit_milestone"
+	permission="cmf.ModifyPortalContent"
+	/>
+
+  <page for="..interfaces.IMilestoneContent"
+        class=".milestones.KssView"
+	name="add_progress"
+	attribute="add_progress"
+	permission="zopen.milestone.ReportState"
+	/>
+
+  <page for="..interfaces.IMilestoneContent"
+        class=".milestones.KssView"
+	name="submitProgress"
+	attribute="submitProgress"
+	permission="zopen.milestone.ReportState"
+	/>
+
+  <page for="..interfaces.IMilestoneFolderContent"
+        name="batch_add_milestone"
+        class=".milestones.AddMilestoneForm"
+        attribute="batchAdd"
+        permission="zopen.milestone.AddMilestone"
+        />
+
+  <page for="..interfaces.IMilestoneFolderContent"
+        name="add_milestone"
+        class=".milestones.AddMilestoneForm"
+        attribute="addOne"
+        permission="zopen.milestone.AddMilestone"
+        />
+
+  <page for="*"
+        name="csv_url"
+        class=".progresstable.ProgressTable"
+        attribute="csvURL"
+        permission="zope2.View"
+        />
+
+  <page for="*"
+        name="progress-export.csv"
+        class=".progresstable.ProgressTable"
+        attribute="csv"
+        permission="zope2.View"
+        />
+
+  <resource name="calendar-zh-utf.js"
+            file="resources/calendar-zh-utf.js" />
+
+  <resource name="milestone-tour.gif"
+            file="resources/milestone-tour.gif" />
+
+  <resource name="milestone.gif"
+            file="resources/milestone.gif" />
+
+  <resource name="progresstable.kss"
+            file="resources/progresstable.kss" />
+
+  <resource name="milestone.kss"
+            file="resources/milestone.kss" />
+
+ <resource name="milestone.css"
+            file="resources/milestone.css" />
+
+</configure>

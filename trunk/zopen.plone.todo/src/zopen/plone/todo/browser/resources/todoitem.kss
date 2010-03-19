@@ -1,0 +1,85 @@
+a.edititemMore:click {
+   evt-click-preventdefault: true;
+
+   action-server: editItem;
+   editItem-is_template: kssAttr(is_template, True);
+
+   action-client: toggleClass css('.todo_more');
+   toggleClass-value: hideme;
+}
+
+a.EVcanceledititem:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.todo_more');
+   toggleClass-value: hideme;
+
+   action-client: deleteNode;
+   deleteNode-kssSelector: parentnodecss('.kssDeletionRegion|form.edititem');
+}
+
+
+form.edititem input[type="submit"]:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.edititemwrapper|.submit');
+   toggleClass-value: hideme;
+
+   action-server: saveItemMore currentForm();
+}
+
+.TGtime:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass css('.EVtime');
+   toggleClass-value: hideme;
+}
+
+.TGtimetrack:click {
+   evt-click-preventdefault: true;
+
+   action-server: trackItem;
+   trackItem-is_todolist: False;
+
+   action-client: toggleClass css('.TGtimetrack');
+   toggleClass-value: hideme;
+}
+
+a.EVcanceltrackitem:click {
+   evt-click-preventdefault: true;
+
+   action-client: deleteNode;
+   deleteNode-kssSelector: parentnodecss('.kssDeletionRegion|div.trackitemmore');
+
+   action-client: toggleClass css('.TGtimetrack');
+   toggleClass-value: hideme;
+}
+
+form.trackform input[type=submit]:click {
+   evt-click-preventdefault: true;
+
+   action-client: toggleClass parentnodecss('.trackitem|.submit');
+   toggleClass-value: hideme;
+
+   action-server:addTrackMore currentForm();
+}
+
+.EVclickComplete:click {
+   action-client: toggleClass css('.EVtoggleArea');
+   toggleClass-value: hideme;
+
+   action-server: completeTodoItemMore;
+   completeTodoItemMore-kssUrl: kssAttrJoin('/@@completeTodoItemMore');
+}
+
+.EVattachfile:click {
+    evt-click-preventdefault: true;
+
+    action-client: toggleClass css('.TGattachfile');
+    toggleClass-value: hideme;
+}
+
+.EVtoggle:click {
+    action-client: toggleClass css('.TGtoggle');
+    toggleClass-value: hideme;
+}

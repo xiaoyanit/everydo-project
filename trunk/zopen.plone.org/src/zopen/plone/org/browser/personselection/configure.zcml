@@ -1,0 +1,21 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           i18n_domain="zopen.plone.org">
+
+  <adapter factory=".selection.MultiSelectionProvider"
+           name="zopen.multipersonselection"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <adapter factory=".selection.SelectionProvider"
+           name="zopen.personselection"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <adapter factory=".selection.XSelectionProvider"
+           name="zopen.xpersonselection"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+  <adapter factory=".selection.ResponsibleSelectionProvider"
+           name="zopen.responsibleselection"
+           provides="zope.contentprovider.interfaces.IContentProvider"/>
+
+</configure>

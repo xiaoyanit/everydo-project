@@ -1,0 +1,99 @@
+.Comments {
+    padding: 20px 0 0 0px;
+}
+
+.Comments h4 {
+    margin: 0 0 10px 0;
+    font-size: 10px;
+    color: #666;
+    padding: 3px 0;
+    font-weight: normal;
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.Comments h2 {
+    padding: 2px 4px;
+    color: #fff;
+    background: #888;
+    font-size: 11px;
+    border-bottom: 1px solid #666;
+    margin: 0;
+
+}
+
+.Comments #Attachments h2 {
+    padding: 2px 4px;
+    color: #333333;
+    background: none;
+    border-bottom: 1px solid #CCCCCC;
+    margin: 0;
+
+}
+
+.Comments div.Post {
+    background: #f9f9f9;
+    border-bottom: 1px solid #efefef;
+    margin: 0 0 5px 0;
+    clear: left;
+    color: #333;
+    padding: 5px;
+}
+
+.Comments div.Post:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.commentPortrait {
+	clear:both;
+	margin:0pt 10px 10px 0pt;
+	padding-left:5px;
+}
+
+.commentPortrait .portraitPhoto {
+	height:48px;
+	border: none;
+}
+/* Hides form IE-mac \*/
+* html .Comments div.Post {height: 1%;}
+/* End hide from IE-mac */
+
+.Comments #OriginalPost {
+    padding: 0 0 30px 0;
+    background: #fff;
+    border-bottom: none;
+}
+
+div.Comments img.avatar {
+  margin: 0 10px 10px 0;
+  width: 48px;
+  float: left;
+  padding-left: 5px;
+}
+
+div.Comments div.Post ul,
+div.Comments div.Post ol {
+  clear: left;
+}
+
+div.Comments div.Post ol li,
+div.Comments div.Post ul li {
+}
+
+div#your_comment div.Post {
+  margin-bottom: 0;
+}
+
+table.commentTa {
+    background-color: transparent !important; 
+}
+
+.commentTa td {
+    vertical-align: top;
+    background-color: transparent !important; 
+    padding: 0pt !important;
+}
+

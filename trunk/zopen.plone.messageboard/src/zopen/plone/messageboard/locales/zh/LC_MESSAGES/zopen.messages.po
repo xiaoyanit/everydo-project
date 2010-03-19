@@ -1,0 +1,254 @@
+# zopen.filerepos translate
+# Benky <zhangbingkai@zopen.cn>, Zopen.
+msgid ""
+msgstr ""
+"Project-Id-Version: zopen.messages 1.0\n"
+"POT-Creation-Date: 2007-05-14 04:23+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Benky <zhangbingkai@zopen.cn>\n"
+"Language-Team: zopen.cn <http://zopen.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh\n"
+"Language-Name: Chinese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: zopen.messages\n"
+"X-Is-Fallback-For: zh-cn\n"
+
+#. Default: "add a new message"
+#: browser/messages.pt
+msgid "add_a_new_message"
+msgstr "添加一个消息"
+
+#. Default: "all messages"
+#: browser/messages.pt
+msgid "all_messages"
+msgstr "全部消息"
+
+#. Default: "Add another file"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "another_file"
+msgstr "再增加一个文件"
+
+#. Default: "(this part only appears on comments page)"
+#: browser/edit.pt
+msgid "appears_on"
+msgstr "（这部分仅显示在评论页面上）"
+
+#. Default: "Associate this message with a milestone"
+#: browser/add_message.pt
+msgid "associate_milestone"
+msgstr "使这个消息与里程碑结合"
+
+#. Default: "Attach files"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "attach_files"
+msgstr "附件"
+
+#. Default: "Attach files to this message"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "attach_files_to"
+msgstr "在这个消息上添加一个附件"
+
+#. Default: "Cancel"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "cancel"
+msgstr "取消"
+
+#. Default: "Category:"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "category"
+msgstr "分类："
+
+#. Default: "Check the"
+#: browser/edit.pt
+msgid "check_the"
+msgstr "检查"
+
+#. Default: "Choose a file less than 30MB in size."
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "choose_file"
+msgstr "选择一个小于30MB的文件"
+
+#. Default: "Completes this milestone"
+#: browser/add_message.pt
+msgid "complete_milestone"
+msgstr "完成这个里程碑"
+
+#. Default: "Continue read..."
+#: browser/messages.pt
+msgid "continue_read"
+msgstr "继续查看..."
+
+#. Default: "${creator} posted ${modified}"
+#: browser/message.pt
+msgid "create_by"
+msgstr "${creator} 提交于 ${modified}"
+
+#. Default: "edit"
+#: browser/message.pt
+#: browser/messages.pt
+msgid "edit"
+msgstr "编辑"
+
+#. Default: "Edit message:"
+#: browser/edit.pt
+msgid "edit_message"
+msgstr "编辑消息："
+
+#. Default: "${comments} comments"
+#: browser/messages.pt
+msgid "exist_comments"
+msgstr "${comments}篇评论"
+
+#. Default: "(this part only appears on comments page)"
+#: browser/add_message.pt
+msgid "extended_discription"
+msgstr "（这部分内容仅显示在评论页面上）"
+
+#. Default: "Extended message:"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "extended_message"
+msgstr "扩展消息"
+
+#. Default: "You can use simple, easy-to-write codes to format your text."
+#: browser/edit.pt
+msgid "format_your_text"
+msgstr "您可以在你的正文使用简单，易写的格式"
+
+#. Default: "Simple formatting codes"
+#: browser/edit.pt
+msgid "formatting_codes"
+msgstr "简单格式"
+
+#. Default: "Attachments"
+#: browser/edit.pt
+#: browser/message.pt
+msgid "legend_attachments"
+msgstr "附件"
+
+#. Default: "to easily make lists, headers, and more."
+#: browser/edit.pt
+msgid "make_lists"
+msgstr ""
+
+#. Default: "Make this message"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "make_message"
+msgstr "使这个消息"
+
+#. Default: "Message body:"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "message_body"
+msgstr "消息正文"
+
+#. Default: "This is Message in ${category_title}"
+#: browser/message.pt
+msgid "message_in_category"
+msgstr "消息位于${category_title}"
+
+#. Default: "Messages in"
+#: browser/messages.pt
+msgid "messages_in"
+msgstr "消息位于"
+
+#. Default: "No result yet."
+#: browser/messages.pt
+msgid "no_result"
+msgstr "没有任何内容。"
+
+#. Default: "Notify people of this message via email"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "notify_email"
+msgstr "通过邮件通知给成员"
+
+#. Default: "Post a comment"
+#: browser/messages.pt
+msgid "post_comment"
+msgstr "发表评论"
+
+#. Default: "Post a new message"
+#: browser/add_message.pt
+msgid "post_new_message"
+msgstr "添加一个消息"
+
+#. Default: "Posted by ${author} in"
+#: browser/messages.pt
+msgid "posted_by_in_category"
+msgstr "提交人：${author} 位于："
+
+#. Default: "private"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "private"
+msgstr "保密"
+
+#. Default: "Private"
+#: browser/messages.pt
+msgid "Private"
+msgstr "保密"
+
+#. Default: "Save changes"
+#: browser/add_message.pt
+msgid "save_change"
+msgstr "保存"
+
+#. Default: "Type the codes in your text and you will see the results after clicking Save."
+#: browser/edit.pt
+msgid "see_the_results"
+msgstr ""
+
+#. Default: "A link to this message will appear below the milestone you select."
+#: browser/add_message.pt
+msgid "select_milestone"
+msgstr "选择的里程碑上会出现这个消息的链接"
+
+#. Default: "Show extended message body"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "show_extended_message"
+msgstr "扩展消息正文"
+
+#. Default: "Here are some examples:"
+#: browser/edit.pt
+msgid "some_examples"
+msgstr "这里有一些例子："
+
+#. Default: "Title:"
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "title"
+msgstr "标题："
+
+msgid "attachment_msg_msg"
+msgstr "此消息包含${len_attachments}个附件：\n "
+
+#. Default: "A new message has been posted. DO NOT REPLY TO THIS EMAIL. To comment on this message, visit: \n ${msg_url} \n \n ${user_name} <${user_email}> said：\n --------------------------------------------------------------- \n ${msg_body} \n ${attachments} \n \n -- \n DO NOT REPLY TO THIS EMAIL. \n To comment on this message, visit: \n ${msg_url}"
+msgid "body_email"
+msgstr "有新消息张贴。请不要回复此邮件。若要对此消息发表评论，请访问: \n ${msg_url} \n \n${user_name} <${user_email}>写到： \n------------------------------------------------------ \n${msg_body} \n \n${attachments}\n \n--\n请不要回复此邮件。\n若要对此消息发表评论，请访问: \n${msg_url}"
+
+msgid "or"
+msgstr "或"
+
+#. Default: ""
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "please_wait_message"
+msgstr "正在张贴消息，请稍等..."
+
+#: browser/add_message.pt
+#: browser/edit.pt
+msgid "wait_save_changes"
+msgstr "正在保存更改，请稍等..."

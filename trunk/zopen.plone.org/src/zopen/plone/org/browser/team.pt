@@ -1,0 +1,349 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="zopen.org">
+
+<body>
+
+<metal:baseslot fill-slot="base">
+</metal:baseslot>
+
+<metal:block fill-slot="style_slot">
+<metal:macro-style metal:define-macro="style">
+    <style type="text/css"
+        tal:content="structure string:<!-- @import url($portal_url/++resource++contacts.css?34223332); -->"
+        ></style>
+    <link rel="kinetic-stylesheet" type="text/css" href=""
+        tal:attributes="href string:$portal_url/++resource++team.kss?34223332"
+        />
+</metal:macro-style>
+</metal:block>
+
+<div metal:fill-slot="main">
+
+
+    <div metal:define-macro="main"
+         id="company_list" class="edit-form enableFormTabbing"
+        tal:define="Batch python:modules['Products.CMFPlone'].Batch">
+
+    <div class="SectionHeader">
+           <h1 i18n:domain="zopen.project"
+               i18n:translate="access_project">People with access to this project</h1>
+           <h3 class="TGaddcompany">
+             <a href="#" class="admin EVaddcompany"
+                i18n:translate="add_a_company">Add a company to this project</a>
+              <span class="formHelp" i18n:translate="then_add_people_the">(then you can add people in the company)</span>
+            </h3>
+        </div>
+
+        <div class="showhide hideme TGaddcompany insert-company-after-stub"
+             tal:define="avail_companies python:view.get_available_companies()" >
+             <h2 i18n:translate="company_add_group">Which company do you want to add to the project?</h2>
+             <p i18n:translate="after_add_company">After you add a company you'll choose the people from that company you want to add to the project.</p>
+            <tal:condition tal:condition="avail_companies">
+                <span class="ChooseCompany" i18n:translate="choose_existing_company">Choose an existing company</span>
+                <span class="ChooseCompany">(<span i18n:translate="or">or</span></span>
+                <a href="#" class="EVchangeCompany TGchangeCompany"
+                    i18n:translate="create_a_new_company"> Create a new company</a>
+                <span class="ChooseCompany" tal:content="string: )"  />    
+                
+                <span class="hideme ChooseCompany"  i18n:translate="create_a_new_company">Create a new company name</span>
+                <span class="ChooseCompany hideme">(<span i18n:translate="or">or</span></span>
+                <a href="#" class="EVchangeCompany TGchangeCompany hideme" i18n:translate="choose_existing_company">
+                    Choose an existing company
+                </a>
+                <span class="ChooseCompany hideme" tal:content="string: )"  />
+            </tal:condition>
+            <br /><br />
+
+            <form class="chooseCompany TGchangeCompany"
+                  tal:condition="avail_companies">
+                  <select name="company_name" class="selectCompanyArea">
+                      <option value="" tal:repeat="ct avail_companies"
+                              tal:content="ct/pretty_title_or_id"
+                              tal:attributes="value ct/getId;" />
+                  </select>
+                  <br /><br />
+                 <input class="EVaddcompany submitInput"
+                        type="submit" name="submit" 
+                        i18n:attributes="value add_company;" value="Add company" />
+                 <tal:i18n i18n:translate="or">or</tal:i18n>
+                 <a class="admin EVaddcompany" href="" i18n:translate="cancel"> Cancel </a>
+            </form>
+            <form class="addNewCompany hideme TGchangeCompany"
+                  tal:attributes="class python:avail_companies and 'addNewCompany hideme TGchangeCompany' or 'addNewCompany TGchangeCompany'"> 
+                  <input type="text" name="company_name"/>
+                  <br /><br />
+                  <input class="EVaddcompany submitInput"
+                          type="submit" name="submit" 
+                          i18n:attributes="value create_add_company;" 
+                          value="Create and add company"/>
+                  <tal:i18n i18n:translate="or">or</tal:i18n>
+                  <a class="admin EVaddcompany" href="#"
+                      i18n:translate="cancel"> Cancel </a>
+             </form>
+        </div>
+
+        <tal:def define="cpti view/getCompanyPeopleTeamInfo">
+        <tal:rep repeat="companyid cpti">
+        <tal:def define="company_and_people python:cpti[companyid]">
+        
+
+            <div metal:define-macro="company_element"
+                 tal:define="company_and_people company_and_people | options/company_and_people;
+                             company python:company_and_people[0][0];
+                             companyid company/getId;
+                             available_people python:view.get_available_people(company.getId());
+                             Batch nocall:Batch | python:modules['Products.CMFPlone'].Batch;"
+                 tal:attributes="class string:companyRow kssattr-companyname-$companyid;">
+
+            <div class="TGaddperson hideme showhide">
+
+                <h2><tal:i18n i18n:translate="add_person_to">Add person to</tal:i18n>
+                    <span tal:replace="company/pretty_title_or_id"/>
+                </h2>
+                    
+                <tal:condition 
+                    tal:condition="available_people">
+                    <span class="ChooseArea"  i18n:translate="choose_existing_person">Choose an existing person</span>
+                    <span class="ChooseArea">(<span i18n:translate="or">or</span></span>
+                    <a href="#" class="EVchangeDisplay ChooseArea" i18n:translate="add_new_person">Add a new person: </a>
+                    <span class="ChooseArea" tal:content="string: )" />
+
+                    
+                    <span class="hideme ChooseArea"  i18n:translate="add_new_person">Add a new person</span>
+                    <span class="ChooseArea hideme">(<span i18n:translate="or">or</span></span>
+                    <a href="#" class="EVchangeDisplay ChooseArea hideme" i18n:translate="choose_existing_person">Choose an existing person:</a>
+                    <span class="ChooseArea hideme" tal:content="string: )" />
+                </tal:condition>
+                    <br /><br />
+
+                  <div tal:condition="available_people"
+                    class="ChooseArea">
+
+                    <form method="post" tal:attributes="class string:addexistingperson kssattr-companyname-$companyid">
+                     
+                     <div class="toggleArea">
+                     <span class="ASelect"><input type="checkbox" class="EVcheckAll" 
+                                                  tal:condition="python: len(available_people) > 3"/><strong i18n:translate="existing_people">Existing person: </strong></span> 
+                     <span class="hideme ASelect"><input type="checkbox" checked="checked" class="EVuncheckAll" 
+                                                         tal:condition="python: len(available_people) > 3"/><strong i18n:translate="all_people">All people: </strong></span>           
+                     <span tal:repeat="p available_people" style="display: inline;">
+                        <input type="checkbox" class="TGtogglecheck" name="persons:list" tal:attributes="value p/getId" /><span tal:replace="p/pretty_title_or_id" />
+                     </span>
+                     <p> 
+                     <label i18n:translate="add_to_team">Team:</label>
+                     <select style="display: inline;" name="selectvalue"
+                        tal:define="isselected python:companyid == 'owner_company' and 'projectseniors' or 'projectmembers'" >
+                        <option tal:repeat="t view/getAvailableTeams"
+                                tal:content="t/pretty_title_or_id"
+                                tal:attributes="value t/getId;
+                                                selected python:t.getId() == isselected;" />
+                     </select>
+                     </p>
+                     </div>
+                     
+                     <p class="submit">
+                        <input type="submit" name="submit" class="submitInput" i18n:attributes="value add;" value="Add" />
+                        <tal:i18n i18n:translate="or">or</tal:i18n>
+                        <a href="#" class="admin EVaddperson"
+                           i18n:translate="cancel"> Cancel </a>
+                     </p>
+                     </form>
+                </div>
+
+                <div class="hideme ChooseArea"
+                     tal:attributes="class python:available_people and 'ChooseArea hideme' or 'ChooseArea'">
+
+                    <form method="post" class="addnewperson">
+                    <table><tbody>
+                    <tr><td i18n:translate="full_name">Full Name: </td>
+                        <td>
+                            <div class="field">
+                                <div style="float:left;">
+                                     <input name="fullname" />
+                                </div>
+                                 <div class="errmsg" style="margin-left:200px;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td i18n:translate="email">Email: </td>
+                        <td>
+                            <div class="field">
+                                <div style="float:left;">
+                                     <input class="new-person-email" type="text" name="email" />
+                                </div>
+                                 <div class="errmsg" style="margin-left:200px;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td i18n:translate="username">username:</td>
+                        <td>
+                            <div class="field">
+                                <div style="float:left;">
+                                     <input class="new-person-name" name="username" />
+                                </div>
+                                 <div class="errmsg" style="margin-left:200px;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td i18n:translate="password">Password: </td>
+                        <td><input  type="password" name="password" /></td></tr>
+
+                    <tr>
+                        <td i18n:translate="add_to_team">Add to team:</td>
+                        <td>
+                        
+                            <select style="display: inline;"
+                                    name="selectnewvalue"
+                                    tal:define="isselected python:companyid == 'owner_company' and 'projectseniors' or 'projectmembers'" >
+                                <option tal:repeat="t view/getAvailableTeams"
+                                        tal:content="t/pretty_title_or_id"
+                                        tal:attributes="value t/getId;
+                                                        selected python:t.getId() == isselected" />
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                   </table>
+
+                  <input type="hidden" name="companyid" tal:attributes="value companyid" />
+                  <input type="checkbox" name="disable:boolean"
+                         class="EVdisable"/> <tal:i18n i18n:translate="inhibit_login">Inhibit，inhibit login</tal:i18n> 
+                  <input type="checkbox" class="TGdisable" name="notify" checked="checked"/> <span class="TGdisable" i18n:translate="notify_by_email">Notify_by_email</span>
+
+                  <p class="submit">
+                     <input type="submit" class="submitInput"
+                            name="add-new-person-button" value="Create and add person" 
+                            i18n:attributes="value create_add_person;"/>
+                     <tal:i18n i18n:translate="or"> or </tal:i18n>
+                     <a href="#" class="admin EVaddperson"  i18n:translate="cancel"> Cancel </a>
+                  </p>
+                  </form>
+                </div>
+
+            </div>
+
+            <table class="contacts">
+                <tal:batch tal:define="company python:company_and_people[0][0]"
+                           tal:repeat="batch_start python:range(0, len(company_and_people), 3)">
+                <tal:row tal:define="batch python:Batch(company_and_people, 3, batch_start);">
+                <tr class="top">
+                    <tal:cell tal:repeat="objteams batch">
+                    <tal:define tal:define="obj python:objteams[0];
+                                            teams python:objteams[1]">
+                    <td class="company" 
+                        tal:condition="python:obj.meta_type == 'OrganizationUnit'">
+                        <h1 tal:content="obj/pretty_title_or_id">Company Name</h1>
+                        <p class="admin">
+
+                          <tal:i18n i18n:translate="this_company">this company</tal:i18n><br />
+                            <a href="#" class="admin EVaddperson"
+                                 i18n:translate="add_person">Add person</a>
+                                 <tal:i18n i18n:translate="from_company_group">from this company to the project</tal:i18n><br />
+                            <a href="#" 
+                               tal:attributes="class string:admin EVremovecompany kssattr-companyname-$companyid"
+                                 i18n:translate="remove">Remove</a>
+                                 <tal:i18n i18n:translate="company_group">this company from this project</tal:i18n> |
+                          <a href="#" class="admin" tal:attributes="href string:${obj/absolute_url}/edit" i18n:translate="edit">Edit</a>
+                        </p>
+                    </td>
+
+                    <td class="nopeople" colspan="2"
+                        tal:condition="python:len(company_and_people) == 1">
+                        <a href="#" class="admin EVaddperson"
+                             i18n:translate="add_first_person">Add the first person</a>
+                             <tal:i18n i18n:translate="to">to</tal:i18n>
+                             <span tal:replace="company/pretty_title_or_id">Company</span><br/>
+                    </td>
+
+                    <td class="person" tal:condition="python:obj.meta_type == 'Person'">
+                      <p class="permissonOperation" metal:define-macro="permisson" style="float:right"
+                            tal:define="obj nocall:options/obj | nocall:obj;
+                                        personteams python:view.getPersonTeam(obj.getId());"
+                            tal:attributes="class string:kssattr-person_name-${obj/getId} permissonOperation;">
+                                    
+                            <span tal:repeat="teamitem personteams" style="display: inline"
+                                  tal:attributes="class python:'teamitemroot-' + teamitem[0] + ' teamitems'">
+                                <span class="parentteamitem" tal:attributes="class python:'kssattr-theitemid-' + teamitem[0] + ' parentteamitem'" >
+                                    <span style="color:red; cursor: pointer; text-decoration: underline; font-size: 12px"  tal:attributes="class python:'teamitem-' + teamitem[0] + ' teamitemclick kssattr-team_id-' + teamitem[0]" tal:content="python:teamitem[1]" /></span>
+                                 <img alt="delete this person from the team" class="delimage EVdeleteTeam" title="delete this person from the team"
+                                      tal:condition="nothing"
+                                 tal:attributes="src string:/++resource++delTeam.gif;
+                                                 class python:'delimage EVdeleteTeam kssattr-person_name-' +
+                                                                    obj.getId() + ' kssattr-team_id-' + teamitem[0]"
+                                 i18n:attributes="alt delete_team;title delete_team;"
+                                 />
+                            </span>
+                            <span tal:condition="nothing"
+                                  class="addTeamArea" tal:attributes="class string:kssattr-person_name-${obj/getId} addTeamArea">
+                            
+                             <img alt="add team" class="delimage EVaddTeam" title="add team"
+                             tal:attributes="src string:/++resource++addTeam.gif"
+                             i18n:attributes="alt add_team;title add_team;"
+                             />
+                            </span>
+
+
+                      </p>
+
+                     <h1>
+                        <span tal:replace="obj/pretty_title_or_id">benky</span>
+                        <span class="discreet" tal:condition="obj/getPosition"> 
+                             (<span tal:replace="obj/getPosition" />)</span>
+                     </h1>
+
+                      <img src="" style="float: right" tal:condition="obj/getPhoto"
+                           tal:attributes="src string:${obj/absolute_url_path}/photo_thumb" />
+
+                        <p><a href="mailto:user@domain.com"
+                            tal:attributes="href string:mailto:${obj/email}"
+                            tal:content="obj/email">user@domain.com</a></p>
+                        <p tal:condition="obj/phone"><span class="label">P:</span>
+                            <span tal:replace="obj/phone">1234</span></p>
+                        <p tal:condition="obj/mobilePhone"><span class="label">M:</span>
+                            <span tal:replace="obj/mobilePhone">123</span></p>
+                        <p tal:condition="obj/office"><span class="label">O:</span>
+                            <span tal:replace="obj/office">123</span></p>
+                        <p tal:condition="obj/fax"><span class="label">F:</span>
+                            <span tal:replace="obj/fax">123</span></p>
+                        <p tal:condition="obj/location"><span class="label">L:</span>
+                            <span tal:replace="obj/location">1324</span></p>
+
+                        <p tal:define="obj nocall:options/obj | nocall:obj;
+                                       basecamp_view nocall:context/@@basecamp_view;
+                                       personteams python:view.getPersonTeam(obj.getId());"
+                            tal:attributes="class string:kssattr-person_name-${obj/getId};">
+                            <a href="#" class="admin"
+                               tal:attributes="href string:${obj/absolute_url_path}/edit;
+  class python:basecamp_view.was_locked(obj) and 'wasLocked admin' or 'admin'"
+                                i18n:translate="edit">Edit</a> 
+                            <span tal:condition="python:1 or len(personteams) == 0" i18n:translate="remove_out_project">
+                                <a href="#" class="admin EVdeletePersoniiii EVremoveperson">Remove</a> from this project 
+                            </span>
+                        </p>
+
+                    </td>
+                    </tal:define>
+                    </tal:cell>
+                    <tal:blank tal:condition="python:len(batch) < 3
+                                            and len(company_and_people) > 1">
+                        <tal:block tal:repeat="i python:range(3 - len(batch))">
+                            <td class="blank">&nbsp;</td>
+                        </tal:block>
+                    </tal:blank>
+
+                </tr>
+                </tal:row>
+                </tal:batch>
+            </table>
+            </div>
+            </tal:def>
+          </tal:rep>
+        </tal:def>
+
+    </div>
+
+</div>
+</body>
+</html>

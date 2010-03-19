@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="zopen.basecamp">
+
+<metal:noborder fill-slot="top_slot"
+   tal:define="dummy python:request.set('showright', 1)" />
+
+
+<metal:css fill-slot="style_slot">
+   <link type="text/css" rel="kinetic-stylesheet"
+         tal:attributes="href string:$portal_url/++resource++category-list.kss?34223332"
+         />
+
+</metal:css>
+
+<body>
+
+<div metal:fill-slot="headernav">
+ <metal:block metal:use-macro="context/@@macro_basecamp/macros/site-settings">site</metal:block>
+</div>
+
+<div metal:fill-slot="main">
+
+        <h1 i18n:translate="project_categories">Project categories templates</h1>
+        <div id="basic_form">
+
+      <div class="field">
+         <label i18n:translate="setting_message_category">Default message categories</label>
+         <p class="formHelp" i18n:translate="setting_message_category_helpform">These are the message categories that every new project starts with.</p>
+         <div class="block"
+              tal:define="cat_context nocall:context/templates/project/default/messages;
+                        is_template_setting python:True;"> 
+             <div style="width:300px">
+               <span tal:replace="structure provider:zopen.categorylist" />
+             </div>
+         </div>
+      </div>
+
+
+      <div class="field">
+            <label i18n:translate="setting_file_category">Default file categories</label>
+            <p class="formHelp" i18n:translate="setting_file_category_helpform">These are the file categories that every new project starts with.</p>
+            <div class="block"
+                 tal:define="cat_context nocall:context/templates/project/default/files;
+                       is_template_setting python:True;"> 
+                 <div style="width: 300px">
+                    <span tal:replace="structure provider:zopen.categorylist" />
+                 </div>
+            </div>
+      </div>
+
+    </div>
+
+</div>
+    <div metal:fill-slot="portlets_two_slot">
+          <div class="col">
+             <h1 i18n:translate="about_default_categories">About default categories</h1>
+              <p i18n:translate="about_default_categories_for">
+              Every new project starts with, it will be created default message categories and default file categories. <br /> You can set up the default message categories and the default file categories at frist.</p>
+          </div>
+    </div>
+</body>
+</html>

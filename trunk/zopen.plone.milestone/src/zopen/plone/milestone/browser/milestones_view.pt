@@ -1,0 +1,289 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.milestone">
+<metal:noborder fill-slot="top_slot"
+                tal:define="dummy python:request.set('showright', 1)" />
+
+<metal:calendar fill-slot="javascript_head_slot">
+    <!-- ECMAScript calendar -->
+    <style type="text/css" media="all"
+    tal:content="string:@import url($portal_url/calendar-system.css?34223332);"></style>
+    <script type="text/javascript"
+            tal:attributes="src string:$portal_url/calendar_stripped.js?34223332"></script>
+    <script type="text/javascript"
+            tal:attributes="src string:$portal_url/calendar_formfield.js?34223332"></script>
+    <script type="text/javascript"
+            tal:attributes="src string:$portal_url/++resource++calendar-zh-utf.js?34223332"></script>
+</metal:calendar>
+
+<metal:fill fill-slot="style_slot">
+<link rel="kinetic-stylesheet"
+      type="text/kss"
+      href="/++resource++milestone.kss?34223332" />
+
+<link href="#" type="text/css" rel="stylesheet" media="screen"
+      tal:attributes="href string:$portal_url/++resource++milestone.css?34223332" />
+
+</metal:fill>
+
+<div metal:fill-slot="main"
+     tal:define="global results view/getTimelinedResults;
+                 all_milestones results/results;
+                 basecamp_view context/@@basecamp_view;
+                 today basecamp_view/today;
+                 canAdd python:checkPermission('zopen.milestone: Add milestone', context);
+                 basecamp_view context/@@basecamp_view">
+
+   <div class="SectionHeader">
+  
+        <h1 i18n:translate="milestones_header">Milestones</h1>
+  
+        <h3 class="TGaddmilestone"
+            tal:condition="canAdd">
+          <a class="admin EVaddmilestone" href="#" i18n:translate="new_milestone">New milestone</a>
+          (<tal:i18n i18n:translate="or">or</tal:i18n>
+          <a class="admin" tal:attributes="href string:$here_url/@@batch_add_milestone" i18n:translate="up_many_once">up to 10 at once</a>
+          )
+         </h3>
+  
+         <h3 class="TGaddmilestone hideme">
+             <a href="#" class="donelink EVaddmilestone" i18n:translate="cancel_back">Cancel and go back</a></h3>
+  
+   </div>
+    <div class="TGaddmilestone"
+         tal:condition="not:all_milestones"
+         i18n:domain="zopen.basecamp">
+       <div class="blankBar"
+            tal:condition="canAdd">
+         <h1><a class="adminfull EVaddmilestone" href="#" i18n:translate="create_first_milestone">
+              Create the first milestone for this project</a></h1>
+
+         <p i18n:translate="create_milestone_for">Keep track of what's due, when it's due, and who's responsible for doing it. </p>
+        </div>
+        <div class="blankExample">
+          <h1 i18n:translate="learn_about_milestone">Learn about milestones: Watch a video demo below</h1>
+          <p i18n:translate="learn_about_for">You can watch this video or view a screenshot any time from the 
+            <tal:i18n i18n:name="for">
+              <a href="http://everydo.com/tour#lichengbei" target="_blank" i18n:translate="milestone_tour_page">Milestone tour page</a>
+            </tal:i18n>.</p>
+           <a class="image" target="_blank" href="http://cache.everydo.com/demo/milestone.htm">
+             <img alt="Click to play the video" i18n:attributes="alt click_video;" src="/++resource++milestone-tour.gif" />
+           </a>
+       </div>
+    </div>
+   <p class="todayis" style="text-align:right">
+     <tal:i18n i18n:translate="today_is"> Today is </tal:i18n> <span tal:replace="today">6 April</span>. </p>
+  
+
+   <table width="100%">
+      <thead>
+        <tr>
+           <th>里程碑</th>
+           <th>截止日期</th>
+           <th>负责人</th>
+           <th>进度</th>
+           <th>进度说明</th>
+           <th>操作</th>
+        </tr>
+      </thead>
+       <tal:item repeat="m all_milestones">
+       <tbody tal:define="item nocall:options/item | nocall:m;
+                     basecamp_view context/basecamp_view;
+                     today basecamp_view/today;
+                     end item/end;
+                     state state | python:item.portal_workflow.getInfoFor(item, 'review_state');
+                     obj item/getObject | nocall: item;
+                     canReport python:checkPermission('zopen.milestone: Report state', obj)"
+           tal:attributes="class string:kssDeletionRegion Milestone kssattr-item_id-${item/getId};
+                         id item/getId;"
+           metal:define-macro="milestoneitem">
+        <tr class="item TGedit">
+         <td>
+           <small class="hideme TGcomplete" i18n:translate="please_wait">
+                   Moving, please wait...
+           </small>
+  
+           <img alt="Indicator" class="spinner hideme TGcomplete"
+                tal:attributes="src string:$portal_url/++resource++indicator.gif"
+                style="vertical-align: middle;" height="5" width="21"
+                i18n:attributes="alt indicator;"
+                />
+  
+           <input type="checkbox"
+                 class="TGcomplete EVcomplete"
+                 tal:condition="canReport"
+                 tal:attributes="checked python:state == 'completed';
+                                 onclick string:window.location.href='${item/absolute_url}/@@toggleState'"
+                 name="checked:boolean"/>
+           <span tal:replace="item/Title" />
+
+          <ul class="hideme GTblur" tal:define="getRelatedItems obj/getRelatedItems"
+              tal:condition="getRelatedItems">
+              <li tal:repeat="ri getRelatedItems">
+                  <a tal:content="ri/Title"
+                     tal:attributes="href ri/absolute_url"
+                     >To-do Manage</a> 
+                <span class="discreet">   (<span i18n:domain="zopen.project" i18n:translate="" tal:replace="ri/getPortalTypeName"/>)</span>
+              </li>
+           </ul>
+          </td>
+
+          <td>
+            <h2 tal:condition="python:end<today and state!= 'completed'">
+              <span tal:replace="python:int(today - end)" /><tal:i18n i18n:translate="days_ago"> days ago </tal:i18n>
+              <span class="light">
+               (<span i18n:translate="" tal:replace="end/Day" />, <span tal:replace="end" />)
+              </span>
+             </h2>
+             <h2 class="upcoming"
+                 tal:condition="python:end>today">
+                <span class="light"><span i18n:translate="" tal:content="end/Day" />,</span>
+                <span tal:replace="end" />
+                (<span tal:replace="python:int(end - today)" /> <tal:i18n  i18n:translate="days">days away</tal:i18n>)
+              </h2>
+             <h2 class="complete" tal:condition="python:state=='completed'">
+                 <span class="light"><span i18n:translate="" tal:content="end/Day" />,</span>
+                 <span tal:replace="end" />
+             </h2>
+           </td>
+
+           <td>
+              <span class="responsibility"
+                    tal:define="getResponsibleParty item/getResponsibleParty;"
+                    tal:condition="getResponsibleParty">
+                   <span tal:replace="python:basecamp_view.getMemberName(getResponsibleParty)" />
+              </span>
+           </td>
+
+           <td> <span tal:replace="string:${item/getProgress}% "/> </td>
+
+
+
+           <td>
+               <span class="currentProgress">
+                  <span tal:replace="item/Description"/>
+               </span>
+           </td>
+           <td tal:define="review_history python:wtool.getInfoFor(obj, 'review_history', []);
+                            review_history python:[review for review in review_history if review.get('action','')]">
+               <a class="EVprogress TGprogress admin" 
+                  tal:condition="python: review_history or canReport" href="" 
+                  tal:attributes="href string:${item/absolute_url}/@@edit_progress"
+                  i18n:translate="detailed_progres">进度</a>
+           <a class="admin edit-link"
+              href="#"
+              i18n:translate="edit"
+              tal:condition="python:checkPermission('Modify portal content', obj)"
+              tal:attributes="href string:${item/absolute_url}/edit"
+              >Edit</a>
+
+             <span tal:replace="structure provider:zopen.deletion"/>
+           </td>
+         </tr>
+
+         <tr> <td  colspan="6" class="edititemwrapper"></td> </tr>
+       </tbody>
+       </tal:item>
+  </table>
+
+</div>
+
+<div metal:fill-slot="portlets_two_slot"
+     tal:define="DateTime python:modules['DateTime'].DateTime">
+
+    <tal:comments tal:condition="nothing">
+               <h1 i18n:translate="milestones_on_calendar">Milestones on your own calendar</h1>
+               <p><img src="/images/ical.gif" align="absmiddle" />
+                  <a href="webcal://zope.grouphub.com/feed/project_ical?token=b9a293fb5f7ee52e3c4be0cdfd83a9c3&amp;project_id=869513"
+                     i18n:translate="subsribe_to_icalendar">Subscribe to iCalendar</a></p>
+               <p i18n:translate="subsrible_icalendar_more">If you use
+                   <a href="http://www.apple.com/macosx/features/ical/" target="_blank" i18n:name="apple">Apple iCal</a>,
+                   <a href="http://www.mozilla.org/projects/calendar/" target="_blank" i18n:name="mozilla">Mozilla Calendar</a>,
+                   or any other program that fully supports the iCalendar standard,
+                   you can subscribe to your Milestones in iCalendar format.
+                   This will allow you to  view your project milestones in your own desktop computer calendar.
+                   Please read this
+                   <a href="/help/rss-security" onclick="popup('/help/rss-security',300,400); return false;" i18n:name="security">security note</a>
+                   before subscribing.</p>
+     </tal:comments>
+  
+  <p style="margin: 0pt 0pt 10px; font-size: 10px;"
+     tal:condition="results/_past">
+     <a href="#" class="togglePastMonths" i18n:translate="toggle_past_months">Toggle past months</a>
+   </p>
+  
+  
+   <div id="past_months" class="hideme"
+        tal:define="calendar results/_past"
+       >
+       <table metal:use-macro="template/macros/calendar" />
+  </div>
+
+  <tal:block tal:define="calendar results/calendar">
+  <table class="Calendar" border="0" cellpadding="0" cellspacing="0"
+         metal:define-macro="calendar"
+         tal:condition="calendar"
+         >
+
+  <tbody>
+
+  <tal:rep repeat="year python:sorted(calendar.keys())">
+  <tr tal:condition="not:repeat/year/start"
+      > <td colspan="8"><b tal:content="year">2008</b><br/><br/></td> </tr>
+
+  <tal:rep repeat="month python:sorted(calendar[year].keys())">
+  <tal:def define="month_calendar python:calendar[year][month];
+                   month_first python:DateTime(year, month, 1);
+                   ">
+
+   <tr tal:condition="not:month_calendar" >
+       <th class="month" valign="top" width="36">
+           <span i18n:translate="" tal:replace="month_first/aMonth" />:</th>
+       <th colspan="7" i18n:translate="no_milestones">No milestones</th>
+   </tr>
+  
+   <tr tal:condition="month_calendar" >
+       <th class="month" valign="top" width="36">
+           <span i18n:translate="" tal:replace="month_first/aMonth" />:</th>
+       <th i18n:translate="Mon">M</th> <th i18n:translate="Tue">Tu</th> <th i18n:translate="Wed">W</th> <th i18n:translate="Thu">Th</th> <th i18n:translate="Fri">F</th> <th i18n:translate="Sat">S</th> <th i18n:translate="Sun">S</th>
+   </tr>
+  
+   <tr tal:repeat="line month_calendar">
+      <td rowspan="5"
+          tal:condition="repeat/line/start"
+          tal:attributes="rowspan python:len(month_calendar)"
+          > &nbsp; </td>
+      <tal:rep tal:repeat="data line">
+      <td id="today"
+          tal:condition="exists:data/istoday"
+          tal:content="data/day"
+          > &nbsp; </td>
+      <td class="past"
+          tal:condition="exists:data/past"
+          tal:content="data/day"
+          > &nbsp; </td>
+      <td class="late"
+          tal:condition="exists:data/late"
+          tal:content="data/day"
+          > &nbsp; </td>
+      <td class="future"
+          tal:condition="exists:data/future"
+          tal:content="data/day"
+          > &nbsp; </td>
+      <td tal:content="data/day | default"
+          tal:condition="exists:data/else"
+          > &nbsp; </td>
+      </tal:rep>
+  </tr>
+
+  <tr> <td colspan="8">&nbsp;</td> </tr>
+
+  </tal:def>
+  </tal:rep>
+  </tal:rep>
+
+  </tbody></table>
+  </tal:block>
+
+</div>
+
+</html>

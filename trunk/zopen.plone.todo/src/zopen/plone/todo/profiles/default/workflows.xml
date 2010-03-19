@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+    <object name="zopen_todoitem_workflow" meta_type="Workflow"/>
+    <bindings>
+        <type type_id="TodoItem">
+            <bound-workflow workflow_id="zopen_todoitem_workflow"/>
+        </type>
+    </bindings>
+</object>

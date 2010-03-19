@@ -1,0 +1,54 @@
+<tal:block xmlns:tal="http://xml.zope.org/namespaces/tal"
+           xmlns:metal="http://xml.zope.org/namespaces/metal"
+           i18n:domain="zopen.writerboard">
+  <metal:block use-macro="here/global_defines/macros/defines"/>
+  <tal:defines define="here nocall:options/instance;
+                         field options/field;
+                         mode options/mode;
+                         fieldName field/getName;
+                         widget nocall:field/widget;
+                         n python:{};
+                         errors options/state/getErrors | n;
+                         accessor python:field.getAccessor(here);
+                         kssClassesView context/@@kss_field_decorator_view;
+                         getKssClasses nocall:kssClassesView/getKssClasses;
+                         templateId options/templateId;
+                         dummy python:field.getContentType(here) == 'text/plain' and request.form.update({'kupu.suppress':'text'});
+                         ">
+    <metal:containingMacro use-macro="options/containingMacro"><metal:insideSlot fill-slot="inside">
+         <form tal:attributes="class string:field inlineForm;
+                             id string:kss-inlineform-$fieldName;">
+           <metal:editWidget use-macro="options/widgetMacro" />
+           <div class="formControls"
+                i18n:domain="zopen.writeboard"
+                tal:attributes="class string:form-element"
+                tal:condition="not:widget/blurrable"><br />
+
+
+             <input name="kss-save"
+                    value="Save" type="button"
+                    i18n:attributes="value save"
+                    class="context" />
+
+             <input name="kss-cancel"
+                    i18n:attributes="value cancel;"
+                    value="Cancel" type="button"
+                    class="standalone" />
+
+             <span i18n:translate="or">or</span> 
+             <input type="text" size="30" title="Version comment" value="Version comment" id="comment" name="comment" style="color:#76797C;" 
+                    i18n:attributes="title version_comment; value version_comment;"
+                    onblur="javascript:str_var = document.getElementById('comment').value; str_title = document.getElementById('comment').title; if (str_var=='') {document.getElementById('comment').value=str_title; document.getElementById('comment').style.color='#76797C'}; if (str_var==str_title) {document.getElementById('comment').value=str_title; document.getElementById('comment').style.color='#76797C'};"
+                    onfocus="javascript:str_var = document.getElementById('comment').value; str_title = document.getElementById('comment').title; if (str_var==str_title) {document.getElementById('comment').value=''; document.getElementById('comment').style.color='#000';}"/> 
+             <input name="kss-save-version"
+                    i18n:attributes="value save_new_version;"
+                    tal:condition="python:fieldName=='text'"
+                    value="Save as a new version" type="button"
+                    class="context" 
+                    onclick="javascript:if (document.getElementById('comment').value==document.getElementById('comment').title) {document.getElementById('comment').value='';}"/>
+
+           </div>
+         </form>
+    </metal:insideSlot></metal:containingMacro>
+  </tal:defines>
+</tal:block>

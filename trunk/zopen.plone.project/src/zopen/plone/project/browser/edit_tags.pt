@@ -1,0 +1,30 @@
+<form metal:define-macro="edit_tags"
+      i18n:domain="zopen.project"
+      class="showhide set_project_tags EVtags TGtags"
+      tal:define="tags context/Subject">
+   <div class="edit_tags">
+    <tal:re repeat="s tags">
+     <span tal:attributes="class string:kssDeleteTag kssattr-tag-${s}" style="padding-right:10px;"><span tal:content="s"></span> <img class="delimage" src="/++resource++trash.gif" alt="Delete" />
+     </span>
+    </tal:re>
+   </div>
+  
+  <p style="padding-bottom:10px">
+     <tal:i18n i18n:translate="add_tags_for">Add tags one at a time: </tal:i18n><br />
+    <input id="add_tags" type="text" name="projectSubject" style="margin-top:3px; width: 120px" />
+
+    <span class="submit">
+      <input type="submit" i18n:attributes="value add;" value="Add" name="submit"/>
+      <span i18n:domain="zopen.todo" i18n:translate="or">or</span>
+      <a href="" class="admin EVtags" i18n:translate="cancel">Cancel</a>
+    </span>
+    <span class="submit hideme">
+      <img alt="Indicator" 
+         tal:attributes="src string:$portal_url/++resource++indicator.gif"
+         style="vertical-align: middle;" height="5" width="21"
+         i18n:attributes="alt indicator;"
+         />
+    </span>
+  </p>
+</form>
+

@@ -1,0 +1,89 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.milestone">
+
+<metal:fill fill-slot="style_slot">
+    <style type="text/css" media="all"
+    tal:content="string:@import url($portal_url/jscalendar/calendar-system.css?34223332);"></style>
+<link href="#" type="text/css" rel="stylesheet" media="screen"
+      tal:attributes="href string:$portal_url/++resource++milestone.css?34223332" />
+</metal:fill>
+
+<metal:calendar fill-slot="javascript_head_slot">
+    <!-- ECMAScript calendar -->
+    <script type="text/javascript"
+            tal:attributes="src string:$portal_url/jscalendar/calendar_stripped.js?34223332"></script>
+    <script type="text/javascript"
+            tal:attributes="src string:$portal_url/calendar_formfield.js?34223332"></script>
+    <script type="text/javascript"
+            tal:attributes="src string:$portal_url/++resource++calendar-zh-utf.js?34223332"></script>
+</metal:calendar>
+<div metal:fill-slot="main">
+
+  
+   <div class="SectionHeader">
+     <h1 i18n:translate="add_few_milestones">Add up to 10 new milestones</h1>
+     <h3><a class="donelink" href="../milestones/"
+            i18n:translate="cancel_back"
+            >Cancel and go back</a></h3>
+   </div>
+
+  <form method="post"
+        id="bachAdd_milestone_form"
+        action="batchAdd"
+        tal:attributes="action template_id"
+        >
+    <input type="hidden" name="form.submitted" value="1" />
+	<div id="basic_form">
+    <table id="AddManyMilestones"
+           tal:define="DateTime python:modules['DateTime'].DateTime;
+                       now DateTime"
+           >
+      <tbody><tr>
+        <th i18n:translate="date_due">Date due</th>
+        <th i18n:translate="milestone_title">Milestone title</th>
+        <th i18n:translate="party_responsible">Party responsible</th>
+      </tr>
+
+      <tr tal:repeat="i python:range(10)"
+          tal:attributes="class python:repeat['i'].odd() and 'shade' or ''">
+        <td valign="top">
+        
+           <tal:block tal:define="from_date  now;
+                                  show_hm    nothing;
+                                  inputname  string:milestone.dead_line:records;
+                                  formname   string:bachAdd_milestone_form;
+                                  inputvalue python:from_date;">
+            
+              <div metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox">
+                calendar pop-up
+              </div>
+              
+            </tal:block>
+    </td>
+
+        <td valign="top"><input type="text" size="30" name="milestone.title:records" id="form_title"/></td>
+        <td valign="top">
+          <select name="milestone.responsibleParty:records" 
+                  tal:content="structure provider:zopen.xpersonselection">
+          </select>
+          <span id="reminder_1">
+            <input type="checkbox" value="1"
+            name="milestone.notify:records:boolean" checked="checked"/>
+            <tal:block i18n:translate="send_reminder">Send reminder</tal:block>
+          </span>
+        </td>
+      </tr>
+      
+    </tbody></table>
+
+  	<div class="action">
+      <input type="submit" value="Create these milestones" i18n:attributes="value create_these_milestones;" />
+      <span i18n:translate="or">or</span>
+      <a class="admin" href="../milestones/" i18n:translate="cancel" >Cancel</a>
+  	</div>
+  </div>
+  </form>
+
+</div>
+
+</html>

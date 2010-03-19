@@ -1,0 +1,18 @@
+A Borg Extension
+
+  some fixing for deparment's schema
+
+Test if portal_types setup is OK:
+
+    >>> 'OrganizationUnit' in self.portal.portal_types.objectIds()
+    True
+    >>> 'Person' in self.portal.portal_types.objectIds()
+    True
+
+and portal_factory:
+
+    >>> fac_types = self.portal.portal_factory.getFactoryTypes()
+    >>> fac_types['OrganizationUnit']
+    1
+    >>> fac_types['Person']
+    1

@@ -1,0 +1,47 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:kss="http://namespaces.zope.org/kss"
+           i18n_domain="zopen.todo">
+
+  <include package="kss.core" file="meta.zcml"/>
+  <include package="kss.core" />
+
+  <kss:selectortype
+       name="parentnodecss"
+       />
+
+  <kss:action
+      name="clear"
+      command_factory="selector"
+      />
+
+  <kss:action
+      name="loadKss"
+      command_factory="global"
+      />
+
+  <kss:action
+      name="setupKss"
+      command_factory="selector"
+      />
+
+  <kss:action
+      name="redirect"
+      jsfile="kssplugin.js"
+      command_factory="global"
+      />
+
+  <kss:action
+      name="addSelectOption"
+      jsfile="kssplugin.js"
+      command_factory="global"
+      />
+
+  <kss:commandset
+      name="zopen"
+      for="kss.core.interfaces.IAzaxView"
+      class=".commands.ZopenAddonCommands"
+      provides=".commands.IZopenAddonCommands"
+      />
+
+</configure>

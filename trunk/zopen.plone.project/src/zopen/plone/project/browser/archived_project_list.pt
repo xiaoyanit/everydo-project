@@ -1,0 +1,20 @@
+<html metal:use-macro="context/main_template/macros/master"
+      i18n:domain="zopen.project">
+    <div metal:fill-slot="main">
+
+        <h1 i18n:translate="archived_project">Archived projects</h1>
+
+        <ul tal:define="archived_projects context/@@projectview/getArchivedProjects"
+            tal:repeat="projectinfo archived_projects/items">
+            <li tal:content="python:projectinfo[0]"/>
+            <ul>
+                <li tal:repeat="project python:projectinfo[1]">
+                    <a href="" 
+                        tal:attributes="href project/absolute_url"
+                        tal:content="project/Title">project tile</a>
+                </li>
+            </ul>
+        </ul>
+
+    </div>
+</html>

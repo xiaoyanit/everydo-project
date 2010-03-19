@@ -1,0 +1,157 @@
+
+    /* zrt-cssregistry: base_properties */
+    /*
+** Plone style sheet - Base Elements
+**
+** Style sheet documentation can be found at http://plone.org/documentation
+**
+** You should preferrably use ploneCustom.css to add your own CSS classes and to
+** customize your portal, as these are the base fundaments of Plone, and will
+** change and be refined in newer versions. Keeping your changes in
+** ploneCustom.css will make it easier to upgrade.
+**
+** Feel free to use whole or parts of this for your own designs, but give credit
+** where credit is due.
+**
+*/
+
+/* <dtml-with base_properties (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())" (not this either :) */
+
+
+body {
+font: fontBaseSize fontFamily;
+background-color: backgroundColor;
+color: fontColor;
+margin: 0;
+padding: 0;
+}
+table {
+font-size: 100%;
+}
+a {
+color: linkColor;
+background: transparent;
+}
+
+a:link { color: linkColor }
+a:visited { color: linkColor }
+a:hover {color: linkActiveColor background-color:linkColor;}
+
+img {
+border: none;
+vertical-align: middle;
+}
+p {
+margin: 0 0 0.75em 0;
+line-height: 1.5em;
+}
+p img {
+border: none;
+margin: 0;
+}
+hr {
+border: 0;
+height: borderWidth;
+color: globalBorderColor;
+background-color: globalBorderColor;
+margin: 0.5em 0 1em 0;
+}
+h1, h2, h3, h4, h5, h6 {
+color: fontColor;
+font-family: headingFontFamily;
+margin: 0.75em 0 0.25em 0;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+color: fontColor ! important;
+text-decoration: none;
+}
+h1 {
+font-size: 160%;
+font-weight: bold;
+}
+h2 {
+font-size: 150%;
+}
+h3 {
+font-size: 125%;
+border-bottom: none;
+font-weight: bold;
+}
+h4 {
+font-size: 110%;
+border-bottom: none;
+font-weight: bold;
+}
+h5 {
+font-size: 100%;
+border-bottom: none;
+font-weight: bold;
+}
+h6 {
+font-size: fontSmallSize;
+border-bottom: none;
+font-weight: bold;
+}
+ul {
+line-height: 1.5em;
+padding: 0;
+}
+ol {
+line-height: 1.5em;
+padding: 0;
+}
+li {
+margin-bottom: 0.5em;
+}
+dt {
+font-weight: bold;
+}
+dd {
+line-height: 1.5em;
+margin-bottom: 1em;
+}
+abbr, acronym, .explain {
+border-bottom: borderWidth dotted fontColor;
+color: fontColor;
+background-color: transparent;
+cursor: help;
+}
+q {
+font-family: Baskerville, Georgia, serif;
+font-style: italic;
+font-size: 120%;
+}
+blockquote {
+padding-left: 0.5em;
+margin-left: 0;
+border-left: 4px solid globalBorderColor;
+color: discreetColor;
+}
+code {
+font-family: Monaco, "Courier New", Courier, monospace;
+font-size: 120%;
+color: fontColor;
+background-color: globalBackgroundColor;
+padding: 0 0.1em;
+}
+pre {
+width: 100%;
+overflow: hidden;
+}
+
+/*  Work around IE/Win code size bug - courtesy Jesper, waffle.wootest.net
+*  */
+
+* html code {
+font-size : 105%;
+}
+
+/* </dtml-with */
+    

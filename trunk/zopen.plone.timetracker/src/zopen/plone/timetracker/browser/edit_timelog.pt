@@ -1,0 +1,66 @@
+<tr class="kssDeletionRegion"
+    metal:define-macro="item"
+    tal:define="item nocall:item | options/item | nothing;
+                itemid item/getId;"
+    tal:attributes="class
+            string:kssDeletionRegion kssattr-kssurl-$itemid/save_time_log"
+    i18n:domain="zopen.timetracker" >
+    <td class="date" tal:attributes="id string:edit-datecell-$itemid">
+
+        <tal:nothing condition="nothing">
+        <tal:block metal:define-macro="datecell"
+            tal:define="item nocall:item | options/item | nothing;
+                        date item/Date;">
+
+        <select name="year:int">
+                <option tal:repeat="year python:range(date.year()-1, date.year()+2)"
+                        tal:content="year"
+                        tal:attributes="value year;
+                                        selected python:date.year() == year;"
+                        />
+        </select>
+        <select name="month:int"
+                tal:define="month date/month"
+                tal:content="structure provider:zopen.month" />
+        <select name="day:int">
+                <option tal:repeat="day python:range(1, 32)"
+                        tal:content="day"
+                        tal:attributes="selected python:day == date.day();
+                                        value day"
+                        >day</option></select>
+        </tal:block>
+        </tal:nothing>
+    </td>
+    <td class="person" tal:attributes="id string:edit-personcell-$itemid">
+        <tal:nothing condition="nothing">
+        <tal:block metal:define-macro="personcell"
+                tal:define="item nocall:item | options/item | nothing;">
+        <select name="responsibleParty" 
+                tal:define="selected item/getResponsibleParty"
+                tal:content="structure provider:zopen.personselection"/>
+        </tal:block>
+        </tal:nothing>
+    </td>
+    <td class="hours">
+        <input name="hours" size="5"
+               tal:attributes="value item/getHours"
+               /></td>
+    <td class="desc">
+        <input name="title" size="50"
+               tal:attributes="value item/Title"
+               /></td>
+    <td class="action">
+       <span class="submit">
+        <input type="button" i18n:attributes="value save;" value="Save"/>
+        <tal:i18n i18n:translate="or"> or </tal:i18n>
+        <a href="#" class="admin cancellink" i18n:translate="cancel">Cancel</a></span>
+
+        <span class="submit hideme">
+            <img alt="Indicator"
+                tal:attributes="src string:$portal_url/++resource++indicator.gif"
+                style="vertical-align: middle;" height="5" width="21"
+                i18n:attributes="alt indicator;"
+                />
+           </span>
+     </td>
+</tr>

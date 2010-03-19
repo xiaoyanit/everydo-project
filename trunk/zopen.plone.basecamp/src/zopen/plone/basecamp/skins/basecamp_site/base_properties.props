@@ -1,0 +1,56 @@
+title:string=Plone's color, font, logo and border defaults
+
+plone_skin:string=Plone Default
+
+logoName:string=logo.jpg
+
+fontFamily:string="Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif
+fontBaseSize:string=12px
+fontColor:string=#333
+fontSmallSize:string=12px
+
+backgroundColor:string=#e5e5e5
+
+linkColor:string=#03c
+linkActiveColor:string=#fff
+linkVisitedColor:string=#03c
+
+borderWidth:string=1px
+borderStyle:string=solid
+borderStyleAnnotations:string=solid
+
+globalBorderColor:string=#8cacbb
+globalBackgroundColor:string=#dee7ec
+globalFontColor:string=#436976
+
+headingFontFamily:string="Lucida Grande", arial, sans-serif
+
+contentViewBorderColor:string=#74ae0b
+contentViewBackgroundColor:string=#cde2a7
+contentViewFontColor:string=#578308
+
+inputFontColor:string=Black
+
+textTransform:string=none
+
+evenRowBackgroundColor:string=#eef3f5 
+oddRowBackgroundColor:string=transparent
+
+notifyBorderColor:string=#ffa500
+notifyBackgroundColor:string=#ffce7b
+
+discreetColor:string=#76797c
+helpBackgroundColor:string=#ffffe1
+
+portalMinWidth:string=70em
+columnOneWidth:string=16em
+columnTwoWidth:string=16em
+
+projectNameColor:string=#fc0
+clientNameColor:string=#fff
+headerBackground:string=#036
+currentTabText:string=#090
+tabBackground:string=#1A4F85
+tabTextColor:string=#fff
+tabHoverText:string=#fff
+tabHoverBackground:string=#1D64AD

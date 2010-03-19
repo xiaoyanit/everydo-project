@@ -1,0 +1,140 @@
+<div metal:define-macro="companylogo"
+     class="LogoBox"
+     tal:define="basecamp_view nocall:context/@@basecamp_view;
+                 companyname companyname | string:owner_company;
+                 has_logo python:basecamp_view.hasLogo(companyname)"
+     tal:condition="has_logo">
+
+     <img src="" 
+          tal:attributes="src string:$portal_url/@@basecamp_view/getLogo?companyid=$companyname;
+                          class python: basecamp_view.isLogoInWhiteBox(companyname) and 'displayed-in-whitebox' or '';
+                         "/>
+
+</div>
+
+<div metal:define-macro="switch-language"
+     style="padding-right:23px;margin-bottom:-10px;text-align:right;"
+     i18n:domain="zopen.basecamp">
+     <span style="padding-right:5px;">
+           <a tal:attributes="href string:${here_url}/switchLanguage?set_language=en"
+              title="English version"><img tal:attributes="src string:${portal_url}/flag-gb.gif" alt="English Version" /></a>
+     </span>
+     <span>
+           <a tal:attributes="href string:${here_url}/switchLanguage?set_language=zh"
+              title="简体中文版"><img tal:attributes="src string:${portal_url}/flag-cn.gif" alt="简体中文版" /></a>
+           <a tal:attributes="href string:${here_url}/switchLanguage?set_language=zh-tw"
+              style="text-decoration:none;"
+              i18n:attributes="title switch_zh_tw;" title="Traditional Chinese">繁</a>
+     </span>
+
+</div>
+
+<div metal:define-macro="site-actions" class="documentContent" id="content-header" i18n:domain="zopen.basecamp">
+  <div class="HeaderNav">
+   <ul tal:define="url request/URL;">
+           <li id="siteMenuFrist" tal:attributes="class python:url.find('@@basecamp_dashboard')!=-1 and 'selected' or 'plain';">
+            <a href="/" i18n:translate="dashboard" title="A list of all your clients and projects."
+               i18n:attributes="title list_of_projects;"
+               tal:condition="python:url.find('@@basecamp_dashboard')==-1">Dashboard</a>
+            <tal:i18n tal:condition="python:url.find('@@basecamp_dashboard')!=-1" i18n:translate="dashboard">Dashboard</tal:i18n>
+           </li>
+          <tal:condition condition="context/@@projectview/getActiveProjects"><li
+            tal:attributes="class python:url.find('@@todos_report')!=-1 and 'selected' or 'plain';">
+            <a href="/@@todos_report" 
+               title="View all to-dos for a specific person across all their projects."
+               i18n:translate="to_dos" i18n:attributes="title view_all_todos;"
+               tal:condition="python:url.find('@@todos_report')==-1">To-Dos</a>
+            <tal:i18n tal:condition="python:url.find('@@todos_report')!=-1" i18n:translate="to_dos">To-Dos</tal:i18n>
+           </li>
+            <li
+            tal:attributes="class python:url.find('@@milestones_report')!=-1 and 'selected' or 'plain';">
+            <a href="/@@milestones_report"
+               title="View all milestones for a specific person across all their projects."
+               i18n:translate="milestones_cal"
+               i18n:attributes="title view_all_milestones;"
+               tal:condition="python:url.find('@@milestones_report')==-1"
+               >Milestones</a>
+            <tal:i18n tal:condition="python:url.find('@@milestones_report')!=-1" i18n:translate="milestones_cal">Milestones</tal:i18n>
+           </li><li
+            tal:attributes="class python:url.find('@@progress_table')!=-1 and 'selected' or 'plain';">
+            <a href="/@@progress_table"
+               title="View progress of all projects."
+               i18n:translate="progress"
+               i18n:attributes="title view_progress;"
+               tal:condition="python:url.find('@@progress_table')==-1"
+               >Progress</a>
+            <tal:i18n tal:condition="python:url.find('@@progress_table')!=-1" i18n:translate="progress">Progress</tal:i18n>
+               </li><li id="siteMenuTime"
+            tal:condition="python:checkPermission('zopen.timetracker: Time Report', here)"
+            tal:attributes="class python:url.find('@@time_report')!=-1 and 'selected' or 'plain';">
+            <a href="/@@time_report"
+               title="View time track of all projects."
+               i18n:translate="time"
+               i18n:attributes="title view_time_track;"
+               tal:condition="python:url.find('@@time_report')==-1"
+               >Time</a>
+            <tal:i18n tal:condition="python:url.find('@@time_report')!=-1" i18n:translate="time">Time</tal:i18n>
+               </li></tal:condition></ul>
+  </div>
+</div>
+
+
+<div metal:define-macro="site-settings" class="documentContent" id="content-header" i18n:domain="zopen.basecamp">
+  <div class="HeaderNav">
+   <ul tal:define="url request/URL;">
+          <li tal:attributes="class python:url.find('prefs_site_settings')!=-1 and 'selected' or 'plain';">
+            <a href="/prefs_site_settings" i18n:translate="basic_settings" 
+               tal:condition="python:url.find('prefs_site_settings')==-1">Basic settings</a>
+            <tal:i18n tal:condition="python:url.find('prefs_site_settings')!=-1" i18n:translate="basic_settings">Basic settings</tal:i18n>
+          </li>
+          <li tal:attributes="class python:url.find('prefs_categories')!=-1 and 'selected' or 'plain';">
+            <a href="/prefs_categories" 
+               i18n:translate="default_categories" 
+               tal:condition="python:url.find('prefs_categories')==-1">Default categories</a>
+            <tal:i18n tal:condition="python:url.find('prefs_categories')!=-1" i18n:translate="default_categories">Default categories</tal:i18n>
+          </li>
+          <li tal:attributes="class python:url.find('prefs_permission_settings')!=-1 and 'selected' or 'plain';">
+            <a href="/prefs_permission_settings" 
+               i18n:translate="privilege_operate_template" 
+               tal:condition="python:url.find('prefs_permission_settings')==-1">Permission template</a>
+            <tal:i18n tal:condition="python:url.find('prefs_permission_settings')!=-1" i18n:translate="privilege_operate_template">Permssion template</tal:i18n>
+          </li>
+          <li tal:attributes="class python:url.find('@@todo_template')!=-1 and 'selected' or 'plain';">
+            <a href="/templates/todos/@@todo_template"
+               i18n:translate="todo_templates"
+               tal:condition="python:url.find('@@todo_template')==-1"
+               >To-do templates</a>
+            <tal:i18n tal:condition="python:url.find('@@todo_template')!=-1" i18n:translate="todo_templates">To-do templates</tal:i18n>
+          </li>
+          <li tal:attributes="class python:url.find('@@prefs_export_data')!=-1 and 'selected' or 'plain';">
+            <a href="/@@prefs_export_data"
+               i18n:translate="export_data"
+               tal:condition="python:url.find('@@prefs_export_data')==-1"
+               >Export data</a>
+            <tal:i18n tal:condition="python:url.find('@@prefs_export_data')!=-1" i18n:translate="export_data">Export data</tal:i18n>
+          </li>
+        </ul>
+  </div>
+</div>
+
+
+<div metal:define-macro="permission-settings" class="documentContent" id="content-header" i18n:domain="zopen.basecamp">
+  <div class="HeaderNav">
+   <ul tal:define="url request/URL;">
+           <li tal:attributes="class python:url.find('prefs_project_team')!=-1 and 'selected' or 'plain';">
+            <a href="/prefs_project_team" i18n:translate="person_operate" 
+               tal:condition="python:url.find('prefs_project_team')==-1"
+               tal:attributes="href string:${here_url}/@@prefs_project_team">Person operate</a>
+            <tal:i18n tal:condition="python:url.find('prefs_project_team')!=-1" i18n:translate="person_operate">Person Operate</tal:i18n>
+           </li>
+          <li
+            tal:attributes="class python:url.find('permission_setting')!=-1 and 'selected' or 'plain';">
+            <a href="/permission_setting" 
+               i18n:translate="privilege_operate" 
+               tal:condition="python:url.find('permission_setting')==-1"
+               tal:attributes="href string:${here_url}/@@permission_setting">Permission setting</a>
+            <tal:i18n tal:condition="python:url.find('permission_setting')!=-1" i18n:translate="privilege_operate">Permission setting</tal:i18n>
+           </li>
+        </ul>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+    <object name="zopen_milestone_workflow" meta_type="Workflow"/>
+    <bindings>
+        <type type_id="Milestone">
+            <bound-workflow workflow_id="zopen_milestone_workflow"/>
+        </type>
+    </bindings>
+</object>

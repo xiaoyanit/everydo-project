@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="Anonymous"/>
+    <role name="Authenticated"/>
+    <role name="Manager"/>
+    <role name="Administrator"/>
+    <role name="Member"/>
+    <role name="Owner"/>
+    <role name="Reviewer"/>
+    <role name="Reader" />
+    <role name="Editor" />
+    <role name="Responsor" />
+  </roles>
+  <permissions>
+    <permission name="zopen.milestone: Add milestone"
+        acquire="True">
+        <role name="Administrator"/>
+        <role name="Manager"/>
+        <role name="Owner"/>
+        <role name="Contributor"/>
+    </permission>
+
+    <permission name="zopen.milestone: Report state"
+        acquire="True">
+        <role name="Administrator"/>
+        <role name="Editor"/>
+        <role name="Owner"/>
+        <role name="Manager"/>
+        <role name="Responsor"/>
+    </permission>
+  </permissions>
+</rolemap>
