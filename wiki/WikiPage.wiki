@@ -30,5 +30,19 @@
  * 在buildout成功后，在app.project目录执行以下命令
    
    bin/instance fg
+   
+   在启动时，会报一个错，这是zope2版本一个bug,需要手动删除二行信息
+
+   ``ConfigurationError: ('Invalid value for', 'handler', 'ImportError: Module zope.app.component.metaconfigure has no global defaultLayer')``
+   使用编辑器在当前目录下找到 parts/zope2/lib/python/Products/Five/meta.zcml  86行，删除以下字段
+
+    <!-- BBB 2006/02/24, to be removed after 12 months -->
+    <meta:directive
+        name="defaultLayer"
+        schema="zope.app.component.metadirectives.IDefaultLayerDirective"
+        handler="zope.app.component.metaconfigure.defaultLayer"
+        />
+
+
 
  * 当前访问端口访问为 http://本机IP:8080
