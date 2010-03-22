@@ -31,11 +31,11 @@
    
    bin/instance fg
    
- # 在启动之前，需要手动删除四行信息,否则会在启动时报以下错误:
+ * 在启动之前，需要手动删除四行信息,否则会在启动时报以下错误:
 
    `ConfigurationError: ('Invalid value for', 'handler', 'ImportError: Module zope.app.component.metaconfigure has no global defaultLayer')`
 
- # 使用编辑器在当前目录下找到 parts/zope2/lib/python/Products/Five/meta.zcml  86行，删除以下字段
+ * 使用编辑器在当前目录下找到 parts/zope2/lib/python/Products/Five/meta.zcml  86行，删除以下字段
 
     <!-- BBB 2006/02/24, to be removed after 12 months -->
     <meta:directive
@@ -44,7 +44,7 @@
         handler="zope.app.component.metaconfigure.defaultLayer"
         />`
   
- # 以调试模式启动应用
+ * 以调试模式启动应用
     
    bin/instance fg
 
