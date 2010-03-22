@@ -51,7 +51,7 @@
  
  * 当前访问端口访问为 http://应用所在IP:8080 (访问端口可以在buildout.cfg里找到http-address修改为你想要的端口，之后重新bin/buildout)
 
- * 使用浏览器访问 http://应用所在IP:8080/manage,使用用户名admin 和密码 admin 登入
+ * 使用浏览器访问 http://应用所在IP:8080/manage, 使用用户名admin 和密码 admin 登入
  # 在页面的右侧的下拉栏处找到 Plone Site 点击Add进入
  # Id处填写: project
  # Title处不修改
