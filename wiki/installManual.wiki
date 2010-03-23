@@ -58,6 +58,20 @@
  # Extension Profiles下拉找到basecamp site
  # 点击 Add Plone Site 完成安装的操作
    * 在安装的过程中，数据在初始化，会花费一点时间，请耐心等待完成
+ ＃ 创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点
+ 
+= 在新建立的站点创建虚拟主机 =
+
+ # 进入 http://应用所在IP：8080/manage,在中间栏处找到 virtual_hosting，点击进入
+ # 进入后，点击上侧的 mappings 
+ # 添加以下内容，点击 Save chagnge 保存
+
+    应用所在IP/project
+
+    - 例子: 192.168.1.116/project. project 为之前创建站点的ID
+4. 完成后可以直接访问 http://应用所在IP：8080 就可以直接跳至 http://应用IP：8080/project
+
+
 
 
    
