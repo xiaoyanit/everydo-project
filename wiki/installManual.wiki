@@ -49,9 +49,10 @@
    bin/instance fg
 
  
- * 当前访问端口访问为 http://应用所在IP:8080 (访问端口可以在buildout.cfg里找到http-address修改为你想要的端口，之后重新bin/buildout)
+ * 当前访问端口访问为 http://server_ip:8080 (访问端口可以在buildout.cfg里找到http-address修改为你想要的端口，之后重新bin/buildout)
 
- * 使用浏览器访问 http://应用所在IP:8080/manage, 使用用户名admin 和密码 admin 登入
+ * 使用浏览器访问 http://server_ip:8080/manage , 使用用户名admin 和密码 admin 登入
+
  # 在页面的右侧的下拉栏处找到 Plone Site 点击Add进入
  # Id处填写: project
  # Title处不修改
@@ -62,14 +63,15 @@
  
 = 在新建立的站点创建虚拟主机 =
 
- # 进入 http://应用所在IP：8080/manage,在中间栏处找到 virtual_hosting，点击进入
+ # 进入 http://server_ip:8080/manage ,在中间栏处找到 virtual_hosting，点击进入
  # 进入后，点击上侧的 mappings 
  # 添加以下内容，点击 Save chagnge 保存
 
-    应用所在IP/project
+    server_ip/project
 
     - 例子: 192.168.1.116/project. project 为之前创建站点的ID
-4. 完成后可以直接访问 http://应用所在IP：8080 就可以直接跳至 http://应用IP：8080/project
+
+4. 完成后可以直接访问 http://server_ip:8080 就可以直接跳至 http://server_ip:8080/project
 
 
 
