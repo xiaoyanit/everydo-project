@@ -12,16 +12,15 @@
  # 点击 Add Plone Site 完成安装的操作(见图3)
      在安装的过程中，数据在初始化，会花费一点时间，请耐心等待完成
  # 创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点(见图4)
- # 点击view浏览创建的站点
  # 您也可以直接输入地址来进行访问，以之前创建站点名为project为例(见图5)
 
- [图1 http://download.zopen.cn/p1.png]
+ [图1 http://download.zopen.cn/installer/p1.png]
 
- [图2 http://download.zopen.cn/p1.png]
+ [图2 http://download.zopen.cn/installer/p1.png]
 
- [图3 http://download.zopen.cn/p3.png]
+ [图3 http://download.zopen.cn/installer/p3.png]
 
- [图4 http://download.zopen.cn/p4.png]
+ [图4 http://download.zopen.cn/installer/p4.png]
 
- [图5 http://download.zopen.cn/p5.png]
+ [图5 http://download.zopen.cn/installer/p5.png]
  
