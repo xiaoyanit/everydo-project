@@ -11,7 +11,7 @@
      
  * 以调试模式启动应用
     
-   bin/instance fg
+   bin/instance.exe fg
 
  
  * 当前访问端口访问为 http://server_ip:8080 (访问端口可以在buildout.cfg里找到http-address修改为你想要的端口，之后重新执行install.bat批处理文件)
@@ -38,7 +38,6 @@
 
 4. 完成后可以直接访问 http://server_ip:8080 就可以直接跳至 http://server_ip:8080/project
 
+= 以后台服务模式启动已经安装好的应用 =
 
-
-
-   
+  bin/instance.exe start
