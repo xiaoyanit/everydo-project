@@ -5,7 +5,7 @@
 
 === 安装配置 ===
 
-1. 下载安装包 [http://everydo-project.googlecode.com/files/everydo_project-1.1.win32.exe 下载地址] 执行该安装程序
+1. [http://everydo-project.googlecode.com/files/everydo_project-1.1.win32.exe 下载安装程序], 执行该安装程序
 
 2. 选择安装路径
    http://download.zopen.cn/installer/p0.0.png
@@ -21,7 +21,7 @@
    http://download.zopen.cn/installer/p0.1.png
    http://download.zopen.cn/installer/p0.2.png
 
-2. 点击 ZopeManageInterface进入ZMI (您也可以直接使用浏览器访问 http://localhost:8080/manage , 使用用户名admin 和密码 admin 登入)
+2. 点击 ZopeManageInterface进入ZMI, 您也可以直接使用浏览器访问 http://localhost:8080/manage , 使用用户名admin 和密码 admin 登入
   http://download.zopen.cn/installer/p1.png
 
 3. 在页面的右侧的下拉栏处找到 Plone Site 点击Add进入
@@ -36,8 +36,8 @@
       成
 
 === 访问创建好的站点 ===
-创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点
+* 创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点
    http://download.zopen.cn/installer/p4.png
    http://download.zopen.cn/installer/p5.png
-您也可以直接输入地址来进行访问，以之前创建站点名为project为例
+* 您也可以直接输入地址来进行访问，以之前创建站点名为project为例
    http://download.zopen.cn/installer/p6.png
