@@ -1,7 +1,7 @@
 #labels Phase-Deploy,Featured
 = 易度项目管理系统安装手册 = 
 
-== 此手册对应于ubuntu-`*` ==
+== 此手册对应于ubuntu ==
 
 === 系统要求 ===
 
@@ -115,3 +115,9 @@ http://download.zopen.cn/installer/p6.png
 {{{
 bin/instance start
 }}}
+
+=== 设置虚拟主机 ===
+
+若需要设置project为当前站点首页，需要配置相应的虚拟主机服务
+
+如何设置虚拟主机[http://code.google.com/p/everydo-project/wiki/AddVirtualHost 请参考此处]
