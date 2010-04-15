@@ -14,12 +14,14 @@ sudo apt-get libxml2-dev
 }}}
 
 2. 下载解压everydo-project-1.0.tar.gz包
+
 {{{
 tar xzvf everydo-project-1.0.tar.gz
 cd everydo-project
 python2.4 bootstrap.py
 }}}
-3. 用编辑器buildout.cfg,找到以下的代码块,定义实例监听端口和ZMI用户名和密码
+
+3. 用编辑器打开buildout.cfg,找到以下的代码块,定义实例监听端口和ZMI用户名和密码
 
 {{{
 [instance]
@@ -40,29 +42,32 @@ extra-paths =
 {{{
 user = admin:123456
 }}}
-  ZMI 用户名和密码定义(上例用户名admin,密码123456)
+  此处定义ZMI用户名和密码(例:用户名admin,密码123456)
 
 {{{
 http-address = 8080
 }}}
-  定义实例监听端口(上例实例定义监听8080端口)
+  此处定义ZOPE实例监听端口(例:监听8080端口)
 
 4. build it !
+
+执行命令
 {{{
 bin/buildout -v
 }}}
 
 *在buildout的过程中，会花费一点时间下载安装必要的组件，这取决于你当前网络的状况*
 
-   
 === 启动并安装易度项目管理应用 ===
 
-1. 在启动之前，需要手动删除Zope2四行代码,否则会在启动时报以下错误:*
+1. 在启动之前，需要手动删除Zope2四行代码,否则会在启动时报以下错误:
+
 {{{
    ConfigurationError: ('Invalid value for', 'handler', 'ImportError: Module zope.app.component.metaconfigure has no global defaultLayer')
 }}}
 
 2. 使用编辑器在当前目录下找到 parts/zope2/lib/python/Products/Five/meta.zcml  86行，删除以下字段
+
 {{{
     <!-- BBB 2006/02/24, to be removed after 12 months -->
     <meta:directive
@@ -73,6 +78,7 @@ bin/buildout -v
 }}}
 
 3. 以调试模式启动应用
+
 {{{   
 bin/instance fg
 }}}
@@ -92,11 +98,20 @@ http://download.zopen.cn/installer/p1.png
 
 === 访问创建好的站点 ===
 
-* 创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点
+*创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点
 
-   http://download.zopen.cn/installer/p4.png
-   http://download.zopen.cn/installer/p5.png
+http://download.zopen.cn/installer/p4.png
 
-* 您也可以直接输入地址 http://localhost:8080/project 来进行访问，以之前创建站点名为project为例
+http://download.zopen.cn/installer/p5.png
 
-   http://download.zopen.cn/installer/p6.png
+*您也可以直接输入地址 http://localhost:8080/project 来进行访问，以之前创建站点名为project为例
+
+http://download.zopen.cn/installer/p6.png
+
+*以daemon模式启动实例
+
+  执行命令
+
+{{{
+bin/instance start
+}}}
