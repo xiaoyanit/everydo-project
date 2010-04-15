@@ -16,7 +16,7 @@ sudo apt-get libxml2-dev
 2. 下载解压[http://everydo-project.googlecode.com/files/everydo-project-1.1.tar.gz everydo-project]包
 
 {{{
-tar xzvf everydo-project-1.0.tar.gz
+tar xzvf everydo-project-1.1.tar.gz
 cd everydo-project
 python2.4 bootstrap.py
 }}}
