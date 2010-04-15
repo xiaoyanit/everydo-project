@@ -35,7 +35,6 @@
 *在创建站点的过程中，初始化数据会花费一点时间，请耐心等待完成。*
 
    http://download.zopen.cn/installer/p3.png
-      成
 
 === 访问创建好的站点 ===
 
