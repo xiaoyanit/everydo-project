@@ -21,7 +21,7 @@
    http://download.zopen.cn/installer/p0.1.png
    http://download.zopen.cn/installer/p0.2.png
 
-2. 点击ZopeManageInterface进入ZMI,您也可以直接使用浏览器访问 http://localhost:8080/manage,使用用户名admin和密码admin登入
+2. 点击ZopeManageInterface进入ZMI,您也可以直接使用浏览器访问 http://localhost:8080/manage ,使用用户名admin和密码admin登入
   http://download.zopen.cn/installer/p1.png
 
 3. 在页面的右侧的下拉栏处找到 Plone Site 点击Add进入
@@ -31,7 +31,9 @@
     # Id处填写: project
     # Title处不修改
     # Extension Profiles下拉找到basecamp site, 点击 Add Plone Site 完成安装的操作
-      *在安装的过程中，数据在初始化，会花费一点时间，请耐心等待完*
+
+*在创建站点的过程中，初始化数据会花费一点时间，请耐心等待完成。*
+
    http://download.zopen.cn/installer/p3.png
       成
 
