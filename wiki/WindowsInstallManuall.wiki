@@ -44,3 +44,9 @@
 
 * 您也可以直接输入地址 http://localhost:8080/project 来进行访问，以之前创建站点名为project为例
    http://download.zopen.cn/installer/p6.png
+
+=== 设置虚拟主机 ===
+
+若需要设置project为当前站点首页，需要配置相应的虚拟主机服务
+
+如何设置虚拟主机[http://code.google.com/p/everydo-project/wiki/AddVirtualHost 请参考此处]
