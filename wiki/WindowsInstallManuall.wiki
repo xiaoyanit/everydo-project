@@ -19,6 +19,7 @@
 
 1. 在开始菜单中找到安装好的易度项目管理系统开源版本， 进入控制面板
    http://download.zopen.cn/installer/p0.1.png
+   http://download.zopen.cn/installer/p0.2.png
 
 2. 点击 ZopeManageInterface进入ZMI (您也可以直接使用浏览器访问 http://localhost:8080/manage , 使用用户名admin 和密码 admin 登入)
   http://download.zopen.cn/installer/p1.png
