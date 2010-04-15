@@ -1,44 +1,68 @@
 #labels Phase-Deploy,Featured
 = 易度项目管理系统安装手册 = 
 
- 此手册对应于ubuntu-`*`
+== 此手册对应于ubuntu-`*` ==
 
-= 系统要求 = 
+=== 系统要求 ===
 
- * 安装python2.4,在ubuntu下直接使用apt-get命令安装
+1. 安装python2.4,和一些必要的编译库文件支持，在ubuntu下直接使用apt-get命令安装
+{{{
+sudo apt-get install build-essential
+sudo apt-get install python2.4
+sudo apt-get install python2.4-dev
+sudo apt-get libxml2-dev
+}}}
 
-   sudo apt-get install python2.4 python2.4-dev
+2. 下载解压everydo-project-1.0.tar.gz包
+{{{
+tar xzvf everydo-project-1.0.tar.gz
+cd everydo-project
+python2.4 bootstrap.py
+}}}
+3. 用编辑器buildout.cfg,找到以下的代码块,定义实例监听端口和ZMI用户名和密码
 
- * 安装libxml2的头文件
+{{{
+[instance]
+recipe = plone.recipe.zope2instance
+eggs = 
+    ${buildout:eggs}
+    ${plone:eggs}
+zope2-location = ${zope2:location}
+user = admin:123456
+http-address = 8080
+debug-mode = on
+default-zpublisher-encoding = utf-8
+deprecation-warnings = off
+extra-paths = 
+    ${zope2:location}/lib/python 
+}}}
 
-   sudo apt-get libxml2-dev
+{{{
+user = admin:123456
+}}}
+  ZMI 用户名和密码定义(上例用户名admin,密码123456)
 
- * 下载解压everydo-project-1.0.tar.gz包
+{{{
+http-address = 8080
+}}}
+  定义实例监听端口(上例实例定义监听8080端口)
 
-   tar xzvf everydo-project-1.0.tar.gz
+4. build it !
+{{{
+bin/buildout -v
+}}}
 
-   cd everydo-project
+*在buildout的过程中，会花费一点时间下载安装必要的组件，这取决于你当前网络的状况*
 
-   python2.4 bootstrap.py
-
-   bin/buildout -v
- 
- * 在buildout的过程中，会花费一点时间下载安装必要的组件，这取决于你当前网络的状况
    
-= 启动并安装易度项目管理应用 =
+=== 启动并安装易度项目管理应用 ===
 
- * 在buildout成功后，在everydo-project目录执行以下命令
-   
-   bin/instance fg
-   
- * 在启动之前，需要手动删除四行信息,否则会在启动时报以下错误:
-
+1. 在启动之前，需要手动删除Zope2四行代码,否则会在启动时报以下错误:*
 {{{
    ConfigurationError: ('Invalid value for', 'handler', 'ImportError: Module zope.app.component.metaconfigure has no global defaultLayer')
 }}}
 
- * 使用编辑器在当前目录下找到 parts/zope2/lib/python/Products/Five/meta.zcml  86行，删除以下字段
-
+2. 使用编辑器在当前目录下找到 parts/zope2/lib/python/Products/Five/meta.zcml  86行，删除以下字段
 {{{
     <!-- BBB 2006/02/24, to be removed after 12 months -->
     <meta:directive
@@ -48,48 +72,31 @@
         />`
 }}}
 
- * 以调试模式启动应用
-    
-   bin/instance fg
+3. 以调试模式启动应用
+{{{   
+bin/instance fg
+}}}
 
+4. 使用浏览器访问 http://localhost:8080/manage , 使用用户名admin 和密码 admin 登入
  
- * 当前访问端口访问为 http://server_ip:8080 (访问端口可以在buildout.cfg里找到http-address修改为你想要的端口，之后重新bin/buildout).
+http://download.zopen.cn/installer/p1.png
 
- * 使用浏览器访问 http://server_ip:8080/manage , 使用用户名admin 和密码 admin 登入(见图1)
- 
- [图1 http://download.zopen.cn/installer/p1.png]
+5. 创建名为project的站点
+    # Id处填写: project
+    # Title处不修改
+    # Extension Profiles下拉找到basecamp site, 点击 Add Plone Site 完成安装的操作
 
- # 在页面的右侧的下拉栏处找到 Plone Site 点击Add进入(见图2)
- # Id处填写: project
- # Title处不修改
- # Extension Profiles下拉找到basecamp site(见图3)
- # 点击 Add Plone Site 完成安装的操作
-   * 在安装的过程中，数据在初始化，会花费一点时间，请耐心等待完成
- ＃ 创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点(见图4，5)、、
- # 您也可以直接输入地址进入站点(见图6)
+*在创建站点的过程中，初始化数据会花费一点时间，请耐心等待完成。*
 
- [图2 http://download.zopen.cn/installer/p2.png]
+   http://download.zopen.cn/installer/p3.png
 
- [图3 http://download.zopen.cn/installer/p3.png]
+=== 访问创建好的站点 ===
 
- [图4 http://download.zopen.cn/installer/p4.png]
+* 创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点
 
- [图5 http://download.zopen.cn/installer/p5.png]
- 
- [图6 http://download.zopen.cn/installer/p6.png]
+   http://download.zopen.cn/installer/p4.png
+   http://download.zopen.cn/installer/p5.png
 
- 
-= 在新建立的站点创建虚拟主机 =
+* 您也可以直接输入地址 http://localhost:8080/project 来进行访问，以之前创建站点名为project为例
 
- # 进入 http://server_ip:8080/manage ,在中间栏处找到 virtual_hosting，点击进入
- # 进入后，点击上侧的 mappings 
- # 添加以下内容，点击 Save chagnge 保存
-
-    server_ip/project
-
-    - 例子: 192.168.1.116/project. project 为之前创建站点的ID
-
-4. 完成后可以直接访问 http://server_ip:8080 就可以直接跳至 http://server_ip:8080/project
-
-
-   
+   http://download.zopen.cn/installer/p6.png
