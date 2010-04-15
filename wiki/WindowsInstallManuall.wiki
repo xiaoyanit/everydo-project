@@ -1,36 +1,42 @@
 #labels Featured,Phase-Deploy
 = 易度项目管理系统安装手册 = 
 
-*此手册对应于windows环境安装*
+== 此手册对应于windows环境安装 ==
 
-安装配置
+=== 安装配置 ===
 
-    1. 下载安装包 [下载地址 http://everydo-project.googlecode.com/files/everydo_project-1.1.win32.exe] 执行该安装程序
-    2. 选择安装路径
-      http://download.zopen.cn/installer/p0.0.png
-    3. 配置端口和管理员账户. 下面已设置访问端口为8080，管理员用户名和密码都为admin
-      http://download.zopen.cn/installer/p0.png
-    4. 点击下一步进行安装
+1. 下载安装包 [http://everydo-project.googlecode.com/files/everydo_project-1.1.win32.exe 下载地址] 执行该安装程序
 
-创建一个名为project的易度项目管理站点
+2. 选择安装路径
+   http://download.zopen.cn/installer/p0.0.png
 
-    1. 在开始菜单中找到安装好的易度项目管理系统开源版本， 进入控制面板
-      http://download.zopen.cn/installer/p0.1.png
-    2. 点击 ZopeManageInterface进入ZMI (您也可以直接使用浏览器访问 http://localhost:8080/manage , 使用用户名admin 和密码 admin 登入)
-     http://download.zopen.cn/installer/p1.png
-    3. 在页面的右侧的下拉栏处找到 Plone Site 点击Add进入
-     http://download.zopen.cn/installer/p2.png
-    4. 创建名为project的站点
-       # Id处填写: project
-       # Title处不修改
-       # Extension Profiles下拉找到basecamp site, 点击 Add Plone Site 完成安装的操作
-         在安装的过程中，数据在初始化，会花费一点时间，请耐心等待完
-      http://download.zopen.cn/installer/p3.png
-         成
+3. 配置端口和管理员账户. 下面已设置访问端口为8080，管理员用户名和密码都为admin
+   http://download.zopen.cn/installer/p0.png
 
-访问创建好的站点
-    - 创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点
-      http://download.zopen.cn/installer/p4.png
-      http://download.zopen.cn/installer/p5.png
-    - 您也可以直接输入地址来进行访问，以之前创建站点名为project为例
-      http://download.zopen.cn/installer/p6.png
+4. 点击下一步进行安装
+
+=== 创建一个名为project的易度项目管理站点 ===
+
+1. 在开始菜单中找到安装好的易度项目管理系统开源版本， 进入控制面板
+   http://download.zopen.cn/installer/p0.1.png
+
+2. 点击 ZopeManageInterface进入ZMI (您也可以直接使用浏览器访问 http://localhost:8080/manage , 使用用户名admin 和密码 admin 登入)
+  http://download.zopen.cn/installer/p1.png
+
+3. 在页面的右侧的下拉栏处找到 Plone Site 点击Add进入
+  http://download.zopen.cn/installer/p2.png
+
+4. 创建名为project的站点
+    # Id处填写: project
+    # Title处不修改
+    # Extension Profiles下拉找到basecamp site, 点击 Add Plone Site 完成安装的操作
+      在安装的过程中，数据在初始化，会花费一点时间，请耐心等待完
+   http://download.zopen.cn/installer/p3.png
+      成
+
+=== 访问创建好的站点 ===
+创建成功后，会出现 Project (Site), 点击进入， 在上侧的控制栏，点击view浏览进入该站点
+   http://download.zopen.cn/installer/p4.png
+   http://download.zopen.cn/installer/p5.png
+您也可以直接输入地址来进行访问，以之前创建站点名为project为例
+   http://download.zopen.cn/installer/p6.png
