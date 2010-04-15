@@ -13,7 +13,7 @@ sudo apt-get install python2.4-dev
 sudo apt-get libxml2-dev
 }}}
 
-2. 下载解压everydo-project-1.0.tar.gz包
+2. 下载解压[http://everydo-project.googlecode.com/files/everydo-project-1.1.tar.gz everydo-project]包
 
 {{{
 tar xzvf everydo-project-1.0.tar.gz
