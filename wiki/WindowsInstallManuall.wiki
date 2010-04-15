@@ -4,7 +4,8 @@
 *此手册对应于windows环境安装*
 
  # 双击执行安装程序, 配置端口和管理员账户. 下面已设置访问端口为8080，管理员用户名和密码都为admin
- # 使用浏览器访问 http://localhost:8080/manage , 使用用户名admin 和密码 admin 登入
+ # 在开始菜单中找到安装好的 易度项目管理系统开源版本， 进入控制面板
+ # 点击 ZopeManageInterface进入ZMI (您也可以直接使用浏览器访问 http://localhost:8080/manage , 使用用户名admin 和密码 admin 登入,见图1)
  # 在页面的右侧的下拉栏处找到 Plone Site 点击Add进入(见图2)
  # Id处填写: project(见图3)
  # Title处不修改
