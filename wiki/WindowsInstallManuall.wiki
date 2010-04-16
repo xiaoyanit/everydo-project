@@ -1,6 +1,8 @@
 #labels Featured,Phase-Deploy
 = 易度项目管理系统安装手册 = 
 
+* <font color="red">此程序只支持python2.4，请在安装前卸载当前系统的其他python版本</font> *
+
 == 此手册对应于windows环境安装 ==
 
 === 安装配置 ===
