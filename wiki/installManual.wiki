@@ -131,3 +131,12 @@ http://download.zopen.cn/installer/vir02.png
   * 在栏处编辑需要设置的虚拟主机，以project的站点为例
 
 http://download.zopen.cn/installer/vir03.png
+
+
+=== 设置邮件发送服务器 ===
+
+1. 进入ZMI(http://localhost:8080/manage)
+
+2. 找到mailhost, 进入设置发送服务器信息
+
+   即可！
