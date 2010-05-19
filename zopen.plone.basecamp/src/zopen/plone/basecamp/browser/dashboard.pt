@@ -134,7 +134,6 @@ table.ProjectSummary tr.row5 td { }
                           tal:repeat="list lists">
                 <tr tal:define="row string:row${repeat/list/number};
                                 list_type list/portal_type;
-                                currentContributor python:list.Contributors and list.Contributors[0] or list.Creator;
                                 list_state list/review_state;"
                     tal:attributes="class row">
                   <td class="icon">
