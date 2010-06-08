@@ -103,7 +103,7 @@ def secureSend(self, message, mto, mfrom, subject='[No Subject]',
             mcc=None, mbcc=None, subtype='plain',
             charset='us-ascii', debug=False, **kwargs):
 
-    mfrom = '易度EveryDo.com <no-reply@everydo.com>'
+#    mfrom = '易度EveryDo.com <no-reply@everydo.com>'
     if charset.lower() in ('utf8', 'utf-8'):
         message = message.decode('utf8').encode('gb18030', 'replace')
 
