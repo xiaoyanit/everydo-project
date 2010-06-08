@@ -37,6 +37,7 @@ setup (
     install_requires = [
         'setuptools',
         'kss.core',
+        'z3c.resourcecollector',
         'zopen.kssaddons',
         ],
     zip_safe = False,
