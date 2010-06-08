@@ -71,16 +71,16 @@ http://download.zopen.cn/installer/vir03.png
 
 1. 进入ZMI(http://localhost:8080/manage)
 
-http://download.zopen.cn/installer/m1.png
+http://download.zopen.cn/installer/m1.PNG
 
 2. 找到mailhost, 进入设置发送服务器信息
 
-http://download.zopen.cn/installer/m0.png
+http://download.zopen.cn/installer/m0.PNG
 
 3. 设置发送邮件服务器的发送人属性
 
 在下图红框处，填写第一步的发送人帐号
 
-http://download.zopen.cn/installer/m3.png
+http://download.zopen.cn/installer/m2.png
 
 Save Changes 即可！
