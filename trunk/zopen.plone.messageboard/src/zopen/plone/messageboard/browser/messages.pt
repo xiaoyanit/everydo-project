@@ -86,7 +86,7 @@
               <h3>
                <tal:block i18n:translate="posted_by_in_category">
                   Posted by
-                  <span tal:define="currentContributor python:brain.Contributors and brain.Contributors[0] or brain.Creator;
+                  <span tal:define="currentContributor brain/Creator;
                                     author python:basecamp_view.getMemberName(currentContributor);
                                     "
                         tal:content="author"
