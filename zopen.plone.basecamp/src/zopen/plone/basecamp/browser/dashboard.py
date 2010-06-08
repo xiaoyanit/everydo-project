@@ -89,8 +89,7 @@ class Dashboard(BrowserView):
 
     def getResponsiblePartyTitle(self, item):
         mtool = getToolByName(self.context, 'portal_membership')
-        responsor = (item.portal_type != 'Discussion Item' and item.getResponsibleParty) or \
-                (item.Contributors and item.Contributors[0]) or item.Creator
+        responsor = (item.portal_type != 'Discussion Item' and item.getResponsibleParty) or  item.Creator
         mi = mtool.getMemberInfo(responsor)
         if mi:
             return mi['fullname'] or responsor
