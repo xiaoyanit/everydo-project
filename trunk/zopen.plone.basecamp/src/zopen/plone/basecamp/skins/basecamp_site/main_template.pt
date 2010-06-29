@@ -66,15 +66,7 @@
     <metal:cssslot define-slot="css_slot" />
 
     <script src="/++resource++zopen.js?34223332" type="text/javascript"><!-- --></script>
-    <script src="/++resource++sarissa.js" type="text/javascript" ></script> 
-    <script src="/++resource++base2-dom-fp.js" type="text/javascript" ></script> 
-    <tal:block define="kss_devel_mode nocall:context/@@kss_devel_mode | nothing">
-    <script tal:condition="python: not kss_devel_mode or kss_devel_mode.isoff()" type="text/javascript"
-            src="/++resource++kukit.js?34223332" type="text/javascript"><!-- --></script>
-    <script tal:condition="python: kss_devel_mode and kss_devel_mode.ison()" type="text/javascript"
-          src="/++resource++kukit-devel.js?34223332" type="text/javascript"><!-- --></script>
     <metal:javascriptslot define-slot="javascript_head_slot" />
-   </tal:block>
 
     <link href="/++resource++everydo.kss?34223332" type="text/css" rel="kinetic-stylesheet"/>
 

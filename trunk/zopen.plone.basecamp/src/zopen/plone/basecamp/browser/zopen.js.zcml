@@ -4,13 +4,58 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="zopen.edo.oc.portal">
 
-  <collector name="zopen.js" type="zope.publisher.interfaces.browser.IBrowserRequest" />
-  <collectorItem collector="zopen.js" item="sarissa.js" weight="1" />
-  <collectorItem collector="zopen.js" item="base2-dom-fp.js" weight="2" />
-  <collectorItem collector="zopen.js" item="kukit.js" weight="3" />
-  <collectorItem collector="zopen.js" item="deletion.js" weight="4" />
-  <collectorItem collector="zopen.js" item="choice-widget.js" weight="5" />
+  <collector name="zopen.js" type="zope.publisher.interfaces.browser.IDefaultBrowserLayer" />
+
+  <resource name="jquery.js" file="js/jquery.js" />
+  <collectorItem collector="zopen.js" item="jquery.js" weight="1" />
+
+  <collectorItem collector="zopen.js" item="sarissa.js" weight="2" />
+  <collectorItem collector="zopen.js" item="base2-dom-fp.js" weight="3" />
+  <collectorItem collector="zopen.js" item="kukit.js" weight="4" />
+  <collectorItem collector="zopen.js" item="deletion.js" weight="5" />
+
+  <collectorItem collector="zopen.js" item="kss.js" weight="6" />
 
   <resource name="choice-widget.js" file="js/choice-widget.js" />
+  <collectorItem collector="zopen.js" item="choice-widget.js" weight="6" />
+
+  <collectorItem collector="zopen.js" item="category-rename.js" weight="7" />
+
+  <resource name="select_all.js" file="resources/select_all.js" />
+  <collectorItem collector="zopen.js" item="select_all.js" weight="8" />
+
+  <resource name="event-registration.js" file="js/event-registration.js" />
+  <collectorItem collector="zopen.js" item="event-registration.js" weight="9" />
+
+  <resource name="nodeutilities.js" file="js/nodeutilities.js" />
+  <collectorItem collector="zopen.js" item="nodeutilities.js" weight="10" />
+
+  <resource name="jquery-integration.js" file="js/jquery-integration.js" />
+  <collectorItem collector="zopen.js" item="jquery-integration.js" weight="11" />
+
+  <resource name="register_function.js" file="js/register_function.js" />
+  <collectorItem collector="zopen.js" item="register_function.js" weight="12" />
+
+  <resource name="cookie_functions.js" file="js/cookie_functions.js" />
+  <collectorItem collector="zopen.js" item="cookie_functions.js" weight="13" />
+
+  <resource name="first_input_focus.js" file="js/first_input_focus.js" />
+  <collectorItem collector="zopen.js" item="first_input_focus.js" weight="14" />
+
+  <resource name="ie5fixes.js" file="js/ie5fixes.js" />
+  <collectorItem collector="zopen.js" item="ie5fixes.js" weight="15" />
+
+  <resource name="input-label.js" file="js/input-label.js" />
+  <collectorItem collector="zopen.js" item="input-label.js" weight="16" />
+
+  <resource name="mark_special_links.js" file="js/mark_special_links.js" />
+  <collectorItem collector="zopen.js" item="mark_special_links.js" weight="17" />
+
+  <resource name="toc.js" file="js/toc.js" />
+  <collectorItem collector="zopen.js" item="toc.js" weight="19" />
+
+  <resource name="dropdown.js" file="js/dropdown.js" />
+  <collectorItem collector="zopen.js" item="dropdown.js" weight="20" />
 
 </configure>
+

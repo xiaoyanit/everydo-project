@@ -28,7 +28,7 @@ class Dashboard(BrowserView):
 
             if len(projects) == 1 and len(projects.values()[0]) == 1:  # 只有一个项目就不显示什么了
                 self.request.response.redirect(projects.values()[0][0].absolute_url())
-                return 
+                return
             else: # 没有项目
                 return self.dashboard_tempalte()
 
@@ -52,7 +52,7 @@ class Dashboard(BrowserView):
     def getLatestActivity(self):
         pv = getMultiAdapter( (self.context, self.request), name=u'projectview')
         active_projects = pv.getActiveProjects()
-        latest_activity = [] 
+        latest_activity = []
         project_counts = sum([len(p) for p in active_projects.values()])
 
         if project_counts > 3:
@@ -112,4 +112,4 @@ class BasecampKssView(PloneKSSView):
         url = self.context.absolute_url()
         self.getCommandSet('zopen').redirect(url=url)
         return self.render()
-    
+

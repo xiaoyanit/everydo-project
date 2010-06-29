@@ -29,7 +29,7 @@ PloneKSSView.macroContent = macroContent
 #########################################
 # 不去检查是否和上级文件夹对象重名
 # 因为上级的site会成千上万，这样去检查，基本是死路一条了
-# 
+#
 # XXX
 # 不知道其他地方还是否有类似的问题，最佳的方法是，对BetreeFolder做一个处理，禁止获取
 #########################################
@@ -103,7 +103,7 @@ def secureSend(self, message, mto, mfrom, subject='[No Subject]',
             mcc=None, mbcc=None, subtype='plain',
             charset='us-ascii', debug=False, **kwargs):
 
-#    mfrom = '易度EveryDo.com <no-reply@everydo.com>'
+    #mfrom = '易度EveryDo.com <no-reply@everydo.com>'
     if charset.lower() in ('utf8', 'utf-8'):
         message = message.decode('utf8').encode('gb18030', 'replace')
 

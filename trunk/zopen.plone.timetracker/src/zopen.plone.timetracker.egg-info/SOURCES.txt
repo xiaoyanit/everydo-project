@@ -1,3 +1,4 @@
+README.txt
 setup.py
 src/zopen/__init__.py
 src/zopen.plone.timetracker.egg-info/PKG-INFO
