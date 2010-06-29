@@ -14,9 +14,7 @@ from zope.component import getMultiAdapter
 class PermissionSettingView(BrowserView):
 
     def canCustomPermission(self):
-         portal = getToolByName(self.context.aq_inner, 'portal_url').getPortalObject()
-         av = getMultiAdapter( (portal, portal.REQUEST), name=u'operationoptions')
-         return av.canCustomPermission()
+         return True
 
     def getRoles(self):
         return ['Member', 'Reader', 'Contributor', 'Editor', 'Reviewer']
