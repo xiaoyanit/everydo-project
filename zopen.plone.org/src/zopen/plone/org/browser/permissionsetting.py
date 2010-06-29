@@ -46,18 +46,18 @@ class PermissionSettingView(BrowserView):
         results.append(['chatroom', ''])
 
         results.append(['files', 'parent'])
-        
+
         obj = self.getOriginalObject('files')
         filesFold = obj.contentValues()
         for ff in filesFold:
             results.append(['files/' + ff.getId(), 'fileschildren'])
 
-            
+
         return results
 
     def getInheritStatus(self, obj):
         return getattr(aq_base(obj), '__ac_local_roles_block__', None)
-    
+
     def listPrivilege(self, subpath):
 
         obj = self.getOriginalObject(subpath)
@@ -65,14 +65,14 @@ class PermissionSettingView(BrowserView):
         results = []
 
         privilege = []
-        
+
         groups = self.getGroups()
 
         if not self.getInheritStatus(obj):
             results.append('checked')
         else:
             results.append('')
-        
+
 
         for roleStr in self.getRoles():
             privilege.append({})
@@ -101,7 +101,7 @@ class PermissionSettingView(BrowserView):
                 return group['title'] or responsor
             else:
                 return responsor
-    
+
     def getMembers(self):
         project = self.context.getProject()
         adapter = IOrganizedEmployess(project.teams)
@@ -116,7 +116,7 @@ class PermissionSettingView(BrowserView):
                 else:
                     members.append(i)
                     count += 1
-                    
+
         return members
 
 privilege_template = ZopeTwoPageTemplateFile('permissionsetting.pt')
@@ -159,7 +159,7 @@ class PermissionSettingKssView(PloneKSSView, PermissionSettingView):
                             "</option>"
 
         content += "</optgroup>"
-        
+
         project = self.context.getProject()
         adapter = IOrganizedEmployess(project.teams)
         cp = adapter.get_all_companies_and_people()
@@ -182,7 +182,7 @@ class PermissionSettingKssView(PloneKSSView, PermissionSettingView):
         ksscore.insertHTMLAfter(selector, content)
         selectarea = ksscore.getSelector('css', '.selectarea')
         ksscore.focus(selectarea)
-        
+
     @kssaction
     def deletePrivilege(self, value, role, subpath=''):
         obj = self.getOriginalObject(subpath)
@@ -196,7 +196,7 @@ class PermissionSettingKssView(PloneKSSView, PermissionSettingView):
             obj.manage_setLocalRoles(value, newroles)
 
         obj.reindexObjectSecurity()
-            
+
         the_macro = privilege_template.macros['privilegeItem']
         item = self.listPrivilege(subpath)[1][roles.index(role)]
 
@@ -211,30 +211,30 @@ class PermissionSettingKssView(PloneKSSView, PermissionSettingView):
         selector = ksscore.getSelector('parentnode', '.privilegeItem')
         ksscore.replaceHTML(selector, content)
 
-        
+
     @kssaction
     def updateInherit(self, status='', subpath=''):
-        
+
         obj = self.getOriginalObject(subpath)
         ksscore = self.getCommandSet('core')
         samenode = ksscore.getSelector('samenode','')
-        
+
         projectmanagers = 'projectmanagers-' + self.context.aq_inner.aq_parent.getId()
-        
+
         if status:
             obj.__ac_local_roles_block__ = None
             existsroles = obj.get_local_roles_for_userid(projectmanagers)
-    
+
             newroles = [r for r in existsroles if r != 'Administrator']
             if len(newroles) == 0:
                 obj.manage_delLocalRoles([projectmanagers])
             else:
                 obj.manage_setLocalRoles(projectmanagers, newroles)
-                 
+
         else:
             obj.__ac_local_roles_block__ = True
             obj.manage_addLocalRoles(projectmanagers, ['Administrator'])
-            
+
         obj.reindexObjectSecurity()
         selector = ksscore.getSelector('parentnodecss', \
                                 '.clickItem|.TGcomplete')

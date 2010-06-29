@@ -1,7 +1,4 @@
 setuptools
-z3c.zrtresource
-z3c.resourcecollector
-z3ext.statusmessage
-z3ext.cssregistry
 kss.core
+z3c.resourcecollector
 zopen.kssaddons
