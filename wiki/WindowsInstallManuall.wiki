@@ -7,7 +7,7 @@
 
 === 安装配置 ===
 
-1. [http://everydo-project.googlecode.com/files/everydo_project-1.3.win32.exe 下载安装程序], 执行该安装程序
+1. [http://code.google.com/p/everydo-project/downloads/list 下载安装程序], 执行该安装程序
 
 2. 选择安装路径
    http://download.zopen.cn/installer/p0.0.png
